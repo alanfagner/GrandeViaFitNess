@@ -45,6 +45,7 @@ public class HomePage extends BasePage
                 dataProvider.size();
                 target.add(gridGenerica);
             }
+<<<<<<< HEAD
         });
 
         listBotoes.add(new AjaxLink<Endereco>("Visualizar")
@@ -58,6 +59,21 @@ public class HomePage extends BasePage
             }
         });
 
+=======
+        });
+
+        listBotoes.add(new AjaxLink<Endereco>("Visualizar")
+        {
+            private static final long serialVersionUID = -2007593370707695822L;
+
+            @Override
+            public void onClick(final AjaxRequestTarget target)
+            {
+                getModelObject();
+            }
+        });
+
+>>>>>>> origin/master
         columns.add(new AbstractColumn<Endereco, String>(new Model<String>("Opções"))
         {
             private static final long serialVersionUID = -3102670641136395641L;
@@ -101,7 +117,10 @@ public class HomePage extends BasePage
 
         columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Cidade"), "cidade"));
         columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Cep"), "cep"));
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
         gridGenerica = new DefaultDataTable<Endereco, String>("table", columns, getDataProvider(), 5);
         gridGenerica.setOutputMarkupId(true);
         this.add(gridGenerica);
