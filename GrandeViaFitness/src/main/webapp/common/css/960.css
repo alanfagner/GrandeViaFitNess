@@ -1257,10 +1257,15 @@ table.dataview {
 	font-size: 1em;
 	font-family: arial;
 	}
-	
 table.dataview caption { text-align: left; }
 table.dataview tr { padding-top: 2px; padding-bottom: 2px; }
-table.dataview tr.even { background-color: #ffebcd; }
+.even { background-color: #ffffff;
+	    color: #000000 !important ;
+	    height: 43px !important;
+	    text-align: center;}
+.odd{
+	text-align: center;
+}	    
 table.dataview tr.odd { background-color: #fff; }
 table.dataview tr td { padding-left: 8px; padding-right: 30px; }
 table.dataview tr th { color: black; padding-top: 3px; padding-bottom: 3px; padding-left: 8px; padding-right: 30px; background-color: #c1e4ff; border-bottom: 1px solid #0079d6; border-top: 1px solid #0079d6; text-align: left; white-space: nowrap; vertical-align: middle;}

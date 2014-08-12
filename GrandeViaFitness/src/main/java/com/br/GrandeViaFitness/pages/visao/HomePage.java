@@ -26,7 +26,7 @@ public class HomePage extends BasePage
    private static final long serialVersionUID = -2280598124596767977L;
    private IDataSorteProvider<Endereco, String> dataProvider;
    private final List<AjaxLink<Endereco>> listBotoes = new ArrayList<AjaxLink<Endereco>>();
-   private DefaultDataTable<Endereco, String> gridGenerica;
+   private final DefaultDataTable<Endereco, String> gridGenerica;
 
    public HomePage(final PageParameters parameters)
    {
@@ -41,7 +41,14 @@ public class HomePage extends BasePage
          {
             dataProvider.getListaARetornar().remove(getModelObject());
             dataProvider.size();
+            atualizaTela(target);
             target.add(gridGenerica);
+         }
+
+         @Override
+         protected void onBeforeRender()
+         {
+            super.onBeforeRender();
          }
       });
 
@@ -61,8 +68,7 @@ public class HomePage extends BasePage
          private static final long serialVersionUID = -3102670641136395641L;
 
          @Override
-         public void populateItem(final Item<ICellPopulator<Endereco>> cellItem,
-            final String componentId, final IModel<Endereco> entidade)
+         public void populateItem(final Item<ICellPopulator<Endereco>> cellItem, final String componentId, final IModel<Endereco> entidade)
          {
 
             cellItem.add(new ActionButtonPanel<Endereco>(componentId, entidade, listBotoes));
@@ -74,30 +80,16 @@ public class HomePage extends BasePage
 
          private static final long serialVersionUID = 3580594711515520158L;
 
-         @Override
+         /*@Override
          public String getCssClass()
          {
             return "numeric";
-         }
+         }*/
       });
 
-      columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Logradouro"),
-         "logradouro", "logradouro"));
+      columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Logradouro"), "logradouro", "logradouro"));
 
-      columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Bairro"), "bairro",
-         "bairro")
-      {
-         /**
-          *
-          */
-         private static final long serialVersionUID = 3774551391770421047L;
-
-         @Override
-         public String getCssClass()
-         {
-            return "last-name";
-         }
-      });
+      columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Bairro"), "bairro", "bairro"));
 
       columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Cidade"), "cidade"));
       columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Cep"), "cep"));
