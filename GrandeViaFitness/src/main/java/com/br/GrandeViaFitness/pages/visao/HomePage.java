@@ -2,6 +2,7 @@ package com.br.GrandeViaFitness.pages.visao;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
@@ -14,6 +15,7 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+
 import com.br.GrandeViaFitness.componentes.ActionButtonPanel;
 import com.br.GrandeViaFitness.componentes.IDataSorteProvider;
 import com.br.GrandeViaFitness.model.Endereco;
@@ -62,19 +64,6 @@ public class HomePage extends BasePage
             getModelObject();
          }
       });
-
-      columns.add(new AbstractColumn<Endereco, String>(new Model<String>("Opções"))
-      {
-         private static final long serialVersionUID = -3102670641136395641L;
-
-         @Override
-         public void populateItem(final Item<ICellPopulator<Endereco>> cellItem, final String componentId, final IModel<Endereco> entidade)
-         {
-
-            cellItem.add(new ActionButtonPanel<Endereco>(componentId, entidade, listBotoes));
-         }
-      });
-
       columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Codigo"), "codigo")
       {
 
@@ -93,6 +82,21 @@ public class HomePage extends BasePage
 
       columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Cidade"), "cidade"));
       columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Cep"), "cep"));
+        columns.add(new AbstractColumn<Endereco, String>(new Model<String>("Opções"))
+        {
+            private static final long serialVersionUID = -3102670641136395641L;
+
+            @Override
+            public void populateItem(final Item<ICellPopulator<Endereco>> cellItem, final String componentId,
+                    final IModel<Endereco> entidade)
+            {
+
+                cellItem.add(new ActionButtonPanel<Endereco>(componentId, entidade, listBotoes));
+
+            }
+
+        });
+
       gridGenerica = new DefaultDataTable<Endereco, String>("table", columns, getDataProvider(), 5);
       gridGenerica.setOutputMarkupId(true);
       this.add(gridGenerica);

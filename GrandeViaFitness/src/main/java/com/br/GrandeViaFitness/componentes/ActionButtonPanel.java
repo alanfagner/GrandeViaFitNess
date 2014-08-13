@@ -2,8 +2,10 @@ package com.br.GrandeViaFitness.componentes;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.RepeatingView;
@@ -35,11 +37,12 @@ public class ActionButtonPanel<T> extends Panel
             @Override
             public void onClick(final AjaxRequestTarget target)
             {
-               link.setModel(this.getModel());
+               link.setModel(getModel());
                link.onClick(target);
             }
 
          };
+            externalLink.add(new AttributeAppender("class", link.getId()));
          list.add(externalLink);
          view.add(list);
       }

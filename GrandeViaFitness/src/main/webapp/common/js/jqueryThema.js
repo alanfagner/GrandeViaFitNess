@@ -1,5 +1,6 @@
 $(function() {
-	$("input[type=submit], .classPesquisa, button, #pageLink ").button();
+	$("input[type=submit], .classPesquisa, button, a ").button();
+	
 	$(".first").button({
 		text : false,
 		icons : {
@@ -13,10 +14,19 @@ $(function() {
 		}
 	});
 	$("input[type=text]").autocomplete({});
+	
 	$("table").tabs();
-	$(".classPesquisa").button({
+	
+	$(".Excluir").button({
 		icons : {
-			primary : "ui-icon ui-icon-minus"
+			primary : "ui-icon ui-icon-close"
+		},
+		text : false
+	});
+	
+	$(".Visualizar").button({
+		icons : {
+			primary : "ui-icon ui-icon-search"
 		},
 		text : false
 	});
@@ -35,7 +45,8 @@ $(function() {
 });
 
 jQuery.addScriptCss = function() {
-	$("input[type=submit], .classPesquisa, button, #pageLink ").button();
+$("input[type=submit], .classPesquisa, button, a ").button();
+	
 	$(".first").button({
 		text : false,
 		icons : {
@@ -49,10 +60,19 @@ jQuery.addScriptCss = function() {
 		}
 	});
 	$("input[type=text]").autocomplete({});
+	
 	$("table").tabs();
-	$(".classPesquisa").button({
+	
+	$(".Excluir").button({
 		icons : {
-			primary : "ui-icon ui-icon-minus"
+			primary : "ui-icon ui-icon-close"
+		},
+		text : false
+	});
+	
+	$(".Visualizar").button({
+		icons : {
+			primary : "ui-icon ui-icon-search"
 		},
 		text : false
 	});
