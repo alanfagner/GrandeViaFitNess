@@ -13,7 +13,7 @@ $(function() {
 			primary : "ui-icon-seek-start"
 		}
 	});
-	$("input[type=text]").autocomplete({});
+	
 	
 	$("table").tabs();
 	
@@ -59,7 +59,6 @@ $("input[type=submit], .classPesquisa, button, a ").button();
 			primary : "ui-icon-seek-start"
 		}
 	});
-	$("input[type=text]").autocomplete({});
 	
 	$("table").tabs();
 	
