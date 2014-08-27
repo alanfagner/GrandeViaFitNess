@@ -12,9 +12,8 @@
 
   Note: IE6 works fine without this fix.
 */
-body {
+.classcontainer{
 	min-width: 960px;
-	
 	margin: 50px;
 }
 input[type=submit]{
@@ -24,6 +23,8 @@ input{
 	background-color: #a2b5cd;
 	border:1px #474749;
 	border-radius:3px 3px 3px 3px;
+    height: 20px;	
+    margin-right: 20px;
 }
 
 input:focus{
@@ -36,10 +37,7 @@ fieldset {
 	color: #3E71A8;
 	border:1px solid #3E71A8;
 }
-body.dark {
-    background-image: url("./../images/dark_wall.png");
-    padding: 25px 0 50px;
-}
+
 
 body, button, input, select, textarea {
     color: #222;
@@ -889,9 +887,8 @@ div.line_height_1_7 label {
 }
 
 .tudo {
-	position: absolute;
 	left: 40%;
-	top: 30%
+	top: 30%;
 }
 
 .formulario .contadorCaracteres {

@@ -25,15 +25,18 @@ public class BasePageLogin extends WebPage
 
    private void adicionarthemas(final IHeaderResponse response)
    {
-        addCss(response, "./common/css/960.css");
-        /*
-         * addCss(response, "./common/thema/jquery-ui.structure.css");
-         * addCss(response, "./common/thema/jquery-ui.theme.css");
-         * addCss(response, "./common/thema/jquery-ui.css"); addJS(response,
-         * "./common/thema/external/jquery/jquery.js"); addJS(response,
-         * "./common/thema/jquery-ui.js"); addJS(response,
-         * "./common/js/jqueryThema.js");
-         */
+      addCss(response, "./common/css/960.css");
+      addCss(response, "./common/css/myCss.css");
+
+      // addCss(response, "./common/thema/jquery-ui.structure.css");
+      // addCss(response, "./common/thema/jquery-ui.theme.css");
+      // addCss(response, "./common/thema/jquery-ui.css");
+      // addJS(response, "./common/thema/external/jquery/jquery.js");
+      // addJS(response, "./common/thema/jquery-ui.js");
+      // addJS(response, "./common/js/jqueryThema.js");
+
+      addJS(response, "./common/js/jquery-1.11.1.min.js");
+      addJS(response, "./common/js/relogio.js");
 
    }
 

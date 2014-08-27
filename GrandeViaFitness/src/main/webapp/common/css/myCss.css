@@ -1,0 +1,54 @@
+.SpanHorarioData {
+	color: white;
+	float: right;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.7em;
+    margin-top: 4px;
+}
+.spanTitulo{
+	color: white;
+	float: left;
+	font-family: none;
+	font-size: 0.7em;	
+    margin-top: 4px;
+}
+
+.barratop {
+	clear:both;
+	background-image: url("./../images/pickAzul.png");
+	background-repeat: repeat;
+	height: 24px;
+	text-align: -webkit-center;
+	text-align: center;
+	border-bottom: solid 3px #72806A
+}
+
+.fieldBoxPrincipal{
+	height: auto;
+	margin: auto;
+	padding: 0;
+	width: 730px;
+}
+
+.pageInit {
+	width: 730px;
+	height: auto;
+	margin: auto;
+	padding: 0;
+}
+
+.fieldLogin {
+	height: auto;
+	margin: auto;
+	padding: 0;
+	width: 430px;
+}
+
+body.dark {
+    background-image: url("./../images/dark_wall.png");
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    min-width: 860px;
+    font-family: Arial,Helvetica,sans-serif ;
+}
