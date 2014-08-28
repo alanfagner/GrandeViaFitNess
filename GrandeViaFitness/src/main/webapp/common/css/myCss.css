@@ -1,13 +1,7 @@
 .Menu {
-	margin: 0;
-	padding: 0;
+	margin: auto;
 	list-style: none;
 	height: 30px;
-}
-
-.Menu, .Menu li ul {
-	background-color:white;
-	
 }
 
 .Menu li {
@@ -16,22 +10,6 @@
 	padding-right: 2px;
 	margin-bottom: 3px;
 	height: 101%;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
-}
-
-.Menu li ul li a:HOVER{
-	background-color: blue;
-}
-
-.Menu li ul {
-	position: absolute;
-	padding-left: 0px;
-	top: 0;
-	display: none;
-	list-style: none;
-	margin-top: 29px;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
@@ -51,32 +29,37 @@
 	border-radius: 6px;
 }
 
-/* Fix IE. Hide from IE Mac \*/
-* .Menu ul li {
-	float: left;
+.Menu li ul {
+	background-color: white;
+	position: absolute;
+	display: none;
+	list-style: none;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	margin-left: 0px; 
+	left: 0px;
+	margin-top: 0px;
 }
 
-* .Menu ul li a {
-	height: 1%;
+.Menu li ul li a:HOVER {
+	background-color: blue;
 }
-/* End */
+
 .Menu li:hover ul {
 	display: block;
 }
 
 .SpanHorarioData {
 	color: black;
-	float: right;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 0.7em;
-	margin-top: 4px;
+	font-weight: bold;
+
 }
 
 .spanTitulo {
 	color: black;
-	float: left;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1em;
 	font-weight: bold;
 	margin-top: 2px;
 }
@@ -93,39 +76,59 @@
 
 .fieldBoxPrincipal {
 	height: auto;
-	margin: auto;
 	padding: 0;
-	width: 730px;
 }
 
-.pageInit {
-	width: 730px;
+/* Fix IE. Hide from IE Mac \*/
+* .fieldLogin {
 	height: auto;
 	margin: auto;
 	padding: 0;
+	font-weight: bold;
+	width: 330px;
+	border-top-width: 5px;
+	border-bottom-width: 5px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	padding-bottom: 3px;
 }
 
+/* End */
 .fieldLogin {
 	height: auto;
 	margin: auto;
 	padding: 0;
-	width: 430px;
 	font-weight: bold;
-	text-align: left;
+	width: 330px;
+	border-top-width: 5px;
+	border-bottom-width: 5px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	padding-bottom: 3px;
 }
 
-.margenLeft_30 {
-	margin-left: 30%;
+.div_Menu{
+	
 }
 
+.clear
+{
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
 .div_label {
 	width: auto;
 	height: auto;
 }
 
-.classcontainer {
-	min-width: 960px;
-	margin: 50px;
+.div_LabelCenter {
+	margin: auto;
+	width: 155px;
+	margin-bottom: 5px;
 }
 
 legend {
@@ -140,11 +143,8 @@ fieldset {
 
 body.dark {
 	background-image: url("./../images/dark_wall.png");
-	margin-left: 0px;
-	margin-right: 0px;
-	margin-top: 0px;
+	margin:auto;
 	min-width: 860px;
 	font: 76.5% "Arial", "Helvetica", sans-serif;
 	/*   font-family: Arial,Helvetica,sans-serif ; */
 }
-
