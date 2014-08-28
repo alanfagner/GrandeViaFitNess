@@ -12,36 +12,7 @@
 
   Note: IE6 works fine without this fix.
 */
-.classcontainer{
-	min-width: 960px;
-	margin: 50px;
-}
-input[type=submit]{
-	font: 80.5% "Trebuchet MS", sans-serif;
-}
-input{
-	background-color: #a2b5cd;
-	border:1px #474749;
-	border-radius:3px 3px 3px 3px;
-    height: 20px;	
-    margin-right: 20px;
-}
 
-input:focus{
-	background-color: #BFEFFF;
-	border:1px #474749;
-	border-radius:3px 3px 3px 3px;
-}
-
-fieldset {
-	color: #3E71A8;
-	border:1px solid #3E71A8;
-}
-
-
-body, button, input, select, textarea {
-    color: #222;
-}
 
 /* `Container
 ----------------------------------------------------------------------------------------------------*/

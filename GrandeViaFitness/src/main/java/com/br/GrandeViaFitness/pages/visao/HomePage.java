@@ -2,7 +2,6 @@ package com.br.GrandeViaFitness.pages.visao;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
@@ -15,11 +14,10 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-
 import com.br.GrandeViaFitness.componentes.ActionButtonPanel;
 import com.br.GrandeViaFitness.componentes.IDataSorteProvider;
 import com.br.GrandeViaFitness.model.Endereco;
-import com.br.GrandeViaFitness.pages.visao.basePage.BasePage;
+import com.br.GrandeViaFitness.pages.login.basePage.BasePage;
 
 @AuthorizeInstantiation("R_ADM")
 public class HomePage extends BasePage

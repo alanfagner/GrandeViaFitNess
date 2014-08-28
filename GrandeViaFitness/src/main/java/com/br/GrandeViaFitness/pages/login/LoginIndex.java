@@ -3,13 +3,14 @@ package com.br.GrandeViaFitness.pages.login;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
+import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import com.br.GrandeViaFitness.model.User;
-import com.br.GrandeViaFitness.pages.login.basePageLogin.BasePageLogin;
+import com.br.GrandeViaFitness.pages.login.basePage.BasePage;
 
-public class LoginIndex extends BasePageLogin
+public class LoginIndex extends BasePage
 {
    private static final long serialVersionUID = -140731152008355046L;
 
@@ -20,8 +21,6 @@ public class LoginIndex extends BasePageLogin
    public LoginIndex()
    {
       auxUser = new User();
-      auxUser.setCpf("alan.f.goncalves@hotmail.com");
-      auxUser.setPassword("123456");
       formLogin = new Form<User>("formulario", new CompoundPropertyModel<User>(auxUser));
       formLogin.add(new TextField<String>("cpf"));
       formLogin.add(new TextField<String>("password"));
@@ -58,6 +57,18 @@ public class LoginIndex extends BasePageLogin
       botaoEnviar.setOutputMarkupPlaceholderTag(true);
       formLogin.setOutputMarkupPlaceholderTag(true);
       formLogin.add(botaoEnviar);
+      formLogin.add(new Button("btnLimpar")
+      {
+
+         private static final long serialVersionUID = 5503520007522761497L;
+
+         @Override
+         public void onSubmit()
+         {
+            setResponsePage(new LoginIndex());
+         }
+
+      });
       add(formLogin);
    }
 
