@@ -1,5 +1,4 @@
 .Menu {
-	margin: auto;
 	list-style: none;
 	height: 30px;
 }
@@ -14,11 +13,16 @@
 	-moz-border-radius: 6px;
 	border-radius: 6px;
 }
+.divBranca{
+	background: none repeat scroll 0 0 #ffffff;
+	width: 100%;
+}
 
 .Menu li a {
 	display: block;
 	text-decoration: none;
 	color: #E2144A;
+	background: none repeat scroll 0 0 transparent;
 	background: #fff;
 	padding: 5px;
 	border: 1px solid #ccc;
@@ -30,7 +34,7 @@
 }
 
 .Menu li ul {
-	background-color: white;
+	background: none repeat scroll 0 0 transparent;
 	position: absolute;
 	display: none;
 	list-style: none;
@@ -40,10 +44,11 @@
 	margin-left: 0px; 
 	left: 0px;
 	margin-top: 0px;
+    padding-left: 0px;
 }
 
-.Menu li ul li a:HOVER {
-	background-color: blue;
+.Menu li ul li {
+	background: none repeat scroll 0 0 #6ab33f;
 }
 
 .Menu li:hover ul {
@@ -108,7 +113,8 @@
 }
 
 .div_Menu{
-	
+		margin: auto;
+		width: 860px;
 }
 
 .clear
