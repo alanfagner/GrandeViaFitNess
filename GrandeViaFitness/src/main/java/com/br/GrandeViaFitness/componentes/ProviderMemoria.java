@@ -1,22 +1,20 @@
 package com.br.GrandeViaFitness.componentes;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
-
 import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
-
-import com.br.GrandeViaFitness.model.Entidade;
 
 public class ProviderMemoria<T> implements IDataProvider<T>
 {
     private static final long serialVersionUID = -2379057150630949730L;
 
     private final List<T> listaMemoria;
-    private final Entidade filtro;
+   private final Serializable filtro;
 
-    public ProviderMemoria(final List<T> listaMemoria, final Entidade filtro)
+   public ProviderMemoria(final List<T> listaMemoria, final Serializable filtro)
     {
         this.listaMemoria = listaMemoria;
         this.filtro = filtro;

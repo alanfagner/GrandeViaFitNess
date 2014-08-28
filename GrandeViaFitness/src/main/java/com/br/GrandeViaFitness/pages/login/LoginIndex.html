@@ -5,21 +5,20 @@
 				<legend align="center">
 					<b>Login:</b>
 				</legend>
-				<div class="margin_bottom_10 div_center">
-					<label style="margin-right: 10px;"> Nome:</label> <input
-						class="campoText" wicket:id="cpf" width="200" size="30"
-						type="text" />
-				</div>
-				<div class="margin_bottom_10 div_center">
-					<label style="margin-right: 10px;"> Senha:</label> <input 
-						class="campoText" wicket:id="password" type="text" size="30" />
-				</div>
-				<div class="div_center margin_bottom_10">
-					<input wicket:id="btnEnviar" class="botao" type="submit"
-						name="avancar" value="Entrar" />
-						<input wicket:id="btnLimpar" class="botao" type="submit"
-						name=Limpar value="Limpar" />
-				</div>
+					<div class="margin_bottom_10 margenLeft_30">
+						<div class="div_label">
+						<label> Nome:</label> <br/>
+						</div>
+						<input class="campoText" wicket:id="cpf" type="text" />
+					</div>
+					<div class="margin_bottom_10 margenLeft_30">
+						<label > Senha:</label> <br/>
+						 <input	class="campoText" wicket:id="password" type="text"/>
+					</div>
+					<div class="margin_bottom_10 margenLeft_30">
+						<input wicket:id="btnEnviar" class="botao" type="submit" name="avancar" value="Entrar" />
+						<input wicket:id="btnLimpar" class="botao" type="submit" name=Limpar value="Limpar" />
+					</div>
 			</fieldset>
 		</div>
 	</form>

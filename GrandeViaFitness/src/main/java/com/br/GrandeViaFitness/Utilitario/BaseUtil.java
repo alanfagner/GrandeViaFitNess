@@ -8,14 +8,15 @@ import org.apache.wicket.request.resource.UrlResourceReference;
 
 public class BaseUtil
 {
-   private final String pastaCss = "./common/css/";
+   private final static String pastaCss = "./common/css/";
    private final String pastaJs = "./common/js/";
    private final static String pastaThemaRed = "./common/themeRed/";
 
    public static void geral(final IHeaderResponse response, final boolean themaVermelho)
    {
-      BaseUtil.addCss(response, "./common/css/960.css");
-      BaseUtil.addCss(response, "./common/css/myCss.css");
+      BaseUtil.addCss(response, BaseUtil.pastaCss + "960.css");
+      BaseUtil.addCss(response, BaseUtil.pastaCss + "myCss.css");
+      BaseUtil.addCss(response, BaseUtil.pastaCss + "bootStrap.css");
       BaseUtil.addJS(response, "./common/js/relogio.js");
 
       if(themaVermelho){
