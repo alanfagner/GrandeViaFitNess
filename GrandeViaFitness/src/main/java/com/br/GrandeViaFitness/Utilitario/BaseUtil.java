@@ -16,7 +16,6 @@ public class BaseUtil
    {
       BaseUtil.addCss(response, BaseUtil.pastaCss + "960.css");
       BaseUtil.addCss(response, BaseUtil.pastaCss + "myCss.css");
-      BaseUtil.addCss(response, BaseUtil.pastaCss + "bootStrap.css");
       BaseUtil.addJS(response, "./common/js/relogio.js");
 
       if(themaVermelho){

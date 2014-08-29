@@ -1,104 +1,109 @@
 .Menu {
 	list-style: none;
-	height: 30px;
+	height: 29px;
+    padding-left: 0px;
+    margin-top: 0px;
+    width: 500px;
+    margin: auto;
 }
-
 .Menu li {
+	height: 19px;
 	position: relative;
 	float: left;
-	padding-right: 2px;
 	margin-bottom: 3px;
-	height: 101%;
+	height: 100%;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
-}
-.divBranca{
-	background: none repeat scroll 0 0 #ffffff;
-	width: 100%;
+	border: 1px;
+	border-color:red;
 }
 
 .Menu li a {
+	height: 19px;
 	display: block;
 	text-decoration: none;
 	color: #E2144A;
 	background: none repeat scroll 0 0 transparent;
 	background: #fff;
 	padding: 5px;
-	border: 1px solid #ccc;
 	font-size: small;
 	width: 150px;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
 }
 
 .Menu li ul {
-	background: none repeat scroll 0 0 transparent;
 	position: absolute;
 	display: none;
 	list-style: none;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
+    margin-top: 0px;
 	margin-left: 0px; 
 	left: 0px;
-	margin-top: 0px;
     padding-left: 0px;
+    background: none repeat scroll 0 0 #f1f1f1;
 }
 
-.Menu li ul li {
-	background: none repeat scroll 0 0 #6ab33f;
-}
-
-.Menu li:hover ul {
+.Menu li:hover ul, .menu li a {
 	display: block;
+	
 }
+.Menu li a:hover{
+	background: none repeat scroll 0 0 #326CA6;
+	color: white;
+}
+.Menu li ul li:hover a {
+	background: none repeat scroll 0 0 #326CA6;
+	color: white;
+}
+
+
+
+.divBranca{
+	background: none repeat scroll 0 0 #ffffff;
+	width: 100%;
+	height: 29px;
+}
+
+
 
 .SpanHorarioData {
-	color: black;
+	color: white;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
-
+	float: right;
 }
 
+.fundoTopo{
+	background-image: url("./../images/imagenFundoTopo.png");
+	background-position: -2990px 0;
+	background-repeat: no-repeat;
+	position: relative;
+	height: 118px;
+}
 .spanTitulo {
-	color: black;
+	color: white;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
 	margin-top: 2px;
+	float: left;
 }
 
+.Layout_Fundo{
+	background-image: url("./../images/pesos.jpg");
+	background-repeat: repeat;
+	height: 118px;
+}
 .barratop {
 	clear: both;
-	background-image: url("./../images/pickAzul.png");
-	background-repeat: repeat;
+	background-color: #326CA6;
 	height: 20px;
 	text-align: -webkit-center;
 	text-align: center;
-	border-bottom: solid 3px #CD0404;
+	border-bottom: solid 5px #CD0404;
 }
 
-.fieldBoxPrincipal {
-	height: auto;
-	padding: 0;
-}
-
-/* Fix IE. Hide from IE Mac \*/
-* .fieldLogin {
-	height: auto;
-	margin: auto;
-	padding: 0;
-	font-weight: bold;
-	width: 330px;
-	border-top-width: 5px;
-	border-bottom-width: 5px;
-	border-left-width: 0px;
-	border-right-width: 0px;
-	padding-bottom: 3px;
-}
-
-/* End */
 .fieldLogin {
 	height: auto;
 	margin: auto;
@@ -112,9 +117,10 @@
 	padding-bottom: 3px;
 }
 
-.div_Menu{
+.div_tam{
 		margin: auto;
 		width: 860px;
+		min-width: 860px;
 }
 
 .clear
