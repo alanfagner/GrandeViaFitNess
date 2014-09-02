@@ -11,7 +11,7 @@ function atualizarRelogio() {
 
 	var currentDateString = currentTime.getDate() + montharray[currentTime.getMonth()] + currentTime.getFullYear() + " - ";
 	// Compose the string for display
-	var currentTimeString = "Hor\u00E1rio de Bras\u00EDlia: " + currentHours + ":" + currentMinutes + ":"
+	var currentTimeString =  + currentHours + ":" + currentMinutes + ":"
 			+ currentSeconds;
 
 	$(".SpanHorarioData").html(currentDateString + currentTimeString);

@@ -1,3 +1,9 @@
+.loganGrand{
+	float:left;
+	margin-top: 30px;
+	font-size: 30px;
+}
+
 .Menu {
 	list-style: none;
 	height: 29px;
@@ -5,6 +11,7 @@
     margin-top: 0px;
     width: 500px;
     margin: auto;
+    text-align: center;
 }
 .Menu li {
 	height: 19px;
@@ -24,20 +31,48 @@
 	display: block;
 	text-decoration: none;
 	color: #E2144A;
-	background: none repeat scroll 0 0 transparent;
-	background: #fff;
 	padding: 5px;
 	font-size: small;
 	width: 150px;
+	border-bottom: solid 5px #CD0404
+}
+
+.menuRedendoLeft{
+	background-color: #326CA6;
+	border-top-left-radius: 1em;	
+}
+.menuRedendoLeft:hover {
+	border-top-left-radius: 1em;
+	border-bottom: solid 5px #5095DB;
+}
+
+#Menu2Link{
+	background-color: #326CA6;
+}
+
+#Menu2Link:hover {
+	border-bottom: solid 5px #5095DB;
+
+}
+
+.menuRedendoRight{
+	background-color: #326CA6;
+	border-top-right-radius: 1em;
+}
+
+.menuRedendoRight:hover {
+	border-top-right-radius: 1em;
+	border-bottom: solid 5px #5095DB;
+}
+
+.campoText {
+	
 }
 
 .Menu li ul {
 	position: absolute;
 	display: none;
 	list-style: none;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
     margin-top: 0px;
 	margin-left: 0px; 
 	left: 0px;
@@ -50,14 +85,19 @@
 	
 }
 .Menu li a:hover{
-	background: none repeat scroll 0 0 #326CA6;
 	color: white;
 }
 .Menu li ul li:hover a {
 	background: none repeat scroll 0 0 #326CA6;
+	border-bottom: solid 5px #5095DB;
+	border-top: solid 5px #5095DB;
 	color: white;
 }
 
+.Menu  li ul li a{
+	border-bottom: solid 5px #ffffff;
+	border-top: solid 5px #ffffff;
+}
 
 
 .divBranca{
@@ -66,28 +106,45 @@
 	height: 29px;
 }
 
+.divBrancaBotton{
+	background: none repeat scroll 0 0 #ffffff;
+	width: 100%;
+	height: 1px;
+	margin-top: 80px;
+}
+.borderVermelha{
+	border-bottom: solid 5px #CD0404;
+}
+
 
 
 .SpanHorarioData {
-	color: white;
+	color: blue;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
 	float: right;
+    margin-top: 5px;
 }
 
 .fundoTopo{
 	background-image: url("./../images/imagenFundoTopo.png");
-	background-position: -2990px 0;
+	background-position: -3010px 0;
 	background-repeat: no-repeat;
 	position: relative;
 	height: 118px;
 }
-.spanTitulo {
-	color: white;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	margin-top: 2px;
-	float: left;
+.min_300Height{
+	min-height: 300px;
+}
+
+.fundoBottom{
+	background-image: url("./../images/imagenFundoTopo.png");
+	background-repeat: no-repeat;
+	background-position:top center;
+	position: relative;
+	height: 160px;
+	width: 100%;
+	clear: both;
 }
 
 .Layout_Fundo{
@@ -95,13 +152,18 @@
 	background-repeat: repeat;
 	height: 118px;
 }
+
+.Layout_FundoBotton{
+	background-image: url("./../images/pesos.jpg");
+	background-repeat: repeat;
+	height: 180px;
+}
 .barratop {
 	clear: both;
 	background-color: #326CA6;
-	height: 20px;
+	height: 5px;
 	text-align: -webkit-center;
 	text-align: center;
-	border-bottom: solid 5px #CD0404;
 }
 
 .fieldLogin {
@@ -141,6 +203,11 @@
 	margin: auto;
 	width: 155px;
 	margin-bottom: 5px;
+}
+.div_center{
+	margin: auto;
+	width: 300px;
+	margin-top: 60px;
 }
 
 legend {
