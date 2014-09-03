@@ -23,6 +23,7 @@ public class BasePage extends WebPage
       if (BasePage.usuarioLogado == null)
       {
          menu.setVisibilityAllowed(false);
+
       }
       else
       {
