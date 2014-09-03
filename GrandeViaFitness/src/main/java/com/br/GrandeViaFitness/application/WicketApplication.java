@@ -13,7 +13,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Component;
-
 import com.br.GrandeViaFitness.dao.imp.UserDaoImp;
 import com.br.GrandeViaFitness.model.User;
 import com.br.GrandeViaFitness.pages.login.LoginIndex;
@@ -48,7 +47,6 @@ public class WicketApplication extends AuthenticatedWebApplication implements
    @Override
    public void init()
    {
-
       super.init();
 
       getApplicationSettings().setPageExpiredErrorPage(HomePage.class);
@@ -67,7 +65,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements
 
       springComponentInjector.inject(this);
       getComponentInstantiationListeners().add(springComponentInjector);
-
+      // loadSampleDataIfNoExists();
 
 
       langs = new String[]{"it", "en"};
