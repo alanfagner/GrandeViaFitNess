@@ -41,7 +41,6 @@ public class HomePage extends BasePage
          {
             dataProvider.getListaARetornar().remove(getModelObject());
             dataProvider.size();
-            atualizaTela(target);
             target.add(gridGenerica);
          }
 

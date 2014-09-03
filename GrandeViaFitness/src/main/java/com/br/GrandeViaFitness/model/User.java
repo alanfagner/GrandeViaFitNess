@@ -136,13 +136,4 @@ public class User implements UserDetails
    {
       this.cpf = cpf;
    }
-
-   // public Accomodation getAccomodation() {
-   // return this.accomodation;
-   // }
-   //
-   // public void setAccomodation(Accomodation accomodation) {
-   // this.accomodation = accomodation;
-   // }
-
 }

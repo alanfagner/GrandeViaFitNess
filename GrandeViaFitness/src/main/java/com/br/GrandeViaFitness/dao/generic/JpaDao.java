@@ -7,7 +7,9 @@ import java.util.Map.Entry;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class JpaDao<T> implements Dao<T>
 {
    private static final long serialVersionUID = 1594193643950624158L;
