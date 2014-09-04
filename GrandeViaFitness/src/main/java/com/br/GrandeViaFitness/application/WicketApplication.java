@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import com.br.GrandeViaFitness.dao.imp.UserDaoImp;
 import com.br.GrandeViaFitness.model.User;
 import com.br.GrandeViaFitness.pages.login.LoginIndex;
-import com.br.GrandeViaFitness.pages.visao.HomePage;
+import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
 import com.br.GrandeViaFitness.security.MyAuthenticatedWebSession;
 
 /**
@@ -39,9 +39,9 @@ public class WicketApplication extends AuthenticatedWebApplication implements
    String[] langs;
 
    @Override
-   public Class<HomePage> getHomePage()
+   public Class<HomePageIndex> getHomePage()
    {
-      return HomePage.class;
+      return HomePageIndex.class;
    }
 
    @Override
@@ -49,7 +49,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements
    {
       super.init();
 
-      getApplicationSettings().setPageExpiredErrorPage(HomePage.class);
+      getApplicationSettings().setPageExpiredErrorPage(HomePageIndex.class);
 
       SpringComponentInjector springComponentInjector = null;
 
@@ -69,7 +69,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements
 
 
       langs = new String[]{"it", "en"};
-      mountPage("HomePage.html", HomePage.class);
+      mountPage("HomePage.html", HomePageIndex.class);
       mountPage("Login.html", LoginIndex.class);
 
    }

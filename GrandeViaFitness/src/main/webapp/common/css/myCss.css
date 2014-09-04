@@ -1,3 +1,10 @@
+.divUsuarioLogado{
+	float:left;
+	margin-top: 7px;
+	color: #191970;
+	font-weight:bold;
+}
+
 .loganGrand {
 	float: left;
 	margin-top: 30px;

@@ -49,16 +49,16 @@ public class MyAuthenticatedWebSession extends AuthenticatedWebSession
    }
 
    @Override
-   public boolean authenticate(final String username, final String password)
+   public boolean authenticate(final String userEmail, final String password)
    {
 
       try
       {
          final Authentication authentication =
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username,
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userEmail,
                password));
          SecurityContextHolder.getContext().setAuthentication(authentication);
-         BasePage.setUsuarioLogado(pessoaServico.buscaPessoaPorCpf(username));
+         BasePage.setUsuarioLogado(pessoaServico.buscaPessoaPorEmail(userEmail));
          return authentication.isAuthenticated();
       }
       catch (final AuthenticationException e)

@@ -1,16 +1,11 @@
 package com.br.GrandeViaFitness.dao.imp;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.br.GrandeViaFitness.dao.UserDao;
 import com.br.GrandeViaFitness.model.Authority;
 import com.br.GrandeViaFitness.model.User;
@@ -20,8 +15,6 @@ public class UserDaoImp implements UserDao
 {
    @PersistenceContext
    private EntityManager entityManager;
-
-   Logger logger = LoggerFactory.getLogger(this.getClass());
 
    @Override
    public User findByEmail(final String email)

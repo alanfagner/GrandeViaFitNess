@@ -4,5 +4,5 @@ import com.br.GrandeViaFitness.model.Pessoa;
 
 public interface PessoaDao
 {
-   Pessoa buscaPessoaPorCpf(String cpf);
+   Pessoa buscaPessoaPorEmail(String email);
 }

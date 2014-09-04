@@ -25,6 +25,13 @@ public class JpaDao<T> implements Dao<T>
       this.entityManager.remove(findById(id));
    }
 
+   private Query createQuery(final String queryStr, final Object... params)
+   {
+      final Query query = this.entityManager.createQuery(queryStr);
+      setQueryParams(query, params);
+      return query;
+   }
+
    @Override
    public List<?> find(final String queryStr, final Object... params)
    {
@@ -67,7 +74,7 @@ public class JpaDao<T> implements Dao<T>
    @Override
    public Object findSingleResult(final String queryStr, final Object... params)
    {
-      return findSingleResult(queryStr, null, params);
+      return createQuery(queryStr, params).getSingleResult();
    }
 
    @Override
@@ -102,6 +109,41 @@ public class JpaDao<T> implements Dao<T>
             "É necessário invocar o método setPersistentClass(Class<T> clazz)");
       }
       return persistentClass;
+   }
+
+   /* private void paginar(final Paginacao paginacao, final Query query)
+    {
+       if (paginacao != null)
+       {
+          if (paginacao.getPosicao() != null)
+          {
+             query.setFirstResult(paginacao.getPosicao());
+          }
+          if (paginacao.getLimite() != null)
+          {
+             query.setMaxResults(paginacao.getLimite());
+          }
+       }
+    }
+   */
+   private void setQueryParams(final Query query, final Object... params)
+   {
+      if (params != null && params.length > 0)
+      {
+         int i = 0;
+         for (final Object param : params)
+         {
+            if (param != null)
+            {
+               if ((param instanceof String && ((String) param).trim().isEmpty()))
+               {
+                  continue;
+               }
+               i++;
+               query.setParameter(i, param);
+            }
+         }
+      }
    }
 
    private void setQueryParams(final Query query, final Map<String, Object> params)
