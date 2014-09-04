@@ -23,21 +23,18 @@ public class ProviderMemoria<T> implements IDataProvider<T>
     @Override
     public void detach()
     {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public Iterator<? extends T> iterator(final long first, final long count)
     {
-        // TODO Auto-generated method stub
         return listaMemoria.iterator();
     }
 
     @Override
     public long size()
     {
-        // TODO Auto-generated method stub
         return listaMemoria.size();
     }
 

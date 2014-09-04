@@ -4,12 +4,6 @@
 <meta charset="utf-8" />
 <title>Grande Via Fitness</title>
 <meta content="authenticity_token" name="csrf-param" />
-<script>
-	jQuery(document).ready(function($) {
-		atualizarRelogio();
-		setInterval('atualizarRelogio()', 1000);
-	});
-</script>
 </head>
 <body class="dark" onload="atualizarRelogio()">
 	<div class="barratop borderVermelha">
@@ -34,7 +28,8 @@
 					<li id="nav-1" style="z-index: 1" ><a id="Menu1Link" class="menuRedendoLeft"
 						href="#">Cadastro </a>
 						<ul id="subnav-1" class="ultimoLinkBottomLeft">
-							<li><a id="SubMenu1Link" href="#">Cadastro Cliente</a></li>
+							<li><a id="SubMenu1Link" href="#">Cadastro Produtos</a></li>
+							<li><a wicket:id="consultarCliente" href="#">Cadastro Cliente</a></li>
 							<li><a id="SubMenu2Link" href="#">Cadastro Professor</a></li>
 							<li><a id="SubMenu2Link" class="ultimoLinkBottomLeft"
 								href="#">Cadastro Aparelhos</a></li>
@@ -53,7 +48,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="clear"></div>
 	<div class="clear"></div>
 	<div class="minmuHeight">
 		<wicket:child />

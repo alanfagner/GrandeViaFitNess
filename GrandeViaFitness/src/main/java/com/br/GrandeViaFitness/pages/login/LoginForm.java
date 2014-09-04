@@ -20,6 +20,8 @@ public class LoginForm extends FormularioBase<User>
    private User auxUser;
    private final FeedbackPanel feedBack;
 
+   private Button botaoLimpar;
+
    public LoginForm(final String id, final FeedbackPanel feedBack)
    {
       super(id);
@@ -56,7 +58,8 @@ public class LoginForm extends FormularioBase<User>
          }
       };
       botaoEnviar.setOutputMarkupPlaceholderTag(true);
-      addOrReplace(botaoEnviar, new Button("btnLimpar")
+
+      botaoLimpar = new Button("btnLimpar")
       {
          private static final long serialVersionUID = 5503520007522761497L;
          @Override
@@ -64,7 +67,14 @@ public class LoginForm extends FormularioBase<User>
          {
             setResponsePage(new LoginIndex());
          }
-      });
+
+         @Override
+         public void onError()
+         {
+         }
+      };
+      botaoLimpar.setDefaultFormProcessing(false);
+      addOrReplace(botaoEnviar, botaoLimpar);
    }
 
    private void setDefaultResponsePageIfNecessary()

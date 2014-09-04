@@ -17,6 +17,7 @@ import com.br.GrandeViaFitness.dao.imp.UserDaoImp;
 import com.br.GrandeViaFitness.model.User;
 import com.br.GrandeViaFitness.pages.login.LoginIndex;
 import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
+import com.br.GrandeViaFitness.pages.visao.cadastroCliente.ConsultarClienteIndex;
 import com.br.GrandeViaFitness.security.MyAuthenticatedWebSession;
 
 /**
@@ -69,8 +70,9 @@ public class WicketApplication extends AuthenticatedWebApplication implements
 
 
       langs = new String[]{"it", "en"};
-      mountPage("HomePage.html", HomePageIndex.class);
-      mountPage("Login.html", LoginIndex.class);
+      mountPage("Pagina-Principal.html", HomePageIndex.class);
+      mountPage("Pagina-Login.html", LoginIndex.class);
+      mountPage("Pagina-Consultar-Cliente.html", ConsultarClienteIndex.class);
 
    }
 

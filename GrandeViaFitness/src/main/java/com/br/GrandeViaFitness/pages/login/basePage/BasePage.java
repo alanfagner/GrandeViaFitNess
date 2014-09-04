@@ -5,11 +5,13 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.springframework.security.core.context.SecurityContextHolder;
 import com.br.GrandeViaFitness.Utilitario.BaseUtil;
 import com.br.GrandeViaFitness.componentes.InformacaoAlerta;
 import com.br.GrandeViaFitness.model.Pessoa;
+import com.br.GrandeViaFitness.pages.visao.cadastroCliente.ConsultarClienteIndex;
 
 public class BasePage extends WebPage
 {
@@ -19,14 +21,20 @@ public class BasePage extends WebPage
    private static Pessoa usuarioLogado;
    public FeedbackPanel feedback;
 
+   private final WebMarkupContainer menu;
+
+   private final WebMarkupContainer containerNome;
+
    public BasePage()
    {
-      final WebMarkupContainer menu = new WebMarkupContainer("containerMenu");
-      final WebMarkupContainer containerNome = new WebMarkupContainer("containerUsuario");
+      menu = new WebMarkupContainer("containerMenu");
+      containerNome = new WebMarkupContainer("containerUsuario");
       final Label nomeUsuario = new Label("nomeUsuario", BasePage.getUsuarioLogado().getNomePessoa());
       menu.setOutputMarkupPlaceholderTag(true);
       containerNome.setOutputMarkupPlaceholderTag(true);
       containerNome.add(nomeUsuario);
+
+
       if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
       {
          menu.setVisibilityAllowed(false);
@@ -41,7 +49,22 @@ public class BasePage extends WebPage
 
       criaFeedBack();
       addOrReplace(menu, containerNome, feedback);
+      criaMenus();
+   }
 
+   private void criaMenus()
+   {
+      final Link<String> cadCliente = new Link<String>("consultarCliente")
+      {
+         private static final long serialVersionUID = -633142704625312739L;
+
+         @Override
+         public void onClick()
+         {
+            setResponsePage(new ConsultarClienteIndex());
+         }
+      };
+      menu.add(cadCliente);
    }
 
    public void criaFeedBack()

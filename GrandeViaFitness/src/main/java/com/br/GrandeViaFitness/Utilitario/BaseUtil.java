@@ -27,9 +27,9 @@ public class BaseUtil
    private static void AdicionarthemaVermelho(final IHeaderResponse response)
    {
       BaseUtil.addCss(response, BaseUtil.pastaThemaRed + "jquery-ui.css");
-      BaseUtil.addCss(response, BaseUtil.pastaThemaRed + "jquery-ui.structure.css");
-      BaseUtil.addCss(response, BaseUtil.pastaThemaRed + "jquery-ui.theme.css");
-      BaseUtil.addJS(response, BaseUtil.pastaThemaRed + "jquery-ui.js");
+      BaseUtil.addCss(response, BaseUtil.pastaThemaRed + "jquery-ui.structure.min.css");
+      BaseUtil.addCss(response, BaseUtil.pastaThemaRed + "jquery-ui.theme.min.css");
+      BaseUtil.addJS(response, BaseUtil.pastaThemaRed + "jquery-ui.min.js");
       BaseUtil.addJS(response, BaseUtil.pastaThemaRed + "addTheme.js");
    }
 

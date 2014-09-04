@@ -1,0 +1,27 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<form wicket:id="formulario">
+		<div class="div_center">
+			<div style="height: 300px">
+				<fieldset>
+					<legend class="legenda" align="left">Consultar Clientes</legend>
+
+					<div class="LabelInputNome grid_6">
+						<label> Nome Cliente:</label> <input type="text" maxlength="100" class="campoText" />
+					</div>
+					<div class="LabelInputNome grid_3">
+						<label> CPF:</label> <input type="text" maxlength="100" class="campoText" />
+					</div>
+				</fieldset>
+				<div class="clear"></div>
+				<table cellspacing="0" style="width: 500px" wicket:id="table">[table]
+				</table>
+				<div class="clear"></div>
+				<div class="grid_5" style="margin-left: 30px;">
+					<input wicket:id="btnNovoCliente" class="botao" type="submit" name="avancar" value="Cadastrar Novo Usuario" /> <input
+						wicket:id="btnVoltar" class="botao" type="submit" name=Limpar value="Voltar"
+					/>
+				</div>
+			</div>
+		</div>
+	</form>
+</wicket:extend>
