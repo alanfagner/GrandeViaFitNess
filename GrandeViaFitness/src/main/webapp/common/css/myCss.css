@@ -1,8 +1,70 @@
-.divUsuarioLogado{
-	float:left;
+.center {
+	margin: auto;
+	width: 860px;
+}
+
+.bemvindo {
+	text-align: center;
+	padding-top: 75px;
+	height: 249px;
+}
+
+.boxSombra {
+	background-image: url("./../images/boxSombra.png");
+	background-position: center top;
+	background-repeat: no-repeat;
+	clear: both;
+	height: 96px;
+	padding: 20px 0 0;
+	width: 100%;
+}
+
+.feedBack {
+	position: fixed;
+	top: 30%;
+	right: 20px;
+	width: 250px;
+	border: 0px solid #666666;
+	background: #aaaaaa;
+	background: #aaaaaa linear-gradient(top, rgba(0, 0, 0, 0.25),
+		rgba(0, 0, 0, 0));
+	background: #aaaaaa
+		-webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.25)),
+		to(rgba(0, 0, 0, 0)));
+	background: #aaaaaa -moz-linear-gradient(top, rgba(0, 0, 0, 0.25),
+		rgba(0, 0, 0, 0));
+	color: #ffffff;
+	text-shadow: 1px 1px 1px #333333;
+}
+
+.ui-shadow {
+	-moz-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8);
+	-webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8);
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+.boxBottomRight {
+	display: block;
+	float: right;
+	height: 33px;
+	max-width: 300px;
+	width: auto;
+	padding-top: 40px;
+}
+
+.boxBottomLeft {
+	color: #555;
+	float: left;
+	height: auto;
+	width: 500px;
+	padding-top: 10px;
+}
+
+.divUsuarioLogado {
+	float: left;
 	margin-top: 7px;
 	color: #191970;
-	font-weight:bold;
+	font-weight: bold;
 }
 
 .loganGrand {
@@ -11,14 +73,16 @@
 	font-size: 30px;
 }
 
-.feedback ul{
+.feedbackPanel {
 	list-style: none;
 	font-weight: bold;
 }
-.msgERROR{
+
+.msgERROR {
 	color: rgb(255, 27, 27);
 }
-.msgSUCCESS{
+
+.msgSUCCESS {
 	color: rgb(60, 255, 60);
 }
 
@@ -57,7 +121,7 @@
 }
 
 .minmuHeight {
-	height: 300px;
+	min-height: 300px;
 }
 
 .Menu li a {
@@ -115,7 +179,8 @@
 	-webkit-appearance: textfield;
 	padding: 1px;
 	background-color: white;
-	border: 2px inset;
+	border: 1px;
+	border-color: black;
 	border-image-source: initial;
 	border-image-slice: initial;
 	border-image-width: initial;
@@ -201,7 +266,6 @@
 	background-repeat: no-repeat;
 	background-position: top center;
 	position: relative;
-	height: 130px;
 	width: 100%;
 	clear: both;
 }
@@ -232,11 +296,14 @@
 	padding: 0;
 	font-weight: bold;
 	width: 330px;
-	border-top-width: 5px;
-	border-bottom-width: 5px;
-	border-left-width: 0px;
-	border-right-width: 0px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 1px;
+	border-radius: 10px 10px 10px 10px;
 	padding-bottom: 3px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .div_tam {
@@ -260,24 +327,35 @@
 
 .div_LabelCenter {
 	margin: auto;
-	width: 155px;
+	width: 206px;
 	margin-bottom: 5px;
 }
 
 .div_center {
 	margin: auto;
-	width: 300px;
-	margin-top: 60px;
+	margin-top:10px;
+	margin-bottom:10px;
+	border-radius: 10px 10px 10px 10px;
+	width: 860px;
+	background-image: url("./../images/imagenFundoTopo.png");
+	background-position: 1% 0;
+	background-repeat: no-repeat;
+	position: relative;
+	background-size: cover;
+	height: 100%;
 }
 
 legend {
-	color: #ffffff;
 	font-weight: bold;
 }
 
 fieldset {
-	color: #ffffff;
 	border: 1px solid #CD0404;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 1px;
+	border-radius: 10px 10px 10px 10px;
 }
 
 body.dark {

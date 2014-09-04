@@ -11,11 +11,11 @@ public class PessoaDaoImp extends JpaDao<PessoaDao> implements PessoaDao
    private static final long serialVersionUID = 1L;
 
    @Override
-   public Pessoa buscaPessoaPorEmail(final String email)
+   public Pessoa buscaPessoaPorCpf(final String cpf)
    {
       final StringBuilder sb = new StringBuilder();
       sb.append(" SELECT p FROM Pessoa p ");
-      sb.append(" WHERE p.emailPessoa = ? ");
-      return (Pessoa) findSingleResult(sb.toString(), email);
+      sb.append(" WHERE p.cpfPessoa = ? ");
+      return (Pessoa) findSingleResult(sb.toString(), cpf);
    }
 }

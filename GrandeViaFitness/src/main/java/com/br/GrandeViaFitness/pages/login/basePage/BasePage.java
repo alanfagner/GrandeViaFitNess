@@ -1,31 +1,33 @@
 package com.br.GrandeViaFitness.pages.login.basePage;
 
-import java.util.Arrays;
+import org.apache.wicket.feedback.ContainerFeedbackMessageFilter;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.springframework.security.core.context.SecurityContextHolder;
 import com.br.GrandeViaFitness.Utilitario.BaseUtil;
-import com.br.GrandeViaFitness.componentes.ProviderMemoria;
+import com.br.GrandeViaFitness.componentes.InformacaoAlerta;
 import com.br.GrandeViaFitness.model.Pessoa;
 
 public class BasePage extends WebPage
 {
 
    private static final long serialVersionUID = -5753783437944591926L;
-   private ProviderMemoria<String> providerMemoria;
 
-   private static Pessoa usuarioLogado = new Pessoa();
+   private static Pessoa usuarioLogado;
+   public FeedbackPanel feedback;
 
    public BasePage()
    {
       final WebMarkupContainer menu = new WebMarkupContainer("containerMenu");
       final WebMarkupContainer containerNome = new WebMarkupContainer("containerUsuario");
-      final Label nomeUsuario = new Label("nomeUsuario", BasePage.usuarioLogado.getNomePessoa());
+      final Label nomeUsuario = new Label("nomeUsuario", BasePage.getUsuarioLogado().getNomePessoa());
       menu.setOutputMarkupPlaceholderTag(true);
       containerNome.setOutputMarkupPlaceholderTag(true);
       containerNome.add(nomeUsuario);
-      if (BasePage.usuarioLogado.getCodigo() == null)
+      if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
       {
          menu.setVisibilityAllowed(false);
          containerNome.setVisibilityAllowed(false);
@@ -36,7 +38,17 @@ public class BasePage extends WebPage
          menu.setVisibilityAllowed(true);
          containerNome.setVisibilityAllowed(true);
       }
-      addOrReplace(menu, containerNome);
+
+      criaFeedBack();
+      addOrReplace(menu, containerNome, feedback);
+
+   }
+
+   public void criaFeedBack()
+   {
+      feedback = new InformacaoAlerta("feedback");
+      feedback.setFilter(new ContainerFeedbackMessageFilter(this));
+      feedback.setOutputMarkupPlaceholderTag(true);
    }
 
    @Override
@@ -45,14 +57,12 @@ public class BasePage extends WebPage
       BaseUtil.geral(response, true);
    }
 
-   public ProviderMemoria<String> criaProvider()
-   {
-      providerMemoria = new ProviderMemoria<String>(Arrays.asList("teste", "normal"), null);
-      return providerMemoria;
-   }
-
    public static Pessoa getUsuarioLogado()
    {
+      if (BasePage.usuarioLogado == null)
+      {
+         BasePage.usuarioLogado = new Pessoa();
+      }
       return BasePage.usuarioLogado;
    }
 

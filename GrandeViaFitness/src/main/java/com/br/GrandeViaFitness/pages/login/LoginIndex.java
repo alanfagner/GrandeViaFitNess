@@ -8,6 +8,6 @@ public class LoginIndex extends BasePage
 
    public LoginIndex()
    {
-      addOrReplace(new LoginForm("formulario"));
+      addOrReplace(new LoginForm("formulario", feedback));
    }
 }

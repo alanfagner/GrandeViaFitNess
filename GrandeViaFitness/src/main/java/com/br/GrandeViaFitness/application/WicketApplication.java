@@ -77,13 +77,12 @@ public class WicketApplication extends AuthenticatedWebApplication implements
    private void loadSampleDataIfNoExists()
    {
 
-      final String email = "user@test.it";
-      final User user = userDao.findByEmail(email);
+      final String cpf = "34520184827";
+      final User user = userDao.findByUser(cpf);
 
       if (user == null)
       {
-         final User luigi =
-            new User(email, new Md5PasswordEncoder().encodePassword("123456", null), "ROLE_USER",
+         final User luigi = new User(cpf, new Md5PasswordEncoder().encodePassword("123456", null), "ROLE_USER",
                "ROLE_ADMIN");
          luigi.setCpf("34520184827");
          userDao.save(luigi);

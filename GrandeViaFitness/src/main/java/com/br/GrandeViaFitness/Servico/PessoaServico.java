@@ -14,9 +14,9 @@ public class PessoaServico
    @Autowired
    public PessoaDao pessoaDao;
 
-   public Pessoa buscaPessoaPorEmail(final String email)
+   public Pessoa buscaPessoaPorCpf(final String cpf)
    {
-      logger.debug("Busca por email: " + email);
-      return pessoaDao.buscaPessoaPorEmail(email);
+      logger.debug("Busca por email: " + cpf);
+      return pessoaDao.buscaPessoaPorCpf(cpf);
    }
 }

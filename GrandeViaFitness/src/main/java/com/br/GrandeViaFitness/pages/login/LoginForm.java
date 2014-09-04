@@ -5,7 +5,9 @@ import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.PropertyModel;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.User;
@@ -14,15 +16,23 @@ public class LoginForm extends FormularioBase<User>
 {
    private static final long serialVersionUID = -6592036153332015004L;
 
-   private final AjaxButton botaoEnviar;
-   private final User auxUser;
+   private AjaxButton botaoEnviar;
+   private User auxUser;
+   private final FeedbackPanel feedBack;
 
-   public LoginForm(final String id)
+   public LoginForm(final String id, final FeedbackPanel feedBack)
    {
       super(id);
+      this.feedBack = feedBack;
+      inicializar();
+   }
+
+   private void inicializar()
+   {
+
       auxUser = new User();
       add(new TextField<String>("cpf", new PropertyModel<String>(auxUser, "cpf")));
-      add(new TextField<String>("password", new PropertyModel<String>(auxUser, "password")));
+      add(new PasswordTextField("password", new PropertyModel<String>(auxUser, "password")));
       botaoEnviar = new AjaxButton("btnEnviar")
       {
          private static final long serialVersionUID = 5503520007522761497L;
@@ -39,13 +49,12 @@ public class LoginForm extends FormularioBase<User>
             else
             {
                error("Usuario/Senha invalida.");
-               target.add(form);
+               target.add(form, feedBack);
                atualizaTela(target);
             }
             form.getModelObject();
          }
       };
-
       botaoEnviar.setOutputMarkupPlaceholderTag(true);
       addOrReplace(botaoEnviar, new Button("btnLimpar")
       {

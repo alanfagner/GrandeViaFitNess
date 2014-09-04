@@ -58,7 +58,7 @@ public class MyAuthenticatedWebSession extends AuthenticatedWebSession
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userEmail,
                password));
          SecurityContextHolder.getContext().setAuthentication(authentication);
-         BasePage.setUsuarioLogado(pessoaServico.buscaPessoaPorEmail(userEmail));
+         BasePage.setUsuarioLogado(pessoaServico.buscaPessoaPorCpf(userEmail));
          return authentication.isAuthenticated();
       }
       catch (final AuthenticationException e)

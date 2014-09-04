@@ -1,7 +1,7 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<div class="div_center">
+		<br> <br> <br>
 		<form wicket:id="formulario">
-			 <span wicket:id="feedback" class="feedback" />
 			<fieldset class="fieldLogin">
 				<legend align="center">
 					<b>Login:</b>
@@ -10,13 +10,15 @@
 					<div class="div_label">
 						<label> Nome:</label> <br />
 					</div>
-					<input class="campoText" wicket:id="cpf" type="text" />
+					<input class="campoText" style="width: 200px;" wicket:id="cpf"
+						type="text" />
 				</div>
 				<div class="div_LabelCenter">
 					<div class="div_label">
 						<label> Senha:</label> <br />
 					</div>
-					<input class="campoText" wicket:id="password" type="text" />
+					<input class="campoText" style="width: 200px;" wicket:id="password"
+						type="password" />
 				</div>
 				<div class="div_LabelCenter">
 					<input wicket:id="btnEnviar" class="botao" type="submit"
@@ -25,5 +27,7 @@
 				</div>
 			</fieldset>
 		</form>
+		<br> <br> <br> <br> <br> <br>
+
 	</div>
 </wicket:extend>

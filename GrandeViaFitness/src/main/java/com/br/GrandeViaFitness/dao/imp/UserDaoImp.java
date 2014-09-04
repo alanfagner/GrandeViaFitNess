@@ -17,14 +17,14 @@ public class UserDaoImp implements UserDao
    private EntityManager entityManager;
 
    @Override
-   public User findByEmail(final String email)
+   public User findByUser(final String cpf)
    {
       try
       {
          final Query query =
             entityManager
-               .createQuery("select new com.br.GrandeViaFitness.model.User(p.cpfPessoa,p.senhaPessoa,p.authority.authority) from Pessoa p WHERE p.emailPessoa = :email");
-         query.setParameter("email", email);
+               .createQuery("select new com.br.GrandeViaFitness.model.User(p.cpfPessoa,p.senhaPessoa,p.authority.authority) from Pessoa p WHERE p.cpfPessoa = :cpf");
+         query.setParameter("cpf", cpf);
          return (User) query.getSingleResult();
       }
       catch (final Exception e)

@@ -6,7 +6,7 @@ import com.br.GrandeViaFitness.model.User;
 
 public interface UserDao
 {
-   public User findByEmail(final String email);
+   public User findByUser(final String cpf);
 
    public Authority findAuthority(final String authority);
 

@@ -2,16 +2,18 @@ package com.br.GrandeViaFitness.model;
 
 import java.util.LinkedList;
 import java.util.List;
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
+@Component("usuarioSessao")
+@Scope("session")
 public class User implements UserDetails
 {
 
    public static final long serialVersionUID = 1L;
-
    private Long id;
    private List<Authority> authorities;
-
    private String email;
    private String password;
    private String cpf;

@@ -18,10 +18,10 @@ public class MyUserDetailsService implements UserDetailsService
    private UserDaoImp userDao;
 
    @Override
-   public UserDetails loadUserByUsername(final String username)
+   public UserDetails loadUserByUsername(final String cpf)
    {
-      logger.debug("usrname to find : " + username);
-      return userDao.findByEmail(username);
+      logger.debug("usrname to find : " + cpf);
+      return userDao.findByUser(cpf);
    }
 
 }
