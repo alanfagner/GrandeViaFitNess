@@ -17,6 +17,7 @@ public class BaseUtil
       BaseUtil.addCss(response, BaseUtil.pastaCss + "960.css");
       BaseUtil.addCss(response, BaseUtil.pastaCss + "myCss.css");
       BaseUtil.addJS(response, "./common/js/relogio.js");
+      BaseUtil.addJS(response, "./common/js/jquery-1.11.1.min.js");
 
       if(themaVermelho){
          BaseUtil.AdicionarthemaVermelho(response);
@@ -26,14 +27,10 @@ public class BaseUtil
    private static void AdicionarthemaVermelho(final IHeaderResponse response)
    {
       BaseUtil.addCss(response, BaseUtil.pastaThemaRed + "jquery-ui.css");
-      // addCss(response, pastaThemaRed + "jquery-ui.min.css");
       BaseUtil.addCss(response, BaseUtil.pastaThemaRed + "jquery-ui.structure.css");
-      // addCss(response, pastaThemaRed + "jquery-ui.structure.min.css");
       BaseUtil.addCss(response, BaseUtil.pastaThemaRed + "jquery-ui.theme.css");
-      // addCss(response, pastaThemaRed + "jquery-ui.theme.min.css");
       BaseUtil.addJS(response, BaseUtil.pastaThemaRed + "jquery-ui.js");
       BaseUtil.addJS(response, BaseUtil.pastaThemaRed + "addTheme.js");
-      // addJS(response, pastaThemaRed + "jquery-ui.min.js");
    }
 
    private static void addJS(final IHeaderResponse response, final String js)
