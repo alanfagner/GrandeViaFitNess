@@ -14,7 +14,7 @@ public class EnderecoServico
    @Autowired
    private EnderecoDao enderecoDao;
 
-   public Endereco buscaEnderecoPorCEP(final Integer CEP)
+   public Endereco buscaEnderecoPorCEP(final String CEP)
    {
       return enderecoDao.buscaEnderecoPorCEP(CEP);
    }

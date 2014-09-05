@@ -11,11 +11,11 @@ public class EnderecoDaoImp extends JpaDao<Endereco> implements EnderecoDao
    private static final long serialVersionUID = 1170543987088922233L;
 
    @Override
-   public Endereco buscaEnderecoPorCEP(final Integer CEP)
+   public Endereco buscaEnderecoPorCEP(final String CEP)
    {
       final StringBuilder sb = new StringBuilder();
       sb.append(" SELECT e FROM Endereco e ");
-      sb.append(" WHERE e.cep = ? ");
+      sb.append(" WHERE e.cep Like ? ");
       return (Endereco) findSingleResult(sb.toString(), CEP);
    }
 

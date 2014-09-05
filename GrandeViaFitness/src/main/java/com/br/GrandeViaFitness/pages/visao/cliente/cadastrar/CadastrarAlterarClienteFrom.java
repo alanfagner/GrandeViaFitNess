@@ -22,6 +22,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import com.br.GrandeViaFitness.Enum.PermissaoEnum;
 import com.br.GrandeViaFitness.Enum.SexoEnum;
+import com.br.GrandeViaFitness.Utilitario.Util;
 import com.br.GrandeViaFitness.as.PessoaAS;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.Pessoa;
@@ -44,7 +45,7 @@ public class CadastrarAlterarClienteFrom extends FormularioBase<Pessoa>
 
    private TextField<String> campoTelefone;
 
-   private TextField<Integer> campoCEP;
+   private TextField<String> campoCEP;
 
    private TextField<String> campoNumero;
 
@@ -193,7 +194,7 @@ public class CadastrarAlterarClienteFrom extends FormularioBase<Pessoa>
       });
 
       campoPermissao.setDefaultModel(new Model<PermissaoEnum>());
-      campoCEP = new TextField<Integer>("endereco.cep");
+      campoCEP = new TextField<String>("endereco.cep");
       campoCEP.add(new AjaxFormComponentUpdatingBehavior("onBlur")
       {
          private static final long serialVersionUID = -4144690730728093322L;
@@ -203,7 +204,7 @@ public class CadastrarAlterarClienteFrom extends FormularioBase<Pessoa>
          {
             if (campoCEP.getModelObject() != null)
             {
-               pessoa.setEndereco(pessoaAS.getEnderecoServico().buscaEnderecoPorCEP(campoCEP.getModelObject()));
+               pessoa.setEndereco(pessoaAS.getEnderecoServico().buscaEnderecoPorCEP(Util.retirarMascara(campoCEP.getModelObject())));
                if (pessoa.getEndereco() == null)
                {
                   bloqueaCamposEndereco(true);
@@ -212,6 +213,13 @@ public class CadastrarAlterarClienteFrom extends FormularioBase<Pessoa>
             atualizaTela(target);
             target.add(campoLogradouro, campoBairro, campoCidade, campoEstado);
 
+         }
+
+         @Override
+         protected void onError(final AjaxRequestTarget target, final RuntimeException e)
+         {
+            atualizaTela(target);
+            target.add(feedBack);
          }
       });
       campoNumero = new TextField<String>("numeroResidencial");

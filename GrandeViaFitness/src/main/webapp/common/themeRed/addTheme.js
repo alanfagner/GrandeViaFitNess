@@ -1,7 +1,10 @@
 function addScriptCss() {
+	
+	jQuery.noConflict(); 
 	(function($) {
 		$(document).ready(function() {
 
+			$(".cep").mask("99999-999"); 
 			$(".botao").button();
 
 			$(".campoSelect").selectmenu();
@@ -56,5 +59,4 @@ function addScriptCss() {
 			});
 		});
 	})(jQuery);
-
 }

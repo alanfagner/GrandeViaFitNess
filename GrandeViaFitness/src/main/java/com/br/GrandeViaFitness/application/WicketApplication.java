@@ -1,5 +1,9 @@
 package com.br.GrandeViaFitness.application;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.markup.html.WebPage;
@@ -13,8 +17,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Component;
-import com.br.GrandeViaFitness.dao.imp.UserDaoImp;
-import com.br.GrandeViaFitness.model.User;
+import com.br.GrandeViaFitness.Enum.SexoEnum;
+import com.br.GrandeViaFitness.as.PessoaAS;
+import com.br.GrandeViaFitness.model.Authority;
+import com.br.GrandeViaFitness.model.Endereco;
+import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.login.LoginIndex;
 import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
 import com.br.GrandeViaFitness.pages.visao.cliente.cadastrar.CadastrarAlterarClienteIndex;
@@ -36,7 +43,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements
    ApplicationContext applicationContext;
 
    @SpringBean
-   UserDaoImp userDao;
+   PessoaAS pessoaAS;
 
    String[] langs;
 
@@ -68,20 +75,45 @@ public class WicketApplication extends AuthenticatedWebApplication implements
       mountPage("Pagina-Login.html", LoginIndex.class);
       mountPage("Pagina-Consultar-Cliente.html", ConsultarClienteIndex.class);
       mountPage("Pagina-Cadastrar-Alterar-Cliente.html", CadastrarAlterarClienteIndex.class);
+      try
+      {
+         loadSampleDataIfNoExists();
+      }
+      catch (final ParseException e)
+      {
+         e.printStackTrace();
+      }
    }
 
-   private void loadSampleDataIfNoExists()
+   private void loadSampleDataIfNoExists() throws ParseException
    {
 
-      final String cpf = "34520184827";
-      final User user = userDao.findByUser(cpf);
 
-      if (user == null)
+
+      if (pessoaAS.getPessoaServico().buscaPessoaPorCpf("34520184827") == null)
       {
-         final User luigi = new User(cpf, new Md5PasswordEncoder().encodePassword("123456", null), "ROLE_USER",
-               "ROLE_ADMIN");
-         luigi.setCpf("34520184827");
-         userDao.save(luigi);
+         final Pessoa pessoa = new Pessoa();
+         pessoa.setAuthority( new Authority());
+         pessoa.setEndereco(new Endereco());
+         pessoa.getAuthority().setAuthority("R_ADM");
+         pessoa.setNomePessoa("Alan Fagner Gonçalves");
+         pessoa.setCpfPessoa("34520184827");
+         pessoa.setEmailPessoa("alan.f.goncalves@hotamil.com");
+         pessoa.setNumeroCelulaPessoa("16997578380");
+         pessoa.setNumeroResidencial(743);
+         pessoa.setSexo(SexoEnum.M);
+         final DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+         pessoa.setDataNascimentoPessoa(formatter.parse("07/27/1985"));
+         final Calendar calendar = Calendar.getInstance();
+         calendar.setTime(pessoa.getDataNascimentoPessoa());
+         pessoa.setSenhaPessoa(new Md5PasswordEncoder().encodePassword(pessoa.getCpfPessoa().substring(0, 3) + calendar.get(1), null));
+         pessoa.getEndereco().setCep("14811066");
+         pessoa.getEndereco().setCidade("Araraquara");
+         pessoa.getEndereco().setBairro("Vila Xavier");
+         pessoa.getEndereco().setEstado("SP");
+         pessoa.getEndereco().setLogradouro("Alameda Paulista");
+
+         pessoaAS.saveInicial(pessoa);
       }
 
    }
@@ -103,11 +135,6 @@ public class WicketApplication extends AuthenticatedWebApplication implements
       throws BeansException
    {
       this.applicationContext = applicationContext;
-   }
-
-   public void setUserDao(final UserDaoImp userDao)
-   {
-      this.userDao = userDao;
    }
 
    public String[] getLangs()

@@ -20,4 +20,9 @@ public class AuthorityServico
       return authorityDao.findAuthority(authority);
    }
 
+   public void save(final Authority authority)
+   {
+      authorityDao.save(authority);
+   }
+
 }

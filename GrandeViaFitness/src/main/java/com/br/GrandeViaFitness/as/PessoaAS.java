@@ -47,6 +47,15 @@ public class PessoaAS implements Provider<Pessoa>
    }
 
    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+   public void saveInicial(final Pessoa pessoa)
+   {
+      authorityServico.save(pessoa.getAuthority());
+      enderecoServico.save(pessoa.getEndereco());
+      pessoaServico.save(pessoa);
+
+   }
+
+   @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
    public void save(final Pessoa pessoa)
    {
       if (pessoa.getEndereco().getCodigo() == 0)

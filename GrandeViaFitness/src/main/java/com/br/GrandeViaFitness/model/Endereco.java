@@ -25,8 +25,8 @@ public class Endereco implements Entidade
    @Column(name = "NO_BAIRRO", nullable = false, length = 100)
    private String bairro;
 
-   @Column(name = "NU_CEP", nullable = false)
-   private Integer cep;
+   @Column(name = "NU_CEP", nullable = false, length = 8)
+   private String cep;
 
    @Column(name = "NO_CIDADE", nullable = false, length = 45)
    private String cidade;
@@ -64,12 +64,12 @@ public class Endereco implements Entidade
       this.bairro = bairro;
    }
 
-   public Integer getCep()
+   public String getCep()
    {
       return cep;
    }
 
-   public void setCep(final Integer cep)
+   public void setCep(final String cep)
    {
       this.cep = cep;
    }

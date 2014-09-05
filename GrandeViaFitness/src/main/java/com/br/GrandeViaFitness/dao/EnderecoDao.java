@@ -4,7 +4,7 @@ import com.br.GrandeViaFitness.model.Endereco;
 
 public interface EnderecoDao
 {
-   Endereco buscaEnderecoPorCEP(Integer CEP);
+   Endereco buscaEnderecoPorCEP(String CEP);
 
    void save(Endereco endereco);
 }
