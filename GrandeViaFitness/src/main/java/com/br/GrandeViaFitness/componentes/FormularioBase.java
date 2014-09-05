@@ -20,6 +20,6 @@ public class FormularioBase<T> extends Form<T>
 
    public void atualizaTela(final AjaxRequestTarget target)
    {
-      target.appendJavaScript("$.addScriptCss();");
+      target.appendJavaScript("addScriptCss();");
    }
 }

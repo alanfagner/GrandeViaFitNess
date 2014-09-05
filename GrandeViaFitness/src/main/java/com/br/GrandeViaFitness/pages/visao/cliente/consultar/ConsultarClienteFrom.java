@@ -1,26 +1,36 @@
-package com.br.GrandeViaFitness.pages.visao.cadastroCliente;
+package com.br.GrandeViaFitness.pages.visao.cliente.consultar;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
+import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.DefaultDataTable;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
 import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+import com.br.GrandeViaFitness.as.PessoaAS;
 import com.br.GrandeViaFitness.componentes.ActionButtonPanel;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
-import com.br.GrandeViaFitness.model.Endereco;
+import com.br.GrandeViaFitness.componentes.ProviderGenerico;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
+import com.br.GrandeViaFitness.pages.visao.cliente.cadastrar.CadastrarAlterarClienteIndex;
 
 public class ConsultarClienteFrom extends FormularioBase<Pessoa>
 {
    private static final long serialVersionUID = 553958619270523962L;
 
+   private DefaultDataTable<Pessoa, String> gridGenerica;
+   private Pessoa filtro;
+   private ProviderGenerico<Pessoa, String> providerGenerico;
+   @SpringBean
+   private PessoaAS pessoaAS;
 
    public ConsultarClienteFrom(final String id)
    {
@@ -37,17 +47,16 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
 
    private void criaGridCliente()
    {
-      final List<IColumn<Endereco, String>> columns = new ArrayList<IColumn<Endereco, String>>();
-      final List<AjaxLink<Endereco>> listBotoes = new ArrayList<AjaxLink<Endereco>>();
-      listBotoes.add(new AjaxLink<Endereco>("Excluir")
+      final List<IColumn<Pessoa, String>> columns = new ArrayList<IColumn<Pessoa, String>>();
+      final List<AjaxLink<Pessoa>> listBotoes = new ArrayList<AjaxLink<Pessoa>>();
+
+      listBotoes.add(new AjaxLink<Pessoa>("Excluir")
       {
          private static final long serialVersionUID = -2007593370707695822L;
 
          @Override
          public void onClick(final AjaxRequestTarget target)
          {
-            dataProvider.getListaARetornar().remove(getModelObject());
-            dataProvider.size();
             target.add(gridGenerica);
          }
 
@@ -57,8 +66,7 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
             super.onBeforeRender();
          }
       });
-
-      listBotoes.add(new AjaxLink<Endereco>("Visualizar")
+      listBotoes.add(new AjaxLink<Pessoa>("Visualizar")
       {
          private static final long serialVersionUID = -2007593370707695822L;
 
@@ -68,7 +76,7 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
             getModelObject();
          }
       });
-      columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Codigo"), "codigo")
+      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Codigo"), "codigo")
       {
 
          private static final long serialVersionUID = 3580594711515520158L;
@@ -79,31 +87,23 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
             return "numeric";
          }*/
       });
-
-      columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Logradouro"), "logradouro", "logradouro"));
-
-      columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Bairro"), "bairro", "bairro"));
-
-      columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Cidade"), "cidade"));
-      columns.add(new PropertyColumn<Endereco, String>(new Model<String>("Cep"), "cep"));
-      columns.add(new AbstractColumn<Endereco, String>(new Model<String>("Opções"))
+      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Nome"), "nomePessoa", "nomePessoa"));
+      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("CPF"), "cpfPessoa", "cpfPessoa"));
+      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Email"), "emailPessoa"));
+      columns.add(new AbstractColumn<Pessoa, String>(new Model<String>("Opções"))
       {
          private static final long serialVersionUID = -3102670641136395641L;
 
          @Override
-         public void populateItem(final Item<ICellPopulator<Endereco>> cellItem, final String componentId, final IModel<Endereco> entidade)
+         public void populateItem(final Item<ICellPopulator<Pessoa>> cellItem, final String componentId, final IModel<Pessoa> entidade)
          {
-
-            cellItem.add(new ActionButtonPanel<Endereco>(componentId, entidade, listBotoes));
-
+            cellItem.add(new ActionButtonPanel<Pessoa>(componentId, entidade, listBotoes));
          }
-
       });
-
-      gridGenerica = new DefaultDataTable<Endereco, String>("table", columns, getDataProvider(), 5);
+      gridGenerica =
+         new DefaultDataTable<Pessoa, String>("table", columns, getProviderGenerico(), 5);
       gridGenerica.setOutputMarkupId(true);
-      this.add(gridGenerica);
-
+      addOrReplace(gridGenerica);
    }
 
    private void criaBotoes()
@@ -115,7 +115,7 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
          @Override
          public void onSubmit()
          {
-            // setResponsePage(new CadastrarAlterarClienteIndex());
+            setResponsePage(new CadastrarAlterarClienteIndex());
          }
 
          @Override
@@ -141,9 +141,14 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
             setDefaultFormProcessing(false);
          }
       };
-
       addOrReplace(btnNovoCliente, btnVoltar);
-
    }
-
+   public ProviderGenerico<Pessoa, String> getProviderGenerico()
+   {
+      if (providerGenerico == null)
+      {
+         providerGenerico = new ProviderGenerico<Pessoa, String>(pessoaAS, filtro);
+      }
+      return providerGenerico;
+   }
 }

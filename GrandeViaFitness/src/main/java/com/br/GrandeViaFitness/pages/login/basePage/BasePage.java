@@ -11,7 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import com.br.GrandeViaFitness.Utilitario.BaseUtil;
 import com.br.GrandeViaFitness.componentes.InformacaoAlerta;
 import com.br.GrandeViaFitness.model.Pessoa;
-import com.br.GrandeViaFitness.pages.visao.cadastroCliente.ConsultarClienteIndex;
+import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
 
 public class BasePage extends WebPage
 {
@@ -54,7 +54,7 @@ public class BasePage extends WebPage
 
    private void criaMenus()
    {
-      final Link<String> cadCliente = new Link<String>("consultarCliente")
+      final Link<String> consultarCliente = new Link<String>("consultarCliente")
       {
          private static final long serialVersionUID = -633142704625312739L;
 
@@ -64,7 +64,7 @@ public class BasePage extends WebPage
             setResponsePage(new ConsultarClienteIndex());
          }
       };
-      menu.add(cadCliente);
+      menu.add(consultarCliente);
    }
 
    public void criaFeedBack()

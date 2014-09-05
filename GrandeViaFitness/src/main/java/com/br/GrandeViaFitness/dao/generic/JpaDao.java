@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
@@ -54,7 +55,7 @@ public class JpaDao<T> implements Dao<T>
    @Override
    public List<T> findByNamedParams(final String queryname, final Map<String, Object> params)
    {
-      final Query query = this.entityManager.createNamedQuery(queryname);
+      final Query query = this.entityManager.createQuery(queryname);
       setQueryParams(query, params);
       return query.getResultList();
    }
@@ -74,7 +75,15 @@ public class JpaDao<T> implements Dao<T>
    @Override
    public Object findSingleResult(final String queryStr, final Object... params)
    {
-      return createQuery(queryStr, params).getSingleResult();
+      try
+      {
+         return createQuery(queryStr, params).getSingleResult();
+      }
+      catch (final NoResultException e)
+      {
+         return null;
+      }
+
    }
 
    @Override
@@ -148,9 +157,12 @@ public class JpaDao<T> implements Dao<T>
 
    private void setQueryParams(final Query query, final Map<String, Object> params)
    {
-      for (final Entry<String, Object> entry : params.entrySet())
+      if (params != null)
       {
-         query.setParameter(entry.getKey(), entry.getValue());
+         for (final Entry<String, Object> entry : params.entrySet())
+         {
+            query.setParameter(entry.getKey(), entry.getValue());
+         }
       }
    }
 

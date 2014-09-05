@@ -29,6 +29,11 @@
 		<wtp.version>none</wtp.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>com.google.code.jqwicket</groupId>
+			<artifactId>jqwicket</artifactId>
+			<version>0.8</version>
+		</dependency>
 		<!-- WICKET DEPENDENCIES -->
 		<dependency>
 			<groupId>org.apache.wicket</groupId>

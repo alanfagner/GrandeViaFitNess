@@ -18,6 +18,7 @@ public class BaseUtil
       BaseUtil.addCss(response, BaseUtil.pastaCss + "myCss.css");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "relogio.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery-1.11.1.min.js");
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.maskedinput.min.js");
 
       if(themaVermelho){
          BaseUtil.AdicionarthemaVermelho(response);

@@ -1,101 +1,60 @@
-$(function() {
-	$(".botao").button();
+function addScriptCss() {
+	(function($) {
+		$(document).ready(function() {
 
-	jQuery(document).ready(function($) {
-		atualizarRelogio();
-		setInterval('atualizarRelogio()', 1000);
-	});
+			$(".botao").button();
 
-	$(".campoText").autocomplete({
+			$(".campoSelect").selectmenu();
 
-	});
+			jQuery(document).ready(function($) {
+				atualizarRelogio();
+				setInterval('atualizarRelogio()', 1000);
+			});
 
-	$(".first").button({
-		text : false,
-		icons : {
-			primary : "ui-icon-seek-prev"
-		}
-	});
-	$(".prev").button({
-		text : false,
-		icons : {
-			primary : "ui-icon-seek-start"
-		}
-	});
-	$("table").tabs();
+			$(".campoText").autocomplete({
 
-	$(".Excluir").button({
-		icons : {
-			primary : "ui-icon ui-icon-close"
-		},
-		text : false
-	});
+			});
 
-	$(".Visualizar").button({
-		icons : {
-			primary : "ui-icon ui-icon-search"
-		},
-		text : false
-	});
-	$(".next").button({
-		text : false,
-		icons : {
-			primary : "ui-icon-seek-next"
-		}
-	});
-	$(".last").button({
-		text : false,
-		icons : {
-			primary : "ui-icon-seek-end"
-		}
-	});
-});
+			$(".first").button({
+				text : false,
+				icons : {
+					primary : "ui-icon-seek-prev"
+				}
+			});
+			$(".prev").button({
+				text : false,
+				icons : {
+					primary : "ui-icon-seek-start"
+				}
+			});
+			$("table").tabs();
 
-jQuery.addScriptCss = function() {
-	jQuery(document).ready(function($) {
-		atualizarRelogio();
-		setInterval('atualizarRelogio()', 1000);
-	});
-	$(".botao").button();
+			$(".Excluir").button({
+				icons : {
+					primary : "ui-icon ui-icon-close"
+				},
+				text : false
+			});
 
-	$(".first").button({
-		text : false,
-		icons : {
-			primary : "ui-icon-seek-prev"
-		}
-	});
-	$(".prev").button({
-		text : false,
-		icons : {
-			primary : "ui-icon-seek-start"
-		}
-	});
+			$(".Visualizar").button({
+				icons : {
+					primary : "ui-icon ui-icon-search"
+				},
+				text : false
+			});
+			$(".next").button({
+				text : false,
+				icons : {
+					primary : "ui-icon-seek-next"
+				}
+			});
+			$(".last").button({
+				text : false,
+				icons : {
+					primary : "ui-icon-seek-end"
+				}
+			});
+		});
+	})(jQuery);
 
-	$("table").tabs();
-
-	$(".Excluir").button({
-		icons : {
-			primary : "ui-icon ui-icon-close"
-		},
-		text : false
-	});
-
-	$(".Visualizar").button({
-		icons : {
-			primary : "ui-icon ui-icon-search"
-		},
-		text : false
-	});
-	$(".next").button({
-		text : false,
-		icons : {
-			primary : "ui-icon-seek-next"
-		}
-	});
-	$(".last").button({
-		text : false,
-		icons : {
-			primary : "ui-icon-seek-end"
-		}
-	});
-};
+}

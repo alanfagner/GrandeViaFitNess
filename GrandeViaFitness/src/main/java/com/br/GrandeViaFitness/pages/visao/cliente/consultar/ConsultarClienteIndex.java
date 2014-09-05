@@ -1,4 +1,4 @@
-package com.br.GrandeViaFitness.pages.visao.cadastroCliente;
+package com.br.GrandeViaFitness.pages.visao.cliente.consultar;
 
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import com.br.GrandeViaFitness.pages.login.basePage.BasePage;

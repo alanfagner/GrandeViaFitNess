@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import com.br.GrandeViaFitness.Enum.SexoEnum;
 
 @Entity
 @Table(name = "TB_PESSOA", schema = "GRANDEVIAFITNESS")
@@ -51,6 +54,10 @@ public class Pessoa implements Entidade
 
    @Column(name = "NU_TEL_CELULAR", nullable = false, length = 45)
    private String numeroCelulaPessoa;
+
+   @Column(name = "DS_SEXO", nullable = false, length = 1)
+   @Enumerated(EnumType.STRING)
+   private SexoEnum sexo;
 
    public Long getCodigo()
    {
@@ -150,6 +157,16 @@ public class Pessoa implements Entidade
    public void setNumeroCelulaPessoa(final String numeroCelulaPessoa)
    {
       this.numeroCelulaPessoa = numeroCelulaPessoa;
+   }
+
+   public SexoEnum getSexo()
+   {
+      return sexo;
+   }
+
+   public void setSexo(final SexoEnum sexo)
+   {
+      this.sexo = sexo;
    }
 
    @Override

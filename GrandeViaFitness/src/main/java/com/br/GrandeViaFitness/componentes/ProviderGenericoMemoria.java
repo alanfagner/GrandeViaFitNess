@@ -9,7 +9,7 @@ import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvid
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-public class IDataSorteProvider<T extends Serializable, S> extends SortableDataProvider<T, S>
+public class ProviderGenericoMemoria<T extends Serializable, S> extends SortableDataProvider<T, S>
 {
    private static final long serialVersionUID = -1998280577730813461L;
 
@@ -49,7 +49,7 @@ public class IDataSorteProvider<T extends Serializable, S> extends SortableDataP
       return this.listaARetornar;
    }
 
-   public IDataSorteProvider(final List<T> listaARetornar)
+   public ProviderGenericoMemoria(final List<T> listaARetornar)
    {
       this.listaARetornar = listaARetornar;
    }
