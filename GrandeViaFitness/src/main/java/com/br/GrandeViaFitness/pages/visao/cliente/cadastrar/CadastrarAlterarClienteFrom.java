@@ -175,6 +175,7 @@ public class CadastrarAlterarClienteFrom extends FormularioBase<Pessoa>
       campoEmail = new TextField<String>("emailPessoa");
       campoDataNascimento = new TextField<Date>("dataNascimentoPessoa");
       campoDataNascimento.setLabel(new Model<String>("Data de nascimento"));
+      // campoDataNascimento.add(new MaskedInputBehavior("##/##/####"));
       campoTelefone = new TextField<String>("numeroCelulaPessoa");
       campoPermissao =
          new DropDownChoice<PermissaoEnum>("permissao", Arrays.asList(PermissaoEnum.values()), new ChoiceRenderer<PermissaoEnum>(

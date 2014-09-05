@@ -50,12 +50,8 @@ public class WicketApplication extends AuthenticatedWebApplication implements
    public void init()
    {
       super.init();
-
       getApplicationSettings().setPageExpiredErrorPage(HomePageIndex.class);
-
       SpringComponentInjector springComponentInjector = null;
-
-      // this is for test
       if (applicationContext != null)
       {
          springComponentInjector = new SpringComponentInjector(this, applicationContext, true);
@@ -64,18 +60,14 @@ public class WicketApplication extends AuthenticatedWebApplication implements
       {
          springComponentInjector = new SpringComponentInjector(this);
       }
-
       springComponentInjector.inject(this);
       getComponentInstantiationListeners().add(springComponentInjector);
       // loadSampleDataIfNoExists();
-
-
       langs = new String[]{"it", "en"};
       mountPage("Pagina-Principal.html", HomePageIndex.class);
       mountPage("Pagina-Login.html", LoginIndex.class);
       mountPage("Pagina-Consultar-Cliente.html", ConsultarClienteIndex.class);
       mountPage("Pagina-Cadastrar-Alterar-Cliente.html", CadastrarAlterarClienteIndex.class);
-
    }
 
    private void loadSampleDataIfNoExists()
