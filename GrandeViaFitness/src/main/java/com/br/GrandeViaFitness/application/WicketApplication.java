@@ -69,8 +69,8 @@ public class WicketApplication extends AuthenticatedWebApplication implements
       }
       springComponentInjector.inject(this);
       getComponentInstantiationListeners().add(springComponentInjector);
-      // loadSampleDataIfNoExists();
-      langs = new String[]{"it", "en"};
+
+      langs = new String[]{"pt", "pt-br"};
       mountPage("Pagina-Principal.html", HomePageIndex.class);
       mountPage("Pagina-Login.html", LoginIndex.class);
       mountPage("Pagina-Consultar-Cliente.html", ConsultarClienteIndex.class);

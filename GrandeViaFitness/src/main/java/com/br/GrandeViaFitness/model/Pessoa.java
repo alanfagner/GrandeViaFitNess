@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import com.br.GrandeViaFitness.Enum.SexoEnum;
+import com.br.GrandeViaFitness.Utilitario.Util;
 
 @Entity
 @Table(name = "TB_PESSOA", schema = "GRANDEVIAFITNESS")
@@ -106,7 +107,7 @@ public class Pessoa implements Entidade
 
    public void setCpfPessoa(final String cpfPessoa)
    {
-      this.cpfPessoa = cpfPessoa;
+      this.cpfPessoa = Util.retirarMascara(cpfPessoa);
    }
 
    public String getEmailPessoa()
@@ -156,7 +157,7 @@ public class Pessoa implements Entidade
 
    public void setNumeroCelulaPessoa(final String numeroCelulaPessoa)
    {
-      this.numeroCelulaPessoa = numeroCelulaPessoa;
+      this.numeroCelulaPessoa = Util.retirarMascara(numeroCelulaPessoa);
    }
 
    public SexoEnum getSexo()

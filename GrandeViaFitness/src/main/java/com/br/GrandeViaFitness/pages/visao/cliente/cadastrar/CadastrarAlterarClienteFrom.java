@@ -20,6 +20,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+import com.br.GrandeViaFitness.Enum.Mensagem;
 import com.br.GrandeViaFitness.Enum.PermissaoEnum;
 import com.br.GrandeViaFitness.Enum.SexoEnum;
 import com.br.GrandeViaFitness.Utilitario.Util;
@@ -107,7 +108,8 @@ public class CadastrarAlterarClienteFrom extends FormularioBase<Pessoa>
                   .setSenhaPessoa(new Md5PasswordEncoder().encodePassword(pessoa.getCpfPessoa().substring(0, 3) + calendar.get(1), null));
                pessoa.setAuthority(pessoaAS.getAuthorityServico().findAuthority(campoPermissao.getModelObject().getSigla()));
                pessoaAS.save(pessoa);
-
+               success(Mensagem.M01.getDescricao());
+               setResponsePage(new ConsultarClienteIndex());
             }
             target.add(feedBack, campoBairro);
          }
@@ -163,7 +165,8 @@ public class CadastrarAlterarClienteFrom extends FormularioBase<Pessoa>
          @Override
          protected void onUpdate(final AjaxRequestTarget target)
          {
-            if (campoCpf.getModelObject() != null && pessoaAS.getPessoaServico().buscaPessoaPorCpf(campoCpf.getModelObject()) != null)
+            if (campoCpf.getModelObject() != null
+               && pessoaAS.getPessoaServico().buscaPessoaPorCpf(Util.retirarMascara(campoCpf.getModelObject())) != null)
             {
                error("Esse Cpf já cadastrado.");
             }
@@ -176,7 +179,6 @@ public class CadastrarAlterarClienteFrom extends FormularioBase<Pessoa>
       campoEmail = new TextField<String>("emailPessoa");
       campoDataNascimento = new TextField<Date>("dataNascimentoPessoa");
       campoDataNascimento.setLabel(new Model<String>("Data de nascimento"));
-      // campoDataNascimento.add(new MaskedInputBehavior("##/##/####"));
       campoTelefone = new TextField<String>("numeroCelulaPessoa");
       campoPermissao =
          new DropDownChoice<PermissaoEnum>("permissao", Arrays.asList(PermissaoEnum.values()), new ChoiceRenderer<PermissaoEnum>(

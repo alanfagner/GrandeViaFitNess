@@ -1,4 +1,4 @@
-package com.br.GrandeViaFitness.componentes;
+package com.br.GrandeViaFitness.componentes.provider;
 
 import java.util.List;
 import com.br.GrandeViaFitness.model.Entidade;

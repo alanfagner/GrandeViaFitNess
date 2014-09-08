@@ -6,7 +6,6 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn;
-import org.apache.wicket.extensions.markup.html.repeater.data.table.DefaultDataTable;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
 import org.apache.wicket.markup.html.form.Button;
@@ -17,7 +16,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.PessoaAS;
 import com.br.GrandeViaFitness.componentes.ActionButtonPanel;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
-import com.br.GrandeViaFitness.componentes.ProviderGenerico;
+import com.br.GrandeViaFitness.componentes.gridGenerica.DataGridGenerica;
+import com.br.GrandeViaFitness.componentes.provider.ProviderGenerico;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
 import com.br.GrandeViaFitness.pages.visao.cliente.cadastrar.CadastrarAlterarClienteIndex;
@@ -26,7 +26,7 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
 {
    private static final long serialVersionUID = 553958619270523962L;
 
-   private DefaultDataTable<Pessoa, String> gridGenerica;
+   private DataGridGenerica<Pessoa, String> gridGenerica;
    private Pessoa filtro;
    private ProviderGenerico<Pessoa, String> providerGenerico;
    @SpringBean
@@ -99,10 +99,13 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
          {
             cellItem.add(new ActionButtonPanel<Pessoa>(componentId, entidade, listBotoes));
          }
+
       });
       gridGenerica =
-         new DefaultDataTable<Pessoa, String>("table", columns, getProviderGenerico(), 5);
+ new DataGridGenerica<Pessoa, String>("table", columns, getProviderGenerico(), 5);
       gridGenerica.setOutputMarkupId(true);
+      gridGenerica.setItemsPerPage(5);
+
       addOrReplace(gridGenerica);
    }
 

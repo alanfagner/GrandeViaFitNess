@@ -1,3 +1,9 @@
+.divGrid{
+	margin: auto; 
+	width: 500px; 
+	margin-bottom: 10px;
+}
+
 .LabelInputNome{
 	text-align: left;
     float: left; 
@@ -375,6 +381,7 @@ fieldset {
 	border-radius: 10px 10px 10px 10px;
 	width:90%;
 	margin:auto;;
+	margin-bottom: 10px;
 }
 
 body.dark {

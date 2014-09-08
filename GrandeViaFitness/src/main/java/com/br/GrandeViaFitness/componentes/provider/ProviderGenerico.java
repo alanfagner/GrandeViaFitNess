@@ -1,4 +1,4 @@
-package com.br.GrandeViaFitness.componentes;
+package com.br.GrandeViaFitness.componentes.provider;
 
 import java.io.Serializable;
 import java.util.Iterator;

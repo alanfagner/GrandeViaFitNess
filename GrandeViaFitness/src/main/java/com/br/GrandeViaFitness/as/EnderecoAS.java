@@ -4,7 +4,7 @@ import java.util.List;
 import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.br.GrandeViaFitness.Servico.EnderecoServico;
-import com.br.GrandeViaFitness.componentes.Provider;
+import com.br.GrandeViaFitness.componentes.provider.Provider;
 import com.br.GrandeViaFitness.model.Endereco;
 import com.br.GrandeViaFitness.model.Entidade;
 

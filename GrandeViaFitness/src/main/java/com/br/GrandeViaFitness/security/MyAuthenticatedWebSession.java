@@ -13,8 +13,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import com.br.GrandeViaFitness.Servico.PessoaServico;
-import com.br.GrandeViaFitness.pages.login.basePage.BasePage;
 
 public class MyAuthenticatedWebSession extends AuthenticatedWebSession
 {
@@ -24,9 +22,6 @@ public class MyAuthenticatedWebSession extends AuthenticatedWebSession
 
    @SpringBean(name = "authenticationManager")
    private AuthenticationManager authenticationManager;
-
-   @SpringBean
-   private PessoaServico pessoaServico;
 
    public MyAuthenticatedWebSession(final Request request)
    {
@@ -58,7 +53,6 @@ public class MyAuthenticatedWebSession extends AuthenticatedWebSession
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userEmail,
                password));
          SecurityContextHolder.getContext().setAuthentication(authentication);
-         BasePage.setUsuarioLogado(pessoaServico.buscaPessoaPorCpf(userEmail));
          return authentication.isAuthenticated();
       }
       catch (final AuthenticationException e)

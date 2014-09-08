@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import com.br.GrandeViaFitness.Utilitario.Util;
 
 @Entity
 @Table(name = "TB_ENDERECO")
@@ -71,7 +72,7 @@ public class Endereco implements Entidade
 
    public void setCep(final String cep)
    {
-      this.cep = cep;
+      this.cep = Util.retirarMascara(cep);
    }
 
    public String getCidade()

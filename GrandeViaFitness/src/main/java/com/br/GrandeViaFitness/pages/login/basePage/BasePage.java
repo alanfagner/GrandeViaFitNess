@@ -7,8 +7,10 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.core.context.SecurityContextHolder;
 import com.br.GrandeViaFitness.Utilitario.BaseUtil;
+import com.br.GrandeViaFitness.as.PessoaAS;
 import com.br.GrandeViaFitness.componentes.InformacaoAlerta;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
@@ -18,18 +20,18 @@ public class BasePage extends WebPage
 
    private static final long serialVersionUID = -5753783437944591926L;
 
-   private static Pessoa usuarioLogado;
+   private Pessoa usuarioLogado;
    public FeedbackPanel feedback;
-
    private final WebMarkupContainer menu;
-
    private final WebMarkupContainer containerNome;
+   @SpringBean
+   private PessoaAS pessoaAS;
 
    public BasePage()
    {
       menu = new WebMarkupContainer("containerMenu");
       containerNome = new WebMarkupContainer("containerUsuario");
-      final Label nomeUsuario = new Label("nomeUsuario", BasePage.getUsuarioLogado().getNomePessoa());
+      final Label nomeUsuario = new Label("nomeUsuario", getUsuarioLogado().getNomePessoa());
       menu.setOutputMarkupPlaceholderTag(true);
       containerNome.setOutputMarkupPlaceholderTag(true);
       containerNome.add(nomeUsuario);
@@ -80,17 +82,16 @@ public class BasePage extends WebPage
       BaseUtil.geral(response, true);
    }
 
-   public static Pessoa getUsuarioLogado()
+   public Pessoa getUsuarioLogado()
    {
-      if (BasePage.usuarioLogado == null)
+      if (usuarioLogado == null)
       {
-         BasePage.usuarioLogado = new Pessoa();
+         usuarioLogado = new Pessoa();
+         if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
+         {
+            usuarioLogado = pessoaAS.buscaPessoaPorCpf(SecurityContextHolder.getContext().getAuthentication().getName());
+         }
       }
-      return BasePage.usuarioLogado;
-   }
-
-   public static void setUsuarioLogado(final Pessoa usuarioLogado)
-   {
-      BasePage.usuarioLogado = usuarioLogado;
+      return usuarioLogado;
    }
 }
