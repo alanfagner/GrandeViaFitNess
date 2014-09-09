@@ -105,7 +105,6 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
  new DataGridGenerica<Pessoa, String>("table", columns, getProviderGenerico(), 5);
       gridGenerica.setOutputMarkupId(true);
       gridGenerica.setItemsPerPage(5);
-
       addOrReplace(gridGenerica);
    }
 

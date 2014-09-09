@@ -9,7 +9,6 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.NoRecordsToo
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.OddEvenItem;
 import org.apache.wicket.model.IModel;
-import com.br.GrandeViaFitness.componentes.CustomPagingNavigator;
 
 public class DataGridGenerica<T, S> extends DataTable<T, S>
 {
@@ -18,9 +17,10 @@ public class DataGridGenerica<T, S> extends DataTable<T, S>
       final long rowsPerPage)
    {
       super(id, columns, dataProvider, rowsPerPage);
-      addTopToolbar(new CustomPagingNavigator<T, S>(this));
+
+      addTopToolbar(new NoRecordsToolbar(this));
+      addBottomToolbar(new CustomNavigator<T, S>(this));
       addTopToolbar(new HeadersToolbar<S>(this, dataProvider));
-      addBottomToolbar(new NoRecordsToolbar(this));
    }
 
    @Override

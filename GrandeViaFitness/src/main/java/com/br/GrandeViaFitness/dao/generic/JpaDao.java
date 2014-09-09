@@ -9,6 +9,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
+import com.br.GrandeViaFitness.Utilitario.Paginacao;
 
 @Repository
 public class JpaDao<T> implements Dao<T>
@@ -19,6 +20,21 @@ public class JpaDao<T> implements Dao<T>
 
    @PersistenceContext
    private EntityManager entityManager;
+
+   public void setValoresDoResult(final Paginacao paginacao, final Query query)
+   {
+      if (paginacao != null)
+      {
+         if (paginacao.getPosicao() != null)
+         {
+            query.setFirstResult(paginacao.getPosicao());
+         }
+         if (paginacao.getLimite() != null)
+         {
+            query.setMaxResults(paginacao.getLimite());
+         }
+      }
+   }
 
    @Override
    public void delete(final Serializable id)
@@ -53,10 +69,11 @@ public class JpaDao<T> implements Dao<T>
 
    @SuppressWarnings("unchecked")
    @Override
-   public List<T> findByNamedParams(final String queryname, final Map<String, Object> params)
+   public List<T> findByNamedParams(final String queryname, final Map<String, Object> params, final Paginacao paginacao)
    {
       final Query query = this.entityManager.createQuery(queryname);
       setQueryParams(query, params);
+      setValoresDoResult(paginacao, query);
       return query.getResultList();
    }
 

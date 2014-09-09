@@ -355,6 +355,11 @@
 	width: 206px;
 	margin-bottom: 5px;
 }
+table{
+	border: 1px;
+border-color: red;
+border-spacing: 1px;
+}
 
 .div_center {
 	margin: auto;
@@ -369,7 +374,7 @@
 	background-size: cover;
 	height: 100%;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 40px;
 }
 
 fieldset {

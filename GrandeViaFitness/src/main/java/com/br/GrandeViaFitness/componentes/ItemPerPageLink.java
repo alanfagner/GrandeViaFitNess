@@ -9,24 +9,24 @@ public class ItemPerPageLink<T, S> extends Link<T>
 {
    private static final long serialVersionUID = 7859552953754456912L;
    private final int itemsPerPage;
-   private final DataTable<T, S> dataView;
+   private final DataTable<T, S> dataTable;
    private final WebMarkupContainer pagingLinksContainer;
 
-   public ItemPerPageLink(final String id, final DataTable<T, S> dataView, final WebMarkupContainer pagingLinksContainer,
+   public ItemPerPageLink(final String id, final DataTable<T, S> dataTable, final WebMarkupContainer pagingLinksContainer,
       final int itemsPerPageValue)
    {
       super(id);
-      this.dataView = dataView;
+      this.dataTable = dataTable;
       this.pagingLinksContainer = pagingLinksContainer;
       this.itemsPerPage = itemsPerPageValue;
-      setEnabled(itemsPerPageValue != dataView.getItemsPerPage());
+      setEnabled(itemsPerPageValue != dataTable.getItemsPerPage());
    }
 
    @Override
    public void onClick()
    {
-      dataView.setItemsPerPage(itemsPerPage);
-      pagingLinksContainer.setVisible(dataView.getPageCount() > 1);
+      dataTable.setItemsPerPage(itemsPerPage);
+      pagingLinksContainer.setVisible(dataTable.getPageCount() > 1);
    }
 
    @Override

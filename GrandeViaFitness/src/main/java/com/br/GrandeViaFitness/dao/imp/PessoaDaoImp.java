@@ -2,6 +2,7 @@ package com.br.GrandeViaFitness.dao.imp;
 
 import java.util.List;
 import org.springframework.stereotype.Repository;
+import com.br.GrandeViaFitness.Utilitario.Paginacao;
 import com.br.GrandeViaFitness.dao.PessoaDao;
 import com.br.GrandeViaFitness.dao.generic.JpaDao;
 import com.br.GrandeViaFitness.model.Entidade;
@@ -35,6 +36,7 @@ public class PessoaDaoImp extends JpaDao<Pessoa> implements PessoaDao
       final StringBuilder sb = new StringBuilder();
       sb.append(" SELECT p FROM Pessoa p ");
 
-      return findByNamedParams(sb.toString(), null);
+      return findByNamedParams(sb.toString(), null, new Paginacao(first, count));
    }
+
 }

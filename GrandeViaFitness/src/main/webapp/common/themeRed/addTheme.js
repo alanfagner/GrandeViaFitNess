@@ -21,6 +21,20 @@ function addScriptCss() {
 			$(".campoText").autocomplete({
 
 			});
+			
+			$(".goto a, .botaoA a").button({
+				text : false,
+				icons : {
+					primary : ""
+				}
+			});
+			
+			$(".goto em, .botaoA  em").button({
+				text : false,
+				icons : {
+					primary : "ui-icon ui-icon-check"
+				}
+			});
 
 			$(".first").button({
 				text : false,
@@ -34,7 +48,6 @@ function addScriptCss() {
 					primary : "ui-icon-seek-start"
 				}
 			});
-			$("table").tabs();
 
 			$(".Excluir").button({
 				icons : {

@@ -3,6 +3,7 @@ package com.br.GrandeViaFitness.dao.generic;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+import com.br.GrandeViaFitness.Utilitario.Paginacao;
 
 public interface Dao<T> extends Serializable
 {
@@ -14,7 +15,7 @@ public interface Dao<T> extends Serializable
 
    T findById(final Serializable id);
 
-   List<T> findByNamedParams(final String queryname, final Map<String, Object> params);
+   List<T> findByNamedParams(final String queryname, final Map<String, Object> params, final Paginacao paginacao);
 
    List<T> findByNamedQuery(final String namedQuery, final Object... params);
 
