@@ -1,12 +1,61 @@
-.divGrid{
-	margin: auto; 
-	width: 500px; 
+.gridGenerica thead tr th {
+	border: 1px solid  #F8F5F5;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.gridGenerica tbody tr td {
+	border: 1px solid #aaaaaa;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.gridGenerica {
+	border: 1px;
+	border-width: 1px;
+	border-collapse: collapse;
+	border-color: black;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.even {
+	border: 1px solid #aaaaaa;
+	background: #ffffff;
+	color: #222222;
+}
+
+.odd {
+	border: 1px solid #aaaaaa;
+	background: rgb(243, 243, 243);
+	color: rgb(0, 0, 0);
+}
+
+.navigation {
+	border: 1px solid #aaaaaa;
+	background: #ffffff;
+	color: #222222;
+}
+
+.headers {
+	border: 1px solid #dddddd;
+	background: #dddddd url("./../themAzul/images/ui-bg_highlight-soft_50_dddddd_1x100.png") 50% 50% repeat-x;
+	color: #444444;
+}
+
+.divGrid {
+	margin: auto;
+	width: 500px;
 	margin-bottom: 10px;
 }
 
-.LabelInputNome{
+.LabelInputNome {
 	text-align: left;
-    float: left; 
+	float: left;
 }
 
 .center {
@@ -20,15 +69,15 @@
 	height: 249px;
 }
 
-.legenda{
+.legenda {
 	background: none repeat scroll 0 0 transparent;
-    color: #939393;
-    font-size: 16px;
-    font-weight: bolder;
-    margin-left: -1px;
-    padding-left: 7px;
-    padding-right: 7px;
-    text-transform: uppercase;
+	color: #939393;
+	font-size: 16px;
+	font-weight: bolder;
+	margin-left: -1px;
+	padding-left: 7px;
+	padding-right: 7px;
+	text-transform: uppercase;
 }
 
 .boxSombra {
@@ -50,7 +99,9 @@
 	background: #2830EB;
 	background: #2830EB linear-gradient(top, rgba(0, 0, 0, 0.85),
 		rgba(0, 0, 0, 0));
-	background: #2830EB -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.85)), to(rgba(0, 0, 0, 0)));
+	background: #2830EB
+		-webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.85)),
+		to(rgba(0, 0, 0, 0)));
 	background: #2830EB -moz-linear-gradient(top, rgba(0, 0, 0, 0.85),
 		rgba(0, 0, 0, 0));
 	color: #ffffff;
@@ -89,7 +140,7 @@
 
 .loganGrand {
 	background: none repeat scroll 0 0 transparent;
-    color: #5C3131;
+	color: #5C3131;
 	float: left;
 	margin-top: 30px;
 	font-size: 30px;
@@ -214,7 +265,7 @@
 	padding-top: 5px;
 	padding-bottom: 5px;
 	padding-left: 5px;
-	    width:100%;
+	width: 100%;
 }
 
 .Menu li ul {
@@ -355,16 +406,11 @@
 	width: 206px;
 	margin-bottom: 5px;
 }
-table{
-	border: 1px;
-border-color: red;
-border-spacing: 1px;
-}
 
 .div_center {
 	margin: auto;
-	margin-top:10px;
-	margin-bottom:10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	border-radius: 10px 10px 10px 10px;
 	width: 860px;
 	background-image: url("./../images/imagenFundoTopo.png");
@@ -373,8 +419,8 @@ border-spacing: 1px;
 	position: relative;
 	background-size: cover;
 	height: 100%;
-    padding-top: 10px;
-    padding-bottom: 40px;
+	padding-top: 10px;
+	padding-bottom: 40px;
 }
 
 fieldset {
@@ -384,8 +430,8 @@ fieldset {
 	border-left-width: 1px;
 	border-right-width: 1px;
 	border-radius: 10px 10px 10px 10px;
-	width:90%;
-	margin:auto;;
+	width: 90%;
+	margin: auto;;
 	margin-bottom: 10px;
 }
 

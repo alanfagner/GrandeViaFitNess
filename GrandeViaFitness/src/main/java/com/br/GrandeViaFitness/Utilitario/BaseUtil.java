@@ -11,6 +11,7 @@ public class BaseUtil
    private final static String pastaCss = "./common/css/";
    private final static String pastaJs = "./common/js/";
    private final static String pastaThemaRed = "./common/themeRed/";
+   private final static String pastaThemaAzul = "./common/themAzul/";
 
    public static void geral(final IHeaderResponse response, final boolean themaVermelho)
    {
@@ -19,20 +20,27 @@ public class BaseUtil
       BaseUtil.addJS(response, BaseUtil.pastaJs + "relogio.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery-1.11.1.min.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.maskedinput.min.js");
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "addTheme.js");
 
       if(themaVermelho){
-         BaseUtil.AdicionarthemaVermelho(response);
+         BaseUtil.adicionarThema(response, BaseUtil.pastaThemaRed);
+      }
+      else
+      {
+         BaseUtil.adicionarThema(response, BaseUtil.pastaThemaAzul);
       }
    }
 
-   private static void AdicionarthemaVermelho(final IHeaderResponse response)
+   private static void adicionarThema(final IHeaderResponse response, final String thema)
    {
-      BaseUtil.addCss(response, BaseUtil.pastaThemaRed + "jquery-ui.css");
-      BaseUtil.addCss(response, BaseUtil.pastaThemaRed + "jquery-ui.structure.min.css");
-      BaseUtil.addCss(response, BaseUtil.pastaThemaRed + "jquery-ui.theme.min.css");
+
+      BaseUtil.addCss(response, thema + "jquery-ui.css");
+      BaseUtil.addCss(response, thema + "jquery-ui.structure.min.css");
+      BaseUtil.addCss(response, thema + "jquery-ui.theme.min.css");
       BaseUtil.addJS(response, BaseUtil.pastaThemaRed + "jquery-ui.min.js");
-      BaseUtil.addJS(response, BaseUtil.pastaThemaRed + "addTheme.js");
+
    }
+
 
    private static void addJS(final IHeaderResponse response, final String js)
    {

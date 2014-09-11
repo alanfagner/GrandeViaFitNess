@@ -2,7 +2,6 @@ package com.br.GrandeViaFitness.componentes;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -42,7 +41,7 @@ public class ActionButtonPanel<T> extends Panel
             }
 
          };
-            externalLink.add(new AttributeAppender("class", link.getId()));
+         externalLink.add(new AttributeAppender("class", link.getId()));
          list.add(externalLink);
          view.add(list);
       }

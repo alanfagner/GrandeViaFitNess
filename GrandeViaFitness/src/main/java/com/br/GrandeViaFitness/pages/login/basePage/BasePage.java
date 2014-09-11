@@ -79,7 +79,7 @@ public class BasePage extends WebPage
    @Override
    public void renderHead(final IHeaderResponse response)
    {
-      BaseUtil.geral(response, true);
+      BaseUtil.geral(response, false);
    }
 
    public Pessoa getUsuarioLogado()

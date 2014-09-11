@@ -57,6 +57,7 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
          @Override
          public void onClick(final AjaxRequestTarget target)
          {
+            atualizaTela(target);
             target.add(gridGenerica);
          }
 
@@ -66,6 +67,7 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
             super.onBeforeRender();
          }
       });
+
       listBotoes.add(new AjaxLink<Pessoa>("Visualizar")
       {
          private static final long serialVersionUID = -2007593370707695822L;
