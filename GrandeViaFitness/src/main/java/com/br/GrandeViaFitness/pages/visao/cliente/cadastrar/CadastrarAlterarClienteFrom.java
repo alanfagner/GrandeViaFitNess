@@ -3,7 +3,6 @@ package com.br.GrandeViaFitness.pages.visao.cliente.cadastrar;
 
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -28,6 +27,7 @@ import com.br.GrandeViaFitness.as.PessoaAS;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
+import com.googlecode.wicket.jquery.ui.form.datepicker.DatePicker;
 
 public class CadastrarAlterarClienteFrom extends FormularioBase<Pessoa>
 {
@@ -40,7 +40,7 @@ public class CadastrarAlterarClienteFrom extends FormularioBase<Pessoa>
    private DropDownChoice<SexoEnum> campoSexo;
    private TextField<String> campoEmail;
 
-   private TextField<Date> campoDataNascimento;
+   private DatePicker campoDataNascimento;
 
    private DropDownChoice<PermissaoEnum> campoPermissao;
 
@@ -177,7 +177,7 @@ public class CadastrarAlterarClienteFrom extends FormularioBase<Pessoa>
       campoSexo =
          new DropDownChoice<SexoEnum>("sexo", Arrays.asList(SexoEnum.values()), new ChoiceRenderer<SexoEnum>("descricao", "codigo"));
       campoEmail = new TextField<String>("emailPessoa");
-      campoDataNascimento = new TextField<Date>("dataNascimentoPessoa");
+      campoDataNascimento = new DatePicker("dataNascimentoPessoa");
       campoDataNascimento.setLabel(new Model<String>("Data de nascimento"));
       campoTelefone = new TextField<String>("numeroCelulaPessoa");
       campoPermissao =

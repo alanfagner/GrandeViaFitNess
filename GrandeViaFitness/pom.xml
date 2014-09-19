@@ -19,7 +19,7 @@
 		</license>
 	</licenses>
 	<properties>
-		<wicket.version>6.16.0</wicket.version>
+		<wicket.version>6.17.0</wicket.version>
 		<jetty.version>7.6.13.v20130916</jetty.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>4.0.6.RELEASE</spring.version>
@@ -67,6 +67,11 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>${springsecurity.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.wicket-jquery-ui</groupId>
+			<artifactId>wicket-jquery-ui</artifactId>
+			<version>${wicket.version}</version>
 		</dependency>
 
 		<dependency>
