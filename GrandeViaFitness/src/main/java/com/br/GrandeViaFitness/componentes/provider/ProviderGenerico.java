@@ -33,4 +33,5 @@ public class ProviderGenerico<T extends Serializable, S> extends SortableDataPro
    {
       return new Model<T>(object);
    }
+
 }

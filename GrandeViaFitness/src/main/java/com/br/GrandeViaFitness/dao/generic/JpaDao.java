@@ -58,7 +58,9 @@ public class JpaDao<T> implements Dao<T>
    @Override
    public List<T> findAll()
    {
-      return null;
+      final Query query =
+ this.entityManager.createQuery(" FROM " + getPersistentClass().getSimpleName());
+          return query.getResultList();
    }
 
    @Override

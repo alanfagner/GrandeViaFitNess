@@ -83,13 +83,22 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
 
          private static final long serialVersionUID = 3580594711515520158L;
 
-         /*@Override
+         @Override
          public String getCssClass()
          {
             return "numeric";
-         }*/
+         }
       });
-      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Nome"), "nomePessoa", "nomePessoa"));
+      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Nome"), "nomePessoa", "nomePessoa")
+      {
+         private static final long serialVersionUID = -443738101151611500L;
+
+         @Override
+         public String getCssClass()
+         {
+            return "super";
+         }
+      });
       columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("CPF"), "cpfPessoa", "cpfPessoa"));
       columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Email"), "emailPessoa"));
       columns.add(new AbstractColumn<Pessoa, String>(new Model<String>("Opções"))

@@ -1,9 +1,22 @@
 .gridGenerica thead tr th {
-	border: 1px solid  #F8F5F5;
+	border: 1px solid #F8F5F5;
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-bottom: 10px;
 	padding-top: 10px;
+}
+
+.botaoA span a,.goto span em,.redendo span em,.navigator .first,.prev,.next,.last
+	{
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+	border: none;
+}
+
+.wicket_orderNone a,.wicket_orderDown a, .wicket_orderUp a{
+	width: 100%;
 }
 
 .gridGenerica tbody tr td {
@@ -29,6 +42,17 @@
 	color: #222222;
 }
 
+.even td,.odd td {
+	border-color: #c5c5c5;
+	border-style: solid;
+	border-width: 0 0 0 1px;
+	padding: .4em .6em;
+	overflow: hidden;
+	line-height: 1.6em;
+	vertical-align: middle;
+	text-overflow: ellipsis;
+}
+
 .odd {
 	border: 1px solid #aaaaaa;
 	background: rgb(243, 243, 243);
@@ -43,7 +67,9 @@
 
 .headers {
 	border: 1px solid #dddddd;
-	background: #dddddd url("./../themAzul/images/ui-bg_highlight-soft_50_dddddd_1x100.png") 50% 50% repeat-x;
+	background: #dddddd
+		url("./../themAzul/images/ui-bg_highlight-soft_50_dddddd_1x100.png")
+		50% 50% repeat-x;
 	color: #444444;
 }
 

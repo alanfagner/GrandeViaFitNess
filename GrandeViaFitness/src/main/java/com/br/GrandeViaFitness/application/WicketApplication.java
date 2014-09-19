@@ -45,6 +45,11 @@ public class WicketApplication extends AuthenticatedWebApplication implements
    @SpringBean
    PessoaAS pessoaAS;
 
+   private final static String pastaCss = "./common/css/";
+   private final static String pastaJs = "./common/js/";
+   private final static String pastaThemaRed = "./common/themeRed/";
+   private final static String pastaThemaAzul = "./common/themAzul/";
+
    String[] langs;
 
    @Override

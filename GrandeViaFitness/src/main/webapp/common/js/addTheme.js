@@ -22,27 +22,22 @@ function addScriptCss() {
 
 			});
 			
-			$(".goto a, .botaoA a").button({
+			$(".goto a, .botaoA a, .wicket_orderNone a , .wicket_orderDown a, .wicket_orderUp a").button({
 				text : false,
 				icons : {
 					primary : ""
 				}
 			});
+			$( ".botaoA em, .navigator em" ).button({ disabled: true });	
 			
-			$(".goto em, .botaoA  em").button({
-				text : false,
-				icons : {
-					primary : "ui-icon ui-icon-check"
-				}
-			});
 
-			$(".first").button({
+			$(".first a").button({
 				text : false,
 				icons : {
 					primary : "ui-icon-seek-prev"
 				}
 			});
-			$(".prev").button({
+			$(".prev a ").button({
 				text : false,
 				icons : {
 					primary : "ui-icon-seek-start"
@@ -55,20 +50,20 @@ function addScriptCss() {
 				},
 				text : false
 			});
-
+			
 			$(".Visualizar").button({
 				icons : {
 					primary : "ui-icon ui-icon-search"
 				},
 				text : false
 			});
-			$(".next").button({
+			$(".next a").button({
 				text : false,
 				icons : {
 					primary : "ui-icon-seek-next"
 				}
 			});
-			$(".last").button({
+			$(".last a").button({
 				text : false,
 				icons : {
 					primary : "ui-icon-seek-end"

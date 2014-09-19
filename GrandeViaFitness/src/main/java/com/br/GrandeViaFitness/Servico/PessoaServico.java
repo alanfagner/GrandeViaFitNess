@@ -33,6 +33,11 @@ public class PessoaServico
       return pessoaDao.buscaListaGrid(filtro, first, count);
    }
 
+   public List<Pessoa> all(){
+      pessoaDao.setPersistentClass(Pessoa.class);
+      return pessoaDao.findAll();
+   }
+
    public void save(final Pessoa pessoa)
    {
       pessoaDao.save(pessoa);

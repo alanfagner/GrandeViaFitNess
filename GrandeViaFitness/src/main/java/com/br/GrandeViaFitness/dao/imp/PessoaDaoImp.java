@@ -39,4 +39,5 @@ public class PessoaDaoImp extends JpaDao<Pessoa> implements PessoaDao
       return findByNamedParams(sb.toString(), null, new Paginacao(first, count));
    }
 
+
 }
