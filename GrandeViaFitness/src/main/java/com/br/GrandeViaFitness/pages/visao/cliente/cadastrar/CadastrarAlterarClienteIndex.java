@@ -25,7 +25,7 @@ public class CadastrarAlterarClienteIndex extends BasePage
 
    private void criaFormulario(final Pessoa pessoa)
    {
-      add(new CadastrarAlterarClienteFrom("formulario", pessoa, feedback));
+      add(new CadastrarAlterarClienteForm("formulario", pessoa, feedback));
    }
 
 }

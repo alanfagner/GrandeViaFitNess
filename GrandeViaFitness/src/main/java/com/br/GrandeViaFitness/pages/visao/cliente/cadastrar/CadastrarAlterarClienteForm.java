@@ -29,7 +29,7 @@ import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
 import com.googlecode.wicket.jquery.ui.form.datepicker.DatePicker;
 
-public class CadastrarAlterarClienteFrom extends FormularioBase<Pessoa>
+public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
 {
    private static final long serialVersionUID = 4650600559626073083L;
 
@@ -66,7 +66,7 @@ public class CadastrarAlterarClienteFrom extends FormularioBase<Pessoa>
 
    private final FeedbackPanel feedBack;
 
-   public CadastrarAlterarClienteFrom(final String id, final Pessoa pessoa, final FeedbackPanel feedBack)
+   public CadastrarAlterarClienteForm(final String id, final Pessoa pessoa, final FeedbackPanel feedBack)
    {
       super(id, new CompoundPropertyModel<Pessoa>(pessoa));
       this.feedBack = feedBack;

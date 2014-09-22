@@ -88,6 +88,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements
       {
          e.printStackTrace();
       }
+      this.getMarkupSettings().setStripWicketTags(true);
    }
 
    private void loadSampleDataIfNoExists() throws ParseException

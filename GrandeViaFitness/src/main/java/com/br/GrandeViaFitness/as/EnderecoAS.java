@@ -4,6 +4,7 @@ import java.util.List;
 import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.br.GrandeViaFitness.Servico.EnderecoServico;
+import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.componentes.provider.Provider;
 import com.br.GrandeViaFitness.model.Endereco;
 import com.br.GrandeViaFitness.model.Entidade;
@@ -19,7 +20,7 @@ public class EnderecoAS implements Provider<Endereco>
       return enderecoServico.buscaEnderecoPorCEP(CEP);
    }
    @Override
-   public List<Endereco> buscaListaGrid(final Entidade entidade, final long first, final long count)
+   public List<Endereco> buscaListaGrid(final Entidade entidade, final long first, final long count, final ParametrosOrdenacao ordernacao)
    {
       // TODO Auto-generated method stub
       return null;

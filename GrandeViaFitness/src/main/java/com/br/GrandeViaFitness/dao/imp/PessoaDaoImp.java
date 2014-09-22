@@ -3,6 +3,7 @@ package com.br.GrandeViaFitness.dao.imp;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import com.br.GrandeViaFitness.Utilitario.Paginacao;
+import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.dao.PessoaDao;
 import com.br.GrandeViaFitness.dao.generic.JpaDao;
 import com.br.GrandeViaFitness.model.Entidade;
@@ -31,13 +32,15 @@ public class PessoaDaoImp extends JpaDao<Pessoa> implements PessoaDao
    }
 
    @Override
-   public List<Pessoa> buscaListaGrid(final Entidade filtro, final long first, final long count)
+   public List<Pessoa> buscaListaGrid(final Entidade filtro, final long first, final long count, final ParametrosOrdenacao ordernar)
    {
       final StringBuilder sb = new StringBuilder();
       sb.append(" SELECT p FROM Pessoa p ");
-
+      if (ordernar != null)
+      {
+         sb.append("ORDER BY p." + ordernar.getColuna() + " " + ordernar.getOrdernar());
+      }
       return findByNamedParams(sb.toString(), null, new Paginacao(first, count));
    }
-
 
 }

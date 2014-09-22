@@ -83,7 +83,6 @@ public class CustomNavigator<T, S> extends AbstractToolbar
    protected void onConfigure()
    {
       super.onConfigure();
-      // setVisible(getTable().getPageCount() > 1);
    }
 
 }

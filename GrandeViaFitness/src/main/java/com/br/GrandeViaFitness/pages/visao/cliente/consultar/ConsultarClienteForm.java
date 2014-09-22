@@ -16,13 +16,14 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.PessoaAS;
 import com.br.GrandeViaFitness.componentes.ActionButtonPanel;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
+import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.componentes.gridGenerica.DataGridGenerica;
 import com.br.GrandeViaFitness.componentes.provider.ProviderGenerico;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
 import com.br.GrandeViaFitness.pages.visao.cliente.cadastrar.CadastrarAlterarClienteIndex;
 
-public class ConsultarClienteFrom extends FormularioBase<Pessoa>
+public class ConsultarClienteForm extends FormularioBase<Pessoa>
 {
    private static final long serialVersionUID = 553958619270523962L;
 
@@ -32,7 +33,7 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
    @SpringBean
    private PessoaAS pessoaAS;
 
-   public ConsultarClienteFrom(final String id)
+   public ConsultarClienteForm(final String id)
    {
       super(id);
       inicializar();
@@ -42,81 +43,66 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
    {
       criaBotoes();
       criaGridCliente();
-
    }
 
    private void criaGridCliente()
-   {
-      final List<IColumn<Pessoa, String>> columns = new ArrayList<IColumn<Pessoa, String>>();
-      final List<AjaxLink<Pessoa>> listBotoes = new ArrayList<AjaxLink<Pessoa>>();
+     {
+        final List<IColumn<Pessoa, String>> columns = new ArrayList<IColumn<Pessoa, String>>();
+        final List<AjaxLink<Pessoa>> listBotoes = new ArrayList<AjaxLink<Pessoa>>();
 
-      listBotoes.add(new AjaxLink<Pessoa>("Excluir")
-      {
-         private static final long serialVersionUID = -2007593370707695822L;
+        listBotoes.add(new AjaxLink<Pessoa>("Excluir")
+        {
+           private static final long serialVersionUID = -2007593370707695822L;
 
-         @Override
-         public void onClick(final AjaxRequestTarget target)
-         {
+           @Override
+           public void onClick(final AjaxRequestTarget target)
+           {
             atualizaTela(target);
             target.add(gridGenerica);
-         }
+           }
 
-         @Override
-         protected void onBeforeRender()
-         {
-            super.onBeforeRender();
-         }
-      });
+           @Override
+           protected void onBeforeRender()
+           {
+              super.onBeforeRender();
+           }
+        });
 
-      listBotoes.add(new AjaxLink<Pessoa>("Visualizar")
-      {
-         private static final long serialVersionUID = -2007593370707695822L;
+        listBotoes.add(new AjaxLink<Pessoa>("Visualizar")
+        {
+           private static final long serialVersionUID = -2007593370707695822L;
 
-         @Override
-         public void onClick(final AjaxRequestTarget target)
-         {
-            getModelObject();
-         }
-      });
-      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Codigo"), "codigo")
-      {
-
-         private static final long serialVersionUID = 3580594711515520158L;
-
-         @Override
-         public String getCssClass()
-         {
-            return "numeric";
-         }
-      });
-      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Nome"), "nomePessoa", "nomePessoa")
-      {
-         private static final long serialVersionUID = -443738101151611500L;
-
-         @Override
-         public String getCssClass()
-         {
-            return "super";
-         }
-      });
+           @Override
+           public void onClick(final AjaxRequestTarget target)
+           {
+              getModelObject();
+           }
+        });
+      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Codigo"), "codigo", "codigo"));
+      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Nome"), "nomePessoa", "nomePessoa"));
       columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("CPF"), "cpfPessoa", "cpfPessoa"));
-      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Email"), "emailPessoa"));
-      columns.add(new AbstractColumn<Pessoa, String>(new Model<String>("Opções"))
-      {
-         private static final long serialVersionUID = -3102670641136395641L;
+      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Email"), "emailPessoa", "emailPessoa"));
+        columns.add(new AbstractColumn<Pessoa, String>(new Model<String>("Opções"))
+        {
+           private static final long serialVersionUID = -3102670641136395641L;
 
+         @Override
+         public String getCssClass()
+         {
+            return "opcoes";
+         }
          @Override
          public void populateItem(final Item<ICellPopulator<Pessoa>> cellItem, final String componentId, final IModel<Pessoa> entidade)
          {
             cellItem.add(new ActionButtonPanel<Pessoa>(componentId, entidade, listBotoes));
+
          }
 
-      });
-      gridGenerica =
+        });
+        gridGenerica =
  new DataGridGenerica<Pessoa, String>("table", columns, getProviderGenerico(), 5);
-      gridGenerica.setOutputMarkupId(true);
-      gridGenerica.setItemsPerPage(5);
-      addOrReplace(gridGenerica);
+        gridGenerica.setOutputMarkupId(true);
+        addOrReplace(gridGenerica);
    }
 
    private void criaBotoes()
@@ -160,7 +146,9 @@ public class ConsultarClienteFrom extends FormularioBase<Pessoa>
    {
       if (providerGenerico == null)
       {
+         filtro = new Pessoa();
          providerGenerico = new ProviderGenerico<Pessoa, String>(pessoaAS, filtro);
+         providerGenerico.setOrdernar(new ParametrosOrdenacao("codigo", true));
       }
       return providerGenerico;
    }

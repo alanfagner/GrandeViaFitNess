@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.br.GrandeViaFitness.Servico.AuthorityServico;
 import com.br.GrandeViaFitness.Servico.EnderecoServico;
 import com.br.GrandeViaFitness.Servico.PessoaServico;
+import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.componentes.provider.Provider;
 import com.br.GrandeViaFitness.model.Entidade;
 import com.br.GrandeViaFitness.model.Pessoa;
@@ -28,9 +29,9 @@ public class PessoaAS implements Provider<Pessoa>
       return pessoaServico.buscaPessoaPorCpf(Cpf);
    }
    @Override
-   public List<Pessoa> buscaListaGrid(final Entidade filtro, final long first, final long count)
+   public List<Pessoa> buscaListaGrid(final Entidade filtro, final long first, final long count, final ParametrosOrdenacao ordernar)
    {
-      return pessoaServico.buscaListaGrid(filtro, first, count);
+      return pessoaServico.buscaListaGrid(filtro, first, count, ordernar);
    }
    @Override
    public int contadorListaGrid(final Entidade Filtro)

@@ -3,6 +3,7 @@ package com.br.GrandeViaFitness.componentes;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.wicket.behavior.AbstractAjaxBehavior;
+import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractToolbar;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.DataTable;
 import org.apache.wicket.markup.ComponentTag;
@@ -76,6 +77,7 @@ public class CustomPagingNavigator<T, S> extends AbstractToolbar
       };
 
       pagingNavigation = newNavigation(dataView);
+      pagingNavigation.add(new AttributeAppender("class", "paginate_button"));
       pagingLinksContainer.add(pagingNavigation);
       pagingLinksContainer.add(newPagingNavigationLink("first", dataView, 0).add(new TitleAppender("PagingNavigator.first")));
       pagingLinksContainer.add(newPagingNavigationIncrementLink("prev", dataView, -1).add(new TitleAppender("PagingNavigator.previous")));

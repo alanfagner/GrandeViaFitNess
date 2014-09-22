@@ -26,7 +26,6 @@ public class ItemPerPageLink<T, S> extends Link<T>
    public void onClick()
    {
       dataTable.setItemsPerPage(itemsPerPage);
-      pagingLinksContainer.setVisible(dataTable.getPageCount() > 1);
    }
 
    @Override

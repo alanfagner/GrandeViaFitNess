@@ -1,5 +1,6 @@
 package com.br.GrandeViaFitness.componentes.gridGenerica;
 
+import java.util.Iterator;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
@@ -131,7 +132,15 @@ public class CustomPagingNavigator extends Panel
    protected PagingNavigation newNavigation(final String id, final IPageable pageable,
       final IPagingLabelProvider labelProvider)
    {
-      return new PagingNavigation(id, pageable, labelProvider);
+      return new PagingNavigation(id, pageable, labelProvider){
+         private static final long serialVersionUID = 6167358484060173500L;
+
+         @Override
+         public Iterator<Component> iterator()
+         {
+            return super.iterator();
+         }
+      };
    }
 
    /**

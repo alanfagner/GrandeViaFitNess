@@ -10,6 +10,6 @@ public class ConsultarClienteIndex extends BasePage
 
    public ConsultarClienteIndex()
    {
-      add(new ConsultarClienteFrom("formulario"));
+      add(new ConsultarClienteForm("formulario"));
    }
 }

@@ -5,6 +5,7 @@ import java.util.Iterator;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.model.Entidade;
 
 public class ProviderGridView<T extends Serializable> implements IDataProvider<T>
@@ -28,7 +29,7 @@ public class ProviderGridView<T extends Serializable> implements IDataProvider<T
    @Override
    public Iterator<? extends T> iterator(final long first, final long count)
    {
-      return provider.buscaListaGrid(entidade, first, count).iterator();
+      return provider.buscaListaGrid(entidade, first, count, new ParametrosOrdenacao("coluna", true)).iterator();
    }
 
    @Override
