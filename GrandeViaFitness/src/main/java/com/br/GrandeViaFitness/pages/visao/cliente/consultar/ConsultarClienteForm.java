@@ -4,19 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
-import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
-import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
 import org.apache.wicket.markup.html.form.Button;
-import org.apache.wicket.markup.repeater.Item;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.PessoaAS;
-import com.br.GrandeViaFitness.componentes.ActionButtonPanel;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
+import com.br.GrandeViaFitness.componentes.BotoesGrid;
 import com.br.GrandeViaFitness.componentes.gridGenerica.DataGridGenerica;
 import com.br.GrandeViaFitness.componentes.provider.ProviderGenerico;
 import com.br.GrandeViaFitness.model.Pessoa;
@@ -45,10 +39,12 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
       criaGridCliente();
    }
 
+
+
    private void criaGridCliente()
      {
         final List<IColumn<Pessoa, String>> columns = new ArrayList<IColumn<Pessoa, String>>();
-        final List<AjaxLink<Pessoa>> listBotoes = new ArrayList<AjaxLink<Pessoa>>();
+      final BotoesGrid<Pessoa> listBotoes = new BotoesGrid<Pessoa>();
 
         listBotoes.add(new AjaxLink<Pessoa>("Excluir")
         {
@@ -78,27 +74,12 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
               getModelObject();
            }
         });
-      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Codigo"), "codigo", "codigo"));
-      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Nome"), "nomePessoa", "nomePessoa"));
-      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("CPF"), "cpfPessoa", "cpfPessoa"));
-      columns.add(new PropertyColumn<Pessoa, String>(new Model<String>("Email"), "emailPessoa", "emailPessoa"));
-        columns.add(new AbstractColumn<Pessoa, String>(new Model<String>("Opções"))
-        {
-           private static final long serialVersionUID = -3102670641136395641L;
+      columns.add(DataGridGenerica.criaColunar("Codigo", "codigo", true, 5));
+      columns.add(DataGridGenerica.criaColunar("Nome", "nomePessoa", true, 40));
+      columns.add(DataGridGenerica.criaColunar("CPF", "cpfPessoa", true, 10));
+      columns.add(DataGridGenerica.criaColunar("Email", "emailPessoa", true, 40));
 
-         @Override
-         public String getCssClass()
-         {
-            return "opcoes";
-         }
-         @Override
-         public void populateItem(final Item<ICellPopulator<Pessoa>> cellItem, final String componentId, final IModel<Pessoa> entidade)
-         {
-            cellItem.add(new ActionButtonPanel<Pessoa>(componentId, entidade, listBotoes));
-
-         }
-
-        });
+      columns.add((IColumn<Pessoa, String>) listBotoes.criaListaBotoes());
         gridGenerica =
  new DataGridGenerica<Pessoa, String>("table", columns, getProviderGenerico(), 5);
         gridGenerica.setOutputMarkupId(true);

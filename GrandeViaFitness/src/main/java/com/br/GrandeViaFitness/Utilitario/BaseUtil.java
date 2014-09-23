@@ -36,7 +36,7 @@ public class BaseUtil
    private static void adicionarThema(final IHeaderResponse response, final String thema)
    {
 
-      BaseUtil.addCss(response, thema + "jquery-ui.css");
+      BaseUtil.addCss(response, thema + "jquery-ui.min.css");
       BaseUtil.addCss(response, thema + "jquery-ui.structure.min.css");
       BaseUtil.addCss(response, thema + "jquery-ui.theme.min.css");
       BaseUtil.addJS(response, BaseUtil.pastaThemaRed + "jquery-ui.min.js");

@@ -25,7 +25,7 @@ public class ProviderGenerico<T extends Serializable, S> extends SortableDataPro
    {
       if (getSort() != null)
       {
-         isOrdena(getSort().getProperty().toString(), getSort().isAscending());
+         ordernar = isOrdena(getSort().getProperty().toString(), getSort().isAscending());
       }
       return provider.buscaListaGrid(Filtro, first, count, ordernar).iterator();
    }
