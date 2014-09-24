@@ -1,22 +1,30 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<form wicket:id="formulario">
 		<div class="div_center">
-			<div >
+			<div>
 				<fieldset>
-					<legend class="legenda" align="left">Consultar Clientes</legend>
-
-					<div class="LabelInputNome grid_6">
-						<label> Nome Cliente:</label> <input type="text" maxlength="100" class="campoText" />
+					<legend class="legenda" align="left" >Consultar Clientes</legend>
+					<div class="dataTables_wrapper" style="left: 35px;width: 500px;">
+						<div class="LabelInputNome grid_3">
+							<label> Codigo:</label> <input wicket:id="codigo" type="text" maxlength="100" class="numero campoText" />
+						</div>
+						<div class="LabelInputNome grid_6">
+							<label> Nome Cliente:</label> <input  wicket:id="nomePessoa" type="text" maxlength="100" class="campoText" />
+						</div>
+						<div class="LabelInputNome grid_3">
+							<label> CPF:</label> <input  wicket:id="cpfPessoa"  type="text" maxlength="100" class="cpf campoText" />
+						</div>
+						<div class="LabelInputNome grid_6">
+							<label> Email:</label> <input  wicket:id="emailPessoa" type="text" maxlength="100" class="campoText" />
+						</div>
 					</div>
-					<div class="LabelInputNome grid_3">
-						<label> CPF:</label> <input type="text" maxlength="100" class="campoText" />
+					<div class="dataTables_wrapper" style="left: 35px;width: 100px; float:left;margin-top: 10px;margin-bottom: 15px;">
+						<input wicket:id="btnPesquisar" class="botao" type="submit" name="Pesquisar" value="Pesquisar" />
 					</div>
-					
-									<div class="dataTables_wrapper">
-				
-				<table class="display  dataTable" cellspacing="0" style="width: 90%; border: 1px;" wicket:id="table"></table>
 
-				</div>
+					<div class="dataTables_wrapper">
+						<table class="display  dataTable" cellspacing="0" style="width: 90%; border: 1px;" wicket:id="table"></table>
+					</div>
 				</fieldset>
 				<div class="clear"></div>
 				<div class="clear"></div>

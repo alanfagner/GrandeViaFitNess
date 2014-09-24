@@ -46,7 +46,6 @@ public class LoginForm extends FormularioBase<User>
             final AuthenticatedWebSession session = AuthenticatedWebSession.get();
             if (session.signIn(Util.retirarMascara(auxUser.getCpf()), auxUser.getPassword()))
             {
-               getModelObject();
                setDefaultResponsePageIfNecessary();
             }
             else
@@ -76,6 +75,8 @@ public class LoginForm extends FormularioBase<User>
       };
       botaoLimpar.setDefaultFormProcessing(false);
       addOrReplace(botaoEnviar, botaoLimpar);
+      auxUser.setCpf("34520184827");
+      auxUser.setPassword("3451985");
    }
 
    private void setDefaultResponsePageIfNecessary()

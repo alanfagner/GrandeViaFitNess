@@ -17,6 +17,10 @@ public class FormularioBase<T> extends Form<T>
       super(id);
    }
 
+   @Override
+   protected void onSubmit()
+   {
+   };
 
    public void atualizaTela(final AjaxRequestTarget target)
    {
