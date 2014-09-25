@@ -1,6 +1,8 @@
 package com.br.GrandeViaFitness.dao.imp;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Repository;
 import com.br.GrandeViaFitness.Utilitario.Paginacao;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
@@ -26,21 +28,58 @@ public class PessoaDaoImp extends JpaDao<Pessoa> implements PessoaDao
    @Override
    public int contadorListaGrid(final Entidade filtro)
    {
+      final Pessoa filtroPessoa = (Pessoa) filtro;
       final StringBuilder sb = new StringBuilder();
+      final Map<String, Object> params = new HashMap<String, Object>();
       sb.append(" SELECT COUNT(p.codigo) FROM Pessoa p ");
-      return Integer.parseInt(findSingleResult(sb.toString()).toString());
+      if (filtro != null)
+      {
+         montaConsultaGenerica(sb, params, filtroPessoa);
+      }
+      return Integer.parseInt(consultaUnicoResultado(sb.toString(), params).toString());
+   }
+
+   public void montaConsultaGenerica(final StringBuilder sb, final Map<String, Object> params, final Pessoa filtro)
+   {
+      sb.append(" WHERE 1 = 1 ");
+      if (filtro.getCodigo() != null)
+      {
+         sb.append(" AND p.codigo = :codigo ");
+         params.put("codigo", filtro.getCodigo());
+      }
+      if (filtro.getNomePessoa() != null)
+      {
+         sb.append(" AND UPPER(p.nomePessoa) LIKE UPPER(:nome) ");
+         params.put("nome", "%" + filtro.getNomePessoa() + "%");
+      }
+      if (filtro.getCpfPessoa() != null)
+      {
+         sb.append(" AND p.cpfPessoa = :cpf ");
+         params.put("cpf", filtro.getCpfPessoa());
+      }
+      if (filtro.getEmailPessoa() != null)
+      {
+         sb.append(" AND UPPER(p.emailPessoa) LIKE UPPER(:email) ");
+         params.put("email", "%" + filtro.getEmailPessoa() + "%");
+      }
    }
 
    @Override
    public List<Pessoa> buscaListaGrid(final Entidade filtro, final long first, final long count, final ParametrosOrdenacao ordernar)
    {
+      final Pessoa filtroPessoa = (Pessoa) filtro;
       final StringBuilder sb = new StringBuilder();
+      final Map<String, Object> params = new HashMap<String, Object>();
       sb.append(" SELECT p FROM Pessoa p ");
+      if (filtro != null)
+      {
+         montaConsultaGenerica(sb, params, filtroPessoa);
+      }
       if (ordernar != null)
       {
          sb.append("ORDER BY p." + ordernar.getColuna() + " " + ordernar.getOrdernar());
       }
-      return findByNamedParams(sb.toString(), null, new Paginacao(first, count));
+      return findByNamedParams(sb.toString(), params, new Paginacao(first, count));
    }
 
 }

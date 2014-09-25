@@ -91,6 +91,7 @@ public class JpaDao<T> implements Dao<T>
       return findByNativeQuery(sql, null, params);
    }
 
+
    @Override
    public Object findSingleResult(final String queryStr, final Object... params)
    {
@@ -183,6 +184,14 @@ public class JpaDao<T> implements Dao<T>
             query.setParameter(entry.getKey(), entry.getValue());
          }
       }
+   }
+
+   @Override
+   public Object consultaUnicoResultado(final String queryname, final Map<String, Object> params)
+   {
+      final Query query = this.entityManager.createQuery(queryname);
+      setQueryParams(query, params);
+      return query.getSingleResult();
    }
 
 }

@@ -107,7 +107,7 @@ public class Pessoa implements Entidade
 
    public void setCpfPessoa(final String cpfPessoa)
    {
-      this.cpfPessoa = Util.retirarMascara(cpfPessoa);
+      this.cpfPessoa = Util.retirarMascara(cpfPessoa != null ? cpfPessoa : null);
    }
 
    public String getEmailPessoa()

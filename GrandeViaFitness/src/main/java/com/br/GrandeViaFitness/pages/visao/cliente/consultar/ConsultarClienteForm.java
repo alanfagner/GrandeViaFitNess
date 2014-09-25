@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
@@ -43,6 +44,7 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
    private TextField<String> campoEmail;
 
    private AjaxButton botaoPesquisar;
+   private WebMarkupContainer informacaoVazia;
 
    public ConsultarClienteForm(final String id, final FeedbackPanel feedBack)
    {
@@ -55,9 +57,19 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
 
    private void inicializar()
    {
+      criaInformacao();
       criaBotoes();
       criaCampos();
       criaGridCliente();
+
+   }
+
+   private void criaInformacao()
+   {
+      informacaoVazia = new WebMarkupContainer("containerVazio");
+      informacaoVazia.setOutputMarkupPlaceholderTag(true);
+      addOrReplace(informacaoVazia);
+
    }
 
    @SuppressWarnings("unchecked")
@@ -100,8 +112,18 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
       columns.add(DataGridGenerica.criaColunar("Email", "emailPessoa", true, 40));
 
       columns.add((IColumn<Pessoa, String>) listBotoes.criaListaBotoes());
-      gridGenerica = new DataGridGenerica<Pessoa, String>("table", columns, getProviderGenerico(), 5);
-      gridGenerica.setOutputMarkupId(true);
+      gridGenerica = new DataGridGenerica<Pessoa, String>("table", columns, getProviderGenerico(), 5)
+      {
+         private static final long serialVersionUID = -2837712007974126400L;
+
+         @Override
+         protected void onConfigure()
+         {
+            setVisibilityAllowed(getItemCount() > 0);
+            informacaoVazia.setVisibilityAllowed(getItemCount() == 0);
+         }
+      };
+      gridGenerica.setOutputMarkupPlaceholderTag(true);
       addOrReplace(gridGenerica);
    }
 
@@ -130,7 +152,8 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
-            filtro.getClass();
+            atualizaTela(target);
+            target.add(gridGenerica, informacaoVazia);
          }
       };
 

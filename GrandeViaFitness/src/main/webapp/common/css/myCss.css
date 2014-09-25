@@ -26,9 +26,6 @@
 .tam60{
 	width: 60%;
 }
-
-
-
 .divGrid {
 	margin: auto;
 	width: 500px;
@@ -135,10 +132,20 @@
 
 .msgERROR {
 	color: rgb(255, 27, 27);
+	background-image: url("../images/iconesAlertas.png") !important;
+	background-repeat: no-repeat !important;
+	margin-top: 3px !important;
+}
+
+.error{
+	height: 20px;
 }
 
 .msgSUCCESS {
 	color: rgb(60, 255, 60);
+	background-image: url("../images/iconesAlertas.png") !important;
+	background-repeat: no-repeat !important;
+	margin-top: 3px !important;
 }
 
 .Menu {
