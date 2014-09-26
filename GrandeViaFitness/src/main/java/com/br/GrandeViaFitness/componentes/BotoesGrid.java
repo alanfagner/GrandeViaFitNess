@@ -12,9 +12,11 @@ import org.apache.wicket.model.Model;
 public class BotoesGrid<T>
 {
    private final List<AjaxLink<T>> listBotoes;
+
    public BotoesGrid()
    {
       listBotoes = new ArrayList<AjaxLink<T>>();
+
    }
 
    public AbstractColumn<?, ?> criaListaBotoes()
@@ -26,6 +28,7 @@ public class BotoesGrid<T>
    {
       listBotoes.add(link);
    }
+
 
    public AbstractColumn<?, String> criaColunaOpcoes(final List<AjaxLink<T>> listBotoes)
    {

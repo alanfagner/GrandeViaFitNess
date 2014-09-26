@@ -1,6 +1,8 @@
 package com.br.GrandeViaFitness.pages.visao.cliente.cadastrar;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import org.apache.wicket.Component;
@@ -17,6 +19,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import com.br.GrandeViaFitness.Enum.Mensagem;
@@ -27,7 +30,6 @@ import com.br.GrandeViaFitness.as.PessoaAS;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
-import com.googlecode.wicket.jquery.ui.form.datepicker.DatePicker;
 
 public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
 {
@@ -40,7 +42,8 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
    private DropDownChoice<SexoEnum> campoSexo;
    private TextField<String> campoEmail;
 
-   private DatePicker campoDataNascimento;
+   private TextField<String> campoDataNascimento;
+   private String campoData;
 
    private DropDownChoice<PermissaoEnum> campoPermissao;
 
@@ -101,7 +104,14 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
             if (validaCampos(campoNome, campoCpf, campoSexo, campoEmail, campoDataNascimento, campoTelefone, campoPermissao, campoCEP,
                campoLogradouro, campoNumero, campoBairro, campoCidade, campoEstado))
             {
-               pessoa.setDataNascimentoPessoa(campoDataNascimento.getModelObject());
+               try
+               {
+                  pessoa.setDataNascimentoPessoa(new SimpleDateFormat("dd/MM/yyyy").parse(campoDataNascimento.getModelObject()));
+               }
+               catch (final ParseException e)
+               {
+                  e.printStackTrace();
+               }
                final Calendar calendar = Calendar.getInstance();
                calendar.setTime(pessoa.getDataNascimentoPessoa());
                pessoa
@@ -177,8 +187,11 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
       campoSexo =
          new DropDownChoice<SexoEnum>("sexo", Arrays.asList(SexoEnum.values()), new ChoiceRenderer<SexoEnum>("descricao", "codigo"));
       campoEmail = new TextField<String>("emailPessoa");
-      campoDataNascimento = new DatePicker("dataNascimentoPessoa");
+      campoDataNascimento = new TextField<String>("dataNascimentoPessoa", new Model<String>());
       campoDataNascimento.setLabel(new Model<String>("Data de nascimento"));
+      campoDataNascimento.setModel(new PropertyModel<String>(this, "campoData"));
+      campoData =
+         pessoa.getDataNascimentoPessoa() != null ? new SimpleDateFormat("dd/MM/yyyy").format(pessoa.getDataNascimentoPessoa()) : null;
       campoTelefone = new TextField<String>("numeroCelulaPessoa");
       campoPermissao =
          new DropDownChoice<PermissaoEnum>("permissao", Arrays.asList(PermissaoEnum.values()), new ChoiceRenderer<PermissaoEnum>(

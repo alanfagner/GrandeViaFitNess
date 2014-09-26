@@ -82,4 +82,18 @@ public class PessoaDaoImp extends JpaDao<Pessoa> implements PessoaDao
       return findByNamedParams(sb.toString(), params, new Paginacao(first, count));
    }
 
+   @Override
+   public Pessoa buscaCompleta(final Pessoa pessoa)
+   {
+      final StringBuilder sb = new StringBuilder();
+      final Map<String, Object> params = new HashMap<String, Object>();
+      sb.append(" SELECT p FROM Pessoa p ");
+      sb.append(" JOIN FETCH p.endereco ");
+      if (pessoa != null)
+      {
+         montaConsultaGenerica(sb, params, pessoa);
+      }
+      return (Pessoa) consultaUnicoResultado(sb.toString(), params);
+   }
+
 }

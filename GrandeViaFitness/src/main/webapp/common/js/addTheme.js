@@ -3,11 +3,12 @@ function addScriptCss() {
 	jQuery.noConflict(); 
 	(function($) {
 		$(document).ready(function() {
-
+			$(".data").mask("99/99/9999"); 
+			$( ".data" ).datepicker({ altFormat: "dd-mm-yyyy" });
 			$(".cep").mask("99999-999"); 
 			$(".numero").mask("9?99999"); 
 			$(".cpf").mask("999.999.999-99"); 
-			$(".data").mask("99/99/9999"); 
+ 
 			$(".telefone").mask("(99) 99999-9999"); 
 
 			$(".botao").button();

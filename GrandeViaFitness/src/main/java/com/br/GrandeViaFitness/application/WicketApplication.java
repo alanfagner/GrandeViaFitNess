@@ -26,6 +26,7 @@ import com.br.GrandeViaFitness.pages.login.LoginIndex;
 import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
 import com.br.GrandeViaFitness.pages.visao.cliente.cadastrar.CadastrarAlterarClienteIndex;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
+import com.br.GrandeViaFitness.pages.visao.cliente.visualizar.VisualizarClienteIndex;
 import com.br.GrandeViaFitness.security.MyAuthenticatedWebSession;
 
 /**
@@ -44,12 +45,6 @@ public class WicketApplication extends AuthenticatedWebApplication implements
 
    @SpringBean
    PessoaAS pessoaAS;
-
-   private final static String pastaCss = "./common/css/";
-   private final static String pastaJs = "./common/js/";
-   private final static String pastaThemaRed = "./common/themeRed/";
-   private final static String pastaThemaAzul = "./common/themAzul/";
-
    String[] langs;
 
    @Override
@@ -80,6 +75,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements
       mountPage("Pagina-Login.html", LoginIndex.class);
       mountPage("Pagina-Consultar-Cliente.html", ConsultarClienteIndex.class);
       mountPage("Pagina-Cadastrar-Alterar-Cliente.html", CadastrarAlterarClienteIndex.class);
+      mountPage("Pagina-Visualizar-Cliente.html", VisualizarClienteIndex.class);
       try
       {
          loadSampleDataIfNoExists();

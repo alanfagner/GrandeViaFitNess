@@ -1,31 +1,45 @@
-
 .odd {
 	border: 1px solid #aaaaaa;
 	background: rgb(243, 243, 243);
 	color: rgb(0, 0, 0);
 }
 
-.tam5{
+.labelVisualiar {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #036;
+	font-weight: bold;
+	float: left;
+}
+
+.tam5 {
 	width: 5%;
 }
-.tam10{
+
+.tam10 {
 	width: 10%;
 }
-.tam20{
+
+.tam20 {
 	width: 20%;
 }
-.tam30{
+
+.tam30 {
 	width: 30%;
 }
-.tam40{
+
+.tam40 {
 	width: 40%;
 }
-.tam50{
+
+.tam50 {
 	width: 50%;
 }
-.tam60{
+
+.tam60 {
 	width: 60%;
 }
+
 .divGrid {
 	margin: auto;
 	width: 500px;
@@ -35,6 +49,7 @@
 .LabelInputNome {
 	text-align: left;
 	float: left;
+	margin-bottom: 10px;
 }
 
 .center {
@@ -130,20 +145,20 @@
 	font-weight: bold;
 }
 
+
 .msgERROR {
 	color: rgb(255, 27, 27);
-	background-image: url("../images/iconesAlertas.png") !important;
-	background-repeat: no-repeat !important;
 	margin-top: 3px !important;
+	height: 20px;
+	font-weight:bold;
 }
 
-.error{
+.error {
 	height: 20px;
 }
 
 .msgSUCCESS {
 	color: rgb(60, 255, 60);
-	background-image: url("../images/iconesAlertas.png") !important;
 	background-repeat: no-repeat !important;
 	margin-top: 3px !important;
 }

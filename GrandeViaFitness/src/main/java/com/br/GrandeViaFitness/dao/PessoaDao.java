@@ -16,4 +16,6 @@ public interface PessoaDao extends Dao<Pessoa>
 
    @Override
    void save(Pessoa pessoa);
+
+   Pessoa buscaCompleta(Pessoa pessoa);
 }

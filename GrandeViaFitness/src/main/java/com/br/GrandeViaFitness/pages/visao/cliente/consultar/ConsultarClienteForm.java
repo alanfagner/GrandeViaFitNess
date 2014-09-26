@@ -15,6 +15,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.PessoaAS;
 import com.br.GrandeViaFitness.componentes.BotoesGrid;
+import com.br.GrandeViaFitness.componentes.ConfirmAjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.componentes.gridGenerica.DataGridGenerica;
@@ -22,7 +23,9 @@ import com.br.GrandeViaFitness.componentes.provider.ProviderGenerico;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
 import com.br.GrandeViaFitness.pages.visao.cliente.cadastrar.CadastrarAlterarClienteIndex;
+import com.br.GrandeViaFitness.pages.visao.cliente.visualizar.VisualizarClienteIndex;
 import com.googlecode.wicket.jquery.ui.form.button.AjaxButton;
+import com.googlecode.wicket.jquery.ui.form.button.ConfirmAjaxButton;
 
 public class ConsultarClienteForm extends FormularioBase<Pessoa>
 {
@@ -43,8 +46,12 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
 
    private TextField<String> campoEmail;
 
+   private ConfirmAjaxButton confirma;
+
    private AjaxButton botaoPesquisar;
    private WebMarkupContainer informacaoVazia;
+
+   private ConfirmAjaxButtonCustom<Pessoa> modal;
 
    public ConsultarClienteForm(final String id, final FeedbackPanel feedBack)
    {
@@ -52,7 +59,6 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
       this.feedBack = feedBack;
       filtro = getModelObject();
       inicializar();
-
    }
 
    private void inicializar()
@@ -61,7 +67,32 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
       criaBotoes();
       criaCampos();
       criaGridCliente();
+      criaModal();
+   }
 
+   private void criaModal()
+   {
+      modal = new ConfirmAjaxButtonCustom<Pessoa>("modal", "", "", "")
+      {
+         private static final long serialVersionUID = -1878575807000071842L;
+
+         @Override
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+         {
+            pessoaAS.excluirPessoa(getEntidade());
+            atualizaTela(target);
+            target.add(gridGenerica);
+
+         }
+
+         @Override
+         protected void onError(final AjaxRequestTarget target, final Form<?> form)
+         {
+            // TODO Auto-generated method stub
+
+         }
+      };
+      addOrReplace(modal);
    }
 
    private void criaInformacao()
@@ -77,7 +108,6 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
    {
       final List<IColumn<Pessoa, String>> columns = new ArrayList<IColumn<Pessoa, String>>();
       final BotoesGrid<Pessoa> listBotoes = new BotoesGrid<Pessoa>();
-
       listBotoes.add(new AjaxLink<Pessoa>("Excluir")
       {
          private static final long serialVersionUID = -2007593370707695822L;
@@ -85,8 +115,8 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
          @Override
          public void onClick(final AjaxRequestTarget target)
          {
-            atualizaTela(target);
-            target.add(gridGenerica);
+            modal.setEntidade(getModelObject());
+            modal.button.onClick(target);
          }
 
          @Override
@@ -95,7 +125,6 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
             super.onBeforeRender();
          }
       });
-
       listBotoes.add(new AjaxLink<Pessoa>("Visualizar")
       {
          private static final long serialVersionUID = -2007593370707695822L;
@@ -103,7 +132,7 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
          @Override
          public void onClick(final AjaxRequestTarget target)
          {
-            getModelObject();
+            setResponsePage(new VisualizarClienteIndex(getModelObject()));
          }
       });
       columns.add(DataGridGenerica.criaColunar("Codigo", "codigo", true, 5));

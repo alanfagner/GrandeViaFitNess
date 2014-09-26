@@ -67,7 +67,23 @@ public class PessoaAS implements Provider<Pessoa>
       {
          enderecoServico.save(pessoa.getEndereco());
       }
-      pessoaServico.save(pessoa);
+
+      if(pessoa.getCodigo() == null){
+         pessoaServico.save(pessoa);
+      }else{
+         pessoaServico.alterar(pessoa);
+      }
+   }
+
+   public Pessoa buscaCompleta(final Pessoa pessoa)
+   {
+      return pessoaServico.buscaCompleta(pessoa);
+
+   }
+
+   public void excluirPessoa(final Pessoa pessoa)
+   {
+      pessoaServico.excluir(pessoa);
 
    }
 

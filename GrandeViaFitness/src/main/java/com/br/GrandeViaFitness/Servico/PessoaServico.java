@@ -44,4 +44,20 @@ public class PessoaServico
       pessoaDao.save(pessoa);
    }
 
+   public void alterar(final Pessoa pessoa)
+   {
+      pessoaDao.update(pessoa);
+   }
+
+   public Pessoa buscaCompleta(final Pessoa pessoa)
+   {
+      return pessoaDao.buscaCompleta(pessoa);
+   }
+
+   public void excluir(final Pessoa pessoa)
+   {
+      pessoaDao.delete(pessoa.getId());
+
+   }
+
 }

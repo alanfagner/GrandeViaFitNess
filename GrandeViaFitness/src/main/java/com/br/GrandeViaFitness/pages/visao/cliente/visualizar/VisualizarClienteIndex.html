@@ -1,0 +1,70 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<form wicket:id="formulario">
+		<div class="div_center">
+			<div style="height: 310px;">
+				<fieldset>
+					<legend class="legenda" align="left">
+						Visualizar Cliente
+					</legend>
+					<div class="LabelInputNome grid_11">
+						<label> Nome Cliente:</label> <br/>
+						<label wicket:id="nomePessoa" class="labelVisualiar"></label>
+					</div>
+					<div class="LabelInputNome grid_3">
+						<label> CPF:</label> <br/> 
+						<label wicket:id="cpfPessoa"  class="labelVisualiar"></label>
+					</div>
+
+					<div class="LabelInputNome grid_3">
+						<label> Sexo:</label><br/>  
+						<label wicket:id="sexo.descricao" class="labelVisualiar" style="width: 130px" ></label>
+					</div>
+					<div class="LabelInputNome grid_11">
+						<label> Email:</label><br/>  
+						<label wicket:id="emailPessoa" class="labelVisualiar" ></label>
+					</div>
+					<div class="LabelInputNome grid_3">
+						<label> Data de Nascimento:</label><br/>  
+						<label wicket:id="dataNascimentoPessoa" class="labelVisualiar" ></label>
+					</div>
+					<div class="LabelInputNome grid_4">
+						<label> Telefone Celular:</label><br/> 
+						<label wicket:id="numeroCelulaPessoa" class="labelVisualiar" ></label>
+					</div>
+					<div class="clear"></div>
+					<div class="LabelInputNome grid_2">
+						<label> CEP:</label><br/> 
+						<label wicket:id="endereco.cep" class="labelVisualiar" ></label>
+					</div>
+					<div class="LabelInputNome grid_2">
+						<label> Numero:</label><br/> 
+						<label  wicket:id="numeroResidencial" class="labelVisualiar"></label>
+					</div>
+					<div class="LabelInputNome grid_11">
+						<label> Logradouro:</label><br/> 
+						<label wicket:id="endereco.logradouro" class="labelVisualiar"></label>
+					</div>
+					<div class="clear"></div>
+					<div class="LabelInputNome grid_4">
+						<label> Bairro:</label><br/> 
+						<label wicket:id="endereco.bairro" class="labelVisualiar" ></label>
+					</div>
+					<div class="LabelInputNome grid_5">
+						<label> Cidade:</label><br/> 
+						<label wicket:id="endereco.cidade" class="labelVisualiar" ></label>
+					</div>
+					<div class="LabelInputNome grid_1">
+						<label> Estado:</label><br/> 
+						<label wicket:id="endereco.estado" class="labelVisualiar" ></label>
+					</div>
+				</fieldset>
+				<div class="clear"></div>
+				<div class="grid_5" style="margin-left: 30px; text-align: left">
+					<input wicket:id="alterar" class="botao" type="submit" name="avancar" value="Alterar" /> 
+					<input wicket:id="voltar"  class="botao" type="submit" name="voltar" value="Voltar"
+					/>
+				</div>
+			</div>
+		</div>
+	</form>
+</wicket:extend>
