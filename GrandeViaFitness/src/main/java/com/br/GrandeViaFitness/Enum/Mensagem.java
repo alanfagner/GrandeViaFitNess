@@ -2,7 +2,7 @@ package com.br.GrandeViaFitness.Enum;
 
 public enum Mensagem
 {
-   M01("Usuário cadastrado com sucesso.");
+   M01("Usuário cadastrado com sucesso."), M02("Usuário excluido com sucesso.");
 
    private String descricao;
 

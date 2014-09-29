@@ -9,7 +9,7 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-public class BotoesGrid<T>
+public class BotoesGrid<T, S>
 {
    private final List<AjaxLink<T>> listBotoes;
 
@@ -19,7 +19,7 @@ public class BotoesGrid<T>
 
    }
 
-   public AbstractColumn<?, ?> criaListaBotoes()
+   public AbstractColumn<T, S> criaListaBotoes()
    {
       return criaColunaOpcoes(listBotoes);
    }
@@ -30,10 +30,10 @@ public class BotoesGrid<T>
    }
 
 
-   public AbstractColumn<?, String> criaColunaOpcoes(final List<AjaxLink<T>> listBotoes)
+   public AbstractColumn<T, S> criaColunaOpcoes(final List<AjaxLink<T>> listBotoes)
    {
 
-      return new AbstractColumn<T, String>(new Model<String>("Opções"))
+      return new AbstractColumn<T, S>(new Model<String>("Opções"))
       {
          private static final long serialVersionUID = -3102670641136395641L;
 
@@ -47,10 +47,7 @@ public class BotoesGrid<T>
          public void populateItem(final Item<ICellPopulator<T>> cellItem, final String componentId, final IModel<T> entidade)
          {
             cellItem.add(new ActionButtonPanel<T>(componentId, entidade, listBotoes));
-
          }
-
-
       };
    }
 }

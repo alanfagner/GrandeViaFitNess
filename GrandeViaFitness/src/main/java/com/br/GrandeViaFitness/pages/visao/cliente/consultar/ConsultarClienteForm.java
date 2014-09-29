@@ -13,6 +13,7 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import com.br.GrandeViaFitness.Enum.Mensagem;
 import com.br.GrandeViaFitness.as.PessoaAS;
 import com.br.GrandeViaFitness.componentes.BotoesGrid;
 import com.br.GrandeViaFitness.componentes.ConfirmAjaxButtonCustom;
@@ -72,7 +73,7 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
 
    private void criaModal()
    {
-      modal = new ConfirmAjaxButtonCustom<Pessoa>("modal", "", "", "")
+      modal = new ConfirmAjaxButtonCustom<Pessoa>("modal", "Excluir", "Excluir", "Confirma a exclusão do cliente selecionado?")
       {
          private static final long serialVersionUID = -1878575807000071842L;
 
@@ -81,7 +82,8 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
          {
             pessoaAS.excluirPessoa(getEntidade());
             atualizaTela(target);
-            target.add(gridGenerica);
+            success(Mensagem.M02.getDescricao());
+            target.add(gridGenerica, feedBack);
 
          }
 
@@ -103,11 +105,10 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
 
    }
 
-   @SuppressWarnings("unchecked")
    private void criaGridCliente()
    {
       final List<IColumn<Pessoa, String>> columns = new ArrayList<IColumn<Pessoa, String>>();
-      final BotoesGrid<Pessoa> listBotoes = new BotoesGrid<Pessoa>();
+      final BotoesGrid<Pessoa, String> listBotoes = new BotoesGrid<Pessoa, String>();
       listBotoes.add(new AjaxLink<Pessoa>("Excluir")
       {
          private static final long serialVersionUID = -2007593370707695822L;
@@ -140,7 +141,7 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
       columns.add(DataGridGenerica.criaColunar("CPF", "cpfPessoa", true, 10));
       columns.add(DataGridGenerica.criaColunar("Email", "emailPessoa", true, 40));
 
-      columns.add((IColumn<Pessoa, String>) listBotoes.criaListaBotoes());
+      columns.add(listBotoes.criaListaBotoes());
       gridGenerica = new DataGridGenerica<Pessoa, String>("table", columns, getProviderGenerico(), 5)
       {
          private static final long serialVersionUID = -2837712007974126400L;

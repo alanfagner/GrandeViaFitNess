@@ -81,6 +81,7 @@ public class PessoaAS implements Provider<Pessoa>
 
    }
 
+   @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
    public void excluirPessoa(final Pessoa pessoa)
    {
       pessoaServico.excluir(pessoa);

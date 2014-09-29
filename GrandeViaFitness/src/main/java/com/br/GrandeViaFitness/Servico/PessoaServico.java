@@ -56,6 +56,7 @@ public class PessoaServico
 
    public void excluir(final Pessoa pessoa)
    {
+      pessoaDao.setPersistentClass(Pessoa.class);
       pessoaDao.delete(pessoa.getId());
 
    }

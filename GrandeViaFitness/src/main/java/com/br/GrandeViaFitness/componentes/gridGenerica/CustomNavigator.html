@@ -2,17 +2,19 @@
 	<tr class="navigation">
 		<td wicket:id="span">
 			<div style="float: left">
-			<div class="dataTables_paginate paging_simple_numbers">
-				Items por pagina:
-				
+				<div class="dataTables_paginate paging_simple_numbers">
+					Items por pagina: 
 					<span wicket:id="itemsPerPage" class="paginate_button"> 
 						<span class="redendo"> 
 							<a wicket:id="itemPerPageLink"> 
-						<span wicket:id="itemsValue"
-							></span>
-						</a>
+								<span wicket:id="itemsValue"></span>
+							</a>
+						</span>
 					</span>
-					</span>
+					<br/>
+					<div style="float: left;margin-top: 10px;font-weight: bold;">
+						Mostrando <span wicket:id="numberShow" >5</span> registro de <span wicket:id="numberMax"></span>.
+					</div>
 				</div>
 			</div>
 			<div class="navigator">
