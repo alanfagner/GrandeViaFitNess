@@ -1,4 +1,4 @@
-package com.br.GrandeViaFitness.Application;
+package com.br.GrandeViaFitness.application;
 
 import java.text.DateFormat;
 import java.text.ParseException;

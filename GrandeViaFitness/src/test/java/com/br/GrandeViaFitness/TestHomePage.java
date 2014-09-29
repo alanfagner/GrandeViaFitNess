@@ -3,7 +3,7 @@ package com.br.GrandeViaFitness;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
-import com.br.GrandeViaFitness.Application.WicketApplication;
+import com.br.GrandeViaFitness.application.WicketApplication;
 import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
 
 /**
