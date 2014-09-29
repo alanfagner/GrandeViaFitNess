@@ -22,13 +22,13 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+import com.br.GrandeViaFitness.AS.PessoaAS;
+import com.br.GrandeViaFitness.Componentes.FormularioBase;
 import com.br.GrandeViaFitness.Enum.Mensagem;
 import com.br.GrandeViaFitness.Enum.PermissaoEnum;
 import com.br.GrandeViaFitness.Enum.SexoEnum;
+import com.br.GrandeViaFitness.Model.Pessoa;
 import com.br.GrandeViaFitness.Utilitario.Util;
-import com.br.GrandeViaFitness.as.PessoaAS;
-import com.br.GrandeViaFitness.componentes.FormularioBase;
-import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
 
 public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
@@ -217,13 +217,17 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
          @Override
          protected void onUpdate(final AjaxRequestTarget target)
          {
-            if (campoCEP.getModelObject() != null)
+            if (campoCEP.getModelObject() != null && !campoCEP.getModelObject().equals(""))
             {
                pessoa.setEndereco(pessoaAS.getEnderecoServico().buscaEnderecoPorCEP(Util.retirarMascara(campoCEP.getModelObject())));
                if (pessoa.getEndereco() == null)
                {
                   bloqueaCamposEndereco(true);
                }
+            }
+            else
+            {
+               bloqueaCamposEndereco(false);
             }
             atualizaTela(target);
             target.add(campoLogradouro, campoBairro, campoCidade, campoEstado);

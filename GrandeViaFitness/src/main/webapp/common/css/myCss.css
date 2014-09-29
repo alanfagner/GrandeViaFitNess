@@ -1,3 +1,9 @@
+input[disabled],select[disabled],textarea[disabled],input[readonly],select[readonly],textarea[readonly]
+    {
+    background-color: #EEEEEE;
+    cursor: not-allowed;
+}
+
 .odd {
 	border: 1px solid #aaaaaa;
 	background: rgb(243, 243, 243);

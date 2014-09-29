@@ -9,10 +9,11 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.core.context.SecurityContextHolder;
+import com.br.GrandeViaFitness.AS.PessoaAS;
+import com.br.GrandeViaFitness.Componentes.InformacaoAlerta;
+import com.br.GrandeViaFitness.Model.Pessoa;
 import com.br.GrandeViaFitness.Utilitario.BaseUtil;
-import com.br.GrandeViaFitness.as.PessoaAS;
-import com.br.GrandeViaFitness.componentes.InformacaoAlerta;
-import com.br.GrandeViaFitness.model.Pessoa;
+import com.br.GrandeViaFitness.pages.visao.aparelhos.ConsultarAparelhosIndex;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
 
 public class BasePage extends WebPage
@@ -35,7 +36,6 @@ public class BasePage extends WebPage
       menu.setOutputMarkupPlaceholderTag(true);
       containerNome.setOutputMarkupPlaceholderTag(true);
       containerNome.add(nomeUsuario);
-
 
       if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
       {
@@ -66,7 +66,18 @@ public class BasePage extends WebPage
             setResponsePage(new ConsultarClienteIndex());
          }
       };
-      menu.add(consultarCliente);
+
+      final Link<String> consultarAparelho = new Link<String>("consultarAparelhos")
+      {
+         private static final long serialVersionUID = -633142704625312739L;
+
+         @Override
+         public void onClick()
+         {
+            setResponsePage(new ConsultarAparelhosIndex());
+         }
+      };
+      menu.add(consultarCliente, consultarAparelho);
    }
 
    public void criaFeedBack()
