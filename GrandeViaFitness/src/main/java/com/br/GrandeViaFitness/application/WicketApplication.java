@@ -17,18 +17,19 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Component;
-import com.br.GrandeViaFitness.AS.PessoaAS;
-import com.br.GrandeViaFitness.Enum.SexoEnum;
-import com.br.GrandeViaFitness.Model.Authority;
-import com.br.GrandeViaFitness.Model.Endereco;
-import com.br.GrandeViaFitness.Model.Pessoa;
-import com.br.GrandeViaFitness.Security.MyAuthenticatedWebSession;
+import com.br.GrandeViaFitness.as.PessoaAS;
+import com.br.GrandeViaFitness.enumUtil.SexoEnum;
+import com.br.GrandeViaFitness.model.Authority;
+import com.br.GrandeViaFitness.model.Endereco;
+import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.login.LoginIndex;
 import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
-import com.br.GrandeViaFitness.pages.visao.aparelhos.ConsultarAparelhosIndex;
 import com.br.GrandeViaFitness.pages.visao.cliente.cadastrar.CadastrarAlterarClienteIndex;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
 import com.br.GrandeViaFitness.pages.visao.cliente.visualizar.VisualizarClienteIndex;
+import com.br.GrandeViaFitness.pages.visao.exercicio.cadastrar.CadastrarAlterarExercicioIndex;
+import com.br.GrandeViaFitness.pages.visao.exercicio.consultar.ConsultarExercicioIndex;
+import com.br.GrandeViaFitness.security.MyAuthenticatedWebSession;
 
 /**
  * Application object for your web application. If you want to run this application without
@@ -77,7 +78,11 @@ public class WicketApplication extends AuthenticatedWebApplication implements
       mountPage("Pagina-Consultar-Cliente.html", ConsultarClienteIndex.class);
       mountPage("Pagina-Cadastrar-Alterar-Cliente.html", CadastrarAlterarClienteIndex.class);
       mountPage("Pagina-Visualizar-Cliente.html", VisualizarClienteIndex.class);
-      mountPage("Pagina-Consultar-Aparelhos.html", ConsultarAparelhosIndex.class);
+      mountPage("Pagina-Consultar-Exercicio.html", ConsultarExercicioIndex.class);
+      mountPage("Pagina-Cadastrar-Alterar-Exercicio.html", CadastrarAlterarExercicioIndex.class);
+      getApplicationSettings().setPageExpiredErrorPage(LoginIndex.class);
+      // getApplicationSettings().setAccessDeniedPage(MyAccessDeniedPage.class);
+      // getApplicationSettings().setInternalErrorPage(MyInternalErrorPage.class);
       try
       {
          loadSampleDataIfNoExists();

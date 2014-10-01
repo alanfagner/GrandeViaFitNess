@@ -4,6 +4,9 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
     cursor: not-allowed;
 }
 
+.campoERro{
+	border: 1px solid #F07373
+}
 .odd {
 	border: 1px solid #aaaaaa;
 	background: rgb(243, 243, 243);
@@ -152,7 +155,7 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 }
 
 
-.msgERROR {
+.feedbackPanelERROR {
 	color: rgb(255, 27, 27);
 	margin-top: 3px !important;
 	height: 20px;
@@ -163,7 +166,7 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 	height: 20px;
 }
 
-.msgSUCCESS {
+.feedbackPanelSUCCESS {
 	color: rgb(60, 255, 60);
 	background-repeat: no-repeat !important;
 	margin-top: 3px !important;

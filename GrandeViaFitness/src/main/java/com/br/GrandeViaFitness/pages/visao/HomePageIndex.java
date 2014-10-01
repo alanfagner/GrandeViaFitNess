@@ -10,6 +10,6 @@ public class HomePageIndex extends BasePage
 
    public HomePageIndex()
    {
-      add(new HomePageForm("formulario"));
+      add(new HomePageForm(BasePage.FORMULARIO));
    }
 }

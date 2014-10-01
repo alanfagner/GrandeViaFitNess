@@ -22,14 +22,14 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
-import com.br.GrandeViaFitness.AS.PessoaAS;
-import com.br.GrandeViaFitness.Componentes.FormularioBase;
-import com.br.GrandeViaFitness.Enum.Mensagem;
-import com.br.GrandeViaFitness.Enum.PermissaoEnum;
-import com.br.GrandeViaFitness.Enum.SexoEnum;
-import com.br.GrandeViaFitness.Model.Pessoa;
-import com.br.GrandeViaFitness.Utilitario.Util;
+import com.br.GrandeViaFitness.as.PessoaAS;
+import com.br.GrandeViaFitness.componentes.FormularioBase;
+import com.br.GrandeViaFitness.enumUtil.Mensagem;
+import com.br.GrandeViaFitness.enumUtil.PermissaoEnum;
+import com.br.GrandeViaFitness.enumUtil.SexoEnum;
+import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
+import com.br.GrandeViaFitness.utilitario.Util;
 
 public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
 {
@@ -67,12 +67,11 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
    @SpringBean
    private PessoaAS pessoaAS;
 
-   private final FeedbackPanel feedBack;
+   private FeedbackPanel feedBack;
 
-   public CadastrarAlterarClienteForm(final String id, final Pessoa pessoa, final FeedbackPanel feedBack)
+   public CadastrarAlterarClienteForm(final String id, final Pessoa pessoa)
    {
       super(id, new CompoundPropertyModel<Pessoa>(pessoa));
-      this.feedBack = feedBack;
       this.pessoa = pessoa;
       inicializar();
    }
@@ -89,8 +88,16 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
       }
       criaCampos();
       criaBotoes();
+      criaFeedBack();
    }
 
+   private void criaFeedBack()
+   {
+      feedBack = new FeedbackPanel("feedback");
+      feedBack.setOutputMarkupPlaceholderTag(true);
+
+      addOrReplace(feedBack);
+   }
 
    private void criaBotoes()
    {
@@ -118,7 +125,7 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
                   .setSenhaPessoa(new Md5PasswordEncoder().encodePassword(pessoa.getCpfPessoa().substring(0, 3) + calendar.get(1), null));
                pessoa.setAuthority(pessoaAS.getAuthorityServico().findAuthority(campoPermissao.getModelObject().getSigla()));
                pessoaAS.save(pessoa);
-               success(Mensagem.M01.getDescricao());
+               getSession().success(Mensagem.M01.getDescricao());
                setResponsePage(new ConsultarClienteIndex());
             }
             target.add(feedBack, campoBairro);
@@ -158,6 +165,7 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
          if (component.getDefaultModelObject() == null && flag)
          {
             error("Favor preencher todos os campos do formulario");
+
             flag = false;
          }
       }

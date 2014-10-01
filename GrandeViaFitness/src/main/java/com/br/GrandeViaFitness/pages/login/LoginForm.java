@@ -9,9 +9,10 @@ import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.PropertyModel;
-import com.br.GrandeViaFitness.Componentes.FormularioBase;
-import com.br.GrandeViaFitness.Model.User;
-import com.br.GrandeViaFitness.Utilitario.Util;
+import com.br.GrandeViaFitness.componentes.FormularioBase;
+import com.br.GrandeViaFitness.model.User;
+import com.br.GrandeViaFitness.utilitario.Util;
+
 
 public class LoginForm extends FormularioBase<User>
 {
@@ -19,14 +20,13 @@ public class LoginForm extends FormularioBase<User>
 
    private AjaxButton botaoEnviar;
    private User auxUser;
-   private final FeedbackPanel feedBack;
+   private FeedbackPanel feedBack;
 
    private Button botaoLimpar;
 
-   public LoginForm(final String id, final FeedbackPanel feedBack)
+   public LoginForm(final String id)
    {
       super(id);
-      this.feedBack = feedBack;
       inicializar();
    }
 
@@ -77,6 +77,16 @@ public class LoginForm extends FormularioBase<User>
       addOrReplace(botaoEnviar, botaoLimpar);
       auxUser.setCpf("34520184827");
       auxUser.setPassword("3451985");
+
+      criaFeedBack();
+   }
+
+   private void criaFeedBack()
+   {
+      feedBack = new FeedbackPanel("feedback");
+      feedBack.setOutputMarkupId(true);
+      addOrReplace(feedBack);
+
    }
 
    private void setDefaultResponsePageIfNecessary()

@@ -1,20 +1,17 @@
 package com.br.GrandeViaFitness.pages.login.basePage;
 
-import org.apache.wicket.feedback.ContainerFeedbackMessageFilter;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.core.context.SecurityContextHolder;
-import com.br.GrandeViaFitness.AS.PessoaAS;
-import com.br.GrandeViaFitness.Componentes.InformacaoAlerta;
-import com.br.GrandeViaFitness.Model.Pessoa;
-import com.br.GrandeViaFitness.Utilitario.BaseUtil;
-import com.br.GrandeViaFitness.pages.visao.aparelhos.ConsultarAparelhosIndex;
+import com.br.GrandeViaFitness.as.PessoaAS;
+import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
+import com.br.GrandeViaFitness.pages.visao.exercicio.consultar.ConsultarExercicioIndex;
+import com.br.GrandeViaFitness.utilitario.BaseUtil;
 
 public class BasePage extends WebPage
 {
@@ -22,7 +19,8 @@ public class BasePage extends WebPage
    private static final long serialVersionUID = -5753783437944591926L;
 
    private Pessoa usuarioLogado;
-   public FeedbackPanel feedback;
+
+   public static final String FORMULARIO = "formulario";
    private final WebMarkupContainer menu;
    private final WebMarkupContainer containerNome;
    @SpringBean
@@ -48,9 +46,7 @@ public class BasePage extends WebPage
          menu.setVisibilityAllowed(true);
          containerNome.setVisibilityAllowed(true);
       }
-
-      criaFeedBack();
-      addOrReplace(menu, containerNome, feedback);
+      addOrReplace(menu, containerNome);
       criaMenus();
    }
 
@@ -74,17 +70,10 @@ public class BasePage extends WebPage
          @Override
          public void onClick()
          {
-            setResponsePage(new ConsultarAparelhosIndex());
+            setResponsePage(new ConsultarExercicioIndex());
          }
       };
       menu.add(consultarCliente, consultarAparelho);
-   }
-
-   public void criaFeedBack()
-   {
-      feedback = new InformacaoAlerta("feedback");
-      feedback.setFilter(new ContainerFeedbackMessageFilter(this));
-      feedback.setOutputMarkupPlaceholderTag(true);
    }
 
    @Override
