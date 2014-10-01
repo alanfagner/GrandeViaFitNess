@@ -63,7 +63,7 @@ public class BasePage extends WebPage
          }
       };
 
-      final Link<String> consultarAparelho = new Link<String>("consultarAparelhos")
+      final Link<String> consultarAparelho = new Link<String>("consultarExercicio")
       {
          private static final long serialVersionUID = -633142704625312739L;
 

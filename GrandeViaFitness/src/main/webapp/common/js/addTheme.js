@@ -22,7 +22,15 @@ function addScriptCss() {
 			$(".campoText").autocomplete({
 
 			});
-
+			
+			$(".aparelho").button({
+				icons : {
+					primary : "ui-icon ui-icon-close"
+				},
+				text : false
+			});
+			$( ".radioEquipamento" ).buttonset();
+			$( ".radioCorpo" ).buttonset();
 			$(".Excluir").button({
 				icons : {
 					primary : "ui-icon ui-icon-close"
