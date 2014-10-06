@@ -6,21 +6,28 @@
 					<span wicket:id="Label1"></span>
 				</legend>
 				<div class="LabelInputNome grid_4">
-					<label> Nome Exercício:</label>
+					<label>
+						<span class="obrigatorio">*</span>
+						Nome Exercício:
+					</label>
 					<input wicket:id="nomeExercicio" type="text" maxlength="100" class="campoText" />
 					<div class="LabelInputNome grid_4">
-						<label> Descricao do Exercício:</label>
+						<label>
+							<span class="obrigatorio">*</span>
+							Descricao do Exercício:
+						</label>
 						<textarea wicket:id="descricaoExercicio" class="campoText" rows="12" style="height: 256px; max-width: 220px;" cols="40"></textarea>
 					</div>
 				</div>
 				<div class="LabelInputNome grid_5">
-					<label> Equipamento:</label>
+					<label>
+						<span class="obrigatorio">*</span>
+						Equipamento:
+					</label>
 					<br />
-					<select class="campoSelect" id="permissao" style="width: 150px" value="selecione">
-						<option>Selecione</option>
-						<option>Barra reta</option>
-						<option>Barro diagonal</option>
+					<select wicket:id="comboEquipamento" class="comboBox" id="permissao" style="width: 150px" value="selecione">
 					</select>
+
 					<div class="clear"></div>
 					<fieldset>
 						<legend class="legenda" style="font-size: 14px">Equipamento</legend>
@@ -35,36 +42,22 @@
 							</div>
 							<div class="grid_4" style="margin-left: 0px">
 								<div class="grid_3" style="margin-left: 0px">
-									<input wicket:id="btnSalvarEquipamento" class="aparelho" style="margin-left: 0px; margin-bottom: 10px" type="submit"
-										value="Salvar Equipamento"
-									/>
+									<input wicket:id="btnSalvarEquipamento" class="aparelho" style="margin-left: 0px; margin-bottom: 10px" type="submit" value="Salvar" />
 								</div>
 								<div class="grid_1" style="margin-left: 0px">
 									<input wicket:id="btnLimparEquipamento" class="aparelho" style="margin-left: 0px; margin-bottom: 10px" type="submit" value="Limpar" />
 								</div>
 							</div>
 						</div>
-						<span id="radioEquipamento" class="radioEquipamento" style="float: left">
-							<span wicket:id="radioEquipamento">
-								<input wicket:id="alterarEquipamento" type="radio" id="radio1" name="radioEquipamento">
-								<label for="radio1">Altear</label>
-								<input wicket:id="excluirEquipamento" type="radio" id="radio2" name="radioEquipamento">
-								<label for="radio2">Novo</label>
-								<input wicket:id="novoEquipamento" type="radio" id="radio3" name="radioEquipamento">
-								<label for="radio3">Excluir</label>
-							</span>
-						</span>
 					</fieldset>
 				</div>
 				<div class="LabelInputNome grid_5">
-					<label> Parte do corpo:</label>
+					<label>
+						<span class="obrigatorio">*</span>
+						Parte do corpo:
+					</label>
 					<br />
-					<select class="campoSelect" id="permissao" style="width: 150px" value="selecione">
-						<option>Selecione</option>
-						<option>Ombro</option>
-						<option>Peito</option>
-						<option>Pernas</option>
-						<option>Panturrilha</option>
+					<select wicket:id="comboCorpo" class="campoSelect" id="permissao" style="width: 150px" value="selecione">
 					</select>
 					<fieldset>
 						<legend class="legenda" style="font-size: 14px">Membro do Corpo</legend>
@@ -79,26 +72,24 @@
 							</div>
 							<div class="grid_4" style="margin-left: 0px">
 								<div class="grid_3" style="margin-left: 0px">
-									<input wicket:id="btnSalvarMembro" class="aparelho" style="margin-left: 0px; margin-bottom: 10px" type="submit"
-										value="Salvar Membro"
-									/>
+									<input wicket:id="btnSalvarMembro" class="aparelho" style="margin-left: 0px; margin-bottom: 10px" type="submit" value="Salvar" />
 								</div>
 								<div class="grid_1" style="margin-left: 0px">
 									<input wicket:id="btnLimparMembro" class="aparelho" style="margin-left: 0px; margin-bottom: 10px" type="submit" value="Limpar" />
 								</div>
 							</div>
 						</div>
-						<span id="radioCorpo" class="radioCorpo" style="float: left">
-							<span wicket:id="radioCorpo">
-								<input wicket:id="alterarCorpo" type="radio" id="radio1" name="radioCorpo">
-								<label for="radio1">Altear</label>
-								<input wicket:id="excluirCorpo" type="radio" id="radio2" name="radioCorpo" >
-								<label for="radio2">Novo</label>
-								<input wicket:id="novoCorpo" type="radio" id="radio3" name="radioCorpo">
-								<label for="radio3">Excluir</label>
-							</span>
-						</span>
 					</fieldset>
+				</div>
+				<div class="radioEquipamento grid_9" style="float: left">
+					<span wicket:id="radioEquipamento">
+						<input wicket:id="alterarEquipamento" type="radio" id="radio1" name="radioEquipamento">
+						<label for="radio1">Altear</label>
+						<input wicket:id="excluirEquipamento" type="radio" id="radio2" name="radioEquipamento">
+						<label for="radio2">Excluir</label>
+						<input wicket:id="novoEquipamento" type="radio" id="radio3" name="radioEquipamento">
+						<label for="radio3">Novo</label>
+					</span>
 				</div>
 				<div class="clear"></div>
 				<div class="grid_3">
@@ -107,5 +98,6 @@
 				</div>
 			</fieldset>
 		</div>
+		<span wicket:id="feedBack" class="feedBack ui-shadow"></span>
 	</form>
 </wicket:extend>

@@ -51,8 +51,8 @@ public class LoginForm extends FormularioBase<User>
             else
             {
                error("Usuario/Senha invalida.");
-               target.add(form, feedBack);
-               atualizaTela(target);
+               atualizaTela(target, feedBack);
+
             }
             form.getModelObject();
          }

@@ -12,7 +12,13 @@ function addScriptCss() {
 			$(".telefone").mask("(99) 99999-9999"); 
 
 			$(".botao").button();
-			$(".campoSelect").selectmenu();
+			
+			 $( ".campoSelect" ).selectmenu({
+			      change: function( event, data ) {
+
+			      }
+			     });
+
 
 			jQuery(document).ready(function($) {
 				atualizarRelogio();
@@ -47,3 +53,4 @@ function addScriptCss() {
 		});
 	})(jQuery);
 }
+

@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import org.apache.wicket.Component;
-import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -128,13 +127,13 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
                getSession().success(Mensagem.M01.getDescricao());
                setResponsePage(new ConsultarClienteIndex());
             }
-            target.add(feedBack, campoBairro);
+            atualizaTela(target, feedBack, campoBairro);
          }
 
          @Override
          protected void onError(final AjaxRequestTarget target, final Form<?> form)
          {
-            target.add(feedBack);
+            atualizaTela(target, feedBack);
          }
       };
 
@@ -188,8 +187,7 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
             {
                error("Esse Cpf já cadastrado.");
             }
-            atualizaTela(target);
-            target.add(feedBack);
+            atualizaTela(target, feedBack);
          }
       });
       campoSexo =
@@ -205,16 +203,6 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
          new DropDownChoice<PermissaoEnum>("permissao", Arrays.asList(PermissaoEnum.values()), new ChoiceRenderer<PermissaoEnum>(
             "descricao",
             "sigla"));
-
-      campoPermissao.add(new AjaxEventBehavior("onChange")
-      {
-         private static final long serialVersionUID = 7864566450050198194L;
-         @Override
-         protected void onEvent(final AjaxRequestTarget target)
-         {
-
-         }
-      });
 
       campoPermissao.setDefaultModel(new Model<PermissaoEnum>());
       campoCEP = new TextField<String>("endereco.cep");
@@ -237,16 +225,14 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
             {
                bloqueaCamposEndereco(false);
             }
-            atualizaTela(target);
-            target.add(campoLogradouro, campoBairro, campoCidade, campoEstado);
+            atualizaTela(target, campoLogradouro, campoBairro, campoCidade, campoEstado);
 
          }
 
          @Override
          protected void onError(final AjaxRequestTarget target, final RuntimeException e)
          {
-            atualizaTela(target);
-            target.add(feedBack);
+            atualizaTela(target, feedBack);
          }
       });
       campoNumero = new TextField<String>("numeroResidencial");

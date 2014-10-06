@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_TIPO_EQUIPAMENTO", schema = "GRANDEVIAFITNESS")
-public class TipoEquipamento implements Entidade
+public class TipoEquipamento implements Entidade, Clonavel
 {
    private static final long serialVersionUID = 7283684931613148092L;
    @Id
@@ -58,6 +58,20 @@ public class TipoEquipamento implements Entidade
    public Serializable getId()
    {
       return getCodigo();
+   }
+
+   @Override
+   public TipoEquipamento getClone()
+   {
+      try
+      {
+         return getClass().cast(super.clone());
+      }
+      catch (final CloneNotSupportedException e)
+      {
+         e.printStackTrace();
+      }
+      return this;
    }
 
 }

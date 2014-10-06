@@ -93,10 +93,8 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             pessoaAS.excluirPessoa(getEntidade());
-            atualizaTela(target);
             success(Mensagem.M02.getDescricao());
-            target.add(gridGenerica, feedBack);
-
+            atualizaTela(target, gridGenerica, feedBack);
          }
 
          @Override
@@ -209,8 +207,7 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
-            atualizaTela(target);
-            target.add(gridGenerica, informacaoVazia);
+            atualizaTela(target, gridGenerica, informacaoVazia);
          }
       };
 

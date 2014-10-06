@@ -1,69 +1,121 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<form wicket:id="formulario">
-		<span wicket:id="feedback" class="feedBack ui-shadow"></span>
+
 		<div class="div_center">
-			<div style="height: 310px;">
+			<div style="border-bottom-width: 10px;">
 				<fieldset>
 					<legend class="legenda" align="left">
 						<span wicket:id="Label1"></span>
 					</legend>
 					<div class="LabelInputNome grid_6">
-						<label> Nome Cliente:</label> <input wicket:id="nomePessoa" type="text" maxlength="100" class="campoText" />
+						<label>
+							<span class="obrigatorio">*</span>
+							Nome Cliente:
+						</label>
+						<input wicket:id="nomePessoa" type="text" maxlength="100" class="campoText" />
 					</div>
 					<div class="LabelInputNome grid_3">
-						<label> CPF:</label> <input wicket:id="cpfPessoa" type="text" maxlength="11" class="cpf campoText" />
+						<label>
+							<span class="obrigatorio">*</span>
+							CPF:
+						</label>
+						<input wicket:id="cpfPessoa" type="text" maxlength="11" class="cpf campoText" />
 					</div>
 
 					<div class="LabelInputNome grid_3">
-						<label> Sexo:</label> <select class="campoSelect" wicket:id="sexo" style="width: 130px" value="selecione">
+						<label>
+							<span class="obrigatorio">*</span>
+							Sexo:
+						</label>
+						<select class="campoSelect" wicket:id="sexo" style="width: 130px" value="selecione">
 							<option>Masculino</option>
 							<option>Feminino</option>
 						</select>
 					</div>
 					<div class="LabelInputNome grid_6">
-						<label> Email:</label> <input type="text" maxlength="100" wicket:id="emailPessoa" class="campoText" />
+						<label>
+							<span class="obrigatorio">*</span>
+							Email:
+						</label>
+						<input type="text" maxlength="100" wicket:id="emailPessoa" class="campoText" />
 					</div>
 					<div class="LabelInputNome grid_3">
-						<label> Data de Nascimento:</label> <input type="text" maxlength="10" wicket:id="dataNascimentoPessoa" class=" data campoText" />
+						<label>
+							<span class="obrigatorio">*</span>
+							Data de Nascimento:
+						</label>
+						<input type="text" maxlength="10" wicket:id="dataNascimentoPessoa" class=" data campoText" />
 					</div>
 					<div class="LabelInputNome grid_4">
-						<label> Telefone Celular:</label> <input type="text" maxlength="10" wicket:id="numeroCelulaPessoa" class="telefone campoText" />
+						<label>
+							<span class="obrigatorio">*</span>
+							Telefone Celular:
+						</label>
+						<input type="text" maxlength="10" wicket:id="numeroCelulaPessoa" class="telefone campoText" />
 					</div>
 					<div class="clear"></div>
 					<div class="LabelInputNome grid_3">
-						<label> Permissão:</label> <select class="campoSelect" style="width: 130px" wicket:id="permissao" value="selecione">
+						<label>
+							<span class="obrigatorio">*</span>
+							Permissão:
+						</label>
+						<select class="campoSelect" style="width: 130px" wicket:id="permissao" value="selecione">
 							<option>Funcionario</option>
 							<option>Cliente</option>
 						</select>
 					</div>
 					<div class="clear"></div>
 					<div class="LabelInputNome grid_2">
-						<label> CEP:</label> <input type="text" maxlength="100" wicket:id="endereco.cep" class="cep campoText" />
+						<label>
+							<span class="obrigatorio">*</span>
+							CEP:
+						</label>
+						<input type="text" maxlength="100" wicket:id="endereco.cep" class="cep campoText" />
 					</div>
 					<div class="LabelInputNome grid_2">
-						<label> Numero:</label> <input type="text" maxlength="100" wicket:id="numeroResidencial" class="campoText" />
+						<label>
+							<span class="obrigatorio">*</span>
+							Numero:
+						</label>
+						<input type="text" maxlength="100" wicket:id="numeroResidencial" class="campoText" />
 					</div>
 					<div class="LabelInputNome grid_6">
-						<label> Logradouro:</label> <input type="text" maxlength="100" wicket:id="endereco.logradouro" class="campoText" />
+						<label>
+							<span class="obrigatorio">*</span>
+							Logradouro:
+						</label>
+						<input type="text" maxlength="100" wicket:id="endereco.logradouro" class="campoText" />
 					</div>
 					<div class="clear"></div>
 					<div class="LabelInputNome grid_4">
-						<label> Bairro:</label> <input type="text" maxlength="100" wicket:id="endereco.bairro" class="campoText" />
+						<label>
+							<span class="obrigatorio">*</span>
+							Bairro:
+						</label>
+						<input type="text" maxlength="100" wicket:id="endereco.bairro" class="campoText" />
 					</div>
 					<div class="LabelInputNome grid_5">
-						<label> Cidade:</label> <input type="text" maxlength="100" wicket:id="endereco.cidade" class="campoText" />
+						<label>
+							<span class="obrigatorio">*</span>
+							Cidade:
+						</label>
+						<input type="text" maxlength="100" wicket:id="endereco.cidade" class="campoText" />
 					</div>
 					<div class="LabelInputNome grid_1">
-						<label> Estado:</label> <input type="text" maxlength="100" wicket:id="endereco.estado" class="campoText" />
+						<label>
+							<span class="obrigatorio">*</span>
+							Estado:
+						</label>
+						<input type="text" maxlength="100" wicket:id="endereco.estado" class="campoText" />
 					</div>
 				</fieldset>
 				<div class="clear"></div>
 				<div class="grid_5" style="margin-left: 30px; margin-top: 10px; text-align: left">
-					<input wicket:id="btnSalvar" class="botao" type="submit" name="avancar" value="Salvar" /> <input wicket:id="btnVoltar" class="botao"
-						type="submit" name="voltar" value="Voltar"
-					/>
+					<input wicket:id="btnSalvar" class="botao" type="submit" name="avancar" value="Salvar" />
+					<input wicket:id="btnVoltar" class="botao" type="submit" name="voltar" value="Voltar" />
 				</div>
 			</div>
 		</div>
+		<span wicket:id="feedback" class="feedBack ui-shadow"></span>
 	</form>
 </wicket:extend>
