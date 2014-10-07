@@ -3,7 +3,6 @@ package com.br.GrandeViaFitness.pages.visao.exercicio.cadastrar;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
@@ -65,7 +64,40 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       criaBotoes();
       criaComboBox();
       criaRadio();
+      criaBotoesEditar();
       criaFeedBack();
+
+   }
+
+   private void criaBotoesEditar()
+   {
+      addOrReplace(new AjaxButton("btnEditarEquipamento")
+      {
+         private static final long serialVersionUID = 185258892178782834L;
+
+         @Override
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+         {
+            tipoEquipamento = null;
+            if (comboEquipamento.getModelObject() != null)
+            {
+               tipoEquipamento = comboEquipamento.getModelObject();
+            }
+            setPropertyEquipamento();
+            atualizaTela(target, campoNomeEquipamento, campoDescricaoEquipamento);
+         }
+      });
+
+      addOrReplace(new AjaxButton("btnEditarMembro")
+      {
+         private static final long serialVersionUID = 185258892178782834L;
+
+         @Override
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+         {
+
+         }
+      });
 
    }
 
@@ -92,33 +124,10 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
             protected void onConfigure()
             {
                setChoices(getListaEquipamento());
+               setModelObject(null);
             }
          };
       comboEquipamento.setOutputMarkupId(true);
-      comboEquipamento.add(new AjaxFormComponentUpdatingBehavior("onChange")
-      {
-         private static final long serialVersionUID = -8555497402924464585L;
-
-         @Override
-         protected void onUpdate(final AjaxRequestTarget target)
-         {
-            tipoEquipamento = null;
-            if (comboEquipamento.getModelObject() != null)
-            {
-               tipoEquipamento = comboEquipamento.getModelObject();
-            }
-            atualizaTela(target, campoNomeEquipamento, campoDescricaoEquipamento);
-
-         }
-
-         @Override
-         protected void onError(final AjaxRequestTarget target, final RuntimeException e)
-         {
-            // TODO Auto-generated method stub
-            super.onError(target, e);
-         }
-
-      });
       comboCorpo = new DropDownChoice<Corpo>("comboCorpo", new Model<Corpo>(), listaCorpo);
       comboCorpo.setOutputMarkupId(true);
 
@@ -142,28 +151,6 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       radioGroupEquipamento.add(new Radio<UtilRadioEnum>("novoEquipamento", new Model<UtilRadioEnum>(UtilRadioEnum.NOVO),
          radioGroupEquipamento));
       addOrReplace(radioGroupEquipamento);
-      radioGroupEquipamento.add(new AjaxFormComponentUpdatingBehavior("onchange")
-      {
-         private static final long serialVersionUID = 7229840565528776181L;
-
-         @Override
-         protected void onUpdate(final AjaxRequestTarget target)
-         {
-            if (opcaoEquipamento == UtilRadioEnum.NOVO)
-            {
-
-            }
-            else if (opcaoEquipamento == UtilRadioEnum.ALTERAR)
-            {
-
-            }
-            else
-            {
-
-            }
-
-         }
-      });
       radioGroupEquipamento.setRenderBodyOnly(false);
       radioGroupEquipamento.setOutputMarkupPlaceholderTag(true);
    }
@@ -215,8 +202,11 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             tipoEquipamento = new TipoEquipamento();
+            opcaoEquipamento = null;
+            comboEquipamento.setModelObject(null);
             setPropertyEquipamento();
-            atualizaTela(target, campoNomeEquipamento, campoDescricaoEquipamento);
+
+            atualizaTela(target, campoNomeEquipamento, campoDescricaoEquipamento, comboEquipamento);
          }
 
          @Override
@@ -307,7 +297,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
 
       if (opcaoEquipamento == UtilRadioEnum.NOVO)
       {
-         if (tipoExercicio.getCodigo() != null)
+         if (tipoEquipamento.getCodigo() != null)
          {
             error("É necessarioa limpar campos do Equipamento para cadastrar um novo.");
             valido = false;
@@ -315,7 +305,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       }
       else if (opcaoEquipamento == UtilRadioEnum.ALTERAR)
       {
-         if (tipoExercicio.getCodigo() == null)
+         if (tipoEquipamento.getCodigo() == null)
          {
             error(Mensagem.recuperaMensagem(Mensagem.M08));
             valido = false;
@@ -323,7 +313,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       }
       else if (opcaoEquipamento == UtilRadioEnum.EXCLUIR)
       {
-         if (tipoExercicio.getCodigo() == null)
+         if (tipoEquipamento.getCodigo() == null)
          {
             error(Mensagem.recuperaMensagem(Mensagem.M07));
             valido = false;

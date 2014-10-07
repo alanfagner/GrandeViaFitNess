@@ -8,47 +8,6 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 	cursor: not-allowed;
 }
 
-.comboBox {
-	border-bottom-right-radius: 2px;
-	border-bottom-left-radius: 2px;
-	border-top-right-radius: 2px;
-	border-top-left-radius: 2px;
-	border: 1px solid #ddd;
-	background: #f6f6f6
-		url("./../themAzul/images/ui-bg_highlight-soft_100_f6f6f6_1x100.png")
-		50% 50% repeat-x;
-	font-weight: bold;
-	color: #0073ea;
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 1.1em;
-	display: inline-block;
-	overflow: hidden;
-	position: relative;
-	text-decoration: none;
-	cursor: pointer;
-	height: 30px;
-}
-
-.comboBox option{
-	border-bottom-right-radius: 2px;
-	border-bottom-left-radius: 2px;
-	border-top-right-radius: 2px;
-	border-top-left-radius: 2px;
-	border: 1px solid #ddd;
-	background: #f6f6f6
-		url("./../themAzul/images/ui-bg_highlight-soft_100_f6f6f6_1x100.png")
-		50% 50% repeat-x;
-	font-weight: bold;
-	color: #0073ea;
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 1.1em;
-	display: inline-block;
-	overflow: hidden;
-	position: relative;
-	text-decoration: none;
-	cursor: pointer;
-}
-
 .campoERro {
 	border: 1px solid #F07373
 }
@@ -59,6 +18,9 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 	color: rgb(0, 0, 0);
 }
 
+label{
+	font-family:  cursive;
+}
 .labelVisualiar {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;

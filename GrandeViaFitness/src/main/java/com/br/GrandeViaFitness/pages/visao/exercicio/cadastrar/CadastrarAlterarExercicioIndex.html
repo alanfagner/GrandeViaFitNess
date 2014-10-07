@@ -25,9 +25,11 @@
 						Equipamento:
 					</label>
 					<br />
-					<select wicket:id="comboEquipamento" class="comboBox" id="permissao" style="width: 150px" value="selecione">
-					</select>
-
+					<div class="grid_5">
+						<select wicket:id="comboEquipamento" class="campoSelect" id="permissao" style="width: 150px" value="selecione">
+						</select>
+						<input style="float: Right" wicket:id="btnEditarEquipamento" class="botao" type="submit" name="editarEquipamento" value="Editar" />
+					</div>
 					<div class="clear"></div>
 					<fieldset>
 						<legend class="legenda" style="font-size: 14px">Equipamento</legend>
@@ -54,11 +56,14 @@
 				<div class="LabelInputNome grid_5">
 					<label>
 						<span class="obrigatorio">*</span>
-						Parte do corpo:
+						Membro:
 					</label>
 					<br />
-					<select wicket:id="comboCorpo" class="campoSelect" id="permissao" style="width: 150px" value="selecione">
-					</select>
+					<div class="grid_5">
+						<select wicket:id="comboCorpo" class="campoSelect" id="permissao" style="width: 150px" value="selecione">
+						</select>
+						<input style="float: Right" wicket:id="btnEditarMembro" class="botao" type="submit" name="EditarMembro" value="Editar" />
+					</div>
 					<fieldset>
 						<legend class="legenda" style="font-size: 14px">Membro do Corpo</legend>
 						<div class="grid_1">
