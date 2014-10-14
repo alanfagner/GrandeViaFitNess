@@ -29,6 +29,7 @@ import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteInd
 import com.br.GrandeViaFitness.pages.visao.cliente.visualizar.VisualizarClienteIndex;
 import com.br.GrandeViaFitness.pages.visao.exercicio.cadastrar.CadastrarAlterarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.exercicio.consultar.ConsultarExercicioIndex;
+import com.br.GrandeViaFitness.pages.visao.exercicio.visualizar.VisualizarExercicioIndex;
 import com.br.GrandeViaFitness.security.MyAuthenticatedWebSession;
 
 /**
@@ -75,11 +76,15 @@ public class WicketApplication extends AuthenticatedWebApplication implements
       langs = new String[]{"pt", "pt-br"};
       mountPage("Pagina-Principal.html", HomePageIndex.class);
       mountPage("Pagina-Login.html", LoginIndex.class);
+
       mountPage("Pagina-Consultar-Cliente.html", ConsultarClienteIndex.class);
-      mountPage("Pagina-Cadastrar-Alterar-Cliente.html", CadastrarAlterarClienteIndex.class);
-      mountPage("Pagina-Visualizar-Cliente.html", VisualizarClienteIndex.class);
       mountPage("Pagina-Consultar-Exercicio.html", ConsultarExercicioIndex.class);
+
+      mountPage("Pagina-Cadastrar-Alterar-Cliente.html", CadastrarAlterarClienteIndex.class);
       mountPage("Pagina-Cadastrar-Alterar-Exercicio.html", CadastrarAlterarExercicioIndex.class);
+
+      mountPage("Pagina-Visualizar-Cliente.html", VisualizarClienteIndex.class);
+      mountPage("Pagina-Visualizar-Exercicio.html", VisualizarExercicioIndex.class);
       getApplicationSettings().setPageExpiredErrorPage(LoginIndex.class);
       // getApplicationSettings().setAccessDeniedPage(MyAccessDeniedPage.class);
       // getApplicationSettings().setInternalErrorPage(MyInternalErrorPage.class);

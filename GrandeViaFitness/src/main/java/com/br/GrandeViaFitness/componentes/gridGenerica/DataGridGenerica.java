@@ -12,6 +12,7 @@ import org.apache.wicket.markup.repeater.OddEvenItem;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import com.br.GrandeViaFitness.model.Pessoa;
+import com.br.GrandeViaFitness.model.TipoExercicio;
 
 public class DataGridGenerica<T, S> extends DataTable<T, S>
 {
@@ -27,11 +28,30 @@ public class DataGridGenerica<T, S> extends DataTable<T, S>
    }
 
 
-   public static PropertyColumn<Pessoa, String> criaColunar(final String text, final String nomeModel, final Boolean orderncao,
+   public static PropertyColumn<Pessoa, String> criaColunarPessoa(final String text, final String nomeModel, final Boolean orderncao,
       final Integer tamanho)
    {
       final PropertyColumn<Pessoa, String> coluna =
          new PropertyColumn<Pessoa, String>(new Model<String>(text), nomeModel, orderncao ? nomeModel : null)
+         {
+            private static final long serialVersionUID = -8096001661154391568L;
+
+            @Override
+            public String getCssClass()
+            {
+               return "tam" + tamanho;
+            }
+         };
+      coluna.getCssClass();
+      return coluna;
+   }
+
+   public static PropertyColumn<TipoExercicio, String> criaColunarTipoExercico(final String text, final String nomeModel,
+      final Boolean orderncao,
+      final Integer tamanho)
+   {
+      final PropertyColumn<TipoExercicio, String> coluna =
+         new PropertyColumn<TipoExercicio, String>(new Model<String>(text), nomeModel, orderncao ? nomeModel : null)
          {
             private static final long serialVersionUID = -8096001661154391568L;
 

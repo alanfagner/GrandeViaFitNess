@@ -37,4 +37,10 @@ public class TipoEquipamentoServico
    {
       return getTipoEquipamentoDao().findAll();
    }
+
+   public void excluirEquipamento(final TipoEquipamento tipoEquipamento)
+   {
+      getTipoEquipamentoDao().delete(tipoEquipamento.getId());
+
+   }
 }

@@ -1,6 +1,5 @@
 package com.br.GrandeViaFitness.pages.visao.exercicio.cadastrar;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -78,7 +77,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
-            tipoEquipamento = null;
+            tipoEquipamento = new TipoEquipamento();;
             if (comboEquipamento.getModelObject() != null)
             {
                tipoEquipamento = comboEquipamento.getModelObject();
@@ -95,7 +94,13 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
-
+            corpo = new Corpo();
+            if (comboCorpo.getModelObject() != null)
+            {
+               corpo = comboCorpo.getModelObject();
+            }
+            setPropertyCorpo();
+            atualizaTela(target, campoNomeCorpo, campoDescricaoCorpo);
          }
       });
 
@@ -113,7 +118,6 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
    {
 
 
-      final List<Corpo> listaCorpo = new ArrayList<Corpo>();
       comboEquipamento =
          new DropDownChoice<TipoEquipamento>("comboEquipamento", new Model<TipoEquipamento>(), getListaEquipamento(),
             new ChoiceRenderer<TipoEquipamento>("nomeTipoEquip", "codigo"))
@@ -128,11 +132,18 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
             }
          };
       comboEquipamento.setOutputMarkupId(true);
-      comboCorpo = new DropDownChoice<Corpo>("comboCorpo", new Model<Corpo>(), listaCorpo);
+      comboCorpo =
+         new DropDownChoice<Corpo>("comboCorpo", new Model<Corpo>(), getListaCorpo(),
+            new ChoiceRenderer<Corpo>("nomeMembroCorpo", "codigo"));
       comboCorpo.setOutputMarkupId(true);
 
       addOrReplace(comboEquipamento, comboCorpo);
 
+   }
+
+   private List<Corpo> getListaCorpo()
+   {
+      return tipoExercicioAS.buscaListaCorpo();
    }
 
    private List<TipoEquipamento> getListaEquipamento()
@@ -160,16 +171,37 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       if (opcaoEquipamento == UtilRadioEnum.NOVO)
       {
          tipoExercicioAS.persisteDadosEquipamento(tipoEquipamento.getClone());
-         success(Mensagem.recuperaMensagem(Mensagem.M04));
+         getSession().success(Mensagem.recuperaMensagem(Mensagem.M01, "equipamento"));
       }
       else if (opcaoEquipamento == UtilRadioEnum.ALTERAR)
       {
          tipoExercicioAS.persisteDadosEquipamento(tipoEquipamento.getClone());
-         success(Mensagem.recuperaMensagem(Mensagem.M05));
+         getSession().success(Mensagem.recuperaMensagem(Mensagem.M03, "Equipamento"));
       }
       else
       {
+         tipoExercicioAS.excluirEquipamento(tipoEquipamento.getClone());
+         getSession().success(Mensagem.recuperaMensagem(Mensagem.M02, "Equipamento"));
+      }
 
+   }
+
+   private void verificaOpcaoSelecionadaMembro()
+   {
+      if (opcaoEquipamento == UtilRadioEnum.NOVO)
+      {
+         tipoExercicioAS.persisteDadosCorpo(corpo.getClone());
+         getSession().success(Mensagem.recuperaMensagem(Mensagem.M01, "Membro"));
+      }
+      else if (opcaoEquipamento == UtilRadioEnum.ALTERAR)
+      {
+         tipoExercicioAS.persisteDadosCorpo(corpo.getClone());
+         getSession().success(Mensagem.recuperaMensagem(Mensagem.M03, "Membro"));
+      }
+      else
+      {
+         tipoExercicioAS.excluirCorpo(corpo.getClone());
+         getSession().success(Mensagem.recuperaMensagem(Mensagem.M02, "Membro"));
       }
 
    }
@@ -186,10 +218,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
             if (validaCamposEquipamentos())
             {
                verificaOpcaoSelecionada();
-
-               tipoEquipamento.setNomeTipoEquip(null);
-               tipoEquipamento.setDescricaoTipoEquip(null);
-               opcaoEquipamento = null;
+               setResponsePage(new CadastrarAlterarExercicioIndex());
             }
             atualizaTela(target, campoNomeEquipamento, campoDescricaoEquipamento, comboEquipamento, radioGroupEquipamento, feedBack);
          }
@@ -224,9 +253,11 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          {
             if (validaCampoMembro())
             {
+               verificaOpcaoSelecionadaMembro();
+               setResponsePage(new CadastrarAlterarExercicioIndex());
             }
 
-            atualizaTela(target, feedBack);
+            atualizaTela(target, feedBack, campoNomeCorpo, campoDescricaoCorpo, comboCorpo);
          }
       });
       add(new AjaxButton("btnLimparMembro")
@@ -238,12 +269,38 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          {
             corpo = new Corpo();
             setPropertyCorpo();
+            opcaoEquipamento = null;
+            comboCorpo.setModelObject(null);
             atualizaTela(target, campoNomeCorpo, campoDescricaoCorpo);
          }
       });
       add(new AjaxButton("btnSalvar")
       {
          private static final long serialVersionUID = 185258892178782834L;
+
+         @Override
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+         {
+            tipoEquipamento = comboEquipamento.getModelObject();
+            corpo = comboCorpo.getModelObject();
+            if (validaCamposExercicios())
+            {
+               tipoExercicio.setCorpo(corpo);
+               tipoExercicio.setTipoEquipamento(tipoEquipamento);
+               if (isAlterar)
+               {
+                  getSession().success(Mensagem.recuperaMensagem(Mensagem.M03, "Exercío"));
+               }
+               else
+               {
+                  getSession().success(Mensagem.recuperaMensagem(Mensagem.M01, "Exercío"));
+               }
+               tipoExercicioAS.persisteDadosExercicios(tipoExercicio);
+               setResponsePage(new ConsultarExercicioIndex());
+            }
+            atualizaTela(target, feedBack);
+         }
+
       });
 
       add(new AjaxButton("btnVoltar")
@@ -265,20 +322,81 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
 
    }
 
+   private boolean validaCamposExercicios()
+   {
+      Boolean valida = true;
+      if (campoNomeExercicio.getModelObject() == null)
+      {
+         error(Mensagem.recuperaMensagem(Mensagem.M04, campoNomeExercicio.getLabel().getObject()));
+         valida = false;
+      }
+
+      if (campoDescricaoExercicio.getModelObject() == null)
+      {
+         error(Mensagem.recuperaMensagem(Mensagem.M04, campoDescricaoExercicio.getLabel().getObject()));
+         valida = false;
+      }
+
+      if (tipoEquipamento == null || tipoEquipamento.getCodigo() == null)
+      {
+         error(Mensagem.recuperaMensagem(Mensagem.M04, "Equipamento"));
+         valida = false;
+      }
+
+      if (corpo == null || corpo.getCodigo() == null)
+      {
+         error(Mensagem.recuperaMensagem(Mensagem.M04, "Corpo"));
+         valida = false;
+      }
+
+      return valida;
+   }
+
    private boolean validaCampoMembro()
    {
       Boolean valido = true;
       if (campoNomeCorpo.getModelObject() == null)
       {
-         error(Mensagem.recuperaMensagem(Mensagem.M03, campoNomeCorpo.getLabel().getObject()));
+         error(Mensagem.recuperaMensagem(Mensagem.M04, campoNomeCorpo.getLabel().getObject()));
          valido = false;
       }
       if (campoDescricaoCorpo.getModelObject() == null)
       {
-         error(Mensagem.recuperaMensagem(Mensagem.M03, campoDescricaoCorpo.getLabel().getObject()));
+         error(Mensagem.recuperaMensagem(Mensagem.M04, campoDescricaoCorpo.getLabel().getObject()));
+         valido = false;
+      }
+
+      if (opcaoEquipamento == UtilRadioEnum.NOVO)
+      {
+         if (corpo.getCodigo() != null)
+         {
+            error(Mensagem.recuperaMensagem(Mensagem.M08, "Membro"));
+            valido = false;
+         }
+      }
+      else if (opcaoEquipamento == UtilRadioEnum.ALTERAR)
+      {
+         if (corpo.getCodigo() == null)
+         {
+            error(Mensagem.recuperaMensagem(Mensagem.M07, "Membro"));
+            valido = false;
+         }
+      }
+      else if (opcaoEquipamento == UtilRadioEnum.EXCLUIR)
+      {
+         if (corpo.getCodigo() == null)
+         {
+            error(Mensagem.recuperaMensagem(Mensagem.M06, "Membro"));
+            valido = false;
+         }
+      }
+      else
+      {
+         error(Mensagem.recuperaMensagem(Mensagem.M05));
          valido = false;
       }
       return valido;
+
    }
 
    private boolean validaCamposEquipamentos()
@@ -286,12 +404,12 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       Boolean valido = true;
       if (campoNomeEquipamento.getModelObject() == null)
       {
-         error(Mensagem.recuperaMensagem(Mensagem.M03, campoNomeEquipamento.getLabel().getObject()));
+         error(Mensagem.recuperaMensagem(Mensagem.M04, campoNomeEquipamento.getLabel().getObject()));
          valido = false;
       }
       if (campoDescricaoEquipamento.getModelObject() == null)
       {
-         error(Mensagem.recuperaMensagem(Mensagem.M03, campoDescricaoEquipamento.getLabel().getObject()));
+         error(Mensagem.recuperaMensagem(Mensagem.M04, campoDescricaoEquipamento.getLabel().getObject()));
          valido = false;
       }
 
@@ -299,7 +417,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       {
          if (tipoEquipamento.getCodigo() != null)
          {
-            error("É necessarioa limpar campos do Equipamento para cadastrar um novo.");
+            error(Mensagem.recuperaMensagem(Mensagem.M08, "Equipamento"));
             valido = false;
          }
       }
@@ -307,7 +425,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       {
          if (tipoEquipamento.getCodigo() == null)
          {
-            error(Mensagem.recuperaMensagem(Mensagem.M08));
+            error(Mensagem.recuperaMensagem(Mensagem.M07, "Equipamento"));
             valido = false;
          }
       }
@@ -315,13 +433,13 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       {
          if (tipoEquipamento.getCodigo() == null)
          {
-            error(Mensagem.recuperaMensagem(Mensagem.M07));
+            error(Mensagem.recuperaMensagem(Mensagem.M06, "Equipamento"));
             valido = false;
          }
       }
       else
       {
-         error(Mensagem.recuperaMensagem(Mensagem.M06));
+         error(Mensagem.recuperaMensagem(Mensagem.M05));
          valido = false;
       }
       return valido;
@@ -329,8 +447,11 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
 
    private void criaCampos()
    {
-      campoNomeExercicio = new TextField<String>("nomeExercicio");
-      campoDescricaoExercicio = new TextArea<String>("descricaoExercicio");
+      campoNomeExercicio = new TextField<String>("nomeExercicio", new PropertyModel<String>(tipoExercicio, "nomeExercicio"));
+      campoNomeExercicio.setLabel(new Model<String>("nome exercício"));
+ campoDescricaoExercicio =
+ new TextArea<String>("descricaoExercicio", new PropertyModel<String>(tipoExercicio, "descricaoExercicio"));
+      campoDescricaoExercicio.setLabel(new Model<String>("descrição exercício"));
 
       campoDescricaoEquipamento =
          new TextArea<String>("descricaoTipoEquip", new PropertyModel<String>(tipoEquipamento, "descricaoTipoEquip"));

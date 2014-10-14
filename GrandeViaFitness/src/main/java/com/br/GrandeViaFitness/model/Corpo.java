@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_CORPO", schema = "GRANDEVIAFITNESS")
-public class Corpo implements Entidade
+public class Corpo implements Entidade, Clonavel
 {
    private static final long serialVersionUID = -6955624083137952631L;
 
@@ -59,5 +59,19 @@ public class Corpo implements Entidade
    public Serializable getId()
    {
       return getCodigo();
+   }
+
+   @Override
+   public Corpo getClone()
+   {
+      try
+      {
+         return getClass().cast(super.clone());
+      }
+      catch (final CloneNotSupportedException e)
+      {
+         e.printStackTrace();
+      }
+      return this;
    }
 }
