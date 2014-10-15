@@ -1,6 +1,5 @@
 package com.br.GrandeViaFitness.pages.visao.cliente.visualizar;
 
-
 import java.text.SimpleDateFormat;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
@@ -17,6 +16,7 @@ public class VisualizarClienteForm extends FormularioBase<Pessoa>
 {
    private static final long serialVersionUID = 7501425089750436151L;
    Pessoa pessoa;
+
    public VisualizarClienteForm(final String id, final Pessoa pessoa)
    {
       super(id, new CompoundPropertyModel<Pessoa>(pessoa));
@@ -33,16 +33,16 @@ public class VisualizarClienteForm extends FormularioBase<Pessoa>
 
    private void criaBotoes()
    {
-     addOrReplace(new AjaxButton("alterar")
-   {
+      addOrReplace(new AjaxButton("alterar")
+      {
          private static final long serialVersionUID = -8644157391966938694L;
 
          @Override
-      protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
-      {
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+         {
             setResponsePage(new CadastrarAlterarClienteIndex(pessoa));
-      }
-   });
+         }
+      });
 
       addOrReplace(new Button("voltar")
       {

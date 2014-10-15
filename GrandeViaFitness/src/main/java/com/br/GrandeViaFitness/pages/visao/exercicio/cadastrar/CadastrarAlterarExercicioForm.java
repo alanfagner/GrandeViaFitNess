@@ -75,6 +75,11 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          private static final long serialVersionUID = 185258892178782834L;
 
          @Override
+         protected void onConfigure()
+         {
+            setEnabled(!isAlterar);
+         }
+         @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             tipoEquipamento = new TipoEquipamento();;
@@ -89,6 +94,11 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
 
       addOrReplace(new AjaxButton("btnEditarMembro")
       {
+         @Override
+         protected void onConfigure()
+         {
+            setEnabled(!isAlterar);
+         }
          private static final long serialVersionUID = 185258892178782834L;
 
          @Override
@@ -116,10 +126,10 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
 
    private void criaComboBox()
    {
-
-
       comboEquipamento =
-         new DropDownChoice<TipoEquipamento>("comboEquipamento", new Model<TipoEquipamento>(), getListaEquipamento(),
+         new DropDownChoice<TipoEquipamento>("comboEquipamento", new Model<TipoEquipamento>(
+            tipoExercicio.getTipoEquipamento() != null ? tipoExercicio.getTipoEquipamento() : new TipoEquipamento()),
+            getListaEquipamento(),
             new ChoiceRenderer<TipoEquipamento>("nomeTipoEquip", "codigo"))
          {
             private static final long serialVersionUID = 8205686180697927445L;
@@ -128,13 +138,23 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
             protected void onConfigure()
             {
                setChoices(getListaEquipamento());
-               setModelObject(null);
             }
          };
       comboEquipamento.setOutputMarkupId(true);
       comboCorpo =
-         new DropDownChoice<Corpo>("comboCorpo", new Model<Corpo>(), getListaCorpo(),
-            new ChoiceRenderer<Corpo>("nomeMembroCorpo", "codigo"));
+         new DropDownChoice<Corpo>("comboCorpo",
+            new Model<Corpo>(tipoExercicio.getCorpo() != null ? tipoExercicio.getCorpo() : new Corpo()), getListaCorpo(),
+            new ChoiceRenderer<Corpo>("nomeMembroCorpo", "codigo"))
+         {
+            private static final long serialVersionUID = 4653505046011709755L;
+
+            @Override
+            protected void onConfigure()
+            {
+               setChoices(getListaCorpo());
+            }
+
+         };
       comboCorpo.setOutputMarkupId(true);
 
       addOrReplace(comboEquipamento, comboCorpo);
@@ -154,7 +174,17 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
    private void criaRadio()
    {
 
-      radioGroupEquipamento = new RadioGroup<UtilRadioEnum>("radioEquipamento", new PropertyModel<UtilRadioEnum>(this, "opcaoEquipamento"));
+      radioGroupEquipamento = new RadioGroup<UtilRadioEnum>("radioEquipamento", new PropertyModel<UtilRadioEnum>(this, "opcaoEquipamento"))
+      {
+
+         private static final long serialVersionUID = -4759959057527681222L;
+
+         @Override
+         protected void onConfigure()
+         {
+            setEnabled(!isAlterar);
+         }
+      };
       radioGroupEquipamento.add(new Radio<UtilRadioEnum>("alterarEquipamento", new Model<UtilRadioEnum>(UtilRadioEnum.ALTERAR),
          radioGroupEquipamento));
       radioGroupEquipamento.add(new Radio<UtilRadioEnum>("excluirEquipamento", new Model<UtilRadioEnum>(UtilRadioEnum.EXCLUIR),
@@ -222,6 +252,12 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
             }
             atualizaTela(target, campoNomeEquipamento, campoDescricaoEquipamento, comboEquipamento, radioGroupEquipamento, feedBack);
          }
+
+         @Override
+         protected void onConfigure()
+         {
+            setEnabled(!isAlterar);
+         }
       });
       add(new AjaxButton("btnLimparEquipamento")
       {
@@ -239,6 +275,12 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          }
 
          @Override
+         protected void onConfigure()
+         {
+            setEnabled(!isAlterar);
+         }
+
+         @Override
          protected void onError(final AjaxRequestTarget target, final Form<?> form)
          {
             atualizaTela(target, feedBack);
@@ -247,6 +289,11 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       add(new AjaxButton("btnSalvarMembro")
       {
          private static final long serialVersionUID = 185258892178782834L;
+         @Override
+         protected void onConfigure()
+         {
+            setEnabled(!isAlterar);
+         }
 
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
@@ -264,6 +311,11 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       {
          private static final long serialVersionUID = 185258892178782834L;
 
+         @Override
+         protected void onConfigure()
+         {
+            setEnabled(!isAlterar);
+         }
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
@@ -454,16 +506,61 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       campoDescricaoExercicio.setLabel(new Model<String>("descrição exercício"));
 
       campoDescricaoEquipamento =
-         new TextArea<String>("descricaoTipoEquip", new PropertyModel<String>(tipoEquipamento, "descricaoTipoEquip"));
+         new TextArea<String>("descricaoTipoEquip", new PropertyModel<String>(tipoEquipamento, "descricaoTipoEquip"))
+         {
+            /**
+             *
+             */
+            private static final long serialVersionUID = 2776737015099178817L;
+
+            @Override
+            protected void onConfigure()
+            {
+               setEnabled(!isAlterar);
+            }
+         };
       campoDescricaoEquipamento.setLabel(new Model<String>("descrição do equipamento"));
 
-      campoNomeEquipamento = new TextField<String>("nomeTipoEquip", new PropertyModel<String>(tipoEquipamento, "nomeTipoEquip"));
+      campoNomeEquipamento = new TextField<String>("nomeTipoEquip", new PropertyModel<String>(tipoEquipamento, "nomeTipoEquip")){
+         /**
+          *
+          */
+         private static final long serialVersionUID = 1014558697437307429L;
+
+         @Override
+         protected void onConfigure()
+         {
+            setEnabled(!isAlterar);
+         }
+      };
       campoNomeEquipamento.setLabel(new Model<String>("nome do equipamento"));
 
-      campoNomeCorpo = new TextField<String>("nomeMembroCorpo", new PropertyModel<String>(corpo, "nomeMembroCorpo"));
+      campoNomeCorpo = new TextField<String>("nomeMembroCorpo", new PropertyModel<String>(corpo, "nomeMembroCorpo")){
+         /**
+          *
+          */
+         private static final long serialVersionUID = 3228424528656262434L;
+
+         @Override
+         protected void onConfigure()
+         {
+            setEnabled(!isAlterar);
+         }
+      };
       campoNomeCorpo.setLabel(new Model<String>("nome do membro"));
 
-      campoDescricaoCorpo = new TextArea<String>("descricaoMembroCorpo", new PropertyModel<String>(corpo, "descricaoMembroCorpo"));
+      campoDescricaoCorpo = new TextArea<String>("descricaoMembroCorpo", new PropertyModel<String>(corpo, "descricaoMembroCorpo")){
+         /**
+          *
+          */
+         private static final long serialVersionUID = -4175784580279314655L;
+
+         @Override
+         protected void onConfigure()
+         {
+            setEnabled(!isAlterar);
+         }
+      };
       campoDescricaoCorpo.setLabel(new Model<String>("descrição do membro"));
 
       campoNomeExercicio.setOutputMarkupId(true);

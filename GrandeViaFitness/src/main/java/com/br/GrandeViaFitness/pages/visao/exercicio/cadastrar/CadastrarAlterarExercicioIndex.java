@@ -11,7 +11,16 @@ public class CadastrarAlterarExercicioIndex extends BasePage
 
    public CadastrarAlterarExercicioIndex()
    {
-      add(new CadastrarAlterarExercicioForm(BasePage.FORMULARIO, false, new TipoExercicio()));
+      criaFormulario(new TipoExercicio(), false);
+   }
+
+   private void criaFormulario(final TipoExercicio tipoExercicio, final Boolean isAlteracao)
+   {
+      add(new CadastrarAlterarExercicioForm(BasePage.FORMULARIO, isAlteracao, tipoExercicio));
+   }
+   public CadastrarAlterarExercicioIndex(final TipoExercicio tipoExercicio)
+   {
+      criaFormulario(tipoExercicio, true);
    }
 
 }

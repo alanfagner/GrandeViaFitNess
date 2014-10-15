@@ -3,16 +3,45 @@
 		<div class="div_center">
 			<div style="height: 310px;">
 				<fieldset>
-					<legend class="legenda" align="left">
-						Visualizar Exercício
-					</legend>
+					<legend class="legenda" align="left"> Visualizar Exercício </legend>
+					<div class="LabelInputNome grid_11">
+						<label> Nome Exercício:</label>
+						<br />
+						<label wicket:id="nomeExercicio" class="labelVisualiar"></label>
+					</div>
+					<div class="LabelInputNome grid_11">
+						<label> Descrição:</label>
+						<br />
+						<label wicket:id="descricaoExercicio" class="labelVisualiar"></label>
+					</div>
+					<div class="LabelInputNome grid_11">
+						<label> Equipamento:</label>
+						<br />
+						<label wicket:id="tipoEquipamento.nomeTipoEquip" class="labelVisualiar" style="width: 130px"></label>
+					</div>
+					<div class="LabelInputNome grid_11">
+						<label> Descrição:</label>
+						<br />
+						<label wicket:id="tipoEquipamento.descricaoTipoEquip" class="labelVisualiar"></label>
+					</div>
 					
+					<div class="LabelInputNome grid_11">
+						<label> Corpo:</label>
+						<br />
+						<label wicket:id="corpo.nomeMembroCorpo" class="labelVisualiar" style="width: 130px"></label>
+					</div>
+					<div class="LabelInputNome grid_11">
+						<label> Descrição:</label>
+						<br />
+						<label wicket:id="corpo.descricaoMembroCorpo" class="labelVisualiar"></label>
+					</div>
+					
+
 				</fieldset>
 				<div class="clear"></div>
 				<div class="grid_5" style="margin-left: 30px; text-align: left">
-					<input id="alterar" class="botao" type="submit" name="avancar" value="Alterar" /> 
-					<input id="voltar"  class="botao" type="submit" name="voltar" value="Voltar"
-					/>
+					<input wicket:id="alterar" class="botao" type="submit" name="avancar" value="Alterar" />
+					<input wicket:id="voltar" class="botao" type="submit" name="voltar" value="Voltar" />
 				</div>
 			</div>
 		</div>
