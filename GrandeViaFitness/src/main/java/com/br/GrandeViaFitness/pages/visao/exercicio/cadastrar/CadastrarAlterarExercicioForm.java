@@ -4,6 +4,7 @@ import java.util.List;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -79,6 +80,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          {
             setEnabled(!isAlterar);
          }
+
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
@@ -99,6 +101,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          {
             setEnabled(!isAlterar);
          }
+
          private static final long serialVersionUID = 185258892178782834L;
 
          @Override
@@ -129,8 +132,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       comboEquipamento =
          new DropDownChoice<TipoEquipamento>("comboEquipamento", new Model<TipoEquipamento>(
             tipoExercicio.getTipoEquipamento() != null ? tipoExercicio.getTipoEquipamento() : new TipoEquipamento()),
-            getListaEquipamento(),
-            new ChoiceRenderer<TipoEquipamento>("nomeTipoEquip", "codigo"))
+            getListaEquipamento(), new ChoiceRenderer<TipoEquipamento>("nomeTipoEquip", "codigo"))
          {
             private static final long serialVersionUID = 8205686180697927445L;
 
@@ -289,6 +291,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       add(new AjaxButton("btnSalvarMembro")
       {
          private static final long serialVersionUID = 185258892178782834L;
+
          @Override
          protected void onConfigure()
          {
@@ -316,6 +319,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          {
             setEnabled(!isAlterar);
          }
+
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
@@ -355,7 +359,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
 
       });
 
-      add(new AjaxButton("btnVoltar")
+      add(new Button("btnVoltar")
       {
          private static final long serialVersionUID = 185258892178782834L;
 
@@ -363,12 +367,6 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          public void onSubmit()
          {
             setResponsePage(new ConsultarExercicioIndex());
-         }
-
-         @Override
-         protected void onConfigure()
-         {
-            setDefaultFormProcessing(false);
          }
       });
 
@@ -501,8 +499,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
    {
       campoNomeExercicio = new TextField<String>("nomeExercicio", new PropertyModel<String>(tipoExercicio, "nomeExercicio"));
       campoNomeExercicio.setLabel(new Model<String>("nome exercício"));
- campoDescricaoExercicio =
- new TextArea<String>("descricaoExercicio", new PropertyModel<String>(tipoExercicio, "descricaoExercicio"));
+      campoDescricaoExercicio = new TextArea<String>("descricaoExercicio", new PropertyModel<String>(tipoExercicio, "descricaoExercicio"));
       campoDescricaoExercicio.setLabel(new Model<String>("descrição exercício"));
 
       campoDescricaoEquipamento =
@@ -521,7 +518,8 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          };
       campoDescricaoEquipamento.setLabel(new Model<String>("descrição do equipamento"));
 
-      campoNomeEquipamento = new TextField<String>("nomeTipoEquip", new PropertyModel<String>(tipoEquipamento, "nomeTipoEquip")){
+      campoNomeEquipamento = new TextField<String>("nomeTipoEquip", new PropertyModel<String>(tipoEquipamento, "nomeTipoEquip"))
+      {
          /**
           *
           */
@@ -535,7 +533,8 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       };
       campoNomeEquipamento.setLabel(new Model<String>("nome do equipamento"));
 
-      campoNomeCorpo = new TextField<String>("nomeMembroCorpo", new PropertyModel<String>(corpo, "nomeMembroCorpo")){
+      campoNomeCorpo = new TextField<String>("nomeMembroCorpo", new PropertyModel<String>(corpo, "nomeMembroCorpo"))
+      {
          /**
           *
           */
@@ -549,7 +548,8 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       };
       campoNomeCorpo.setLabel(new Model<String>("nome do membro"));
 
-      campoDescricaoCorpo = new TextArea<String>("descricaoMembroCorpo", new PropertyModel<String>(corpo, "descricaoMembroCorpo")){
+      campoDescricaoCorpo = new TextArea<String>("descricaoMembroCorpo", new PropertyModel<String>(corpo, "descricaoMembroCorpo"))
+      {
          /**
           *
           */

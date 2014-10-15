@@ -30,6 +30,7 @@ import com.br.GrandeViaFitness.pages.visao.cliente.visualizar.VisualizarClienteI
 import com.br.GrandeViaFitness.pages.visao.exercicio.cadastrar.CadastrarAlterarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.exercicio.consultar.ConsultarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.exercicio.visualizar.VisualizarExercicioIndex;
+import com.br.GrandeViaFitness.pages.visao.mobile.MobileHomeIndex;
 import com.br.GrandeViaFitness.security.MyAuthenticatedWebSession;
 
 /**
@@ -85,6 +86,9 @@ public class WicketApplication extends AuthenticatedWebApplication implements
 
       mountPage("Pagina-Visualizar-Cliente.html", VisualizarClienteIndex.class);
       mountPage("Pagina-Visualizar-Exercicio.html", VisualizarExercicioIndex.class);
+
+      mountPage("Mobile-home.html", MobileHomeIndex.class);
+
       getApplicationSettings().setPageExpiredErrorPage(LoginIndex.class);
       // getApplicationSettings().setAccessDeniedPage(MyAccessDeniedPage.class);
       // getApplicationSettings().setInternalErrorPage(MyInternalErrorPage.class);

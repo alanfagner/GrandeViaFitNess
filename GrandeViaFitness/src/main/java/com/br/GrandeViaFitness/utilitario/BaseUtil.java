@@ -12,6 +12,18 @@ public class BaseUtil
    private final static String pastaJs = "./common/js/";
    private final static String pastaThemaRed = "./common/themeRed/";
    private final static String pastaThemaAzul = "./common/themAzul/";
+   private final static String pastaMobile = "./common/MobileTheme/";
+
+   public static void geralMobile(final IHeaderResponse response, final boolean themaVermelho)
+   {
+      BaseUtil.addCss(response, BaseUtil.pastaMobile + "GrandeViaFitNess.min.css");
+      BaseUtil.addCss(response, BaseUtil.pastaMobile + "jquery.mobile.icons.min.css");
+      BaseUtil.addCss(response, BaseUtil.pastaMobile + "jquery.mobile-1.4.4.css");
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery-1.11.1.min.js");
+      BaseUtil.addJS(response, BaseUtil.pastaMobile + "jquery.mobile-1.4.4.js");
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.maskedinput.min.js");
+      BaseUtil.addJS(response, BaseUtil.pastaMobile + "addThemeMobile.js");
+   }
 
    public static void geral(final IHeaderResponse response, final boolean themaVermelho)
    {
