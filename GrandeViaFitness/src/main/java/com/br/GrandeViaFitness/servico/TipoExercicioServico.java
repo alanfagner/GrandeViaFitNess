@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.dao.TipoExercicioDao;
+import com.br.GrandeViaFitness.model.Corpo;
 import com.br.GrandeViaFitness.model.Entidade;
 import com.br.GrandeViaFitness.model.TipoExercicio;
 
@@ -51,6 +52,11 @@ public class TipoExercicioServico
    {
       getTipoExercicioDao().delete(tipoExercicio.getId());
 
+   }
+
+   public List<TipoExercicio> buscaListaPorCorpo(final Corpo corpo)
+   {
+      return getTipoExercicioDao().buscaListaPorCorpo(corpo);
    }
 
 }

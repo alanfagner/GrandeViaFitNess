@@ -13,16 +13,16 @@ public class BaseUtil
    private final static String pastaThemaRed = "./common/themeRed/";
    private final static String pastaThemaAzul = "./common/themAzul/";
    private final static String pastaMobile = "./common/MobileTheme/";
+   private final static String pastaMobileBLack = "./common/MobileThemeBlack/";
 
    public static void geralMobile(final IHeaderResponse response, final boolean themaVermelho)
    {
-      BaseUtil.addCss(response, BaseUtil.pastaMobile + "GrandeViaFitNess.min.css");
-      BaseUtil.addCss(response, BaseUtil.pastaMobile + "jquery.mobile.icons.min.css");
-      BaseUtil.addCss(response, BaseUtil.pastaMobile + "jquery.mobile-1.4.4.css");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery-1.11.1.min.js");
-      BaseUtil.addJS(response, BaseUtil.pastaMobile + "jquery.mobile-1.4.4.js");
-      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.maskedinput.min.js");
-      BaseUtil.addJS(response, BaseUtil.pastaMobile + "addThemeMobile.js");
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.mobile-1.4.3.min.js");
+      BaseUtil.addCss(response, BaseUtil.pastaCss + "jquery.mobile.structure-1.4.3.min.css");
+      BaseUtil.addCss(response, BaseUtil.pastaMobileBLack + "GrandeViaFitNessBlack.css");
+      BaseUtil.addCss(response, BaseUtil.pastaMobileBLack + "jquery.mobile.icons.min.css");
+
    }
 
    public static void geral(final IHeaderResponse response, final boolean themaVermelho)

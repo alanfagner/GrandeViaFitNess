@@ -1,7 +1,6 @@
 package com.br.GrandeViaFitness.pages.visao.mobile.BasePageMobile;
 
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
 import com.br.GrandeViaFitness.utilitario.BaseUtil;
 
@@ -13,6 +12,5 @@ public class BasePageMobile extends WebPage
    public void renderHead(final IHeaderResponse response)
    {
       BaseUtil.geralMobile(response, false);
-      response.render(JavaScriptHeaderItem.forScript("addScriptCss()", "id"));
    }
 }

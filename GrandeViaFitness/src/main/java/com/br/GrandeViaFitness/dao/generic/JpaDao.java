@@ -140,21 +140,6 @@ public class JpaDao<T> implements Dao<T>
       return persistentClass;
    }
 
-   /* private void paginar(final Paginacao paginacao, final Query query)
-    {
-       if (paginacao != null)
-       {
-          if (paginacao.getPosicao() != null)
-          {
-             query.setFirstResult(paginacao.getPosicao());
-          }
-          if (paginacao.getLimite() != null)
-          {
-             query.setMaxResults(paginacao.getLimite());
-          }
-       }
-    }
-   */
    private void setQueryParams(final Query query, final Object... params)
    {
       if (params != null && params.length > 0)
@@ -186,12 +171,21 @@ public class JpaDao<T> implements Dao<T>
       }
    }
 
+
    @Override
    public Object consultaUnicoResultado(final String queryname, final Map<String, Object> params)
    {
       final Query query = this.entityManager.createQuery(queryname);
       setQueryParams(query, params);
       return query.getSingleResult();
+   }
+
+   @Override
+   public List<T> consulta(final String queryname, final Map<String, Object> params)
+   {
+      final Query query = this.entityManager.createQuery(queryname);
+      setQueryParams(query, params);
+      return query.getResultList();
    }
 
 }

@@ -1,6 +1,7 @@
 function addScriptCss() {
 	
 	jQuery.noConflict(); 
+	
 	(function($) {
 		$(document).ready(function() {
 			$( ".selector" ).button({ disabled: false });

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.dao.TipoExercicioDao;
 import com.br.GrandeViaFitness.dao.generic.JpaDao;
+import com.br.GrandeViaFitness.model.Corpo;
 import com.br.GrandeViaFitness.model.Entidade;
 import com.br.GrandeViaFitness.model.TipoExercicio;
 import com.br.GrandeViaFitness.utilitario.Paginacao;
@@ -74,6 +75,24 @@ public class TipoExercicioDaoImp extends JpaDao<TipoExercicio> implements TipoEx
          sb.append("ORDER BY te." + ordernar.getColuna() + " " + ordernar.getOrdernar());
       }
       return findByNamedParams(sb.toString(), params, new Paginacao(first, count));
+   }
+
+   @Override
+   public List<TipoExercicio> buscaListaPorCorpo(final Corpo corpo)
+   {
+      final TipoExercicio filtroTipoExercicio = new TipoExercicio();
+      filtroTipoExercicio.setCorpo(corpo);
+      final StringBuilder sb = new StringBuilder();
+      final Map<String, Object> params = new HashMap<String, Object>();
+      sb.append(" SELECT te FROM TipoExercicio te ");
+      sb.append(" JOIN FETCH te.tipoEquipamento ");
+      sb.append(" JOIN FETCH te.corpo ");
+      if (filtroTipoExercicio != null)
+      {
+         montaConsultaGenerica(sb, params, filtroTipoExercicio);
+      }
+
+      return consulta(sb.toString(), params);
    }
 
 }

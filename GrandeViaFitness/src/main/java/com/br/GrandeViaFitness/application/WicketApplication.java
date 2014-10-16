@@ -31,6 +31,10 @@ import com.br.GrandeViaFitness.pages.visao.exercicio.cadastrar.CadastrarAlterarE
 import com.br.GrandeViaFitness.pages.visao.exercicio.consultar.ConsultarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.exercicio.visualizar.VisualizarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileHomeIndex;
+import com.br.GrandeViaFitness.pages.visao.mobile.ExecutaExercicio.MobileExecutarExercicioIndex;
+import com.br.GrandeViaFitness.pages.visao.mobile.MembroCorpo.MobileMembroCorpoIndex;
+import com.br.GrandeViaFitness.pages.visao.mobile.MobileVisualizarExercicio.MobileVisualizarExercicioIndex;
+import com.br.GrandeViaFitness.pages.visao.mobile.TipoExercicio.MobileTipoExercicoIndex;
 import com.br.GrandeViaFitness.security.MyAuthenticatedWebSession;
 
 /**
@@ -75,23 +79,28 @@ public class WicketApplication extends AuthenticatedWebApplication implements
       getComponentInstantiationListeners().add(springComponentInjector);
 
       langs = new String[]{"pt", "pt-br"};
-      mountPage("Pagina-Principal.html", HomePageIndex.class);
-      mountPage("Pagina-Login.html", LoginIndex.class);
+      mountPage("Principal.html", HomePageIndex.class);
+      mountPage("Login.html", LoginIndex.class);
 
-      mountPage("Pagina-Consultar-Cliente.html", ConsultarClienteIndex.class);
-      mountPage("Pagina-Consultar-Exercicio.html", ConsultarExercicioIndex.class);
+      mountPage("Consultar-Cliente.html", ConsultarClienteIndex.class);
+      mountPage("Consultar-Exercicio.html", ConsultarExercicioIndex.class);
 
-      mountPage("Pagina-Cadastrar-Alterar-Cliente.html", CadastrarAlterarClienteIndex.class);
-      mountPage("Pagina-Cadastrar-Alterar-Exercicio.html", CadastrarAlterarExercicioIndex.class);
+      mountPage("Cadastrar-Alterar-Cliente.html", CadastrarAlterarClienteIndex.class);
+      mountPage("Cadastrar-Alterar-Exercicio.html", CadastrarAlterarExercicioIndex.class);
 
-      mountPage("Pagina-Visualizar-Cliente.html", VisualizarClienteIndex.class);
-      mountPage("Pagina-Visualizar-Exercicio.html", VisualizarExercicioIndex.class);
+      mountPage("Visualizar-Cliente.html", VisualizarClienteIndex.class);
+      mountPage("Visualizar-Exercicio.html", VisualizarExercicioIndex.class);
 
-      mountPage("Mobile-home.html", MobileHomeIndex.class);
+      mountPage("HomeMobile.html", MobileHomeIndex.class);
+
+      mountPage("VisualizarLista-Corpo.html", MobileMembroCorpoIndex.class);
+      mountPage("VisualizarLista-Exericio.html", MobileTipoExercicoIndex.class);
+
+      mountPage("Executar-Exercicio.html", MobileExecutarExercicioIndex.class);
+      mountPage("Visualizar-Exericio.html", MobileVisualizarExercicioIndex.class);
 
       getApplicationSettings().setPageExpiredErrorPage(LoginIndex.class);
-      // getApplicationSettings().setAccessDeniedPage(MyAccessDeniedPage.class);
-      // getApplicationSettings().setInternalErrorPage(MyInternalErrorPage.class);
+
       try
       {
          loadSampleDataIfNoExists();

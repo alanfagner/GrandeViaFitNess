@@ -1,3 +1,4 @@
+
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<form wicket:id="formulario">
 		<div class="div_center">
@@ -96,12 +97,23 @@
 						<label for="radio3">Novo</label>
 					</span>
 				</div>
+				<div>
+					<fieldset>
+						<legend>Upload de Fotos</legend>
+						<input wicket:id="fileInput" type="file"/>
+						<input wicket:id="fileInput2" type="file"/>
+					</fieldset>
+					<input wicket:id="btnEnviarFotos" class="botao" type="submit" name="avancar" value="Upload!" />
+
+				</div>
+				<img wicket:id="imgPlc"/>
 				<div class="clear"></div>
 				<div class="grid_3">
 					<input wicket:id="btnSalvar" class="botao" type="submit" name="avancar" value="Salvar" />
 					<input wicket:id="btnVoltar" class="botao" type="submit" name="voltar" value="Voltar" />
 				</div>
 			</fieldset>
+
 		</div>
 		<span wicket:id="feedBack" class="feedBack ui-shadow"></span>
 	</form>

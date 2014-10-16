@@ -12,17 +12,13 @@ public class FormularioBase<T> extends Form<T>
    public FormularioBase(final String id, final IModel<T> model)
    {
       super(id, model);
+      setOutputMarkupId(true);
    }
 
    public FormularioBase(final String id)
    {
       super(id);
    }
-
-   @Override
-   protected void onSubmit()
-   {
-   };
 
    public void atualizaTela(final AjaxRequestTarget target, final Component... component)
    {

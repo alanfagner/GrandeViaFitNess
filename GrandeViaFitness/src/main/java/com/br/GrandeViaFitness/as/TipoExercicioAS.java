@@ -27,6 +27,11 @@ public class TipoExercicioAS implements Provider<TipoExercicio>
 
    @Autowired
    private CorpoServico corpoServico;
+
+   public List<TipoExercicio> buscaListaPorCorpo(final Corpo corpo)
+   {
+      return tipoExercicioServico.buscaListaPorCorpo(corpo);
+   }
    @Override
    public List<TipoExercicio> buscaListaGrid(final Entidade entidade, final long first, final long count, final ParametrosOrdenacao ordernar)
    {
