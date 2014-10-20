@@ -1,9 +1,9 @@
 package com.br.GrandeViaFitness.pages.visao.exercicio.cadastrar;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.ServletContext;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
@@ -19,10 +19,10 @@ import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.markup.html.image.NonCachingImage;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.resource.DynamicImageResource;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.TipoExercicioAS;
@@ -79,70 +79,8 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       criaRadio();
       criaBotoesEditar();
       criaUploadFotos();
-      criaImagen();
       criaFeedBack();
 
-   }
-
-   private void criaImagen()
-   {
-
-      imagen = new NonCachingImage("imgPlc", new AbstractReadOnlyModel<DynamicImageResource>()
-      {
-         private static final long serialVersionUID = -6757567088449341462L;
-
-
-         @Override
-         public DynamicImageResource getObject()
-         {
-            dir = new DynamicImageResource()
-            {
-               private static final long serialVersionUID = 418992039772460815L;
-               @Override
-               protected byte[] toImageData(final BufferedImage image)
-               {
-
-                  return super.toImageData(image);
-               }
-
-               @Override
-               protected byte[] getImageData(final Attributes attributes)
-               {
-                  final byte[] imageBytes = null;
-                  if (tipoExercicio.getFoto1() != null)
-                  {
-
-                     try
-                     {
-                        return new byte[tipoExercicio.getFoto1().available()];
-
-                     }
-                     catch (final IOException e)
-                     {
-                        e.printStackTrace();
-                     }
-                  }
-
-                  return imageBytes;
-               }
-            };
-            dir.setFormat("image/png");
-            return dir;
-         }
-      })
-      {
-         /**
-          *
-          */
-         private static final long serialVersionUID = -1305971831330048330L;
-
-         @Override
-         protected void onConfigure()
-         {
-            setOutputMarkupId(true);
-         }
-      };
-      addOrReplace(imagen);
    }
 
    @SuppressWarnings({"unchecked", "rawtypes"})
@@ -161,28 +99,35 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             final List<FileUpload> uploads = new ArrayList<FileUpload>();
+            final FileUpload uploadedFile = foto1.getFileUpload();
             uploads.add(foto1.getFileUpload());
-            uploads.add(foto1.getFileUpload());
+            uploads.add(foto2.getFileUpload());
+            final ServletContext context = ((WebApplication) getApplication()).getServletContext();
+            final String realPath = context.getRealPath("pictures");
+
             if (uploads != null)
             {
-               for (final FileUpload upload : uploads)
+
+               // write to a new file
+               final File newFile = new File(realPath + "\\" + uploadedFile.getClientFileName());
+
+               if (newFile.exists())
                {
+                  newFile.delete();
+               }
 
-                  try
-                  {
+               try
+               {
+                  newFile.createNewFile();
+                  foto1.getFileUpload().writeTo(newFile);
 
-                     tipoExercicio.setFoto1(upload.getInputStream());
-                     criaImagen();
-                     target.add(imagen);
-                     break;
-
-                  }
-                  catch (final Exception e)
-                  {
-                     throw new IllegalStateException("Unable to write file", e);
-                  }
+               }
+               catch (final Exception e)
+               {
+                  throw new IllegalStateException("Error");
                }
             }
+
          }
       });
    }
