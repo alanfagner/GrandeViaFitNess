@@ -9,7 +9,8 @@ public enum Mensagem
    M05("Selecione uma opção NOVO, ALTERAR ou EXCLUIR)"),
    M06("É necessario selecionar um {0} para excluir!"),
    M07("É necessario selecionar um {0} para alterar!"),
-   M08("É necessarioa limpar campos do {0} para cadastrar um novo.");
+   M08("É necessarioa limpar campos do {0} para cadastrar um novo."),
+   M10("Devem ser anexado 2 fotos para criar o exercício.");
    private String descricao;
 
    private Mensagem(final String descricao)

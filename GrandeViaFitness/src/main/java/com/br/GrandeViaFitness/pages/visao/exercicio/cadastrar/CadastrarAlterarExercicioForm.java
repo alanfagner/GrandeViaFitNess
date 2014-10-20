@@ -1,9 +1,7 @@
 package com.br.GrandeViaFitness.pages.visao.exercicio.cadastrar;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.ServletContext;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
@@ -17,15 +15,15 @@ import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
+import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.image.NonCachingImage;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
-import org.apache.wicket.protocol.http.WebApplication;
-import org.apache.wicket.request.resource.DynamicImageResource;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.TipoExercicioAS;
+import com.br.GrandeViaFitness.componentes.CriaImagenNonCachingImage;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.enumUtil.Mensagem;
 import com.br.GrandeViaFitness.enumUtil.UtilRadioEnum;
@@ -56,8 +54,8 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
    private RadioGroup<UtilRadioEnum> radioGroupEquipamento;
    private FileUploadField foto1;
    private FileUploadField foto2;
-   private NonCachingImage imagen;
-   private DynamicImageResource dir;
+   private Image imagen1;
+   private NonCachingImage imagen2;
 
    public CadastrarAlterarExercicioForm(final String id, final Boolean isAlterar, final TipoExercicio tipoExercicio)
    {
@@ -80,6 +78,18 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       criaBotoesEditar();
       criaUploadFotos();
       criaFeedBack();
+      criaImagen1(tipoExercicio.getFoto1(), tipoExercicio.getFoto2());
+   }
+
+   private void criaImagen1(final String path, final String path2)
+   {
+
+      imagen1 = CriaImagenNonCachingImage.criaImagen("myImage1", path);
+      imagen1.setOutputMarkupPlaceholderTag(true);
+
+      imagen2 = CriaImagenNonCachingImage.criaImagen("myImage2", path2);
+      imagen2.setOutputMarkupPlaceholderTag(true);
+      addOrReplace(imagen1, imagen2);
 
    }
 
@@ -98,38 +108,35 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
-            final List<FileUpload> uploads = new ArrayList<FileUpload>();
-            final FileUpload uploadedFile = foto1.getFileUpload();
-            uploads.add(foto1.getFileUpload());
-            uploads.add(foto2.getFileUpload());
-            final ServletContext context = ((WebApplication) getApplication()).getServletContext();
-            final String realPath = context.getRealPath("pictures");
 
-            if (uploads != null)
-            {
+            tipoExercicio.setFoto1(criaArquivo(foto1.getFileUpload()));
+            tipoExercicio.setFoto2(criaArquivo(foto2.getFileUpload()));
 
-               // write to a new file
-               final File newFile = new File(realPath + "\\" + uploadedFile.getClientFileName());
+            criaImagen1(tipoExercicio.getFoto1(), tipoExercicio.getFoto2());
 
-               if (newFile.exists())
-               {
-                  newFile.delete();
-               }
-
-               try
-               {
-                  newFile.createNewFile();
-                  foto1.getFileUpload().writeTo(newFile);
-
-               }
-               catch (final Exception e)
-               {
-                  throw new IllegalStateException("Error");
-               }
-            }
-
+            target.add(imagen1, imagen2);
          }
       });
+   }
+
+   private String criaArquivo(final FileUpload fileUpload)
+   {
+      final File newFile = new File(FormularioBase.getPathName() + "\\" + fileUpload.getClientFileName());
+      if (newFile.exists())
+      {
+         newFile.delete();
+      }
+
+      try
+      {
+         newFile.createNewFile();
+         fileUpload.writeTo(newFile);
+      }
+      catch (final Exception e)
+      {
+         throw new IllegalStateException("Error");
+      }
+      return fileUpload.getClientFileName();
    }
 
    private void criaBotoesEditar()
@@ -459,6 +466,12 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       if (corpo == null || corpo.getCodigo() == null)
       {
          error(Mensagem.recuperaMensagem(Mensagem.M04, "Corpo"));
+         valida = false;
+      }
+
+      if (tipoExercicio.getFoto1() == null || tipoExercicio.getFoto2() == null)
+      {
+         error(Mensagem.recuperaMensagem(Mensagem.M10));
          valida = false;
       }
 

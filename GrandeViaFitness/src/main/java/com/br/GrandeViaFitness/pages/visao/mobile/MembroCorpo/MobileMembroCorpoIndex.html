@@ -1,12 +1,15 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<form wicket:id="formulario">
 		<div data-role="header">
-			<a href="" data-icon="delete">Voltar</a>
+			<a href="" class="botaoMenu" data-icon="delete"></a>
 			<h1>Alan</h1>
-			<a href="" data-icon="check" data-theme="ui-icon">Home</a>
+			<a href="" data-icon="check" class="botaoMenu" data-theme="ui-icon"></a>
 		</div>
-		<span wicket:id="listaCorpo">
-   			<input wicket:id="btnCorpo" type="button" class="selector" data-icon="arrow-r" value="Submit Button"/>
-	    </span>
+		<ul data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-autodividers="true" data-filter="true" data-inset="true">
+			<li wicket:id="listItems">
+				<a wicket:id="Link" ><label wicket:id="lbnNome"  class="lbnLink"></label></a>
+			</li>
+		</ul>
+		
 	</form>
 </wicket:extend>

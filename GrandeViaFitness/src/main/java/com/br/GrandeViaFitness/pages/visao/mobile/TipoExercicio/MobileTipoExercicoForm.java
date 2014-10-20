@@ -1,12 +1,11 @@
 package com.br.GrandeViaFitness.pages.visao.mobile.TipoExercicio;
 
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.TipoExercicioAS;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
@@ -24,6 +23,8 @@ public class MobileTipoExercicoForm extends FormularioBase<TipoExercicio>
    private final Corpo corpo;
 
    private ListView<TipoExercicio> listViewTipoExercicio;
+
+   private RepeatingView listaCorpoView;
    public MobileTipoExercicoForm(final String id, final Corpo corpo)
    {
       super(id);
@@ -33,29 +34,26 @@ public class MobileTipoExercicoForm extends FormularioBase<TipoExercicio>
 
    private void inicializar()
    {
-      listViewTipoExercicio = new ListView<TipoExercicio>("listaExercicios", tipoExercicioAS.buscaListaPorCorpo(corpo))
+      listaCorpoView = new RepeatingView("listItems");
+      for (final TipoExercicio auxTipoExercici : tipoExercicioAS.buscaListaPorCorpo(corpo))
       {
-         private static final long serialVersionUID = -3445329734799104136L;
-
-         @Override
-         protected void populateItem(final ListItem<TipoExercicio> item)
+         final WebMarkupContainer list = new WebMarkupContainer(listaCorpoView.newChildId());
+         final AjaxLink<TipoExercicio> link = new AjaxLink<TipoExercicio>("Link")
          {
-            final AjaxButton btnAjaxTipoExercicio = new AjaxButton("btnTipoExercicio")
+            private static final long serialVersionUID = -267927957082911090L;
+
+            @Override
+            public void onClick(final AjaxRequestTarget target)
             {
-               private static final long serialVersionUID = 6373340180300553820L;
+               setResponsePage(new MobileVisualizarExercicioIndex(auxTipoExercici));
 
-               @Override
-               protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
-               {
-                  setResponsePage(new MobileVisualizarExercicioIndex(item.getModelObject()));
-               }
-            };
-            btnAjaxTipoExercicio.add(new AttributeModifier("value", item.getModelObject().getNomeExercicio()));
-            item.add(btnAjaxTipoExercicio);
-         }
-
-      };
-      listViewTipoExercicio.setOutputMarkupId(true);
+            }
+         };
+         link.add(new Label("lbnNome", auxTipoExercici.getNomeExercicio()));
+         list.add(link);
+         listaCorpoView.add(list);
+      }
+      addOrReplace(listaCorpoView);
 
       addOrReplace(new AjaxLink<TipoExercicio>("btnVoltar")
       {
@@ -69,7 +67,6 @@ public class MobileTipoExercicoForm extends FormularioBase<TipoExercicio>
          }
       });
 
-      addOrReplace(listViewTipoExercicio);
 
    }
 

@@ -1,0 +1,93 @@
+
+
+body{
+	font: 76.5% "Arial", "Helvetica", sans-serif;
+}
+.botaoMenu{
+	width: 35.438 !important; 
+	height: 16px !important;
+	 width: 35.438 !important; 
+	 padding-right: 0px !important;
+}
+
+.backGroundExecutar{
+	background-color: white; 
+	height: 590px; 
+	border-radius: 10px 10px 10px 10px;
+}
+
+.lbnLink{
+	width: 0px; 
+	height: 0px; 
+	padding-bottom: 10px
+}
+.Grid {
+	background-color: #fff;
+	margin: 5px 0 10px 0;
+	border: solid 1px #525252;
+	border-collapse: collapse;
+	font-family: Calibri;
+	color: #474747;
+}
+
+.Grid td {
+	padding: 2px;
+	border: solid 1px #c1c1c1;
+}
+
+.Grid th {
+	padding: 4px 2px;
+	color: #fff;
+	background: #363670 url(Images/grid-header.png) repeat-x top;
+	border-left: solid 1px #525252;
+	font-size: 0.9em;
+}
+
+.Grid .alt {
+	background: #fcfcfc url(Images/grid-alt.png) repeat-x top;
+}
+
+.Grid .pgr {
+	background: #363670 url(Images/grid-pgr.png) repeat-x top;
+}
+
+.Grid .pgr table {
+	margin: 3px 0;
+}
+
+.Grid .pgr td {
+	border-width: 0;
+	padding: 0 6px;
+	border-left: solid 1px #666;
+	font-weight: bold;
+	color: #fff;
+	line-height: 12px;
+}
+
+.Grid .pgr a {
+	color: Gray;
+	text-decoration: none;
+}
+
+.Grid .pgr a:hover {
+	color: #000;
+	text-decoration: none;
+}
+-
+See
+ 
+more
+ 
+at
+:
+ 
+http
+:
+//www
+.dotnetfox
+.com
+/articles/gridview-custom-css-style-example-in-Asp-Net-1088
+.aspx
+#sthash
+.7nz3pQR7
+.dpuf

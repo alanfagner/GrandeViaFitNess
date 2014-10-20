@@ -1,11 +1,10 @@
 package com.br.GrandeViaFitness.pages.visao.mobile.MembroCorpo;
 
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.CorpoAS;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
@@ -17,6 +16,7 @@ public class MobileMembroCorpoForm extends FormularioBase<Corpo>
    private static final long serialVersionUID = -2384361859690420515L;
    @SpringBean
    private CorpoAS corpoAS;
+   private RepeatingView listaCorpoView;
 
    public MobileMembroCorpoForm(final String id)
    {
@@ -28,30 +28,26 @@ public class MobileMembroCorpoForm extends FormularioBase<Corpo>
    private void inicializar()
    {
 
-      final ListView<Corpo> listMembro = new ListView<Corpo>("listaCorpo", corpoAS.recuperaListaCorpo())
+      listaCorpoView = new RepeatingView("listItems");
+
+      for (final Corpo auxCorpo : corpoAS.recuperaListaCorpo())
       {
-         private static final long serialVersionUID = 5660002990222805270L;
-
-         @Override
-         protected void populateItem(final ListItem<Corpo> item)
+         final WebMarkupContainer list = new WebMarkupContainer(listaCorpoView.newChildId());
+         final AjaxLink<Corpo> link = new AjaxLink<Corpo>("Link")
          {
-            final AjaxButton btnCorpo = new AjaxButton("btnCorpo")
+            private static final long serialVersionUID = -267927957082911090L;
+
+            @Override
+            public void onClick(final AjaxRequestTarget target)
             {
-               private static final long serialVersionUID = 4258612567022548456L;
+               setResponsePage(new MobileTipoExercicoIndex(getModelObject()));
 
-               @Override
-               protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
-               {
-                  setResponsePage(new MobileTipoExercicoIndex(item.getModelObject()));
-               }
-            };
-            btnCorpo.add(new AttributeModifier("value", item.getModelObject().getNomeMembroCorpo()));
-            btnCorpo.setOutputMarkupId(true);
-            item.add(btnCorpo);
-         }
-      };
-      listMembro.setOutputMarkupId(true);
-      this.add(listMembro);
-
+            }
+         };
+         link.add(new Label("lbnNome", auxCorpo.getNomeMembroCorpo()));
+         list.add(link);
+         listaCorpoView.add(list);
+      }
+      addOrReplace(listaCorpoView);
    }
 }

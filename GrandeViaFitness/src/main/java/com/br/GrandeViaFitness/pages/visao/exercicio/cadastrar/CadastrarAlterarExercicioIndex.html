@@ -100,9 +100,23 @@
 				<div>
 					<fieldset>
 						<legend>Upload de Fotos</legend>
-						<input wicket:id="fileInput" type="file"/>
-						<input wicket:id="fileInput2" type="file"/>
+
+
+
+
+						<div style="float: left">
+							<input wicket:id="fileInput" type="file" />
+							<div class="clear"></div>
+							<img wicket:id="myImage1" />
+						</div>
+						<div style="float: right">
+							<input wicket:id="fileInput2" type="file" />
+							<div class="clear"></div>
+							<img wicket:id="myImage2" />
+						</div>
 					</fieldset>
+
+
 					<input wicket:id="btnEnviarFotos" class="botao" type="submit" name="avancar" value="Upload!" />
 
 				</div>

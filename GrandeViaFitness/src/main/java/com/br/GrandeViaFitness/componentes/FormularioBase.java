@@ -9,10 +9,12 @@ public class FormularioBase<T> extends Form<T>
 {
    private static final long serialVersionUID = -5262964465965255989L;
 
+   private static String pathName;
    public FormularioBase(final String id, final IModel<T> model)
    {
       super(id, model);
       setOutputMarkupId(true);
+      FormularioBase.setPathName("c:\\pictures");
    }
 
    public FormularioBase(final String id)
@@ -31,5 +33,15 @@ public class FormularioBase<T> extends Form<T>
          }
       }
       target.add(component);
+   }
+
+   public static String getPathName()
+   {
+      return FormularioBase.pathName;
+   }
+
+   public static void setPathName(final String pathName)
+   {
+      FormularioBase.pathName = pathName;
    }
 }

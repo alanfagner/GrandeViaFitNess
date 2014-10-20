@@ -1,5 +1,6 @@
 package com.br.GrandeViaFitness.pages.visao.mobile.MobileVisualizarExercicio;
 
+import org.apache.wicket.markup.head.IHeaderResponse;
 import com.br.GrandeViaFitness.model.TipoExercicio;
 import com.br.GrandeViaFitness.pages.login.basePage.BasePage;
 import com.br.GrandeViaFitness.pages.visao.mobile.BasePageMobile.BasePageMobile;
@@ -11,5 +12,11 @@ public class MobileVisualizarExercicioIndex extends BasePageMobile
    public MobileVisualizarExercicioIndex(final TipoExercicio tipoExercicio)
    {
       addOrReplace(new MobileVisualizarExercicioForm(BasePage.FORMULARIO, tipoExercicio));
+   }
+
+   @Override
+   public void renderHead(final IHeaderResponse response)
+   {
+      super.renderHead(response);
    }
 }

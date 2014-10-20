@@ -93,11 +93,11 @@ public class WicketApplication extends AuthenticatedWebApplication implements
 
       mountPage("HomeMobile.html", MobileHomeIndex.class);
 
-      mountPage("VisualizarLista-Corpo.html", MobileMembroCorpoIndex.class);
-      mountPage("VisualizarLista-Exericio.html", MobileTipoExercicoIndex.class);
+      mountPage("Mobile.html", MobileMembroCorpoIndex.class);
+      mountPage("VisualizarLista-ExericioMobile.html", MobileTipoExercicoIndex.class);
 
-      mountPage("Executar-Exercicio.html", MobileExecutarExercicioIndex.class);
-      mountPage("Visualizar-Exericio.html", MobileVisualizarExercicioIndex.class);
+      mountPage("Executar-ExercicioMobile.html", MobileExecutarExercicioIndex.class);
+      mountPage("Visualizar-ExericioMobile.html", MobileVisualizarExercicioIndex.class);
 
       getApplicationSettings().setPageExpiredErrorPage(LoginIndex.class);
 

@@ -19,6 +19,9 @@ public class BaseUtil
    {
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery-1.11.1.min.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.mobile-1.4.3.min.js");
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.cycle.all.js");
+      BaseUtil.addCss(response, BaseUtil.pastaCss + "960.css");
+      BaseUtil.addCss(response, BaseUtil.pastaCss + "mobile.css");
       BaseUtil.addCss(response, BaseUtil.pastaCss + "jquery.mobile.structure-1.4.3.min.css");
       BaseUtil.addCss(response, BaseUtil.pastaMobileBLack + "GrandeViaFitNessBlack.css");
       BaseUtil.addCss(response, BaseUtil.pastaMobileBLack + "jquery.mobile.icons.min.css");

@@ -1,6 +1,5 @@
 package com.br.GrandeViaFitness.model;
 
-import java.io.InputStream;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "TB_TIPO_EXERCICIO", schema = "GRANDEVIAFITNESS")
@@ -37,10 +35,10 @@ public class TipoExercicio implements Entidade
    @Column(name = "DS_EXERCICIO", nullable = false, length = 100)
    private String descricaoExercicio;
 
-   @Transient
-   private InputStream foto1;
-   @Transient
-   private InputStream foto2;
+   @Column(name = "N_FOTO1", nullable = false, length = 100)
+   private String foto1;
+   @Column(name = "N_FOTO2", nullable = false, length = 100)
+   private String foto2;
 
 
    public Long getCodigo()
@@ -93,22 +91,22 @@ public class TipoExercicio implements Entidade
       this.descricaoExercicio = descricaoExercicio;
    }
 
-   public InputStream getFoto1()
+   public String getFoto1()
    {
       return foto1;
    }
 
-   public void setFoto1(final InputStream foto1)
+   public void setFoto1(final String foto1)
    {
       this.foto1 = foto1;
    }
 
-   public InputStream getFoto2()
+   public String getFoto2()
    {
       return foto2;
    }
 
-   public void setFoto2(final InputStream foto2)
+   public void setFoto2(final String foto2)
    {
       this.foto2 = foto2;
    }
