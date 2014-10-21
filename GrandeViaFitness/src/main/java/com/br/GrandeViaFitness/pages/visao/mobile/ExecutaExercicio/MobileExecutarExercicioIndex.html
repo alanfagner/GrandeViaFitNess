@@ -3,17 +3,21 @@
 		<div class="header" data-role="header"><a href="" wicket:id="btnVoltar" class="botaoMenu" data-icon="arrow-l"></a>
 			<h1>Alan</h1> <a href="" id="btnExecutar" data-icon="plus" class="botaomenu"> </a></div>
 		<div style="margin: auto;">
-			<div class="ui-content"><label for="basic"> Quantidade Peso <b>(KG)</b>
-			</label>
-				<div class="grid_2"><input type="text" wicket:id="qtdPeso" class="valor" name="qtdPeso"></div></div>
-			<div class="ui-content"><label for="basic"> Quantidade de Repetições </label>
-				<div class="grid_2"><input type="text" wicket:id="qtdRepeticao" class="numero" name="qtdRepeticao"></div></div>
-			<div class="ui-content"><label for="basic"> Numero Series </label>
-				<div class="grid_2"><input type="text" name="numeroSeries" class="numero" wicket:id="numeroSeries"></div></div>
-			<div class="clear"></div>
+			<div data-form="ui-body-a" style="border-left-width: 1px; margin-left: 10px; margin-right: 10px; margin-top: 10px;"
+			class="ui-body ui-body-a ui-corner-all"
+		>
+				<div class="ui-content"><label for="basic"> Quantidade Peso <b>(KG)</b>
+				</label>
+					<div class="grid_2"><input type="text" wicket:id="qtdPeso" class="valor" name="qtdPeso"></div></div>
+				<div class="ui-content"><label for="basic"> Quantidade de Repetições </label>
+					<div class="grid_2"><input type="text" wicket:id="qtdRepeticao" class="numero" name="qtdRepeticao"></div></div>
+				<div class="ui-content"><label for="basic"> Numero Series </label>
+					<div class="grid_2"><input type="text" name="numeroSeries" class="numero" wicket:id="numeroSeries"></div></div>
+				<div class="clear"></div>
 
-			<div class="ui-content grid_4"><input type="button" name="name" wicket:id="salvar" value="Adicionar"></div>
+				<div class="ui-content grid_4"><input type="button" name="name" wicket:id="salvar" value="Adicionar"></div>
 
+		</div>
 			<div class="clear"></div>
 
 			<div class="ui-content" wicket:id="container">
