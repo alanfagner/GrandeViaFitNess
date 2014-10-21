@@ -39,8 +39,12 @@ public class FormularioBase<T> extends Form<T>
    @Override
    protected void onBeforeRender()
    {
-      // TODO Auto-generated method stub
       super.onBeforeRender();
+      final AjaxRequestTarget target = getRequestCycle().find(AjaxRequestTarget.class);
+      if (target != null)
+      {
+         target.appendJavaScript("setTimeout(function(){$(.feedBack').hide('slow')}, 8000);");
+      }
    }
 
    public void atualizaTela(final AjaxRequestTarget target, final Component... component)

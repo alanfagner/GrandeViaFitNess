@@ -415,11 +415,11 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
                tipoExercicio.setTipoEquipamento(tipoEquipamento);
                if (isAlterar)
                {
-                  getSession().success(Mensagem.recuperaMensagem(Mensagem.M03, "Exercío"));
+                  getSession().success(Mensagem.recuperaMensagem(Mensagem.M03, "Atividade"));
                }
                else
                {
-                  getSession().success(Mensagem.recuperaMensagem(Mensagem.M01, "Exercío"));
+                  getSession().success(Mensagem.recuperaMensagem(Mensagem.M01, "Atividade"));
                }
                tipoExercicioAS.persisteDadosExercicios(tipoExercicio);
                setResponsePage(new ConsultarExercicioIndex());
@@ -574,9 +574,9 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
    private void criaCampos()
    {
       campoNomeExercicio = new TextField<String>("nomeExercicio", new PropertyModel<String>(tipoExercicio, "nomeExercicio"));
-      campoNomeExercicio.setLabel(new Model<String>("nome exercício"));
+      campoNomeExercicio.setLabel(new Model<String>("nome Atividade"));
       campoDescricaoExercicio = new TextArea<String>("descricaoExercicio", new PropertyModel<String>(tipoExercicio, "descricaoExercicio"));
-      campoDescricaoExercicio.setLabel(new Model<String>("descrição exercício"));
+      campoDescricaoExercicio.setLabel(new Model<String>("descrição Atividade"));
 
       campoDescricaoEquipamento =
          new TextArea<String>("descricaoTipoEquip", new PropertyModel<String>(tipoEquipamento, "descricaoTipoEquip"))
@@ -667,11 +667,11 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
    {
       if (isAlterar)
       {
-         addOrReplace(new Label("Label1", "Alterar Exercício"));
+         addOrReplace(new Label("Label1", "Alterar Atividade"));
       }
       else
       {
-         addOrReplace(new Label("Label1", "Cadastrar Novo Exercício"));
+         addOrReplace(new Label("Label1", "Cadastrar Atividade"));
       }
 
    }
