@@ -3,7 +3,6 @@ package com.br.GrandeViaFitness.as;
 import java.util.List;
 import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.componentes.provider.Provider;
@@ -52,7 +51,7 @@ public class PessoaAS implements Provider<Pessoa>
       return authorityServico;
    }
 
-   @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+   @Transactional
    public void saveInicial(final Pessoa pessoa)
    {
       authorityServico.save(pessoa.getAuthority());
@@ -65,7 +64,7 @@ public class PessoaAS implements Provider<Pessoa>
 
    }
 
-   @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+   @Transactional
    public void save(final Pessoa pessoa)
    {
       if (pessoa.getEndereco().getCodigo() == 0)
@@ -86,7 +85,7 @@ public class PessoaAS implements Provider<Pessoa>
 
    }
 
-   @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+   @Transactional
    public void excluirPessoa(final Pessoa pessoa)
    {
       pessoaServico.excluir(pessoa);

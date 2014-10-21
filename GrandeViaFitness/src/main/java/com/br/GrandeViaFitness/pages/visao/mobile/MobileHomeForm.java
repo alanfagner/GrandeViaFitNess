@@ -20,6 +20,7 @@ public class MobileHomeForm extends FormularioBase<Pessoa>
    public MobileHomeForm(final String id)
    {
       super(id);
+      setMobile(true);
       inicializar();
    }
 

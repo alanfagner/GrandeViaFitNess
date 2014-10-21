@@ -3,6 +3,7 @@ package com.br.GrandeViaFitness.as;
 import java.util.List;
 import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.componentes.provider.Provider;
 import com.br.GrandeViaFitness.model.Entidade;
@@ -27,6 +28,18 @@ public class RlPessoaExercicioAS implements Provider<RlPessoaExercicio>
    public int contadorListaGrid(final Entidade filtro)
    {
       return rlPessoaExercicioServico.contadorListaGrid(filtro);
+   }
+
+   public List<RlPessoaExercicio> buscaListaExercicio(final RlPessoaExercicio rlPessoaExercicio)
+   {
+      return rlPessoaExercicioServico.buscaListaExercicio(rlPessoaExercicio);
+   }
+
+   @Transactional
+   public void persisteDados(final RlPessoaExercicio rlPessoaExercicio)
+   {
+      rlPessoaExercicioServico.persisteDados(rlPessoaExercicio);
+
    }
 
 }

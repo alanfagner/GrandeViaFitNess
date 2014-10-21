@@ -1,47 +1,160 @@
 package com.br.GrandeViaFitness.pages.visao.mobile.ExecutaExercicio;
 
+import java.util.Date;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigator;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.repeater.Item;
-import org.apache.wicket.markup.repeater.data.GridView;
+import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.PageableListView;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.RlPessoaExercicioAS;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
-import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
-import com.br.GrandeViaFitness.componentes.gridGenerica.DataGridGenerica;
-import com.br.GrandeViaFitness.componentes.provider.ProviderGenerico;
+import com.br.GrandeViaFitness.enumUtil.Mensagem;
 import com.br.GrandeViaFitness.model.RlPessoaExercicio;
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileVisualizarExercicio.MobileVisualizarExercicioIndex;
+import com.br.GrandeViaFitness.utilitario.Util;
 
 public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercicio>
 {
 
    private static final long serialVersionUID = 303054331978593054L;
-   private DataGridGenerica<RlPessoaExercicio, String> gridGenerica;
-   private ProviderGenerico<RlPessoaExercicio, String> providerGenerico;
+
    @SpringBean
    private RlPessoaExercicioAS rlPessoaExercicioAS;
    private final RlPessoaExercicio rlPessoaExercicio;
+
+   private FeedbackPanel feedBack;
+   private PageableListView<RlPessoaExercicio> listaHistorio;
 
    public MobileExecutarExercicioFrom(final String id, final RlPessoaExercicio pessoaExercico)
    {
       super(id, new CompoundPropertyModel<RlPessoaExercicio>(pessoaExercico));
       rlPessoaExercicio = pessoaExercico;
+      setMobile(true);
       inicializar();
    }
 
    private void inicializar()
    {
-      criaGrid();
-      criaBotoes();
 
+      criaBotoes();
+      criaHistorico();
+      criaCampos();
+      criaFeedBack();
+   }
+
+   private void criaFeedBack()
+   {
+      feedBack = new FeedbackPanel("feedback");
+      feedBack.setOutputMarkupPlaceholderTag(true);
+
+      addOrReplace(feedBack);
+   }
+
+   private void criaCampos()
+   {
+      addOrReplace(new TextField<String>("qtdPeso", new PropertyModel<String>(rlPessoaExercicio, "quatidadePeso")));
+      addOrReplace(new TextField<String>("qtdRepeticao", new PropertyModel<String>(rlPessoaExercicio, "numeroRepeticoes")));
+      addOrReplace(new TextField<String>("numeroSeries", new PropertyModel<String>(rlPessoaExercicio, "numeroSeries")));
+
+   }
+
+   private void criaHistorico()
+   {
+      final WebMarkupContainer containerListView = new WebMarkupContainer("container");
+      listaHistorio =
+         new PageableListView<RlPessoaExercicio>("listaHistorico", rlPessoaExercicioAS.buscaListaExercicio(rlPessoaExercicio), 5)
+         {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            protected void populateItem(final ListItem<RlPessoaExercicio> item)
+            {
+
+               item.add(new Label("lbnData", Util.getDataPorExtenso(item.getModelObject().getDataExercicio())));
+               item.add(new Label("lbnRepeticoes", item.getModelObject().getNumeroRepeticoes().toString()));
+               item.add(new Label("lbnSeries", item.getModelObject().getNumeroRepeticoes().toString()));
+               item.add(new Label("lbnPeso", item.getModelObject().getQuatidadePeso().toString()));
+
+            }
+
+            @Override
+            protected void onConfigure()
+            {
+               super.onConfigure();
+               final AjaxRequestTarget target = getRequestCycle().find(AjaxRequestTarget.class);
+               if (target != null)
+               {
+                  target.appendJavaScript("$('#listview').listview().listview('refresh');");
+               }
+            }
+
+         };
+
+      containerListView.setOutputMarkupId(true);
+      containerListView.addOrReplace(listaHistorio);
+      containerListView.add(new AjaxPagingNavigator("navigator", listaHistorio));
+
+      addOrReplace(containerListView);
+   }
+
+   private boolean validaCampos()
+   {
+      Boolean valida = true;
+      if (rlPessoaExercicio.getNumeroRepeticoes() == null)
+      {
+         error(Mensagem.recuperaMensagem(Mensagem.M04, "número de repetições"));
+         valida = false;
+      }
+
+      if (rlPessoaExercicio.getQuatidadePeso() == null)
+      {
+         error(Mensagem.recuperaMensagem(Mensagem.M04, "quantidade de peso"));
+         valida = false;
+      }
+
+      if (rlPessoaExercicio.getNumeroSeries() == null)
+      {
+         error(Mensagem.recuperaMensagem(Mensagem.M04, "número de series"));
+         valida = false;
+      }
+
+      return valida;
    }
 
    private void criaBotoes()
    {
+      addOrReplace(new AjaxButton("salvar")
+      {
+         private static final long serialVersionUID = -8031422717986871238L;
+
+         @Override
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+         {
+            if (validaCampos())
+            {
+               rlPessoaExercicio.setDataExercicio(new Date());
+               rlPessoaExercicioAS.persisteDados(rlPessoaExercicio);
+               criaHistorico();
+            }
+            atualizaTela(target, feedBack);
+         }
+
+         @Override
+         protected void onError(final AjaxRequestTarget target, final Form<?> form)
+         {
+            atualizaTela(target, feedBack);
+         }
+
+      });
+
       addOrReplace(new AjaxButton("btnVoltar")
       {
          private static final long serialVersionUID = 7044710643044229617L;
@@ -54,76 +167,4 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
       });
 
    }
-
-   private void criaGrid()
-   {
-
-      add(new GridView<RlPessoaExercicio>("rows", getProviderGenerico())
-      {
-         private static final long serialVersionUID = 5797362614514680990L;
-
-         @Override
-         protected void populateItem(final Item<RlPessoaExercicio> item)
-         {
-            final RlPessoaExercicio rlPessoaExercicio = item.getModelObject();
-            item.add(new Label("firstName", rlPessoaExercicio.getDataExercicio()));
-
-         }
-
-         @Override
-         protected void populateEmptyItem(final Item<RlPessoaExercicio> item)
-         {
-            // TODO Auto-generated method stub
-
-         }
-      });
-      /*
-            final List<IColumn<RlPessoaExercicio, String>> columns = new ArrayList<IColumn<RlPessoaExercicio, String>>();
-            final List<AjaxLink<RlPessoaExercicio>> listaBotoes = new ArrayList<AjaxLink<RlPessoaExercicio>>();
-            columns.add(DataGridGenerica.criaColunarRlPessoaExercicio("Codigo", "codigo", true, 5));
-            columns.add(DataGridGenerica.criaColunarRlPessoaExercicio("Número Repetições", "numeroRepeticoes", true, 40));
-            columns.add(DataGridGenerica.criaColunarRlPessoaExercicio("Quantidade de Peso", "quatidadePeso", true, 10));
-            columns.add(DataGridGenerica.criaColunarRlPessoaExercicio("Número de Series", "numeroSeries", true, 40));
-            columns.add(new AbstractColumn<RlPessoaExercicio, String>(new Model<String>("Opções"))
-            {
-               private static final long serialVersionUID = -3102670641136395641L;
-
-
-               @Override
-               public String getCssClass()
-               {
-                  return "tam5";
-               }
-
-               @Override
-               public void populateItem(final Item<ICellPopulator<RlPessoaExercicio>> cellItem, final String componentId,
-                  final IModel<RlPessoaExercicio> entidade)
-               {
-                  if (listaBotoes.size() > 0)
-                  {
-                     cellItem.add(new ActionButtonPanel<RlPessoaExercicio>(componentId, entidade, listaBotoes));
-                  }
-
-               }
-
-            });
-            gridGenerica = new DataGridGenerica<RlPessoaExercicio, String>("table", columns, getProviderGenerico(), 5)
-            {
-               private static final long serialVersionUID = -2837712007974126400L;
-
-            };
-            gridGenerica.setOutputMarkupPlaceholderTag(true);
-            addOrReplace(gridGenerica);*/
-   }
-
-   public ProviderGenerico<RlPessoaExercicio, String> getProviderGenerico()
-   {
-      if (providerGenerico == null)
-      {
-         providerGenerico = new ProviderGenerico<RlPessoaExercicio, String>(rlPessoaExercicioAS, getModelObject());
-         providerGenerico.setOrdernar(new ParametrosOrdenacao("dataExercicio", true));
-      }
-      return providerGenerico;
-   }
-
 }

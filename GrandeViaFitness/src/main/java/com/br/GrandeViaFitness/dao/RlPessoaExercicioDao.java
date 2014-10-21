@@ -13,4 +13,6 @@ public interface RlPessoaExercicioDao extends Dao<RlPessoaExercicio>
 
    List<RlPessoaExercicio> buscaListaGrid(Entidade filtro, long first, long count, ParametrosOrdenacao ordernar);
 
+   List<RlPessoaExercicio> buscaListaExercicio(RlPessoaExercicio rlPessoaExercicio);
+
 }

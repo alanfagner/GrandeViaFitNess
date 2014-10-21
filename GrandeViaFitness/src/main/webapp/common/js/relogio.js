@@ -13,6 +13,5 @@ function atualizarRelogio() {
 	// Compose the string for display
 	var currentTimeString =  + currentHours + ":" + currentMinutes + ":"
 			+ currentSeconds;
-
 	$(".SpanHorarioData").html(currentDateString + currentTimeString);
 }

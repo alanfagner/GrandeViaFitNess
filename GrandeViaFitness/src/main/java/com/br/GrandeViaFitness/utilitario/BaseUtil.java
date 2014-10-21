@@ -10,21 +10,21 @@ public class BaseUtil
 {
    private final static String pastaCss = "./common/css/";
    private final static String pastaJs = "./common/js/";
-   private final static String pastaThemaRed = "./common/themeRed/";
    private final static String pastaThemaAzul = "./common/themAzul/";
-   private final static String pastaMobile = "./common/MobileTheme/";
-   private final static String pastaMobileBLack = "./common/MobileThemeBlack/";
+   private final static String pastaMobileBlue = "./common/MobileBlue/";
 
    public static void geralMobile(final IHeaderResponse response, final boolean themaVermelho)
    {
-      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery-1.11.1.min.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.mobile-1.4.3.min.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.cycle.all.js");
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "mobile.js");
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.maskedinput.min.js");
+
       BaseUtil.addCss(response, BaseUtil.pastaCss + "960.css");
       BaseUtil.addCss(response, BaseUtil.pastaCss + "mobile.css");
       BaseUtil.addCss(response, BaseUtil.pastaCss + "jquery.mobile.structure-1.4.3.min.css");
-      BaseUtil.addCss(response, BaseUtil.pastaMobileBLack + "GrandeViaFitNessBlack.css");
-      BaseUtil.addCss(response, BaseUtil.pastaMobileBLack + "jquery.mobile.icons.min.css");
+      BaseUtil.addCss(response, BaseUtil.pastaMobileBlue + "GrandeViaFitnessBlue.css");
+      BaseUtil.addCss(response, BaseUtil.pastaMobileBlue + "jquery.mobile.icons.min.css");
 
    }
 
@@ -34,18 +34,10 @@ public class BaseUtil
       BaseUtil.addCss(response, BaseUtil.pastaCss + "myCss.css");
       BaseUtil.addCss(response, BaseUtil.pastaCss + "jquery.dataTables.min.css");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "relogio.js");
-      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery-1.11.1.min.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.maskedinput.min.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "addTheme.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.dataTables.min.js");
-
-      if(themaVermelho){
-         BaseUtil.adicionarThema(response, BaseUtil.pastaThemaRed);
-      }
-      else
-      {
-         BaseUtil.adicionarThema(response, BaseUtil.pastaThemaAzul);
-      }
+      BaseUtil.adicionarThema(response, BaseUtil.pastaThemaAzul);
    }
 
    private static void adicionarThema(final IHeaderResponse response, final String thema)
@@ -54,7 +46,7 @@ public class BaseUtil
       BaseUtil.addCss(response, thema + "jquery-ui.min.css");
       BaseUtil.addCss(response, thema + "jquery-ui.structure.min.css");
       BaseUtil.addCss(response, thema + "jquery-ui.theme.min.css");
-      BaseUtil.addJS(response, BaseUtil.pastaThemaRed + "jquery-ui.min.js");
+      BaseUtil.addJS(response, thema + "jquery-ui.min.js");
 
    }
 

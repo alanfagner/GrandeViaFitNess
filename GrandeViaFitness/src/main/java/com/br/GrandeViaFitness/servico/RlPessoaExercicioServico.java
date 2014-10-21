@@ -18,16 +18,31 @@ public class RlPessoaExercicioServico
    @Autowired
    private RlPessoaExercicioDao rlPessoaExercicioDao;
 
+   public RlPessoaExercicioDao getRlPessoaExercicioDao()
+   {
+      rlPessoaExercicioDao.setPersistentClass(RlPessoaExercicio.class);
+      return rlPessoaExercicioDao;
+   }
+
    public int contadorListaGrid(final Entidade filtro)
    {
-      return rlPessoaExercicioDao.contadorListaGrid(filtro);
-
+      return getRlPessoaExercicioDao().contadorListaGrid(filtro);
    }
 
    public List<RlPessoaExercicio> buscaListaGrid(final Entidade filtro, final long first, final long count,
       final ParametrosOrdenacao ordernar)
    {
-      return rlPessoaExercicioDao.buscaListaGrid(filtro, first, count, ordernar);
+      return getRlPessoaExercicioDao().buscaListaGrid(filtro, first, count, ordernar);
+   }
+
+   public List<RlPessoaExercicio> buscaListaExercicio(final RlPessoaExercicio rlPessoaExercicio)
+   {
+      return getRlPessoaExercicioDao().buscaListaExercicio(rlPessoaExercicio);
+   }
+
+   public void persisteDados(final RlPessoaExercicio rlPessoaExercicio)
+   {
+      getRlPessoaExercicioDao().save(rlPessoaExercicio);
    }
 
 }

@@ -62,9 +62,23 @@ public class RlPessoaExercicioDaoImpl extends JpaDao<RlPessoaExercicio> implemen
       }
       if (ordernar != null)
       {
-         sb.append("ORDER BY p." + ordernar.getColuna() + " " + ordernar.getOrdernar());
+         sb.append("ORDER BY rlp." + ordernar.getColuna() + " " + ordernar.getOrdernar());
       }
       return findByNamedParams(sb.toString(), params, new Paginacao(first, count));
+   }
+
+   @Override
+   public List<RlPessoaExercicio> buscaListaExercicio(final RlPessoaExercicio rlPessoaExercicio)
+   {
+      final StringBuilder sb = new StringBuilder();
+      final Map<String, Object> params = new HashMap<String, Object>();
+      sb.append(" SELECT rlp FROM RlPessoaExercicio rlp ");
+      if (rlPessoaExercicio != null)
+      {
+         montaConsultaGenerica(sb, params, rlPessoaExercicio);
+      }
+      sb.append("ORDER BY rlp.dataExercicio desc");
+      return consulta(sb.toString(), params);
    }
 
 }
