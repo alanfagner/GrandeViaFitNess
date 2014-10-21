@@ -17,7 +17,6 @@ public class BaseUtil
    {
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.mobile-1.4.3.min.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.cycle.all.js");
-      BaseUtil.addJS(response, BaseUtil.pastaJs + "mobile.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.maskedinput.min.js");
 
       BaseUtil.addCss(response, BaseUtil.pastaCss + "960.css");

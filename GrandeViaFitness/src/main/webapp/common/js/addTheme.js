@@ -42,14 +42,7 @@ function addScriptCss() {
 					primary : "ui-icon ui-icon-close"
 				},
 				text : false
-			});
-			
-			$(".Visualizar").button({
-				icons : {
-					primary : "ui-icon ui-icon-search"
-				},
-				text : false
-			});
+			});	
 		});
 	})(jQuery);
 }

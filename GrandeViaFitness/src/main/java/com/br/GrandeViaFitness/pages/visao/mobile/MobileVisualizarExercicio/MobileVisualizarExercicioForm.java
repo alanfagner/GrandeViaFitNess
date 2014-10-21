@@ -24,7 +24,6 @@ public class MobileVisualizarExercicioForm extends FormularioBase<TipoExercicio>
    {
       super(id, new CompoundPropertyModel<TipoExercicio>(tipoExercicio));
       this.tipoExercicio = tipoExercicio;
-      setMobile(true);
       inicializar();
    }
 

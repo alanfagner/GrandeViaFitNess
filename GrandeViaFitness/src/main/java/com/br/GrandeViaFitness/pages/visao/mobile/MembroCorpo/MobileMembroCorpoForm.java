@@ -22,7 +22,6 @@ public class MobileMembroCorpoForm extends FormularioBase<Corpo>
    {
       super(id);
       setOutputMarkupId(true);
-      setMobile(true);
       inicializar();
    }
 

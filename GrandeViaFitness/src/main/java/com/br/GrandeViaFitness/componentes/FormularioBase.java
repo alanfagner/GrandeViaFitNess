@@ -2,18 +2,14 @@ package com.br.GrandeViaFitness.componentes;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.IModel;
-import com.br.GrandeViaFitness.utilitario.BaseUtil;
 
 public class FormularioBase<T> extends Form<T>
 {
    private static final long serialVersionUID = -5262964465965255989L;
 
    private static String pathName;
-
-   private Boolean Mobile = false;
 
    public FormularioBase(final String id, final IModel<T> model)
    {
@@ -25,15 +21,6 @@ public class FormularioBase<T> extends Form<T>
    public FormularioBase(final String id)
    {
       super(id);
-   }
-
-   @Override
-   public void renderHead(final IHeaderResponse response)
-   {
-      if (Mobile)
-      {
-         BaseUtil.geralMobile(response, false);
-      }
    }
 
    @Override
@@ -68,10 +55,5 @@ public class FormularioBase<T> extends Form<T>
    public static void setPathName(final String pathName)
    {
       FormularioBase.pathName = pathName;
-   }
-
-   public void setMobile(final Boolean mobile)
-   {
-      Mobile = mobile;
    }
 }

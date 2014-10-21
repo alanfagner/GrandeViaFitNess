@@ -4,6 +4,8 @@ import java.util.Date;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigator;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
@@ -37,7 +39,6 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
    {
       super(id, new CompoundPropertyModel<RlPessoaExercicio>(pessoaExercico));
       rlPessoaExercicio = pessoaExercico;
-      setMobile(true);
       inicializar();
    }
 
@@ -60,9 +61,39 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
 
    private void criaCampos()
    {
-      addOrReplace(new TextField<String>("qtdPeso", new PropertyModel<String>(rlPessoaExercicio, "quatidadePeso")));
-      addOrReplace(new TextField<String>("qtdRepeticao", new PropertyModel<String>(rlPessoaExercicio, "numeroRepeticoes")));
-      addOrReplace(new TextField<String>("numeroSeries", new PropertyModel<String>(rlPessoaExercicio, "numeroSeries")));
+      addOrReplace(new TextField<String>("qtdPeso", new PropertyModel<String>(rlPessoaExercicio, "quatidadePeso"))
+      {
+         private static final long serialVersionUID = 93660142455076401L;
+
+         @Override
+         public void renderHead(final IHeaderResponse response)
+         {
+            final String script = "$('#" + getMarkupId() + "').mask('9?99,9', {reverse : true});";
+            response.render(OnDomReadyHeaderItem.forScript(script));
+         }
+      });
+      addOrReplace(new TextField<String>("qtdRepeticao", new PropertyModel<String>(rlPessoaExercicio, "numeroRepeticoes"))
+      {
+         private static final long serialVersionUID = -1775362462445067248L;
+
+         @Override
+         public void renderHead(final IHeaderResponse response)
+         {
+            final String script = "$('#" + getMarkupId() + "').mask('9?99999');";
+            response.render(OnDomReadyHeaderItem.forScript(script));
+         }
+      });
+      addOrReplace(new TextField<String>("numeroSeries", new PropertyModel<String>(rlPessoaExercicio, "numeroSeries"))
+      {
+         private static final long serialVersionUID = 5135924870616258474L;
+
+         @Override
+         public void renderHead(final IHeaderResponse response)
+         {
+            final String script = "$('#" + getMarkupId() + "').mask('9?99999');";
+            response.render(OnDomReadyHeaderItem.forScript(script));
+         }
+      });
 
    }
 
@@ -86,21 +117,26 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
             }
 
             @Override
-            protected void onConfigure()
+            public void renderHead(final IHeaderResponse response)
             {
-               super.onConfigure();
-               final AjaxRequestTarget target = getRequestCycle().find(AjaxRequestTarget.class);
-               if (target != null)
-               {
-                  target.appendJavaScript("$('#listview').listview().listview('refresh');");
-               }
+               final String script = "$('#listview').listview().listview('refresh');";
+               response.render(OnDomReadyHeaderItem.forScript(script));
             }
 
          };
 
       containerListView.setOutputMarkupId(true);
       containerListView.addOrReplace(listaHistorio);
-      containerListView.add(new AjaxPagingNavigator("navigator", listaHistorio));
+      containerListView.add(new AjaxPagingNavigator("navigator", listaHistorio)
+      {
+         private static final long serialVersionUID = -8967592560248268743L;
+
+         @Override
+         public void renderHead(final IHeaderResponse response)
+         {
+
+         }
+      });
 
       addOrReplace(containerListView);
    }

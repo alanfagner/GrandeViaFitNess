@@ -30,7 +30,6 @@ public class MobileTipoExercicoForm extends FormularioBase<TipoExercicio>
       super(id);
       this.corpo = corpo;
       inicializar();
-      setMobile(true);
    }
 
    private void inicializar()
