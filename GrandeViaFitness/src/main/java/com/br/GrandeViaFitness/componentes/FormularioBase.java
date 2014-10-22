@@ -29,17 +29,6 @@ public class FormularioBase<T> extends Form<T>
       super(id);
    }
 
-   @Override
-   protected void onBeforeRender()
-   {
-      super.onBeforeRender();
-      final AjaxRequestTarget target = getRequestCycle().find(AjaxRequestTarget.class);
-      if (target != null)
-      {
-         target.appendJavaScript("setTimeout(function(){$(.feedBack').hide('slow')}, 8000);");
-      }
-   }
-
    public void atualizaTela(final AjaxRequestTarget target, final Component... component)
    {
       target.appendJavaScript("addScriptCss();");
@@ -47,7 +36,7 @@ public class FormularioBase<T> extends Form<T>
       {
          if (componente.getClass().getSimpleName().equals("FeedbackPanel"))
          {
-            target.appendJavaScript("setTimeout(function(){$('#" + componente.getMarkupId() + "').hide('slow')}, 8000);");
+            // target.appendJavaScript("setTimeout(function(){$('#" + componente.getMarkupId() + "').hide('slow')}, 8000);");
          }
       }
       target.add(component);

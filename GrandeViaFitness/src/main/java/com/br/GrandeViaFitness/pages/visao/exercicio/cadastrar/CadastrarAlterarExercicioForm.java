@@ -17,13 +17,13 @@ import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.image.NonCachingImage;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.TipoExercicioAS;
 import com.br.GrandeViaFitness.componentes.CriaImagenNonCachingImage;
+import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.enumUtil.Mensagem;
 import com.br.GrandeViaFitness.enumUtil.UtilRadioEnum;
@@ -48,7 +48,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
    private UtilRadioEnum opcaoEquipamento;
    private DropDownChoice<TipoEquipamento> comboEquipamento;
    private DropDownChoice<Corpo> comboCorpo;
-   private FeedbackPanel feedBack;
+   private FeedBackPanelCustom feedBack;
    @SpringBean
    private TipoExercicioAS tipoExercicioAS;
    private RadioGroup<UtilRadioEnum> radioGroupEquipamento;
@@ -191,7 +191,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
 
    private void criaFeedBack()
    {
-      feedBack = new FeedbackPanel("feedBack");
+      feedBack = new FeedBackPanelCustom("feedBack");
       feedBack.setOutputMarkupId(true);
 
       addOrReplace(feedBack);

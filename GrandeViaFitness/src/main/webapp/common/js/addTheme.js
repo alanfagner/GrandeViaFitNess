@@ -39,7 +39,14 @@ function addScriptCss() {
 			$( ".radioCorpo" ).buttonset();
 			$(".Excluir").button({
 				icons : {
-					primary : "ui-icon ui-icon-close"
+					primary : "ui-icon-circle-close"
+				},
+				text : false
+			});	
+			
+			$(".Visualizar").button({
+				icons : {
+					primary : "ui-icon-circle-zoomin"
 				},
 				text : false
 			});	

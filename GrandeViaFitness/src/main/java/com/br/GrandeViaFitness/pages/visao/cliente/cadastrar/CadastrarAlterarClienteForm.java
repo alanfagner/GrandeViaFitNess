@@ -15,13 +15,13 @@ import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import com.br.GrandeViaFitness.as.PessoaAS;
+import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.enumUtil.Mensagem;
 import com.br.GrandeViaFitness.enumUtil.PermissaoEnum;
@@ -66,7 +66,7 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
    @SpringBean
    private PessoaAS pessoaAS;
 
-   private FeedbackPanel feedBack;
+   private FeedBackPanelCustom feedBack;
 
    public CadastrarAlterarClienteForm(final String id, final Pessoa pessoa)
    {
@@ -92,7 +92,7 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
 
    private void criaFeedBack()
    {
-      feedBack = new FeedbackPanel("feedback");
+      feedBack = new FeedBackPanelCustom("feedback");
       feedBack.setOutputMarkupPlaceholderTag(true);
 
       addOrReplace(feedBack);
@@ -123,8 +123,16 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
                pessoa
                   .setSenhaPessoa(new Md5PasswordEncoder().encodePassword(pessoa.getCpfPessoa().substring(0, 3) + calendar.get(1), null));
                pessoa.setAuthority(pessoaAS.getAuthorityServico().findAuthority(campoPermissao.getModelObject().getSigla()));
+
+               if (pessoa.getCodigo() != null)
+               {
+                  getSession().success(Mensagem.recuperaMensagem(Mensagem.M03, "Cliente"));
+               }
+               else
+               {
+                  getSession().success(Mensagem.recuperaMensagem(Mensagem.M01, "Cliente"));
+               }
                pessoaAS.save(pessoa);
-               getSession().success(Mensagem.M01.getDescricao());
                setResponsePage(new ConsultarClienteIndex());
             }
             atualizaTela(target, feedBack, campoBairro);

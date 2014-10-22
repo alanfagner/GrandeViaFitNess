@@ -12,11 +12,11 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PageableListView;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.RlPessoaExercicioAS;
+import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.enumUtil.Mensagem;
 import com.br.GrandeViaFitness.model.RlPessoaExercicio;
@@ -32,13 +32,15 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
    private RlPessoaExercicioAS rlPessoaExercicioAS;
    private final RlPessoaExercicio rlPessoaExercicio;
 
-   private FeedbackPanel feedBack;
+   private FeedBackPanelCustom feedBack;
    private PageableListView<RlPessoaExercicio> listaHistorio;
+   private final Date dataCadastro;
 
-   public MobileExecutarExercicioFrom(final String id, final RlPessoaExercicio pessoaExercico)
+   public MobileExecutarExercicioFrom(final String id, final RlPessoaExercicio pessoaExercico, final Date dataCadastro)
    {
       super(id, new CompoundPropertyModel<RlPessoaExercicio>(pessoaExercico));
       rlPessoaExercicio = pessoaExercico;
+      this.dataCadastro = dataCadastro;
       rlPessoaExercicio.setPessoa(getUsuarioLogado());
       inicializar();
    }
@@ -50,11 +52,18 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
       criaHistorico();
       criaCampos();
       criaFeedBack();
+      criaLabel();
+   }
+
+   private void criaLabel()
+   {
+      addOrReplace(new Label("lbnLogado", getUsuarioLogado()));
+      addOrReplace(new Label("lbnDataSelecionada", Util.formataData(dataCadastro, "dd/MM/yyyy")));
    }
 
    private void criaFeedBack()
    {
-      feedBack = new FeedbackPanel("feedback");
+      feedBack = new FeedBackPanelCustom("feedback");
       feedBack.setOutputMarkupPlaceholderTag(true);
 
       addOrReplace(feedBack);
@@ -177,7 +186,7 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
          {
             if (validaCampos())
             {
-               rlPessoaExercicio.setDataExercicio(new Date());
+               rlPessoaExercicio.setDataExercicio(dataCadastro);
                rlPessoaExercicioAS.persisteDados(rlPessoaExercicio);
                criaHistorico();
             }
@@ -199,7 +208,7 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
-            setResponsePage(new MobileDetalharExercicioIndex(rlPessoaExercicio.getTipoExercicio()));
+            setResponsePage(new MobileDetalharExercicioIndex(rlPessoaExercicio.getTipoExercicio(), dataCadastro));
          }
       });
 

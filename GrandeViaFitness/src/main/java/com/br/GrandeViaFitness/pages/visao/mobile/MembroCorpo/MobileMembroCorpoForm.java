@@ -1,5 +1,6 @@
 package com.br.GrandeViaFitness.pages.visao.mobile.MembroCorpo;
 
+import java.util.Date;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -11,6 +12,7 @@ import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.Corpo;
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileHomeIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.TipoExercicio.MobileTipoExercicoIndex;
+import com.br.GrandeViaFitness.utilitario.Util;
 
 public class MobileMembroCorpoForm extends FormularioBase<Corpo>
 {
@@ -18,19 +20,28 @@ public class MobileMembroCorpoForm extends FormularioBase<Corpo>
    @SpringBean
    private CorpoAS corpoAS;
    private RepeatingView listaCorpoView;
+   private final Date dataCadastro;
 
-   public MobileMembroCorpoForm(final String id)
+   public MobileMembroCorpoForm(final String id, final Date dataCadastro)
    {
       super(id);
+      this.dataCadastro = dataCadastro;
       setOutputMarkupId(true);
       inicializar();
+
    }
 
    private void inicializar()
    {
-
+      criaLabel();
       criaListaView();
       criaBotoes();
+   }
+
+   private void criaLabel()
+   {
+      addOrReplace(new Label("lbnLogado", getUsuarioLogado().getNomePessoa()));
+      addOrReplace(new Label("lbnDataSelecionada", Util.formataData(dataCadastro, "dd/MM/yyyy")));
    }
 
    private void criaBotoes()
@@ -62,7 +73,7 @@ public class MobileMembroCorpoForm extends FormularioBase<Corpo>
             @Override
             public void onClick(final AjaxRequestTarget target)
             {
-               setResponsePage(new MobileTipoExercicoIndex(getModelObject()));
+               setResponsePage(new MobileTipoExercicoIndex(getModelObject(), dataCadastro));
 
             }
          };

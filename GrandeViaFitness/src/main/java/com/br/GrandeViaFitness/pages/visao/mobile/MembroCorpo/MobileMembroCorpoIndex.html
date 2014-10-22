@@ -2,14 +2,26 @@
 	<form wicket:id="formulario">
 		<div data-role="header">
 			<a href="" class="botaoMenu" wicket:id="btnVoltar" data-icon="arrow-l"></a>
-			<h1>Alan</h1>
+			<h1><label wicket:id="lbnDataSelecionada"></label></h1>
 			<a href="" data-icon="check" class="botaoMenu" data-theme="ui-icon"></a>
 		</div>
-		<ul data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-autodividers="true" data-filter="true" data-inset="true">
-			<li wicket:id="listItems">
-				<a wicket:id="Link" ><label wicket:id="lbnNome"  class="lbnLink"></label></a>
-			</li>
-		</ul>
-		
+		<div class="clear"></div>
+		<div style="margin-left: 10px; margin-right: 10px">
+			<ul data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-autodividers="true" data-filter="true"
+				data-inset="true"
+			>
+				<li wicket:id="listItems">
+					<a wicket:id="Link">
+						<label wicket:id="lbnNome" class="lbnLink"></label>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+		<div data-role="footer" data-position="fixed">
+			<h1>
+				<label wicket:id="lbnLogado"></label>
+			</h1>
+		</div>
 	</form>
 </wicket:extend>

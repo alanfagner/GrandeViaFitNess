@@ -1,28 +1,36 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<form wicket:id="formulario">
-		<div data-role="header">
+		<div data-role="header" style="margin-bottom: 10px">
 			<a href="" wicket:id="btnVoltar" class="botaoMenu" data-icon="arrow-l"></a>
-			<h1>Alan</h1>
+			<h1><label wicket:id="lbnDataSelecionada"></label></h1>
 			<a href="" wicket:id="btnExecutar" data-icon="plus" class="botaoMenu"> </a>
 		</div>
-		<div class="ui-body ui-body-a ui-corner-all">
-			<div class="ui-content">
-				<label wicket:id="lbnNomeExercicio" for="name"></label>
-			</div>
-			<div class="ui-content backGroundExecutar" align="center" >
-				<ul class="bxslider">
-					<li style="margin: auto">
-						<img wicket:id="image1" />
-					</li>
-					<li>
-						<img wicket:id="image2" />
-					</li>
-				</ul>
+		<div class="clear"></div>
+		<div style="margin-left: 10px; margin-right: 10px">
+			<div class="ui-body ui-body-a ui-corner-all">
+				<div class="ui-content">
+					<label wicket:id="lbnNomeExercicio" for="name"></label>
+				</div>
+				<div class="ui-content backGroundExecutar" align="center">
+					<ul class="bxslider">
+						<li style="margin: auto">
+							<img wicket:id="image1" />
+						</li>
+						<li>
+							<img wicket:id="image2" />
+						</li>
+					</ul>
+				</div>
+				<div class="ui-content">
+					<label wicket:id="lbnDescricao" for="name"></label>
+				</div>
 			</div>
 			<div class="clear"></div>
-			<div class="ui-content">
-				<label wicket:id="lbnDescricao" for="name"></label>
-			</div>
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<h1>
+				<label wicket:id="lbnLogado"></label>
+			</h1>
 		</div>
 	</form>
 </wicket:extend>

@@ -10,7 +10,6 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -18,6 +17,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.TipoExercicioAS;
 import com.br.GrandeViaFitness.componentes.ActionButtonPanel;
 import com.br.GrandeViaFitness.componentes.ConfirmAjaxButtonCustom;
+import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.componentes.gridGenerica.DataGridGenerica;
@@ -32,7 +32,7 @@ import com.br.GrandeViaFitness.vo.AparelhosVO;
 public class ConsultarExercicioForm extends FormularioBase<AparelhosVO>
 {
    private static final long serialVersionUID = 2773647163866008579L;
-   private FeedbackPanel feedBack;
+   private FeedBackPanelCustom feedBack;
    private WebMarkupContainer informacaoVazia;
    private ConfirmAjaxButtonCustom<TipoExercicio> modal;
 
@@ -60,7 +60,7 @@ public class ConsultarExercicioForm extends FormularioBase<AparelhosVO>
 
    private void criaFeedBack()
    {
-      feedBack = new FeedbackPanel("feedBack");
+      feedBack = new FeedBackPanelCustom("feedBack");
       feedBack.setOutputMarkupId(true);
       informacaoVazia = new WebMarkupContainer("containerVazio");
       informacaoVazia.setOutputMarkupPlaceholderTag(true);

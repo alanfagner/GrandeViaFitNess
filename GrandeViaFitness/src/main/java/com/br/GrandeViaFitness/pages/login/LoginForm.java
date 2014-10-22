@@ -7,8 +7,8 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.PropertyModel;
+import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.User;
 import com.br.GrandeViaFitness.utilitario.Util;
@@ -20,7 +20,7 @@ public class LoginForm extends FormularioBase<User>
 
    private AjaxButton botaoEnviar;
    private User auxUser;
-   private FeedbackPanel feedBack;
+   private FeedBackPanelCustom feedBack;
 
    private Button botaoLimpar;
 
@@ -83,7 +83,7 @@ public class LoginForm extends FormularioBase<User>
 
    private void criaFeedBack()
    {
-      feedBack = new FeedbackPanel("feedback");
+      feedBack = new FeedBackPanelCustom("feedback");
       feedBack.setOutputMarkupId(true);
       addOrReplace(feedBack);
 

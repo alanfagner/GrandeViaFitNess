@@ -11,7 +11,6 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
@@ -20,6 +19,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.PessoaAS;
 import com.br.GrandeViaFitness.componentes.ActionButtonPanel;
 import com.br.GrandeViaFitness.componentes.ConfirmAjaxButtonCustom;
+import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.componentes.gridGenerica.DataGridGenerica;
@@ -41,7 +41,7 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
    private ProviderGenerico<Pessoa, String> providerGenerico;
    @SpringBean
    private PessoaAS pessoaAS;
-   private FeedbackPanel feedBack;
+   private FeedBackPanelCustom feedBack;
 
    private TextField<Long> campoCodigo;
 
@@ -77,7 +77,7 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
 
    private void criaFeedBack()
    {
-      feedBack = new FeedbackPanel("feedback");
+      feedBack = new FeedBackPanelCustom("feedback");
       feedBack.setOutputMarkupPlaceholderTag(true);
       addOrReplace(feedBack);
 

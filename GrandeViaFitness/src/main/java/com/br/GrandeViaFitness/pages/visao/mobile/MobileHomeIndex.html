@@ -1,10 +1,14 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<form wicket:id="formulario">
-		<div data-role="header">
-			
-			<h1><label wicket:id="lbnLogado" ></label></h1>
-			<a href="" wicket:id="btnAvancar" class="botaoMenu" data-icon="plus"></a>
+		<div data-role="header" style="margin-bottom: 5px" data-position="fixed">
+			<h1></h1>
+			<a href="" wicket:id="btnAvancar" class="botaoMenu ui-btn-right" data-icon="plus"></a>
 		</div>
-		<input type="text" data-role="date" data-inline="true">
-	</form>	
+		<input wicket:id="campoData" type="text" data-role="date" data-inline="true">
+		<div data-role="footer" data-position="fixed">
+			<h1>
+				<label wicket:id="lbnLogado"></label>
+			</h1>
+		</div>
+	</form>
 </wicket:extend>
