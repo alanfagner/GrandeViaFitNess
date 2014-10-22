@@ -9,6 +9,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.CorpoAS;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.Corpo;
+import com.br.GrandeViaFitness.pages.visao.mobile.MobileHomeIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.TipoExercicio.MobileTipoExercicoIndex;
 
 public class MobileMembroCorpoForm extends FormularioBase<Corpo>
@@ -28,6 +29,27 @@ public class MobileMembroCorpoForm extends FormularioBase<Corpo>
    private void inicializar()
    {
 
+      criaListaView();
+      criaBotoes();
+   }
+
+   private void criaBotoes()
+   {
+      addOrReplace(new AjaxLink<Corpo>("btnVoltar")
+      {
+         private static final long serialVersionUID = -267927957082911090L;
+
+         @Override
+         public void onClick(final AjaxRequestTarget target)
+         {
+            setResponsePage(new MobileHomeIndex());
+         }
+      });
+
+   }
+
+   private void criaListaView()
+   {
       listaCorpoView = new RepeatingView("listItems");
 
       for (final Corpo auxCorpo : corpoAS.recuperaListaCorpo())

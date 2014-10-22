@@ -15,15 +15,18 @@ public class BaseUtil
 
    public static void geralMobile(final IHeaderResponse response, final boolean themaVermelho)
    {
-      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.mobile-1.4.3.min.js");
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.mobile.custom.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.cycle.all.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.maskedinput.min.js");
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "jQuery.ui.datepicker.js");
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.ui.datepicker.mobile.js");
 
       BaseUtil.addCss(response, BaseUtil.pastaCss + "960.css");
       BaseUtil.addCss(response, BaseUtil.pastaCss + "mobile.css");
-      BaseUtil.addCss(response, BaseUtil.pastaCss + "jquery.mobile.structure-1.4.3.min.css");
+      BaseUtil.addCss(response, BaseUtil.pastaCss + "jquery.mobile.custom.structure.css");
       BaseUtil.addCss(response, BaseUtil.pastaMobileBlue + "GrandeViaFitnessBlue.css");
       BaseUtil.addCss(response, BaseUtil.pastaMobileBlue + "jquery.mobile.icons.min.css");
+      BaseUtil.addCss(response, BaseUtil.pastaMobileBlue + "jquery.ui.datepicker.mobile.css");
 
    }
 

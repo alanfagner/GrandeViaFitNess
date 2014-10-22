@@ -33,7 +33,7 @@ import com.br.GrandeViaFitness.pages.visao.exercicio.visualizar.VisualizarExerci
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileHomeIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.ExecutaExercicio.MobileExecutarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.MembroCorpo.MobileMembroCorpoIndex;
-import com.br.GrandeViaFitness.pages.visao.mobile.MobileVisualizarExercicio.MobileVisualizarExercicioIndex;
+import com.br.GrandeViaFitness.pages.visao.mobile.MobileDetalharExercicio.MobileDetalharExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.TipoExercicio.MobileTipoExercicoIndex;
 import com.br.GrandeViaFitness.security.MyAuthenticatedWebSession;
 
@@ -82,22 +82,22 @@ public class WicketApplication extends AuthenticatedWebApplication implements
       mountPage("Principal.html", HomePageIndex.class);
       mountPage("Login.html", LoginIndex.class);
 
-      mountPage("Consultar-Cliente.html", ConsultarClienteIndex.class);
-      mountPage("Consultar-Exercicio.html", ConsultarExercicioIndex.class);
+      mountPage("ConsultarCliente.html", ConsultarClienteIndex.class);
+      mountPage("ConsultarExercicio.html", ConsultarExercicioIndex.class);
 
-      mountPage("Cadastrar-Alterar-Cliente.html", CadastrarAlterarClienteIndex.class);
-      mountPage("Cadastrar-Alterar-Exercicio.html", CadastrarAlterarExercicioIndex.class);
+      mountPage("CadastrarAlterarCliente.html", CadastrarAlterarClienteIndex.class);
+      mountPage("CadastrarAlterarExercicio.html", CadastrarAlterarExercicioIndex.class);
 
-      mountPage("Visualizar-Cliente.html", VisualizarClienteIndex.class);
-      mountPage("Visualizar-Exercicio.html", VisualizarExercicioIndex.class);
+      mountPage("VisualizarCliente.html", VisualizarClienteIndex.class);
+      mountPage("VisualizarExercicio.html", VisualizarExercicioIndex.class);
 
       mountPage("HomeMobile.html", MobileHomeIndex.class);
 
-      mountPage("Mobile.html", MobileMembroCorpoIndex.class);
-      mountPage("VisualizarLista-ExericioMobile.html", MobileTipoExercicoIndex.class);
+      mountPage("VisualizarListaMembroMobile.html", MobileMembroCorpoIndex.class);
+      mountPage("VisualizarListaExericioMobile.html", MobileTipoExercicoIndex.class);
 
-      mountPage("Executar-ExercicioMobile.html", MobileExecutarExercicioIndex.class);
-      mountPage("Visualizar-ExericioMobile.html", MobileVisualizarExercicioIndex.class);
+      mountPage("ExecutarExercicioMobile.html", MobileExecutarExercicioIndex.class);
+      mountPage("DetalharExericioMobile.html", MobileDetalharExercicioIndex.class);
 
       getApplicationSettings().setPageExpiredErrorPage(LoginIndex.class);
 

@@ -12,7 +12,7 @@ import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.Corpo;
 import com.br.GrandeViaFitness.model.TipoExercicio;
 import com.br.GrandeViaFitness.pages.visao.mobile.MembroCorpo.MobileMembroCorpoIndex;
-import com.br.GrandeViaFitness.pages.visao.mobile.MobileVisualizarExercicio.MobileVisualizarExercicioIndex;
+import com.br.GrandeViaFitness.pages.visao.mobile.MobileDetalharExercicio.MobileDetalharExercicioIndex;
 
 public class MobileTipoExercicoForm extends FormularioBase<TipoExercicio>
 {
@@ -45,7 +45,7 @@ public class MobileTipoExercicoForm extends FormularioBase<TipoExercicio>
             @Override
             public void onClick(final AjaxRequestTarget target)
             {
-               setResponsePage(new MobileVisualizarExercicioIndex(auxTipoExercici));
+               setResponsePage(new MobileDetalharExercicioIndex(auxTipoExercici));
 
             }
          };

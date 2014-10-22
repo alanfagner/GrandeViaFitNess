@@ -20,7 +20,7 @@ import com.br.GrandeViaFitness.as.RlPessoaExercicioAS;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.enumUtil.Mensagem;
 import com.br.GrandeViaFitness.model.RlPessoaExercicio;
-import com.br.GrandeViaFitness.pages.visao.mobile.MobileVisualizarExercicio.MobileVisualizarExercicioIndex;
+import com.br.GrandeViaFitness.pages.visao.mobile.MobileDetalharExercicio.MobileDetalharExercicioIndex;
 import com.br.GrandeViaFitness.utilitario.Util;
 
 public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercicio>
@@ -39,6 +39,7 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
    {
       super(id, new CompoundPropertyModel<RlPessoaExercicio>(pessoaExercico));
       rlPessoaExercicio = pessoaExercico;
+      rlPessoaExercicio.setPessoa(getUsuarioLogado());
       inicializar();
    }
 
@@ -198,7 +199,7 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
-            setResponsePage(new MobileVisualizarExercicioIndex(rlPessoaExercicio.getTipoExercicio()));
+            setResponsePage(new MobileDetalharExercicioIndex(rlPessoaExercicio.getTipoExercicio()));
          }
       });
 

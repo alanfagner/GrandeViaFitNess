@@ -1,4 +1,4 @@
-package com.br.GrandeViaFitness.pages.visao.mobile.MobileVisualizarExercicio;
+package com.br.GrandeViaFitness.pages.visao.mobile.MobileDetalharExercicio;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -13,14 +13,15 @@ import com.br.GrandeViaFitness.model.TipoExercicio;
 import com.br.GrandeViaFitness.pages.visao.mobile.ExecutaExercicio.MobileExecutarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.TipoExercicio.MobileTipoExercicoIndex;
 
-public class MobileVisualizarExercicioForm extends FormularioBase<TipoExercicio>
+public class MobileDetalharExercicioForm extends FormularioBase<TipoExercicio>
 {
 
    private static final long serialVersionUID = 336643108380788892L;
    private final TipoExercicio tipoExercicio;
    private NonCachingImage image1;
    private NonCachingImage image2;
-   public MobileVisualizarExercicioForm(final String id, final TipoExercicio tipoExercicio)
+
+   public MobileDetalharExercicioForm(final String id, final TipoExercicio tipoExercicio)
    {
       super(id, new CompoundPropertyModel<TipoExercicio>(tipoExercicio));
       this.tipoExercicio = tipoExercicio;

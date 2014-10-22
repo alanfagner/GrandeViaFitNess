@@ -1,14 +1,14 @@
 package com.br.GrandeViaFitness.pages.visao.mobile;
 
-import org.apache.wicket.AttributeModifier;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.CorpoAS;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
-import com.br.GrandeViaFitness.model.Corpo;
 import com.br.GrandeViaFitness.model.Pessoa;
-import com.googlecode.wicket.jquery.ui.form.button.AjaxButton;
+import com.br.GrandeViaFitness.model.TipoExercicio;
+import com.br.GrandeViaFitness.pages.visao.mobile.MembroCorpo.MobileMembroCorpoIndex;
 
 public class MobileHomeForm extends FormularioBase<Pessoa>
 {
@@ -25,24 +25,37 @@ public class MobileHomeForm extends FormularioBase<Pessoa>
 
    private void inicializar()
    {
-      final ListView<Corpo> listMembro = new ListView<Corpo>("listaCorpo", corpoAS.recuperaListaCorpo())
+
+      criaBotoes();
+      criaLabel();
+      criaCampoData();
+   }
+
+   private void criaCampoData()
+   {
+      // TODO Auto-generated method stub
+
+   }
+
+   private void criaLabel()
+   {
+      addOrReplace(new Label("lbnLogado", getUsuarioLogado().getNomePessoa()));
+
+   }
+
+   private void criaBotoes()
+   {
+      addOrReplace(new AjaxLink<TipoExercicio>("btnAvancar")
       {
-         private static final long serialVersionUID = 5660002990222805270L;
+         private static final long serialVersionUID = 1782016523465683542L;
 
          @Override
-         protected void populateItem(final ListItem<Corpo> item)
+         public void onClick(final AjaxRequestTarget target)
          {
-            final AjaxButton btnCorpo = new AjaxButton("btnCorpo")
-            {
-               private static final long serialVersionUID = 3857456599376607826L;
-            };
+            setResponsePage(new MobileMembroCorpoIndex());
 
-            btnCorpo.add(new AttributeModifier("value", item.getModelObject().getNomeMembroCorpo()));
-            item.add(btnCorpo);
          }
-
-      };
-      addOrReplace(listMembro);
+      });
 
    }
 
