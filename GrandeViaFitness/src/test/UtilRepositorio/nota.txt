@@ -1,0 +1,2 @@
+GEF Update Site - http://download.eclipse.org/tools/gef/updates-pre-3_8/releases/
+http://www.objectaid.net/update - http://www.objectaid.net/update
