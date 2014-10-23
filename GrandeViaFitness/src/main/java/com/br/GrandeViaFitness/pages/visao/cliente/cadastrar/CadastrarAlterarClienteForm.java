@@ -40,28 +40,17 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
    private TextField<String> campoCpf;
    private DropDownChoice<SexoEnum> campoSexo;
    private TextField<String> campoEmail;
-
    private TextField<String> campoDataNascimento;
    private String campoData;
-
    private DropDownChoice<PermissaoEnum> campoPermissao;
-
    private TextField<String> campoTelefone;
-
    private TextField<String> campoCEP;
-
    private TextField<String> campoNumero;
-
    private TextField<String> campoLogradouro;
-
    private TextField<String> campoBairro;
-
    private TextField<String> campoCidade;
-
    private TextField<String> campoEstado;
-
    private AjaxButton botaoSalvar;
-
    private Button botaoVoltar;
    @SpringBean
    private PessoaAS pessoaAS;
@@ -123,6 +112,7 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
                pessoa
                   .setSenhaPessoa(new Md5PasswordEncoder().encodePassword(pessoa.getCpfPessoa().substring(0, 3) + calendar.get(1), null));
                pessoa.setAuthority(pessoaAS.getAuthorityServico().findAuthority(campoPermissao.getModelObject().getSigla()));
+               pessoa.setCargoEnum(campoPermissao.getModelObject());
 
                if (pessoa.getCodigo() != null)
                {

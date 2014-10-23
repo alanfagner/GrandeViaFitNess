@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import com.br.GrandeViaFitness.enumUtil.PermissaoEnum;
 import com.br.GrandeViaFitness.enumUtil.SexoEnum;
 import com.br.GrandeViaFitness.utilitario.Util;
 
@@ -60,6 +61,10 @@ public class Pessoa implements Entidade
    @Column(name = "DS_SEXO", nullable = false, length = 1)
    @Enumerated(EnumType.STRING)
    private SexoEnum sexo;
+
+   @Column(name = "DS_CARGO", nullable = false, length = 1)
+   @Enumerated(EnumType.ORDINAL)
+   private PermissaoEnum cargoEnum;
 
    public Long getCodigo()
    {
@@ -169,6 +174,16 @@ public class Pessoa implements Entidade
    public void setSexo(final SexoEnum sexo)
    {
       this.sexo = sexo;
+   }
+
+   public PermissaoEnum getCargoEnum()
+   {
+      return cargoEnum;
+   }
+
+   public void setCargoEnum(final PermissaoEnum cargoEnum)
+   {
+      this.cargoEnum = cargoEnum;
    }
 
    @Override

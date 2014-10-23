@@ -8,9 +8,11 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.core.context.SecurityContextHolder;
 import com.br.GrandeViaFitness.as.PessoaAS;
+import com.br.GrandeViaFitness.enumUtil.PermissaoEnum;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
 import com.br.GrandeViaFitness.pages.visao.exercicio.consultar.ConsultarExercicioIndex;
+import com.br.GrandeViaFitness.pages.visao.mobile.MobileHomeIndex;
 import com.br.GrandeViaFitness.utilitario.BaseUtil;
 
 public class BasePage extends WebPage
@@ -48,6 +50,11 @@ public class BasePage extends WebPage
       }
       addOrReplace(menu, containerNome);
       criaMenus();
+
+      if (getUsuarioLogado().getCargoEnum() != null && getUsuarioLogado().getCargoEnum() != PermissaoEnum.FUNCIONARIO)
+      {
+         setResponsePage(new MobileHomeIndex());
+      }
    }
 
    private void criaMenus()

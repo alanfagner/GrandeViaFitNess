@@ -18,6 +18,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Component;
 import com.br.GrandeViaFitness.as.PessoaAS;
+import com.br.GrandeViaFitness.enumUtil.PermissaoEnum;
 import com.br.GrandeViaFitness.enumUtil.SexoEnum;
 import com.br.GrandeViaFitness.model.Authority;
 import com.br.GrandeViaFitness.model.Endereco;
@@ -129,6 +130,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements
          pessoa.setNumeroCelulaPessoa("16997578380");
          pessoa.setNumeroResidencial(743);
          pessoa.setSexo(SexoEnum.M);
+         pessoa.setCargoEnum(PermissaoEnum.FUNCIONARIO);
          final DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
          pessoa.setDataNascimentoPessoa(formatter.parse("07/27/1985"));
          final Calendar calendar = Calendar.getInstance();
@@ -139,7 +141,6 @@ public class WicketApplication extends AuthenticatedWebApplication implements
          pessoa.getEndereco().setBairro("Vila Xavier");
          pessoa.getEndereco().setEstado("SP");
          pessoa.getEndereco().setLogradouro("Alameda Paulista");
-
          pessoaAS.saveInicial(pessoa);
       }
 
