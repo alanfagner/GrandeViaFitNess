@@ -10,9 +10,10 @@
     <!-- Secure url patterns -->
     <http auto-config="true" create-session="never" >
       <remember-me />
+      <logout logout-success-url="/login.html"/>
       <access-denied-handler error-page="/403" />
       <logout logout-success-url="/HomePage.html" />
-      <form-login login-page="/Login.html" default-target-url="/Login.html" authentication-failure-url="/login.html" />
+      <form-login login-page="/Login.html" default-target-url="/Login.html" authentication-failure-url="/login.html"  />
       <intercept-url pattern="/**"  />
     </http>
     <!-- activate annotations securing -->

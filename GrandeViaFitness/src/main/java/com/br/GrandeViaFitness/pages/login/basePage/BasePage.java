@@ -1,5 +1,6 @@
 package com.br.GrandeViaFitness.pages.login.basePage;
 
+import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
@@ -28,6 +29,10 @@ public class BasePage extends WebPage
    @SpringBean
    private PessoaAS pessoaAS;
 
+   private Link<String> buttonlogout;
+
+   private Boolean logado = false;
+
    public BasePage()
    {
       menu = new WebMarkupContainer("containerMenu");
@@ -42,16 +47,18 @@ public class BasePage extends WebPage
          menu.setVisibilityAllowed(false);
          containerNome.setVisibilityAllowed(false);
 
+
       }
       else
       {
          menu.setVisibilityAllowed(true);
          containerNome.setVisibilityAllowed(true);
+         logado = true;
       }
       addOrReplace(menu, containerNome);
       criaMenus();
 
-      if (getUsuarioLogado().getCargoEnum() != null && getUsuarioLogado().getCargoEnum() != PermissaoEnum.FUNCIONARIO)
+      if (getUsuarioLogado().getCargoEnum() != null && getUsuarioLogado().getCargoEnum() != PermissaoEnum.INSTRUTOR)
       {
          setResponsePage(new MobileHomeIndex());
       }
@@ -80,6 +87,20 @@ public class BasePage extends WebPage
             setResponsePage(new ConsultarExercicioIndex());
          }
       };
+      buttonlogout = new Link<String>("sair")
+      {
+         private static final long serialVersionUID = -633142704625312739L;
+
+         @Override
+         public void onClick()
+         {
+            getSession().invalidate();
+            AuthenticatedWebSession.get().signOut();
+         }
+      };
+      addOrReplace(buttonlogout);
+      buttonlogout.setOutputMarkupId(true);
+      buttonlogout.setVisibilityAllowed(logado);
       menu.add(consultarCliente, consultarAparelho);
    }
 
@@ -94,7 +115,8 @@ public class BasePage extends WebPage
       if (usuarioLogado == null)
       {
          usuarioLogado = new Pessoa();
-         if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
+         if (SecurityContextHolder.getContext().getAuthentication() != null
+            && !SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
          {
             usuarioLogado = pessoaAS.buscaPessoaPorCpf(SecurityContextHolder.getContext().getAuthentication().getName());
          }

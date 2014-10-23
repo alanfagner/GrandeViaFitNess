@@ -10,6 +10,7 @@ import org.apache.wicket.markup.html.image.NonCachingImage;
 import org.apache.wicket.model.CompoundPropertyModel;
 import com.br.GrandeViaFitness.componentes.CriaImagenNonCachingImage;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
+import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.model.TipoExercicio;
 import com.br.GrandeViaFitness.pages.visao.mobile.ExecutaExercicio.MobileExecutarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.TipoExercicio.MobileTipoExercicoIndex;
@@ -23,10 +24,13 @@ public class MobileDetalharExercicioForm extends FormularioBase<TipoExercicio>
    private NonCachingImage image1;
    private NonCachingImage image2;
    private final Date dataCadastro;
+   private final Pessoa usuarioAtividade;
 
-   public MobileDetalharExercicioForm(final String id, final TipoExercicio tipoExercicio, final Date dataCadastro)
+   public MobileDetalharExercicioForm(final String id, final TipoExercicio tipoExercicio, final Date dataCadastro,
+      final Pessoa usuarioAtividade)
    {
       super(id, new CompoundPropertyModel<TipoExercicio>(tipoExercicio));
+      this.usuarioAtividade = usuarioAtividade;
       this.tipoExercicio = tipoExercicio;
       this.dataCadastro = dataCadastro;
       inicializar();
@@ -41,7 +45,7 @@ public class MobileDetalharExercicioForm extends FormularioBase<TipoExercicio>
          @Override
          public void onClick(final AjaxRequestTarget target)
          {
-            setResponsePage(new MobileTipoExercicoIndex(tipoExercicio.getCorpo(), dataCadastro));
+            setResponsePage(new MobileTipoExercicoIndex(tipoExercicio.getCorpo(), dataCadastro, usuarioAtividade));
          }
       });
 
@@ -52,7 +56,7 @@ public class MobileDetalharExercicioForm extends FormularioBase<TipoExercicio>
          @Override
          public void onClick(final AjaxRequestTarget target)
          {
-            setResponsePage(new MobileExecutarExercicioIndex(tipoExercicio, dataCadastro));
+            setResponsePage(new MobileExecutarExercicioIndex(tipoExercicio, dataCadastro, usuarioAtividade));
          }
       });
 
@@ -72,7 +76,7 @@ public class MobileDetalharExercicioForm extends FormularioBase<TipoExercicio>
    {
       addOrReplace(new Label("lbnNomeExercicio", tipoExercicio.getNomeExercicio()));
       addOrReplace(new Label("lbnDescricao", tipoExercicio.getDescricaoExercicio()));
-      addOrReplace(new Label("lbnLogado", getUsuarioLogado().getNomePessoa()));
+      addOrReplace(new Label("lbnLogado", usuarioAtividade.getNomePessoa()));
       addOrReplace(new Label("lbnDataSelecionada", Util.formataData(dataCadastro, "dd/MM/yyyy")));
    }
 

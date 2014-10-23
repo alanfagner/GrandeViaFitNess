@@ -4,11 +4,37 @@
 			<h1></h1>
 			<a href="" wicket:id="btnAvancar" class="botaoMenu ui-btn-right" data-icon="plus"></a>
 		</div>
+		
+		<div wicket:id="containerInput">
+		
 		<input wicket:id="campoData" type="text" data-role="date" data-inline="true">
+		</div>
+		
+		
 		<div data-role="footer" data-position="fixed">
+			<div wicket:id="containerBTN">
+				<p>
+					<a href="#right-panel" style="float: left;" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini">Trocar Cliente</a>
+				</p>
+			</div>
 			<h1>
 				<label wicket:id="lbnLogado"></label>
 			</h1>
+		</div>
+		<div wicket:id="containerLateral">
+			<div data-role="panel" id="right-panel" data-display="overlay" data-position="right">
+				<ul data-role="listview" data-icon="false">
+					<li data-icon="delete">
+						<a href="#" data-rel="close">Fechar</a>
+					</li>
+					<li data-role="list-divider">Lista de Clientes</li>
+					<li wicket:id="listaPessoa">
+						<a wicket:id="linkPessoa" style="height: 20.766px">
+							<label style="width: 0px; height: 0px" wicket:id="lbnNome"></label>
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</form>
 </wicket:extend>

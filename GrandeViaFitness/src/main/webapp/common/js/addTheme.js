@@ -50,6 +50,13 @@ function addScriptCss() {
 				},
 				text : false
 			});	
+			
+			$(".sair").button({
+				icons : {
+					primary : " ui-icon-circle-close"
+				},
+				text : true
+			});	
 		});
 	})(jQuery);
 }

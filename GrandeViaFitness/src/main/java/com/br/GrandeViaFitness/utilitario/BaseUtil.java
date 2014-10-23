@@ -52,7 +52,6 @@ public class BaseUtil
 
    }
 
-
    private static void addJS(final IHeaderResponse response, final String js)
    {
       final Url url = Url.parse(js);

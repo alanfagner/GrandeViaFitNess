@@ -10,6 +10,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.TipoExercicioAS;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.Corpo;
+import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.model.TipoExercicio;
 import com.br.GrandeViaFitness.pages.visao.mobile.MembroCorpo.MobileMembroCorpoIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileDetalharExercicio.MobileDetalharExercicioIndex;
@@ -25,10 +26,12 @@ public class MobileTipoExercicoForm extends FormularioBase<TipoExercicio>
 
    private final Date dataCadastro;
    private RepeatingView listaCorpoView;
+   private final Pessoa usuarioAtividade;
 
-   public MobileTipoExercicoForm(final String id, final Corpo corpo, final Date dataCadastro)
+   public MobileTipoExercicoForm(final String id, final Corpo corpo, final Date dataCadastro, final Pessoa usuarioAtividade)
    {
       super(id);
+      this.usuarioAtividade = usuarioAtividade;
       this.corpo = corpo;
       this.dataCadastro = dataCadastro;
       inicializar();
@@ -43,7 +46,7 @@ public class MobileTipoExercicoForm extends FormularioBase<TipoExercicio>
 
    private void criaLabel()
    {
-      addOrReplace(new Label("lbnLogado", getUsuarioLogado().getNomePessoa()));
+      addOrReplace(new Label("lbnLogado", usuarioAtividade.getNomePessoa()));
       addOrReplace(new Label("lbnDataSelecionada", Util.formataData(dataCadastro, "dd/MM/yyyy")));
    }
 
@@ -56,7 +59,7 @@ public class MobileTipoExercicoForm extends FormularioBase<TipoExercicio>
          @Override
          public void onClick(final AjaxRequestTarget target)
          {
-            setResponsePage(new MobileMembroCorpoIndex(dataCadastro));
+            setResponsePage(new MobileMembroCorpoIndex(dataCadastro, usuarioAtividade));
          }
       });
    }
@@ -74,7 +77,7 @@ public class MobileTipoExercicoForm extends FormularioBase<TipoExercicio>
             @Override
             public void onClick(final AjaxRequestTarget target)
             {
-               setResponsePage(new MobileDetalharExercicioIndex(auxTipoExercici, dataCadastro));
+               setResponsePage(new MobileDetalharExercicioIndex(auxTipoExercici, dataCadastro, usuarioAtividade));
             }
          };
          link.add(new Label("lbnNome", auxTipoExercici.getNomeExercicio()));

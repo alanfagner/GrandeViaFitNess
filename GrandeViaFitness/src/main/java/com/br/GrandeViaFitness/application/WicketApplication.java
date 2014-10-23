@@ -130,7 +130,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements
          pessoa.setNumeroCelulaPessoa("16997578380");
          pessoa.setNumeroResidencial(743);
          pessoa.setSexo(SexoEnum.M);
-         pessoa.setCargoEnum(PermissaoEnum.FUNCIONARIO);
+         pessoa.setCargoEnum(PermissaoEnum.ADMINISTRADOR);
          final DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
          pessoa.setDataNascimentoPessoa(formatter.parse("07/27/1985"));
          final Calendar calendar = Calendar.getInstance();

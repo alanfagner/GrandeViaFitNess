@@ -19,6 +19,7 @@ import com.br.GrandeViaFitness.as.RlPessoaExercicioAS;
 import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.enumUtil.Mensagem;
+import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.model.RlPessoaExercicio;
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileDetalharExercicio.MobileDetalharExercicioIndex;
 import com.br.GrandeViaFitness.utilitario.Util;
@@ -36,12 +37,13 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
    private PageableListView<RlPessoaExercicio> listaHistorio;
    private final Date dataCadastro;
 
-   public MobileExecutarExercicioFrom(final String id, final RlPessoaExercicio pessoaExercico, final Date dataCadastro)
+   public MobileExecutarExercicioFrom(final String id, final RlPessoaExercicio pessoaExercico, final Date dataCadastro,
+      final Pessoa usuarioAtividade)
    {
       super(id, new CompoundPropertyModel<RlPessoaExercicio>(pessoaExercico));
       rlPessoaExercicio = pessoaExercico;
       this.dataCadastro = dataCadastro;
-      rlPessoaExercicio.setPessoa(getUsuarioLogado());
+      rlPessoaExercicio.setPessoa(usuarioAtividade);
       inicializar();
    }
 
@@ -57,7 +59,7 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
 
    private void criaLabel()
    {
-      addOrReplace(new Label("lbnLogado", getUsuarioLogado()));
+      addOrReplace(new Label("lbnLogado", rlPessoaExercicio.getPessoa().getNomePessoa()));
       addOrReplace(new Label("lbnDataSelecionada", Util.formataData(dataCadastro, "dd/MM/yyyy")));
    }
 
@@ -208,7 +210,8 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
-            setResponsePage(new MobileDetalharExercicioIndex(rlPessoaExercicio.getTipoExercicio(), dataCadastro));
+            setResponsePage(new MobileDetalharExercicioIndex(rlPessoaExercicio.getTipoExercicio(), dataCadastro,
+               rlPessoaExercicio.getPessoa()));
          }
       });
 

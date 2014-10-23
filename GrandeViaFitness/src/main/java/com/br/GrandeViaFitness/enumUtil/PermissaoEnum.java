@@ -2,7 +2,7 @@ package com.br.GrandeViaFitness.enumUtil;
 
 public enum PermissaoEnum
 {
-   CLIENTE(0, "R_ADM", "Cliente"), FUNCIONARIO(1, "R_ADM", "Funcionario");
+   CLIENTE(0, "R_ADM", "Cliente"), INSTRUTOR(1, "R_ADM", "Instrutor"), ADMINISTRADOR(2, "R_ADM", "Administrador");
 
    private Integer codigo;
    private String sigla;

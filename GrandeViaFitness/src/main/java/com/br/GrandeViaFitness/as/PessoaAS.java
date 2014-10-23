@@ -92,4 +92,9 @@ public class PessoaAS implements Provider<Pessoa>
 
    }
 
+   public List<Pessoa> listaPessa()
+   {
+      return pessoaServico.all();
+   }
+
 }

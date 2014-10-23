@@ -10,6 +10,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.CorpoAS;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.Corpo;
+import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileHomeIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.TipoExercicio.MobileTipoExercicoIndex;
 import com.br.GrandeViaFitness.utilitario.Util;
@@ -21,10 +22,12 @@ public class MobileMembroCorpoForm extends FormularioBase<Corpo>
    private CorpoAS corpoAS;
    private RepeatingView listaCorpoView;
    private final Date dataCadastro;
+   private final Pessoa usuarioAtividade;
 
-   public MobileMembroCorpoForm(final String id, final Date dataCadastro)
+   public MobileMembroCorpoForm(final String id, final Date dataCadastro, final Pessoa usuarioAtividade)
    {
       super(id);
+      this.usuarioAtividade = usuarioAtividade;
       this.dataCadastro = dataCadastro;
       setOutputMarkupId(true);
       inicializar();
@@ -40,7 +43,7 @@ public class MobileMembroCorpoForm extends FormularioBase<Corpo>
 
    private void criaLabel()
    {
-      addOrReplace(new Label("lbnLogado", getUsuarioLogado().getNomePessoa()));
+      addOrReplace(new Label("lbnLogado", usuarioAtividade.getNomePessoa()));
       addOrReplace(new Label("lbnDataSelecionada", Util.formataData(dataCadastro, "dd/MM/yyyy")));
    }
 
@@ -73,7 +76,7 @@ public class MobileMembroCorpoForm extends FormularioBase<Corpo>
             @Override
             public void onClick(final AjaxRequestTarget target)
             {
-               setResponsePage(new MobileTipoExercicoIndex(getModelObject(), dataCadastro));
+               setResponsePage(new MobileTipoExercicoIndex(getModelObject(), dataCadastro, usuarioAtividade));
 
             }
          };
