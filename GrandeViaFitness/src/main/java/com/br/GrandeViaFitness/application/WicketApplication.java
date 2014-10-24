@@ -36,6 +36,8 @@ import com.br.GrandeViaFitness.pages.visao.mobile.ExecutaExercicio.MobileExecuta
 import com.br.GrandeViaFitness.pages.visao.mobile.MembroCorpo.MobileMembroCorpoIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileDetalharExercicio.MobileDetalharExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.TipoExercicio.MobileTipoExercicoIndex;
+import com.br.GrandeViaFitness.pages.visao.produto.cadastrar.CadastrarAlterarProdutoIndex;
+import com.br.GrandeViaFitness.pages.visao.produto.consultar.ConsultarProdutoIndex;
 import com.br.GrandeViaFitness.security.MyAuthenticatedWebSession;
 
 /**
@@ -85,9 +87,11 @@ public class WicketApplication extends AuthenticatedWebApplication implements
 
       mountPage("ConsultarCliente.html", ConsultarClienteIndex.class);
       mountPage("ConsultarExercicio.html", ConsultarExercicioIndex.class);
+      mountPage("ConsultarProduto.html", ConsultarProdutoIndex.class);
 
       mountPage("CadastrarAlterarCliente.html", CadastrarAlterarClienteIndex.class);
       mountPage("CadastrarAlterarExercicio.html", CadastrarAlterarExercicioIndex.class);
+      mountPage("CadastrarAlterarProduto.html", CadastrarAlterarProdutoIndex.class);
 
       mountPage("VisualizarCliente.html", VisualizarClienteIndex.class);
       mountPage("VisualizarExercicio.html", VisualizarExercicioIndex.class);

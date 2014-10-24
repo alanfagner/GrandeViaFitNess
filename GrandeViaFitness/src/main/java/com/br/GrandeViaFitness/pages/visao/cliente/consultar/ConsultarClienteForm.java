@@ -93,7 +93,7 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             pessoaAS.excluirPessoa(getEntidade());
-            success(Mensagem.M02.getDescricao());
+            success(Mensagem.recuperaMensagem(Mensagem.M02, "Cliente"));
             atualizaTela(target, gridGenerica, feedBack);
          }
 

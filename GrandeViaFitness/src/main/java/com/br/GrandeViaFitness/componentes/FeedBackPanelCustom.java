@@ -12,6 +12,7 @@ public class FeedBackPanelCustom extends FeedbackPanel
    public FeedBackPanelCustom(final String id)
    {
       super(id);
+      setOutputMarkupId(true);
    }
    @Override
    public void renderHead(final IHeaderResponse response)

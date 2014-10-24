@@ -29,6 +29,9 @@ label{
 	float: left;
 }
 
+th .tam5{
+		background-color: greenyellow;
+}
 .tam5 {
 	width: 5%;
 }

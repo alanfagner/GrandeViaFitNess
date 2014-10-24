@@ -34,11 +34,15 @@ public class BaseUtil
    {
       BaseUtil.addCss(response, BaseUtil.pastaCss + "960.css");
       BaseUtil.addCss(response, BaseUtil.pastaCss + "myCss.css");
+
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery-1.11.1.min.js");
       BaseUtil.addCss(response, BaseUtil.pastaCss + "jquery.dataTables.min.css");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "relogio.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.maskedinput.min.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "addTheme.js");
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.maskMoney.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery.dataTables.min.js");
+
       BaseUtil.adicionarThema(response, BaseUtil.pastaThemaAzul);
    }
 

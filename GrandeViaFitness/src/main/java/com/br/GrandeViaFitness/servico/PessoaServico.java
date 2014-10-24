@@ -22,44 +22,48 @@ public class PessoaServico
    public Pessoa buscaPessoaPorCpf(final String cpf)
    {
       logger.debug("Busca por cpf: " + cpf);
-      return pessoaDao.buscaPessoaPorCpf(cpf);
+      return getPessoaDao().buscaPessoaPorCpf(cpf);
+   }
+
+   public PessoaDao getPessoaDao()
+   {
+      pessoaDao.setPersistentClass(Pessoa.class);
+      return pessoaDao;
    }
 
    public int contadorListaGrid(final Entidade filtro)
    {
-      return pessoaDao.contadorListaGrid(filtro);
+      return getPessoaDao().contadorListaGrid(filtro);
    }
 
    public List<Pessoa> buscaListaGrid(final Entidade filtro, final long first, final long count, final ParametrosOrdenacao ordernar)
    {
-      return pessoaDao.buscaListaGrid(filtro, first, count, ordernar);
+      return getPessoaDao().buscaListaGrid(filtro, first, count, ordernar);
    }
 
    public List<Pessoa> all(){
-      pessoaDao.setPersistentClass(Pessoa.class);
-      return pessoaDao.findAll();
+
+      return getPessoaDao().findAll();
    }
 
    public void save(final Pessoa pessoa)
    {
-      pessoaDao.save(pessoa);
+      getPessoaDao().save(pessoa);
    }
 
    public void alterar(final Pessoa pessoa)
    {
-      pessoaDao.update(pessoa);
+      getPessoaDao().update(pessoa);
    }
 
    public Pessoa buscaCompleta(final Pessoa pessoa)
    {
-      return pessoaDao.buscaCompleta(pessoa);
+      return getPessoaDao().buscaCompleta(pessoa);
    }
 
    public void excluir(final Pessoa pessoa)
    {
-      pessoaDao.setPersistentClass(Pessoa.class);
-      pessoaDao.delete(pessoa.getId());
-
+      getPessoaDao().delete(pessoa.getId());
    }
 
 }

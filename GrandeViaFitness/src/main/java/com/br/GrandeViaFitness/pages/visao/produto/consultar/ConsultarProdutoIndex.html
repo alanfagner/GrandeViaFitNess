@@ -1,0 +1,34 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<form wicket:id="formulario">
+		<div class="div_center">
+			<div wicket:id="modal"></div>
+			<fieldset>
+				<legend class="legenda" align="left">Consultar Produtos</legend>
+				<div class="dataTables_wrapper" style="left: 35px; width: 500px;">
+					<div class="LabelInputNome grid_3">
+						<label> Codigo:</label>
+						<input wicket:id="codigo" type="text" maxlength="100" class="numero campoText" />
+					</div>
+					<div class="LabelInputNome grid_6">
+						<label> Nome Produto:</label>
+						<input wicket:id="nomeProduto" type="text" maxlength="100" class="campoText" />
+					</div>
+				</div>
+				<div class="dataTables_wrapper" style="left: 35px; width: 100px; float: left; margin-top: 10px; margin-bottom: 15px;">
+					<input wicket:id="btnPesquisar" class="botao" type="submit" name="Pesquisar" value="Pesquisar" />
+				</div>
+
+				<div class="dataTables_wrapper">
+					<table class="display  dataTable" cellspacing="0" style="width: 90%; border: 1px;" wicket:id="table"></table>
+					<div class="msgERROR" wicket:id="containerVazio">Nenhum registro encontrado!</div>
+				</div>
+			</fieldset>
+			<div class="clear"></div>
+			<div class="grid_6" style="margin-left: 30px;">
+				<input wicket:id="btnNovo" class="botao" type="submit" name="avancar" value="Cadastrar Novo Produto" />
+				<input wicket:id="btnVoltar" class="botao" type="submit" name=Limpar value="Voltar" />
+			</div>
+		</div>
+		<span wicket:id="feedback" class="feedBack ui-shadow"></span>
+	</form>
+</wicket:extend>

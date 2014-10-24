@@ -1,8 +1,6 @@
 package com.br.GrandeViaFitness.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,29 +12,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "RL_PRODUTO_PESSOA", schema = "GRANDEVIAFITNESS")
-public class RlProdutoPessoa implements Entidade
+@Table(name = "RL_PRODUTO_VENDA", schema = "GRANDEVIAFITNESS")
+public class RlProdutoVenda implements Entidade
 {
    private static final long serialVersionUID = 5967466445663722783L;
 
    @Id
-   @Column(name = "CO_SEQ_VENDA", nullable = false, length = 3)
+   @Column(name = "CO_SEQ_PRODUTO_VENDA", nullable = false, length = 3)
    @GeneratedValue(strategy = GenerationType.AUTO)
    private Long codigo;
 
    @ManyToOne(fetch = FetchType.LAZY)
-   @JoinColumn(name = "CO_PESSOA", referencedColumnName = "CO_SEQ_PESSOA", nullable = false)
-   private Pessoa pessoa;
+   @JoinColumn(name = "CO_VENDA", referencedColumnName = "CO_SEQ_VENDA", nullable = false)
+   private Venda venda;
 
    @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name = "CO_PRODUTO", referencedColumnName = "CO_SEQ_PRODUTO", nullable = false)
    private Produto produto;
-
-   @Column(name = "NU_VALOR_VENDA", nullable = false)
-   private BigDecimal valorVenda;
-
-   @Column(name = "DT_VENDA_PRODUTO", nullable = false)
-   private Date dataVenda;
 
    @Column(name = "QT_PRODUTO", nullable = false)
    private Integer quantidadeVendido;
@@ -53,14 +45,14 @@ public class RlProdutoPessoa implements Entidade
       return codigo;
    }
 
-   public Pessoa getPessoa()
+   public Venda getVenda()
    {
-      return pessoa;
+      return venda;
    }
 
-   public void setPessoa(final Pessoa pessoa)
+   public void setVenda(final Venda venda)
    {
-      this.pessoa = pessoa;
+      this.venda = venda;
    }
 
    public Produto getProduto()
@@ -71,26 +63,6 @@ public class RlProdutoPessoa implements Entidade
    public void setProduto(final Produto produto)
    {
       this.produto = produto;
-   }
-
-   public BigDecimal getValorVenda()
-   {
-      return valorVenda;
-   }
-
-   public void setValorVenda(final BigDecimal valorVenda)
-   {
-      this.valorVenda = valorVenda;
-   }
-
-   public Date getDataVenda()
-   {
-      return dataVenda;
-   }
-
-   public void setDataVenda(final Date dataVenda)
-   {
-      this.dataVenda = dataVenda;
    }
 
    public Integer getQuantidadeVendido()

@@ -62,7 +62,7 @@ public class Pessoa implements Entidade
    @Enumerated(EnumType.STRING)
    private SexoEnum sexo;
 
-   @Column(name = "DS_CARGO", nullable = false, length = 1)
+   @Column(name = "TP_CARGO", nullable = false, length = 1)
    @Enumerated(EnumType.ORDINAL)
    private PermissaoEnum cargoEnum;
 

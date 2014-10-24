@@ -14,6 +14,7 @@ import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
 import com.br.GrandeViaFitness.pages.visao.exercicio.consultar.ConsultarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileHomeIndex;
+import com.br.GrandeViaFitness.pages.visao.produto.consultar.ConsultarProdutoIndex;
 import com.br.GrandeViaFitness.utilitario.BaseUtil;
 
 public class BasePage extends WebPage
@@ -58,7 +59,7 @@ public class BasePage extends WebPage
       addOrReplace(menu, containerNome);
       criaMenus();
 
-      if (getUsuarioLogado().getCargoEnum() != null && getUsuarioLogado().getCargoEnum() != PermissaoEnum.INSTRUTOR)
+      if (getUsuarioLogado().getCargoEnum() != null && getUsuarioLogado().getCargoEnum() == PermissaoEnum.CLIENTE)
       {
          setResponsePage(new MobileHomeIndex());
       }
@@ -76,6 +77,17 @@ public class BasePage extends WebPage
             setResponsePage(new ConsultarClienteIndex());
          }
       };
+
+      final Link<String> consultarProduto = new Link<String>("consultarProduto")
+               {
+                  private static final long serialVersionUID = -633142704625312739L;
+
+                  @Override
+                  public void onClick()
+                  {
+            setResponsePage(new ConsultarProdutoIndex());
+                  }
+               };
 
       final Link<String> consultarAparelho = new Link<String>("consultarExercicio")
       {
@@ -101,7 +113,7 @@ public class BasePage extends WebPage
       addOrReplace(buttonlogout);
       buttonlogout.setOutputMarkupId(true);
       buttonlogout.setVisibilityAllowed(logado);
-      menu.add(consultarCliente, consultarAparelho);
+      menu.add(consultarCliente, consultarAparelho, consultarProduto);
    }
 
    @Override

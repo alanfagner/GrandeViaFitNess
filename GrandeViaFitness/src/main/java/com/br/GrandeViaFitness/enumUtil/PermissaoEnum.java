@@ -10,6 +10,7 @@ public enum PermissaoEnum
 
    private PermissaoEnum(final Integer codigo, final String sigla, final String descricao)
    {
+      this.codigo = codigo;
       this.sigla = sigla;
       this.descricao = descricao;
    }
