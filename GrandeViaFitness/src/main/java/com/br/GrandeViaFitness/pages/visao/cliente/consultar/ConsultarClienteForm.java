@@ -163,7 +163,7 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
          @Override
          public void populateItem(final Item<ICellPopulator<Pessoa>> cellItem, final String componentId, final IModel<Pessoa> entidade)
          {
-            cellItem.add(new ActionButtonPanel<Pessoa>(componentId, entidade, listaBotoes));
+            cellItem.add(new ActionButtonPanel<Pessoa>(componentId, entidade, listaBotoes, true, true));
 
          }
       });

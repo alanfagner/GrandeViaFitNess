@@ -1,0 +1,25 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<form wicket:id="formulario">
+		<div class="div_center">
+				<fieldset>
+					<legend class="legenda" align="left">
+						Visualizar Produto
+					</legend>
+					<div class="LabelInputNome grid_11">
+						<label> Nome Produto:</label> <br/>
+						<label wicket:id="nomeProduto" class="labelVisualiar"></label>
+					</div>
+					<div class="LabelInputNome grid_3">
+						<label> Valor Produto:</label> <br/> 
+						<label wicket:id="valorProduto"  class="labelVisualiar"></label>
+					</div>
+				</fieldset>
+				<div class="clear"></div>
+				<div class="grid_5" style="margin-left: 30px; text-align: left">
+					<input wicket:id="alterar" class="botao" type="submit" name="avancar" value="Alterar" /> 
+					<input wicket:id="voltar"  class="botao" type="submit" name="voltar" value="Voltar"
+					/>
+				</div>
+		</div>
+	</form>
+</wicket:extend>

@@ -17,7 +17,8 @@ public class ActionButtonPanel<T> extends Panel
    private final T entidade;
    List<AjaxLink<T>> listBotoes = new ArrayList<AjaxLink<T>>();
 
-   public ActionButtonPanel(final String id, final IModel<T> model, final List<AjaxLink<T>> listBotoes)
+   public ActionButtonPanel(final String id, final IModel<T> model, final List<AjaxLink<T>> listBotoes, final Boolean mostrarExcluir,
+      final Boolean mostrarVisualizar)
    {
       super(id);
       this.entidade = model.getObject();
@@ -38,6 +39,20 @@ public class ActionButtonPanel<T> extends Panel
             {
                link.setModel(getModel());
                link.onClick(target);
+            }
+
+            @Override
+            protected void onConfigure()
+            {
+               setOutputMarkupId(true);
+               if (link.getId().equals("Excluir"))
+               {
+                  setVisibilityAllowed(mostrarExcluir);
+               }
+               else
+               {
+                  setVisibilityAllowed(mostrarVisualizar);
+               }
             }
 
          };

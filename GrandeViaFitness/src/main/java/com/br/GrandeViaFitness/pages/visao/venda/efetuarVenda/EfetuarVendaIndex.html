@@ -1,0 +1,56 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<form wicket:id="formulario">
+		<div class="div_center">
+			<fieldset>
+				<legend class="legenda" align="left">Efetuar Venda</legend>
+				<fieldset>
+					<legend class="legenda" align="left">Comprador</legend>
+					<div class="LabelInputNome grid_4">
+						<label>
+							<span class="obrigatorio">*</span>
+							Nome Pessoa:
+						</label>
+						<input id="cpfPessoa" type="text" maxlength="11" class="campoText" />
+					</div>
+					<div class="LabelInputNome grid_4">
+						<label>
+							<span class="obrigatorio">*</span>
+							Cpf:
+						</label>
+						<input id="cpfPessoa" type="text" maxlength="11" class="campoText" />
+					</div>
+					<div class="dataTables_wrapper">
+						<table class="display  dataTable" cellspacing="0" style="width: 100%; border: 1px;" wicket:id="tablePessoa"></table>
+						<div class="msgERROR" wicket:id="containerVazioPessoa">Nenhum registro encontrado!</div>
+					</div>
+				</fieldset>
+				<div class="clear"></div>
+				<div class="LabelInputNome grid_4">
+					<label>
+						<span class="obrigatorio">*</span>
+						Nome Produto:
+					</label>
+					<input id="cpfPessoa" type="text" maxlength="11" class="campoText" />
+				</div>
+				<div class="LabelInputNome grid_4">
+					<input id="btnNovoProduto" class="botao" type="submit" style="margin-top: 10px" name="avancar" value="Buscar" />
+				</div>
+				<div class="dataTables_wrapper">
+					<table class="display  dataTable" cellspacing="0" style="width: 90%; border: 1px;" id="table"></table>
+					<div class="msgERROR" id="containerVazio">Nenhum registro encontrado!</div>
+				</div>
+				<label> Items das Vendas </label>
+				<div class="dataTables_wrapper">
+					<table class="display  dataTable" cellspacing="0" style="width: 90%; border: 1px;" id="table"></table>
+					<div class="msgERROR" id="containerVazio">Nenhum registro encontrado!</div>
+				</div>
+			</fieldset>
+			<div class="clear"></div>
+			<div class="grid_6" style="margin-left: 30px;">
+				<input id="btnNovoProduto" class="botao" type="submit" name="avancar" value="Salvar" />
+				<input id="btnVoltar" class="botao" type="submit" name=Limpar value="Voltar" />
+			</div>
+		</div>
+		<span id="feedback" class="feedBack ui-shadow"></span>
+	</form>
+</wicket:extend>

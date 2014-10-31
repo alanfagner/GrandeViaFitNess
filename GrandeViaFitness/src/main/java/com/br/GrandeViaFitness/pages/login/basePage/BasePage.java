@@ -15,6 +15,7 @@ import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteInd
 import com.br.GrandeViaFitness.pages.visao.exercicio.consultar.ConsultarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileHomeIndex;
 import com.br.GrandeViaFitness.pages.visao.produto.consultar.ConsultarProdutoIndex;
+import com.br.GrandeViaFitness.pages.visao.venda.efetuarVenda.EfetuarVendaIndex;
 import com.br.GrandeViaFitness.utilitario.BaseUtil;
 
 public class BasePage extends WebPage
@@ -48,7 +49,6 @@ public class BasePage extends WebPage
          menu.setVisibilityAllowed(false);
          containerNome.setVisibilityAllowed(false);
 
-
       }
       else
       {
@@ -78,16 +78,27 @@ public class BasePage extends WebPage
          }
       };
 
-      final Link<String> consultarProduto = new Link<String>("consultarProduto")
-               {
-                  private static final long serialVersionUID = -633142704625312739L;
+      final Link<String> efetuarVenda = new Link<String>("efetuarVenda")
+      {
+         private static final long serialVersionUID = -633142704625312739L;
 
-                  @Override
-                  public void onClick()
-                  {
+         @Override
+         public void onClick()
+         {
+            setResponsePage(new EfetuarVendaIndex());
+         }
+      };
+
+      final Link<String> consultarProduto = new Link<String>("consultarProduto")
+      {
+         private static final long serialVersionUID = -633142704625312739L;
+
+         @Override
+         public void onClick()
+         {
             setResponsePage(new ConsultarProdutoIndex());
-                  }
-               };
+         }
+      };
 
       final Link<String> consultarAparelho = new Link<String>("consultarExercicio")
       {
@@ -113,7 +124,7 @@ public class BasePage extends WebPage
       addOrReplace(buttonlogout);
       buttonlogout.setOutputMarkupId(true);
       buttonlogout.setVisibilityAllowed(logado);
-      menu.add(consultarCliente, consultarAparelho, consultarProduto);
+      menu.add(consultarCliente, consultarAparelho, consultarProduto, efetuarVenda);
    }
 
    @Override

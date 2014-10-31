@@ -26,6 +26,7 @@ import com.br.GrandeViaFitness.componentes.provider.ProviderGenerico;
 import com.br.GrandeViaFitness.enumUtil.Mensagem;
 import com.br.GrandeViaFitness.model.Produto;
 import com.br.GrandeViaFitness.pages.visao.produto.cadastrar.CadastrarAlterarProdutoIndex;
+import com.br.GrandeViaFitness.pages.visao.produto.visualizar.VisualizarProdutoIndex;
 
 public class ConsultarProdutoForm extends FormularioBase<Produto>
 {
@@ -119,7 +120,7 @@ public class ConsultarProdutoForm extends FormularioBase<Produto>
          @Override
          public void onClick(final AjaxRequestTarget target)
          {
-
+            setResponsePage(new VisualizarProdutoIndex(getModelObject()));
          }
       });
       columns.add(DataGridGenerica.criaColunarProduto("Codigo", "codigo", true, 5));
@@ -138,7 +139,7 @@ public class ConsultarProdutoForm extends FormularioBase<Produto>
          @Override
          public void populateItem(final Item<ICellPopulator<Produto>> cellItem, final String componentId, final IModel<Produto> entidade)
          {
-            cellItem.add(new ActionButtonPanel<Produto>(componentId, entidade, listaBotoes));
+            cellItem.add(new ActionButtonPanel<Produto>(componentId, entidade, listaBotoes, true, true));
 
          }
       });

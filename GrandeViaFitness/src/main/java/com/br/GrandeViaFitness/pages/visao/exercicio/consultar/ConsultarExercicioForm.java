@@ -141,7 +141,7 @@ public class ConsultarExercicioForm extends FormularioBase<AparelhosVO>
          public void populateItem(final Item<ICellPopulator<TipoExercicio>> cellItem, final String componentId,
             final IModel<TipoExercicio> entidade)
          {
-            cellItem.add(new ActionButtonPanel<TipoExercicio>(componentId, entidade, listaBotoes));
+            cellItem.add(new ActionButtonPanel<TipoExercicio>(componentId, entidade, listaBotoes, true, true));
 
          }
       });
