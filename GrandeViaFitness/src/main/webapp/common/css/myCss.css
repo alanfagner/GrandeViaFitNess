@@ -1,6 +1,24 @@
 .obrigatorio {
 	color: #f00 !important;
 }
+.especial span em {
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	padding-top: 3px !important;
+	padding-bottom: 3px !important;
+}
+
+.especial a {
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	padding-top: 3px !important;
+	padding-bottom: 3px !important;
+}
+
+.msgERROR{
+	font-weight: bold;
+	color: red;
+}
 
 input[disabled],select[disabled],textarea[disabled],input[readonly],select[readonly],textarea[readonly]
 	{
@@ -13,14 +31,15 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 }
 
 .odd {
-	border: 1px solid #aaaaaa;
+	border: 0px solid #aaaaaa;
 	background: rgb(243, 243, 243);
 	color: rgb(0, 0, 0);
 }
 
-label{
-	font-family:  inherit;
+label {
+	font-family: inherit;
 }
+
 .labelVisualiar {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -29,9 +48,10 @@ label{
 	float: left;
 }
 
-th .tam5{
-		background-color: greenyellow;
+th .tam5 {
+	background-color: greenyellow;
 }
+
 .tam5 {
 	width: 5%;
 }
@@ -231,7 +251,30 @@ th .tam5{
 	font-weight: bold;
 	font-size: small;
 	width: 150px;
-	border-bottom: solid 5px #CD0404
+	border-bottom: solid 5px #CD0404;
+}
+
+table thead tr th a{
+	border: 1px solid #0073ea !important;
+	background: #0073ea
+		url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
+		repeat-x !important;
+	font-weight: bold !important;
+	color: #fff !important;
+	text-decoration: none;
+}
+
+table thead tr {
+	border: 1px solid #0073ea;
+	background: #0073ea
+		url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
+		repeat-x;
+	font-weight: bold;
+	color: #fff !important;
+}
+
+table thead tr{
+	
 }
 
 .menuRedendoLeft {
@@ -339,6 +382,14 @@ th .tam5{
 
 .borderVermelha {
 	border-bottom: solid 5px #CD0404;
+}
+
+table {
+	border-collapse: collapse !important;
+}
+tfoot {
+	border: 1pt solid rgb(217, 217, 224);
+	border-collapse: collapse;
 }
 
 .SpanHorarioData {
@@ -449,7 +500,7 @@ th .tam5{
 }
 
 fieldset {
-	border: 1px solid #CD0404;
+	border: 1px solid #F5D6D6;
 	border-top-width: 1px;
 	border-bottom-width: 1px;
 	border-left-width: 1px;

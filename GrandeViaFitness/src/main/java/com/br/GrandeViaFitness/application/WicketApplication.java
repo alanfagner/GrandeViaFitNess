@@ -40,6 +40,7 @@ import com.br.GrandeViaFitness.pages.visao.produto.cadastrar.CadastrarAlterarPro
 import com.br.GrandeViaFitness.pages.visao.produto.consultar.ConsultarProdutoIndex;
 import com.br.GrandeViaFitness.pages.visao.produto.visualizar.VisualizarProdutoIndex;
 import com.br.GrandeViaFitness.pages.visao.venda.efetuarVenda.EfetuarVendaIndex;
+import com.br.GrandeViaFitness.pages.visao.venda.fecharVenda.FechaVendaIndex;
 import com.br.GrandeViaFitness.security.MyAuthenticatedWebSession;
 
 /**
@@ -100,6 +101,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements
       mountPage("VisualizarProduto.html", VisualizarProdutoIndex.class);
 
       mountPage("Venda.html", EfetuarVendaIndex.class);
+      mountPage("FechaVenda.html", FechaVendaIndex.class);
 
       mountPage("HomeMobile.html", MobileHomeIndex.class);
 

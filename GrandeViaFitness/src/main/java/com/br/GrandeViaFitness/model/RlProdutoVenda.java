@@ -1,6 +1,8 @@
 package com.br.GrandeViaFitness.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import com.br.GrandeViaFitness.utilitario.Util;
 
 @Entity
 @Table(name = "RL_PRODUTO_VENDA", schema = "GRANDEVIAFITNESS")
@@ -33,6 +37,8 @@ public class RlProdutoVenda implements Entidade
    @Column(name = "QT_PRODUTO", nullable = false)
    private Integer quantidadeVendido;
 
+   @Transient
+   private String valorTotal;
 
    @Override
    public Serializable getId()
@@ -78,5 +84,21 @@ public class RlProdutoVenda implements Entidade
    public void setCodigo(final Long codigo)
    {
       this.codigo = codigo;
+   }
+
+   public String getValorTotal()
+   {
+      if (produto != null && quantidadeVendido != null && produto.getCodigo() != null)
+      {
+         valorTotal =
+            Util.priceWithDecimal(produto.getValorProduto().multiply(new BigDecimal(quantidadeVendido).setScale(2, RoundingMode.HALF_UP))
+               .setScale(2, RoundingMode.HALF_UP));
+      }
+      return valorTotal;
+   }
+
+   public void setValorTotal(final String valorTotal)
+   {
+      this.valorTotal = valorTotal;
    }
 }

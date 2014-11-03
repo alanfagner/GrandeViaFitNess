@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import com.br.GrandeViaFitness.utilitario.Util;
 
 @Entity
 @Table(name = "TB_PRODUTO", schema = "GRANDEVIAFITNESS")
@@ -25,6 +27,9 @@ public class Produto implements Entidade
 
    @Column(name = "NU_VALOR_PRODUTO", nullable = false)
    private BigDecimal valorProduto;
+
+   @Transient
+   private String valorMascara;
 
    public Long getCodigo()
    {
@@ -54,6 +59,20 @@ public class Produto implements Entidade
    public void setValorProduto(final BigDecimal valorProduto)
    {
       this.valorProduto = valorProduto;
+   }
+
+   public String getValorMascara()
+   {
+      if (getValorProduto() != null)
+      {
+         valorMascara = Util.priceWithDecimal(getValorProduto());
+      }
+      return valorMascara;
+   }
+
+   public void setValorMascara(final String valorMascara)
+   {
+      this.valorMascara = valorMascara;
    }
 
    @Override

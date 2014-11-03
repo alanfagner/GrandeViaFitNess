@@ -32,13 +32,6 @@ public class FormularioBase<T> extends Form<T>
    public void atualizaTela(final AjaxRequestTarget target, final Component... component)
    {
       target.appendJavaScript("addScriptCss();");
-      for (final Component componente : component)
-      {
-         if (componente.getClass().getSimpleName().equals("FeedbackPanel"))
-         {
-            // target.appendJavaScript("setTimeout(function(){$('#" + componente.getMarkupId() + "').hide('slow')}, 8000);");
-         }
-      }
       target.add(component);
    }
 

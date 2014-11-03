@@ -58,8 +58,8 @@ public class ProdutoDaoImpl extends JpaDao<Produto> implements ProdutoDao
       }
       if (filtroProduto.getNomeProduto() != null)
       {
-         sb.append(" AND p.nomeProduto = :nome ");
-         params.put("nome", filtroProduto.getNomeProduto());
+         sb.append(" AND UPPER(p.nomeProduto) Like :nome ");
+         params.put("nome", "%" + filtroProduto.getNomeProduto().toUpperCase() + "%");
       }
    }
 }

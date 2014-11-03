@@ -3,14 +3,14 @@ function addScriptCss() {
 	 
 	(function($) {
 		$(document).ready(function() {
-			$(".data").mask("99/99/9999"); 
+			$(".data").mask("99/99/9999",{placeholder:" "}); 
 		
 			$(".cep").mask("99999-999"); 
-			$(".numero").mask("9?99999"); 
+			$(".numero").mask("9?9999999",{placeholder:" "}); 
 			$(".valor").maskMoney();
-			$(".cpf").mask("999.999.999-99"); 
+			$(".cpf").mask("999.999.999-99",{placeholder:" "}); 
  
-			$(".telefone").mask("(99) 99999-9999"); 
+			$(".telefone").mask("(99) 99999-9999",{placeholder:" "}); 
 
 			$(".botao").button();
 			
@@ -38,19 +38,6 @@ function addScriptCss() {
 			});
 			$( ".radioEquipamento" ).buttonset();
 			$( ".radioCorpo" ).buttonset();
-			$(".Excluir").button({
-				icons : {
-					primary : "ui-icon-circle-close"
-				},
-				text : false
-			});	
-			
-			$(".Visualizar").button({
-				icons : {
-					primary : "ui-icon-circle-zoomin"
-				},
-				text : false
-			});	
 			
 			$(".sair").button({
 				icons : {

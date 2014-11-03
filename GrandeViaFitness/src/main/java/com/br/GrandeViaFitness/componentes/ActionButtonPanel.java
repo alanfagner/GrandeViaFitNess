@@ -1,15 +1,20 @@
 package com.br.GrandeViaFitness.componentes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
 import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.Model;
 
 public class ActionButtonPanel<T> extends Panel
 {
@@ -30,32 +35,57 @@ public class ActionButtonPanel<T> extends Panel
       for (final AjaxLink<T> link : this.listBotoes)
       {
          final WebMarkupContainer list = new WebMarkupContainer(view.newChildId());
-         final AjaxLink<T> externalLink = new AjaxLink<T>("Link", new PropertyModel<T>(this, "entidade"))
+         final AjaxSubmitLink externalLink = new AjaxSubmitLink("Link")
          {
             private static final long serialVersionUID = 249147107071691478L;
 
+            @SuppressWarnings({"unchecked", "rawtypes"})
             @Override
-            public void onClick(final AjaxRequestTarget target)
+            protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
             {
-               link.setModel(getModel());
+               link.setDefaultModel(new Model((Serializable) model.getObject()));
                link.onClick(target);
             }
 
             @Override
-            protected void onConfigure()
+            public void renderHead(final IHeaderResponse response)
             {
-               setOutputMarkupId(true);
                if (link.getId().equals("Excluir"))
                {
-                  setVisibilityAllowed(mostrarExcluir);
+                  final String script =
+                     "$('#" + getMarkupId() + "').button({icons : { primary : 'ui-icon-circle-close' }, text : false });   ";
+                  response.render(OnDomReadyHeaderItem.forScript(script));
                }
                else
                {
-                  setVisibilityAllowed(mostrarVisualizar);
+                  if (link.getId().equals("Visualizar"))
+                  {
+                  final String script =
+                     "$('#" + getMarkupId() + "').button({icons : { primary : 'ui-icon-circle-zoomin' }, text : false });   ";
+                  response.render(OnDomReadyHeaderItem.forScript(script));
+                  }
+                  else
+                  {
+                     final String script =
+                        "$('#" + getMarkupId() + "').button({icons : { primary : 'ui-icon-circle-check' }, text : false });   ";
+                     response.render(OnDomReadyHeaderItem.forScript(script));
+                  }
                }
+
             }
 
          };
+
+         if (link.getId().equals("Excluir"))
+         {
+            externalLink.setVisibilityAllowed(mostrarExcluir);
+         }
+         else
+         {
+            externalLink.setVisibilityAllowed(mostrarVisualizar);
+         }
+
+         externalLink.setOutputMarkupPlaceholderTag(true);
          externalLink.add(new AttributeAppender("class", link.getId()));
          list.add(externalLink);
          view.add(list);

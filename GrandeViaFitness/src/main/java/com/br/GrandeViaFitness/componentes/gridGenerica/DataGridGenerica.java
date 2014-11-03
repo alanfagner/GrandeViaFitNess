@@ -14,6 +14,7 @@ import org.apache.wicket.model.Model;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.model.Produto;
 import com.br.GrandeViaFitness.model.RlPessoaExercicio;
+import com.br.GrandeViaFitness.model.RlProdutoVenda;
 import com.br.GrandeViaFitness.model.TipoExercicio;
 
 public class DataGridGenerica<T, S> extends DataTable<T, S>
@@ -27,6 +28,24 @@ public class DataGridGenerica<T, S> extends DataTable<T, S>
       addTopToolbar(new NoRecordsToolbar(this));
       addBottomToolbar(new CustomNavigator<T, S>(this));
       addTopToolbar(new HeadersToolbar<S>(this, dataProvider));
+   }
+
+   public static PropertyColumn<RlProdutoVenda, String> criaColunarRlProdutoVenda(final String text, final String nomeModel,
+      final Boolean orderncao, final Integer tamanho)
+   {
+      final PropertyColumn<RlProdutoVenda, String> coluna =
+         new PropertyColumn<RlProdutoVenda, String>(new Model<String>(text), nomeModel, orderncao ? nomeModel : null)
+         {
+            private static final long serialVersionUID = -8096001661154391568L;
+
+            @Override
+            public String getCssClass()
+            {
+               return "tam" + tamanho;
+            }
+         };
+      coluna.getCssClass();
+      return coluna;
    }
 
    public static PropertyColumn<RlPessoaExercicio, String> criaColunarRlPessoaExercicio(final String text, final String nomeModel,

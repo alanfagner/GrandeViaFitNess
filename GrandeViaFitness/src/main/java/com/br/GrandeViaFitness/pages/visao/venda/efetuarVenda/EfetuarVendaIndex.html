@@ -1,56 +1,48 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<form wicket:id="formulario">
+	    <div wicket:id="modal"></div>
 		<div class="div_center">
 			<fieldset>
 				<legend class="legenda" align="left">Efetuar Venda</legend>
 				<fieldset>
-					<legend class="legenda" align="left">Comprador</legend>
+					<legend class="legenda" align="left">Produtos</legend>
 					<div class="LabelInputNome grid_4">
 						<label>
 							<span class="obrigatorio">*</span>
-							Nome Pessoa:
+							Nome Produto:
 						</label>
-						<input id="cpfPessoa" type="text" maxlength="11" class="campoText" />
+						<input wicket:id="nomeProduto" type="text" maxlength="11" class="campoText" />
 					</div>
-					<div class="LabelInputNome grid_4">
+					<div class="LabelInputNome grid_6">
+						<input wicket:id="btnPesquisar" class="botao" type="submit" style="margin-top: 10px" name="avancar" value="Buscar" />
+						<input wicket:id="btnLimpar" class="botao" type="submit" style="margin-top: 10px" name="avancar" value="Limpar" />
+					</div>
+					<div class="LabelInputNome grid_2">
 						<label>
 							<span class="obrigatorio">*</span>
-							Cpf:
+							Quantidade:
 						</label>
-						<input id="cpfPessoa" type="text" maxlength="11" class="campoText" />
+						<input wicket:id="quantidade" type="text" maxlength="11" class="numero campoText" />
 					</div>
 					<div class="dataTables_wrapper">
-						<table class="display  dataTable" cellspacing="0" style="width: 100%; border: 1px;" wicket:id="tablePessoa"></table>
-						<div class="msgERROR" wicket:id="containerVazioPessoa">Nenhum registro encontrado!</div>
+						<table class="display  dataTable" style="width: 100%; border: 1px;" wicket:id="tableProduto"></table>
+						<div class="msgERROR" wicket:id="containerVazioProduto">Nenhum registro encontrado!</div>
 					</div>
 				</fieldset>
-				<div class="clear"></div>
-				<div class="LabelInputNome grid_4">
-					<label>
-						<span class="obrigatorio">*</span>
-						Nome Produto:
-					</label>
-					<input id="cpfPessoa" type="text" maxlength="11" class="campoText" />
-				</div>
-				<div class="LabelInputNome grid_4">
-					<input id="btnNovoProduto" class="botao" type="submit" style="margin-top: 10px" name="avancar" value="Buscar" />
-				</div>
-				<div class="dataTables_wrapper">
-					<table class="display  dataTable" cellspacing="0" style="width: 90%; border: 1px;" id="table"></table>
-					<div class="msgERROR" id="containerVazio">Nenhum registro encontrado!</div>
-				</div>
-				<label> Items das Vendas </label>
-				<div class="dataTables_wrapper">
-					<table class="display  dataTable" cellspacing="0" style="width: 90%; border: 1px;" id="table"></table>
-					<div class="msgERROR" id="containerVazio">Nenhum registro encontrado!</div>
-				</div>
+				<fieldset>
+					<legend class="legenda" align="left">Lista de Compras</legend>
+					<div class="dataTables_wrapper">
+						<table class="display  dataTable" style="width: 100%; border: 1px;" wicket:id="tableProdutoVenda"></table>
+						<div class="msgERROR" wicket:id="containerVazioRLProdutoVenda">Lista de compras esta Vazia!</div>
+					</div>
+				</fieldset>
 			</fieldset>
 			<div class="clear"></div>
 			<div class="grid_6" style="margin-left: 30px;">
-				<input id="btnNovoProduto" class="botao" type="submit" name="avancar" value="Salvar" />
-				<input id="btnVoltar" class="botao" type="submit" name=Limpar value="Voltar" />
+				<input wicket:id="btnFecharVenda" class="botao" type="submit" name="avancar" value="Fechar Compra" />
+				<input wicket:id="btnVoltar" class="botao" type="submit" name="Voltar" value="Voltar" />
 			</div>
 		</div>
-		<span id="feedback" class="feedBack ui-shadow"></span>
+		<span wicket:id="feedback" class="feedBack ui-shadow"></span>
 	</form>
 </wicket:extend>

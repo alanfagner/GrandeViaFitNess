@@ -76,8 +76,16 @@
 	width: 37.8px;
 }
 
+.grid_1_2 {
+	width: 84.8px;
+}
+
 .grid_2 {
 	width: 94px;
+}
+
+.grid_2_3 {
+	width: 110px;
 }
 
 .grid_3 {

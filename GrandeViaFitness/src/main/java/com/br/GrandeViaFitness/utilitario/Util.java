@@ -1,7 +1,9 @@
 package com.br.GrandeViaFitness.utilitario;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.apache.commons.lang.StringUtils;
@@ -12,6 +14,12 @@ import org.joda.time.format.DateTimeFormatter;
 
 public class Util
 {
+   public static String priceWithDecimal(final BigDecimal price)
+   {
+      final DecimalFormat formatter = new DecimalFormat("###,###,###.00");
+      return formatter.format(price);
+   }
+
    public static String retirarMascara(final String texto)
    {
       return texto.replaceAll("\\D", "");

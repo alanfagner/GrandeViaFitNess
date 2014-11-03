@@ -1,0 +1,95 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<form wicket:id="formulario">
+		<div class="div_center">
+			<fieldset style="border: none;">
+				<legend class="legenda" align="left"></legend>
+				<div wicket:id="containerGridDados">
+					<fieldset>
+						<legend class="legenda" align="left">Dados do Cliente</legend>
+						<div class="LabelInputNome grid_8">
+							<label> Nome Cliente:</label>
+							<br />
+							<label wicket:id="nomePessoa" class="labelVisualiar"></label>
+						</div>
+						<div class="LabelInputNome grid_3">
+							<label> CPF:</label>
+							<br />
+							<label wicket:id="cpfPessoa" class="labelVisualiar"></label>
+						</div>
+						<div class="LabelInputNome grid_8">
+							<label> Email:</label>
+							<br />
+							<label wicket:id="emailPessoa" class="labelVisualiar"></label>
+						</div>
+						<div class="LabelInputNome grid_3">
+							<label> Número Celular:</label>
+							<br />
+							<label wicket:id="celularPessoa" class="labelVisualiar"></label>
+						</div>
+						<div class="grid_2">
+							<input wicket:id="btnEscolherCliente" class="botao" type="submit" name="Voltar" value="Escolher Cliente" />
+						</div>
+
+					</fieldset>
+				</div>
+				<div wicket:id="containerGrid">
+					<fieldset>
+						<legend class="legenda" align="left">Lista de Clientes</legend>
+						<div class="LabelInputNome grid_4">
+							<label>
+								<span class="obrigatorio">*</span>
+								Nome Cliente:
+							</label>
+							<input wicket:id="nomePessoa" type="text" maxlength="11" class="campoText" />
+						</div>
+						<div class="LabelInputNome grid_4">
+							<label>
+								<span class="obrigatorio">*</span>
+								CPF:
+							</label>
+							<input wicket:id="cpfPessoa" type="text" maxlength="11" class="campoText" />
+						</div>
+						<div class="LabelInputNome grid_6">
+							<input wicket:id="btnPesquisar" class="botao" type="submit" style="margin-top: 10px" name="avancar" value="Buscar" />
+							<input wicket:id="btnLimpar" class="botao" type="submit" style="margin-top: 10px" name="avancar" value="Limpar" />
+						</div>
+
+						<div class="dataTables_wrapper">
+							<table class="display  dataTable" style="width: 100%; border: 1px;" wicket:id=table></table>
+							<div class="msgERROR" wicket:id="containerVazio">Nenhum Registro Encontrado!</div>
+						</div>
+					</fieldset>
+				</div>
+				<fieldset>
+					<legend class="legenda" align="left">Lista de Compras</legend>
+					<div class="dataTables_wrapper">
+						<table class="display  dataTable" style="width: 100%; border: 1px;" wicket:id="tableProdutoVenda"></table>
+					</div>
+				</fieldset>
+				<div class="clear"></div>
+				<br />
+				<div class="LabelInputNome grid_2_3" style="margin-left: 30px;">
+					<label>
+						<span class="obrigatorio">*</span>
+						Data da Compra:
+					</label>
+					<input wicket:id="campoDataVenda" type="text" maxlength="11" class="campoText" />
+				</div>
+				<div style="float: right;">
+					<div class="LabelInputNome grid_1_2" style="margin-right: 0px;">
+						<label> Valor Total: R$: </label>
+					</div>
+					<div class="LabelInputNome grid_4" style="margin-left: 5px;">
+						<label wicket:id="valorTotal" class="LabelInputNome"></label>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div class="grid_5" >
+					<input wicket:id="btnCompra" class="botao" type="submit" name="Finalizar" value="Finalizar Compra" />
+					<input wicket:id="btnVoltar" class="botao" type="submit" name="Voltar" value="Voltar" />
+				</div>
+			</fieldset>
+		</div>
+		<span wicket:id="feedback" class="feedBack ui-shadow"></span>
+	</form>
+</wicket:extend>

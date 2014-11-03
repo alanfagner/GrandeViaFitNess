@@ -10,58 +10,82 @@
 		<div class="div_tam"></div>
 	</div>
 	<div class="Layout_Fundo">
-		
+
 		<div class="fundoTopo ">
-			<a class="sair"  href="osiris-web/logout" wicket:id="sair"> Sair</a>
+			<a class="sair" href="osiris-web/logout" wicket:id="sair"> Sair</a>
 			<div class="div_tam" style="height: 118px;">
 				<h2 class="loganGrand">Grande Via Fitness</h2>
-				
+
 			</div>
-			
+
 		</div>
 	</div>
 
 	<div class="divBranca borderVermelha">
 		<div wicket:id="containerUsuario" class="divUsuarioLogado">
-			Usuario: <span wicket:id="nomeUsuario"></span>
+			Usuario:
+			<span wicket:id="nomeUsuario"></span>
 		</div>
 		<span id="SpanHorarioData" class="SpanHorarioData"> </span>
 		<div wicket:id="containerMenu">
 			<div class="div_tam">
 				<ul id="menu" class="Menu">
-					<li id="nav-1" style="z-index: 1" ><a id="Menu1Link" class="menuRedendoLeft"
-						href="#">Cadastro </a>
+					<li id="nav-1" style="z-index: 1">
+						<a id="Menu1Link" class="menuRedendoLeft" href="#">Cadastro </a>
 						<ul id="subnav-1" class="ultimoLinkBottomLeft">
-							<li><a wicket:id="consultarProduto" href="#">Cadastro Produtos</a></li>
-							<li><a wicket:id="consultarCliente" href="#">Cadastro Cliente</a></li>
-							<li><a wicket:id="consultarExercicio" class="ultimoLinkBottomLeft"
-								href="#">Cadastro Exercício</a></li>
-						</ul></li>
+							<li>
+								<a wicket:id="consultarProduto" href="#">Cadastro Produtos</a>
+							</li>
+							<li>
+								<a wicket:id="consultarCliente" href="#">Cadastro Cliente</a>
+							</li>
+							<li>
+								<a wicket:id="consultarExercicio" class="ultimoLinkBottomLeft" href="#">Cadastro Atividade</a>
+							</li>
+						</ul>
+					</li>
 
-					<li id="nav-2"  style="z-index: 1" ><a id="Menu2Link" href="#">Vendas </a>
+					<li id="nav-2" style="z-index: 1">
+						<a id="Menu2Link" href="#">Vendas </a>
 						<ul id="subnav-3" class="ultimoLinkBottomLeft">
-							<li><a wicket:id="efetuarVenda" href="#">Efetuar Venda</a></li>
-							<li><a id="SubMenu6Link" href="#">Relatorio de Vendas</a></li>
-						</ul></li>
-					<li id="nav-3"  style="z-index: 1" ><a id="Menu3Link" class="menuRedendoRight"
-						href="#">Mensalidade</a></li>
+							<li>
+								<a wicket:id="efetuarVenda" href="#">Efetuar Venda</a>
+							</li>
+							<li>
+								<a id="SubMenu6Link" href="#">Relatorio de Vendas</a>
+							</li>
+						</ul>
+					</li>
+					<li id="nav-3" style="z-index: 1">
+						<a id="Menu3Link" class="menuRedendoRight" href="#">Mensalidade</a>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="clear"></div>
+	<!-- <div id="containerMenu">
+		<div class="div_tam" style="margin-top: 10px">
+			<div style="width: 300px; background-color: white; border-radius: 100px 100px 0px 0px; height: 25px; text-align: center;">
+				<label style="margem-top:5px">Pagina Principal</label>
+			</div>
+		</div>
+	</div> -->
 	<div class="minmuHeight">
 		<wicket:child />
 	</div>
+	<div class="clear"></div>
 	<div class="divBrancaBotton borderVermelha"></div>
 	<div class="Layout_FundoBotton">
 		<div class="fundoBottom ">
 			<div class="div_tam" style="height: 118px;">
-				<div class="boxBottomRight">Todos os direitos reservados - ©
-					2014</div>
+				<div class="boxBottomRight">Todos os direitos reservados - © 2014</div>
 				<div class="boxBottomLeft">
 					<p>
-						Grande Via Fitness<br> Desenvolvimento: Alan Fagner Gonçalves<br>
+						Grande Via Fitness
+						<br>
+						Desenvolvimento: Alan Fagner Gonçalves
+						<br>
 						Telefone: (16) 997578380
 					</p>
 				</div>

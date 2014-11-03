@@ -125,7 +125,7 @@ public class ConsultarProdutoForm extends FormularioBase<Produto>
       });
       columns.add(DataGridGenerica.criaColunarProduto("Codigo", "codigo", true, 5));
       columns.add(DataGridGenerica.criaColunarProduto("Nome", "nomeProduto", true, 40));
-      columns.add(DataGridGenerica.criaColunarProduto("Preço", "valorProduto", true, 40));
+      columns.add(DataGridGenerica.criaColunarProduto("Preço", "valorMascara", true, 40));
       columns.add(new AbstractColumn<Produto, String>(new Model<String>("Opções"))
       {
          private static final long serialVersionUID = -3102670641136395641L;
