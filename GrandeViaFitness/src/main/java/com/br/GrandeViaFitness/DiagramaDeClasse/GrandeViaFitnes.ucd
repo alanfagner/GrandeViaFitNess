@@ -167,7 +167,7 @@
             </targetConnections>
             <children/>
             <filterProperty/>
-            <name>Manter Cliente</name>
+            <name>Manter Pessoa</name>
           </target>
           <bendpoints/>
         </net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel>
