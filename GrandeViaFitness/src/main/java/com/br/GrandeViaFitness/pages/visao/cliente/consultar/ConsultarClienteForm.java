@@ -8,7 +8,6 @@ import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulato
 import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.repeater.Item;
@@ -18,6 +17,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.PessoaAS;
 import com.br.GrandeViaFitness.componentes.ActionButtonPanel;
+import com.br.GrandeViaFitness.componentes.AjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.ConfirmAjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
@@ -29,7 +29,6 @@ import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
 import com.br.GrandeViaFitness.pages.visao.cliente.cadastrar.CadastrarAlterarClienteIndex;
 import com.br.GrandeViaFitness.pages.visao.cliente.visualizar.VisualizarClienteIndex;
-import com.googlecode.wicket.jquery.ui.form.button.AjaxButton;
 import com.googlecode.wicket.jquery.ui.form.button.ConfirmAjaxButton;
 
 public class ConsultarClienteForm extends FormularioBase<Pessoa>
@@ -53,7 +52,7 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
 
    private ConfirmAjaxButton confirma;
 
-   private AjaxButton botaoPesquisar;
+   private AjaxButtonCustom botaoPesquisar;
    private WebMarkupContainer informacaoVazia;
 
    private ConfirmAjaxButtonCustom<Pessoa> modal;
@@ -147,9 +146,10 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
          }
       });
       columns.add(DataGridGenerica.criaColunarPessoa("Codigo", "codigo", true, 5));
-      columns.add(DataGridGenerica.criaColunarPessoa("Nome", "nomePessoa", true, 40));
+      columns.add(DataGridGenerica.criaColunarPessoa("Nome", "nomePessoa", true, 30));
       columns.add(DataGridGenerica.criaColunarPessoa("CPF", "cpfPessoa", true, 10));
-      columns.add(DataGridGenerica.criaColunarPessoa("Email", "emailPessoa", true, 40));
+      columns.add(DataGridGenerica.criaColunarPessoa("Email", "emailPessoa", true, 30));
+      columns.add(DataGridGenerica.criaColunarPessoa("Permissão", "cargoEnum.descricao", true, 20));
       columns.add(new AbstractColumn<Pessoa, String>(new Model<String>("Opções"))
       {
          private static final long serialVersionUID = -3102670641136395641L;
@@ -200,7 +200,7 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
 
    private void criaBotoes()
    {
-      botaoPesquisar = new AjaxButton("btnPesquisar")
+      botaoPesquisar = new AjaxButtonCustom("btnPesquisar")
       {
          private static final long serialVersionUID = -2955360194609797122L;
 
@@ -211,38 +211,28 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
          }
       };
 
-      final Button btnNovoCliente = new Button("btnNovoCliente")
+      final AjaxButtonCustom btnNovoCliente = new AjaxButtonCustom("btnNovoCliente")
       {
          private static final long serialVersionUID = -1540652083107892733L;
 
          @Override
-         public void onSubmit()
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             setResponsePage(new CadastrarAlterarClienteIndex());
          }
 
-         @Override
-         protected void onConfigure()
-         {
-            setDefaultFormProcessing(false);
-         }
       };
 
-      final Button btnVoltar = new Button("btnVoltar")
+      final AjaxButtonCustom btnVoltar = new AjaxButtonCustom("btnVoltar")
       {
          private static final long serialVersionUID = 7630777092486610559L;
 
          @Override
-         public void onSubmit()
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             setResponsePage(new HomePageIndex());
          }
 
-         @Override
-         protected void onConfigure()
-         {
-            setDefaultFormProcessing(false);
-         }
       };
       addOrReplace(btnNovoCliente, btnVoltar, botaoPesquisar);
    }

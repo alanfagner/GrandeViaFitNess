@@ -1,28 +1,26 @@
 package com.br.GrandeViaFitness.pages.login;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
+import com.br.GrandeViaFitness.componentes.AjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.User;
 import com.br.GrandeViaFitness.utilitario.Util;
 
-
 public class LoginForm extends FormularioBase<User>
 {
    private static final long serialVersionUID = -6592036153332015004L;
 
-   private AjaxButton botaoEnviar;
+   private AjaxButtonCustom botaoEnviar;
    private User auxUser;
    private FeedBackPanelCustom feedBack;
 
-   private Button botaoLimpar;
+   private AjaxButtonCustom botaoLimpar;
 
    public LoginForm(final String id)
    {
@@ -36,7 +34,7 @@ public class LoginForm extends FormularioBase<User>
       auxUser = new User();
       add(new TextField<String>("cpf", new PropertyModel<String>(auxUser, "cpf")));
       add(new PasswordTextField("password", new PropertyModel<String>(auxUser, "password")));
-      botaoEnviar = new AjaxButton("btnEnviar")
+      botaoEnviar = new AjaxButtonCustom("btnEnviar")
       {
          private static final long serialVersionUID = 5503520007522761497L;
 
@@ -59,18 +57,14 @@ public class LoginForm extends FormularioBase<User>
       };
       botaoEnviar.setOutputMarkupPlaceholderTag(true);
 
-      botaoLimpar = new Button("btnLimpar")
+      botaoLimpar = new AjaxButtonCustom("btnLimpar")
       {
          private static final long serialVersionUID = 5503520007522761497L;
-         @Override
-         public void onSubmit()
-         {
-            setResponsePage(new LoginIndex());
-         }
 
          @Override
-         public void onError()
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
+            setResponsePage(new LoginIndex());
          }
       };
       botaoLimpar.setDefaultFormProcessing(false);

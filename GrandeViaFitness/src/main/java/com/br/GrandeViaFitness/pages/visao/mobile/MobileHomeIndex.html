@@ -4,20 +4,22 @@
 			<h1></h1>
 			<a href="" wicket:id="btnAvancar" class="botaoMenu ui-btn-right" data-icon="plus"></a>
 		</div>
-		
-		<div wicket:id="containerInput">
-		
-		<input wicket:id="campoData" type="text" data-role="date" data-inline="true">
+		<div style="margin: auto">
+			<div wicket:id="containerInput" style="width: 343px; margin: auto">
+				<input wicket:id="campoData" type="text" data-role="date" data-inline="true">
+			</div>
 		</div>
-		
-		
 		<div data-role="footer" data-position="fixed">
-			<div wicket:id="containerBTN">
+			<div wicket:id="containerBTN" style="float: left;">
 				<p>
-					<a href="#right-panel" style="float: left;" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini">Trocar Cliente</a>
+					<a href="#right-panel"  class="ui-btn ui-icon-user ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini">Trocar Cliente</a>
 				</p>
 			</div>
-			<h1>
+			
+			<div style="float: right;margin-top: 16px;" >
+				<a href="#right-panel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini">Trocar Cliente</a>
+			</div>
+			<h1 style="float: left; margin-top: 16px;">
 				<label wicket:id="lbnLogado"></label>
 			</h1>
 		</div>

@@ -31,6 +31,7 @@ import com.br.GrandeViaFitness.pages.visao.cliente.visualizar.VisualizarClienteI
 import com.br.GrandeViaFitness.pages.visao.exercicio.cadastrar.CadastrarAlterarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.exercicio.consultar.ConsultarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.exercicio.visualizar.VisualizarExercicioIndex;
+import com.br.GrandeViaFitness.pages.visao.mensalidade.pagamento.PagamentoIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileHomeIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.ExecutaExercicio.MobileExecutarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.MembroCorpo.MobileMembroCorpoIndex;
@@ -71,6 +72,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements
    public void init()
    {
       super.init();
+      // getDebugSettings().setAjaxDebugModeEnabled(false);
       getApplicationSettings().setPageExpiredErrorPage(HomePageIndex.class);
       SpringComponentInjector springComponentInjector = null;
       if (applicationContext != null)
@@ -102,6 +104,8 @@ public class WicketApplication extends AuthenticatedWebApplication implements
 
       mountPage("Venda.html", EfetuarVendaIndex.class);
       mountPage("FechaVenda.html", FechaVendaIndex.class);
+
+      mountPage("Pagamento.html", PagamentoIndex.class);
 
       mountPage("HomeMobile.html", MobileHomeIndex.class);
 

@@ -29,7 +29,6 @@
 						<div class="grid_2">
 							<input wicket:id="btnEscolherCliente" class="botao" type="submit" name="Voltar" value="Escolher Cliente" />
 						</div>
-
 					</fieldset>
 				</div>
 				<div wicket:id="containerGrid">
@@ -58,33 +57,20 @@
 						</div>
 					</fieldset>
 				</div>
-				<fieldset>
-					<legend class="legenda" align="left">Lista de Compras</legend>
-					<div class="dataTables_wrapper">
-						<table class="display  dataTable" style="width: 100%; border: 1px;" wicket:id="tableProdutoVenda"></table>
-					</div>
-				</fieldset>
 				<div class="clear"></div>
 				<br />
 				<div class="LabelInputNome grid_2_3" style="margin-left: 30px;">
 					<label>
 						<span class="obrigatorio">*</span>
-						Data da Compra:
+						Data do Pagamento:
 					</label>
 					<input wicket:id="campoDataVenda" type="text" maxlength="11" class="campoText" />
 				</div>
-				<div style="float: right;">
-					<div class="LabelInputNome grid_1_2" style="margin-right: 0px;">
-						<label> Valor Total: R$: </label>
-					</div>
-					<div class="LabelInputNome grid_4" style="margin-left: 5px;">
-						<label wicket:id="valorTotal" class="LabelInputNome"></label>
-					</div>
-				</div>
+				
 				<div class="clear"></div>
-				<div class="grid_5" >
-					<input wicket:id="btnCompra" class="botao" type="submit" name="Finalizar" value="Finalizar Compra" />
-					<input wicket:id="btnVoltar" class="botao" type="submit" name="Voltar" value="Voltar" />
+				<div class="grid_5">
+					<input id="btnCompra" class="botao" type="submit" name="Finalizar" value="Finalizar Compra" />
+					<input id="btnVoltar" class="botao" type="submit" name="Voltar" value="Voltar" />
 				</div>
 			</fieldset>
 		</div>

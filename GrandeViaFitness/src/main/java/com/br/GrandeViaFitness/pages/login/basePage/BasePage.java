@@ -2,6 +2,7 @@ package com.br.GrandeViaFitness.pages.login.basePage;
 
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
@@ -13,6 +14,7 @@ import com.br.GrandeViaFitness.enumUtil.PermissaoEnum;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
 import com.br.GrandeViaFitness.pages.visao.exercicio.consultar.ConsultarExercicioIndex;
+import com.br.GrandeViaFitness.pages.visao.mensalidade.pagamento.PagamentoIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileHomeIndex;
 import com.br.GrandeViaFitness.pages.visao.produto.consultar.ConsultarProdutoIndex;
 import com.br.GrandeViaFitness.pages.visao.venda.efetuarVenda.EfetuarVendaIndex;
@@ -34,6 +36,8 @@ public class BasePage extends WebPage
    private Link<String> buttonlogout;
 
    private Boolean logado = false;
+
+   private Link<String> buttonMobile;
 
    public BasePage()
    {
@@ -67,6 +71,17 @@ public class BasePage extends WebPage
 
    private void criaMenus()
    {
+      final Link<String> pagamentoMensalidade = new Link<String>("pagamentoMenslidade")
+      {
+         private static final long serialVersionUID = -633142704625312739L;
+
+         @Override
+         public void onClick()
+         {
+            setResponsePage(new PagamentoIndex());
+         }
+      };
+
       final Link<String> consultarCliente = new Link<String>("consultarCliente")
       {
          private static final long serialVersionUID = -633142704625312739L;
@@ -120,11 +135,38 @@ public class BasePage extends WebPage
             getSession().invalidate();
             AuthenticatedWebSession.get().signOut();
          }
+
+         @Override
+         public void renderHead(final IHeaderResponse response)
+         {
+            final String script = "$('#" + getMarkupId() + "').button({ icons : { primary :'ui-icon-power'}, text : true});   ";
+            response.render(OnDomReadyHeaderItem.forScript(script));
+         }
       };
-      addOrReplace(buttonlogout);
+
+      buttonMobile = new Link<String>("mobile")
+      {
+         private static final long serialVersionUID = -633142704625312739L;
+
+         @Override
+         public void onClick()
+         {
+            setResponsePage(new MobileHomeIndex());
+         }
+
+         @Override
+         public void renderHead(final IHeaderResponse response)
+         {
+            final String script = "$('#" + getMarkupId() + "').button({ icons : { primary :'ui-icon-transferthick-e-w'}, text : true});   ";
+            response.render(OnDomReadyHeaderItem.forScript(script));
+         }
+      };
+      addOrReplace(buttonlogout, buttonMobile);
       buttonlogout.setOutputMarkupId(true);
       buttonlogout.setVisibilityAllowed(logado);
-      menu.add(consultarCliente, consultarAparelho, consultarProduto, efetuarVenda);
+      buttonMobile.setOutputMarkupId(true);
+      buttonMobile.setVisibilityAllowed(logado);
+      menu.add(consultarCliente, consultarAparelho, consultarProduto, efetuarVenda, pagamentoMensalidade);
    }
 
    @Override

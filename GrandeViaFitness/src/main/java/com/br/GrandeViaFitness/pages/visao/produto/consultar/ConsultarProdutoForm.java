@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
@@ -17,6 +16,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.ProdutoAS;
 import com.br.GrandeViaFitness.componentes.ActionButtonPanel;
+import com.br.GrandeViaFitness.componentes.AjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.ConfirmAjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
@@ -176,7 +176,7 @@ public class ConsultarProdutoForm extends FormularioBase<Produto>
 
    private void criaBotoes()
    {
-      addOrReplace(new AjaxButton("btnNovo")
+      addOrReplace(new AjaxButtonCustom("btnNovo")
       {
          private static final long serialVersionUID = 5599582280742051303L;
 
@@ -187,7 +187,7 @@ public class ConsultarProdutoForm extends FormularioBase<Produto>
          }
       });
 
-      addOrReplace(new AjaxButton("btnVoltar")
+      addOrReplace(new AjaxButtonCustom("btnVoltar")
       {
          private static final long serialVersionUID = 5599582280742051303L;
 
@@ -198,7 +198,7 @@ public class ConsultarProdutoForm extends FormularioBase<Produto>
          }
       });
 
-      addOrReplace(new AjaxButton("btnPesquisar")
+      addOrReplace(new AjaxButtonCustom("btnPesquisar")
       {
          private static final long serialVersionUID = 5599582280742051303L;
 

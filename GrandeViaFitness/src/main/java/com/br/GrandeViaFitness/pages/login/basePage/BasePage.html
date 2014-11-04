@@ -12,7 +12,8 @@
 	<div class="Layout_Fundo">
 
 		<div class="fundoTopo ">
-			<a class="sair" href="osiris-web/logout" wicket:id="sair"> Sair</a>
+			<a  href="osiris-web/logout" wicket:id="sair"> Sair</a>
+			<a  href="osiris-web/logout" wicket:id="mobile"> Mobile</a>
 			<div class="div_tam" style="height: 118px;">
 				<h2 class="loganGrand">Grande Via Fitness</h2>
 
@@ -31,7 +32,7 @@
 			<div class="div_tam">
 				<ul id="menu" class="Menu">
 					<li id="nav-1" style="z-index: 1">
-						<a id="Menu1Link" class="menuRedendoLeft" href="#">Cadastro </a>
+						<a style="cursor: default" id="Menu1Link" class="menuRedendoLeft" href="#">Cadastro </a>
 						<ul id="subnav-1" class="ultimoLinkBottomLeft">
 							<li>
 								<a wicket:id="consultarProduto" href="#">Cadastro Produtos</a>
@@ -40,13 +41,13 @@
 								<a wicket:id="consultarCliente" href="#">Cadastro Cliente</a>
 							</li>
 							<li>
-								<a wicket:id="consultarExercicio" class="ultimoLinkBottomLeft" href="#">Cadastro Atividade</a>
+								<a wicket:id="consultarExercicio"  href="#">Cadastro Atividade</a>
 							</li>
 						</ul>
 					</li>
 
 					<li id="nav-2" style="z-index: 1">
-						<a id="Menu2Link" href="#">Vendas </a>
+						<a  style="cursor: default" id="Menu2Link" href="#">Vendas </a>
 						<ul id="subnav-3" class="ultimoLinkBottomLeft">
 							<li>
 								<a wicket:id="efetuarVenda" href="#">Efetuar Venda</a>
@@ -57,7 +58,15 @@
 						</ul>
 					</li>
 					<li id="nav-3" style="z-index: 1">
-						<a id="Menu3Link" class="menuRedendoRight" href="#">Mensalidade</a>
+						<a style="cursor: default" id="Menu2Link" class="menuRedendoRight" href="#">Mensalidade </a>
+						<ul id="subnav-3" class="ultimoLinkBottomright">
+							<li>
+								<a wicket:id="pagamentoMenslidade" href="#">Pagamento</a>
+							</li>
+							<li>
+								<a id="SubMenu6Link" href="#">Relatorio de Pagamento</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</div>

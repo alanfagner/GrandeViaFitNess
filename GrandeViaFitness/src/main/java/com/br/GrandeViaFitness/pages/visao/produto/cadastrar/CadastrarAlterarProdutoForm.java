@@ -2,13 +2,13 @@ package com.br.GrandeViaFitness.pages.visao.produto.cadastrar;
 
 import java.math.BigDecimal;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.ProdutoAS;
+import com.br.GrandeViaFitness.componentes.AjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.enumUtil.Mensagem;
@@ -50,7 +50,7 @@ public class CadastrarAlterarProdutoForm extends FormularioBase<Produto>
 
    private void criaBotoes()
    {
-      addOrReplace(new AjaxButton("btnNovoProduto")
+      addOrReplace(new AjaxButtonCustom("btnNovoProduto")
       {
          private static final long serialVersionUID = -4629383593202385393L;
 
@@ -74,7 +74,7 @@ public class CadastrarAlterarProdutoForm extends FormularioBase<Produto>
             target.add(feedBackPanelCustom);
          }
       });
-      addOrReplace(new AjaxButton("btnVoltar")
+      addOrReplace(new AjaxButtonCustom("btnVoltar")
       {
          private static final long serialVersionUID = -1768450751297077181L;
 

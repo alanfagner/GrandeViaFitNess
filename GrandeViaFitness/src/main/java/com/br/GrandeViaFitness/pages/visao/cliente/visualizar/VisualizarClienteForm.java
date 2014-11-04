@@ -3,14 +3,13 @@ package com.br.GrandeViaFitness.pages.visao.cliente.visualizar;
 import java.text.SimpleDateFormat;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.CompoundPropertyModel;
+import com.br.GrandeViaFitness.componentes.AjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.pages.visao.cliente.cadastrar.CadastrarAlterarClienteIndex;
 import com.br.GrandeViaFitness.pages.visao.cliente.consultar.ConsultarClienteIndex;
-import com.googlecode.wicket.jquery.ui.form.button.AjaxButton;
 
 public class VisualizarClienteForm extends FormularioBase<Pessoa>
 {
@@ -33,7 +32,7 @@ public class VisualizarClienteForm extends FormularioBase<Pessoa>
 
    private void criaBotoes()
    {
-      addOrReplace(new AjaxButton("alterar")
+      addOrReplace(new AjaxButtonCustom("alterar")
       {
          private static final long serialVersionUID = -8644157391966938694L;
 
@@ -44,20 +43,14 @@ public class VisualizarClienteForm extends FormularioBase<Pessoa>
          }
       });
 
-      addOrReplace(new Button("voltar")
+      addOrReplace(new AjaxButtonCustom("voltar")
       {
          private static final long serialVersionUID = -2853532978867429273L;
 
          @Override
-         public void onSubmit()
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             setResponsePage(new ConsultarClienteIndex());
-         }
-
-         @Override
-         protected void onConfigure()
-         {
-
          }
       });
 

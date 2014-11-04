@@ -8,7 +8,6 @@ import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulato
 import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
@@ -16,6 +15,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.TipoExercicioAS;
 import com.br.GrandeViaFitness.componentes.ActionButtonPanel;
+import com.br.GrandeViaFitness.componentes.AjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.ConfirmAjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
@@ -160,40 +160,28 @@ public class ConsultarExercicioForm extends FormularioBase<AparelhosVO>
       addOrReplace(gridGenerica);
    }
 
-
    private void criaBotoes()
    {
-      final Button btnNovoCliente = new Button("btnNovoExercicio")
+      final AjaxButtonCustom btnNovoCliente = new AjaxButtonCustom("btnNovoExercicio")
       {
          private static final long serialVersionUID = -1540652083107892733L;
 
          @Override
-         public void onSubmit()
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             setResponsePage(new CadastrarAlterarExercicioIndex());
          }
 
-         @Override
-         protected void onConfigure()
-         {
-            setDefaultFormProcessing(false);
-         }
       };
 
-      final Button btnVoltar = new Button("btnVoltar")
+      final AjaxButtonCustom btnVoltar = new AjaxButtonCustom("btnVoltar")
       {
          private static final long serialVersionUID = 7630777092486610559L;
 
          @Override
-         public void onSubmit()
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             setResponsePage(new HomePageIndex());
-         }
-
-         @Override
-         protected void onConfigure()
-         {
-            setDefaultFormProcessing(false);
          }
       };
       addOrReplace(btnNovoCliente, btnVoltar);

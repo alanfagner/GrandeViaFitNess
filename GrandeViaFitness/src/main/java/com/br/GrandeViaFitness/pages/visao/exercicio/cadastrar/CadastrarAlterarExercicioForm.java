@@ -3,9 +3,9 @@ package com.br.GrandeViaFitness.pages.visao.exercicio.cadastrar;
 import java.io.File;
 import java.util.List;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -22,6 +22,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.TipoExercicioAS;
+import com.br.GrandeViaFitness.componentes.AjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.CriaImagenNonCachingImage;
 import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
@@ -97,11 +98,37 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
    private void criaUploadFotos()
    {
 
-      foto1 = new FileUploadField("fileInput", new Model());
-      foto2 = new FileUploadField("fileInput2", new Model());
+      foto1 = new FileUploadField("fileInput", new Model())
+      {
+         /**
+          *
+          */
+         private static final long serialVersionUID = -1202807039758096672L;
+
+         @Override
+         public void renderHead(final IHeaderResponse response)
+         {
+            final String script = "$('#" + getMarkupId() + "').button(); ";
+            response.render(OnDomReadyHeaderItem.forScript(script));
+         }
+      };
+      foto2 = new FileUploadField("fileInput2", new Model())
+      {
+         /**
+          *
+          */
+         private static final long serialVersionUID = 6378674780933477942L;
+
+         @Override
+         public void renderHead(final IHeaderResponse response)
+         {
+            final String script = " $( '#" + getMarkupId() + "' ).selectmenu();";
+            response.render(OnDomReadyHeaderItem.forScript(script));
+         }
+      };
       addOrReplace(foto1, foto2);
 
-      addOrReplace(new AjaxButton("btnEnviarFotos")
+      addOrReplace(new AjaxButtonCustom("btnEnviarFotos")
       {
          private static final long serialVersionUID = 1919935682369201585L;
 
@@ -141,7 +168,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
 
    private void criaBotoesEditar()
    {
-      addOrReplace(new AjaxButton("btnEditarEquipamento")
+      addOrReplace(new AjaxButtonCustom("btnEditarEquipamento")
       {
          private static final long serialVersionUID = 185258892178782834L;
 
@@ -164,7 +191,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          }
       });
 
-      addOrReplace(new AjaxButton("btnEditarMembro")
+      addOrReplace(new AjaxButtonCustom("btnEditarMembro")
       {
          @Override
          protected void onConfigure()
@@ -211,6 +238,13 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
             {
                setChoices(getListaEquipamento());
             }
+
+            @Override
+            public void renderHead(final IHeaderResponse response)
+            {
+               final String script = " $( '#" + getMarkupId() + "' ).selectmenu();";
+               response.render(OnDomReadyHeaderItem.forScript(script));
+            }
          };
       comboEquipamento.setOutputMarkupId(true);
       comboCorpo =
@@ -224,6 +258,13 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
             protected void onConfigure()
             {
                setChoices(getListaCorpo());
+            }
+
+            @Override
+            public void renderHead(final IHeaderResponse response)
+            {
+               final String script = " $( '#" + getMarkupId() + "' ).selectmenu();";
+               response.render(OnDomReadyHeaderItem.forScript(script));
             }
 
          };
@@ -310,7 +351,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
 
    private void criaBotoes()
    {
-      add(new AjaxButton("btnSalvarEquipamento")
+      add(new AjaxButtonCustom("btnSalvarEquipamento")
       {
          private static final long serialVersionUID = 185258892178782834L;
 
@@ -331,7 +372,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
             setEnabled(!isAlterar);
          }
       });
-      add(new AjaxButton("btnLimparEquipamento")
+      add(new AjaxButtonCustom("btnLimparEquipamento")
       {
          private static final long serialVersionUID = 185258892178782834L;
 
@@ -358,7 +399,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
             atualizaTela(target, feedBack);
          }
       });
-      add(new AjaxButton("btnSalvarMembro")
+      add(new AjaxButtonCustom("btnSalvarMembro")
       {
          private static final long serialVersionUID = 185258892178782834L;
 
@@ -380,7 +421,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
             atualizaTela(target, feedBack, campoNomeCorpo, campoDescricaoCorpo, comboCorpo);
          }
       });
-      add(new AjaxButton("btnLimparMembro")
+      add(new AjaxButtonCustom("btnLimparMembro")
       {
          private static final long serialVersionUID = 185258892178782834L;
 
@@ -400,7 +441,7 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
             atualizaTela(target, campoNomeCorpo, campoDescricaoCorpo);
          }
       });
-      add(new AjaxButton("btnSalvar")
+      add(new AjaxButtonCustom("btnSalvar")
       {
          private static final long serialVersionUID = 185258892178782834L;
 
@@ -429,12 +470,12 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
 
       });
 
-      add(new Button("btnVoltar")
+      add(new AjaxButtonCustom("btnVoltar")
       {
-         private static final long serialVersionUID = 185258892178782834L;
+         private static final long serialVersionUID = 978572858525659072L;
 
          @Override
-         public void onSubmit()
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             setResponsePage(new ConsultarExercicioIndex());
          }

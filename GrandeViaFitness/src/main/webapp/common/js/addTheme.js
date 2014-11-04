@@ -12,23 +12,12 @@ function addScriptCss() {
  
 			$(".telefone").mask("(99) 99999-9999",{placeholder:" "}); 
 
-			$(".botao").button();
-			
-			 $( ".campoSelect" ).selectmenu({
-			      change: function( event, data ) {
-
-			      }
-			     });
-
-
 			jQuery(document).ready(function($) {
 				atualizarRelogio();
 				setInterval('atualizarRelogio()', 1000);
 			});
-
-			$(".campoText").autocomplete({
-
-			});
+			
+			$(".campoText").autocomplete({});
 			
 			$(".aparelho").button({
 				icons : {
@@ -39,12 +28,7 @@ function addScriptCss() {
 			$( ".radioEquipamento" ).buttonset();
 			$( ".radioCorpo" ).buttonset();
 			
-			$(".sair").button({
-				icons : {
-					primary : " ui-icon-circle-close"
-				},
-				text : true
-			});	
+		
 		});
 	})(jQuery);
 }

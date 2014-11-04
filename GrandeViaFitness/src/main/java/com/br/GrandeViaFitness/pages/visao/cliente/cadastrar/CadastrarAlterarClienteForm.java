@@ -8,9 +8,7 @@ import java.util.Calendar;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -21,6 +19,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import com.br.GrandeViaFitness.as.PessoaAS;
+import com.br.GrandeViaFitness.componentes.AjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.enumUtil.Mensagem;
@@ -50,8 +49,8 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
    private TextField<String> campoBairro;
    private TextField<String> campoCidade;
    private TextField<String> campoEstado;
-   private AjaxButton botaoSalvar;
-   private Button botaoVoltar;
+   private AjaxButtonCustom botaoSalvar;
+   private AjaxButtonCustom botaoVoltar;
    @SpringBean
    private PessoaAS pessoaAS;
 
@@ -89,7 +88,7 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
 
    private void criaBotoes()
    {
-      botaoSalvar = new AjaxButton("btnSalvar")
+      botaoSalvar = new AjaxButtonCustom("btnSalvar")
       {
          private static final long serialVersionUID = -8143189803017939442L;
 
@@ -135,20 +134,14 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
          }
       };
 
-      botaoVoltar = new Button("btnVoltar")
+      botaoVoltar = new AjaxButtonCustom("btnVoltar")
       {
          private static final long serialVersionUID = -3511983353019317955L;
 
          @Override
-         public void onSubmit()
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             setResponsePage(new ConsultarClienteIndex());
-         }
-
-         @Override
-         protected void onConfigure()
-         {
-            setDefaultFormProcessing(false);
          }
       };
       addOrReplace(botaoSalvar, botaoVoltar);
@@ -200,9 +193,9 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
       campoPermissao =
          new DropDownChoice<PermissaoEnum>("permissao", Arrays.asList(PermissaoEnum.values()), new ChoiceRenderer<PermissaoEnum>(
             "descricao",
-            "sigla"));
+ "codigo"));
 
-      campoPermissao.setDefaultModel(new Model<PermissaoEnum>());
+      campoPermissao.setModel(new PropertyModel<PermissaoEnum>(pessoa, "cargoEnum"));
       campoCEP = new TextField<String>("endereco.cep");
       campoCEP.add(new AjaxFormComponentUpdatingBehavior("onBlur")
       {

@@ -1,10 +1,10 @@
 package com.br.GrandeViaFitness.pages.visao.produto.visualizar;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.CompoundPropertyModel;
+import com.br.GrandeViaFitness.componentes.AjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.Produto;
 import com.br.GrandeViaFitness.pages.visao.produto.cadastrar.CadastrarAlterarProdutoIndex;
@@ -29,7 +29,7 @@ public class VisualizarProdutoForm extends FormularioBase<Produto>
 
    private void criaBotoes()
    {
-      addOrReplace(new AjaxButton("alterar")
+      addOrReplace(new AjaxButtonCustom("alterar")
       {
          private static final long serialVersionUID = -3901891057903238592L;
 
@@ -40,7 +40,7 @@ public class VisualizarProdutoForm extends FormularioBase<Produto>
          }
       });
 
-      addOrReplace(new AjaxButton("voltar")
+      addOrReplace(new AjaxButtonCustom("voltar")
       {
          private static final long serialVersionUID = 4048733426592128163L;
 
