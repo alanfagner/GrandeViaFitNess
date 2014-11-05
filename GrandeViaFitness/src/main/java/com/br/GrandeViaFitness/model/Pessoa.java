@@ -20,7 +20,7 @@ import com.br.GrandeViaFitness.utilitario.Util;
 
 @Entity
 @Table(name = "TB_PESSOA", schema = "GRANDEVIAFITNESS")
-public class Pessoa implements Entidade
+public class Pessoa implements Entidade, Cliente, Funcionario, Instrutor
 {
    private static final long serialVersionUID = 2633297273367116608L;
 
