@@ -40,153 +40,183 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="com.br.GrandeViaFitness.model.Pessoa" project="GrandeViaFitness" 
-    file="/GrandeViaFitness/src/main/java/com/br/GrandeViaFitness/model/Pessoa.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="821" y="695"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="com.br.GrandeViaFitness.model.Venda" project="GrandeViaFitness" 
+  <class id="5" language="java" name="com.br.GrandeViaFitness.model.Venda" project="GrandeViaFitness" 
     file="/GrandeViaFitness/src/main/java/com/br/GrandeViaFitness/model/Venda.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="863" y="144"/>    
+    <position height="-1" width="-1" x="677" y="475"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="com.br.GrandeViaFitness.model.Endereco" project="GrandeViaFitness" 
+  <class id="6" language="java" name="com.br.GrandeViaFitness.model.Endereco" project="GrandeViaFitness" 
     file="/GrandeViaFitness/src/main/java/com/br/GrandeViaFitness/model/Endereco.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="351" y="1043"/>    
+    <position height="-1" width="-1" x="103" y="1362"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="com.br.GrandeViaFitness.model.RlProdutoVenda" project="GrandeViaFitness" 
+  <class id="7" language="java" name="com.br.GrandeViaFitness.model.RlProdutoVenda" project="GrandeViaFitness" 
     file="/GrandeViaFitness/src/main/java/com/br/GrandeViaFitness/model/RlProdutoVenda.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="297" width="201" x="501" y="-7"/>    
+    <position height="297" width="201" x="581" y="-17"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="com.br.GrandeViaFitness.model.RlPessoaExercicio" project="GrandeViaFitness" 
+  <class id="8" language="java" name="com.br.GrandeViaFitness.model.RlPessoaExercicio" project="GrandeViaFitness" 
     file="/GrandeViaFitness/src/main/java/com/br/GrandeViaFitness/model/RlPessoaExercicio.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="432" y="551"/>    
+    <position height="-1" width="-1" x="397" y="918"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="com.br.GrandeViaFitness.model.Mensalidade" project="GrandeViaFitness" 
+  <class id="9" language="java" name="com.br.GrandeViaFitness.model.Mensalidade" project="GrandeViaFitness" 
     file="/GrandeViaFitness/src/main/java/com/br/GrandeViaFitness/model/Mensalidade.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="825" y="1253"/>    
+    <position height="-1" width="-1" x="419" y="491"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="com.br.GrandeViaFitness.model.Authority" project="GrandeViaFitness" 
+  <class id="10" language="java" name="com.br.GrandeViaFitness.model.Authority" project="GrandeViaFitness" 
     file="/GrandeViaFitness/src/main/java/com/br/GrandeViaFitness/model/Authority.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="544" y="1198"/>    
+    <position height="-1" width="-1" x="438" y="1326"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="12">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="13" name="pessoa"/>      
-      <multiplicity id="14" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
+  <class id="11" language="java" name="com.br.GrandeViaFitness.model.Pessoa" project="GrandeViaFitness" 
+    file="/GrandeViaFitness/src/main/java/com/br/GrandeViaFitness/model/Pessoa.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="685" y="1044"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="12" language="java" name="com.br.GrandeViaFitness.model.Instrutor" project="GrandeViaFitness" 
+    file="/GrandeViaFitness/src/main/java/com/br/GrandeViaFitness/model/Instrutor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="473" y="1522"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="13" language="java" name="com.br.GrandeViaFitness.model.Funcionario" project="GrandeViaFitness" 
+    file="/GrandeViaFitness/src/main/java/com/br/GrandeViaFitness/model/Funcionario.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="655" y="1523"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="14" language="java" name="com.br.GrandeViaFitness.model.Cliente" project="GrandeViaFitness" 
+    file="/GrandeViaFitness/src/main/java/com/br/GrandeViaFitness/model/Cliente.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="873" y="1522"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
   <association id="15">    
     <end type="SOURCE" refId="9" navigable="false">      
       <attribute id="16" name="pessoa"/>      
       <multiplicity id="17" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="18">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="19" name="produto"/>      
+      <attribute id="19" name="tipoExercicio"/>      
       <multiplicity id="20" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="21">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="22" name="tipoExercicio"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="24">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="25" name="endereco"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="27">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="28" name="authority"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="30">    
+  <association id="21">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="31" name="tipoEquipamento"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
+      <attribute id="22" name="tipoEquipamento"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="33">    
+  <association id="24">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="34" name="venda"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
+      <attribute id="25" name="pessoa"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="36">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="37" name="pessoa"/>      
-      <multiplicity id="38" minimum="0" maximum="1"/>    
+  <association id="27">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="28" name="produto"/>      
+      <multiplicity id="29" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="30">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="31" name="corpo"/>      
+      <multiplicity id="32" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="33">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="34" name="venda"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="36">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="37" name="endereco"/>      
+      <multiplicity id="38" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="39">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="40" name="corpo"/>      
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="40" name="authority"/>      
       <multiplicity id="41" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="42">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="43" name="pessoa"/>      
+      <multiplicity id="44" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
