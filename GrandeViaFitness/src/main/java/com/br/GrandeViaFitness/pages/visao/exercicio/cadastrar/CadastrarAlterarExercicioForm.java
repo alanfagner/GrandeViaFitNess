@@ -100,9 +100,6 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
 
       foto1 = new FileUploadField("fileInput", new Model())
       {
-         /**
-          *
-          */
          private static final long serialVersionUID = -1202807039758096672L;
 
          @Override
@@ -114,15 +111,12 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       };
       foto2 = new FileUploadField("fileInput2", new Model())
       {
-         /**
-          *
-          */
          private static final long serialVersionUID = 6378674780933477942L;
 
          @Override
          public void renderHead(final IHeaderResponse response)
          {
-            final String script = " $( '#" + getMarkupId() + "' ).selectmenu();";
+            final String script = "$('#" + getMarkupId() + "').button(); ";
             response.render(OnDomReadyHeaderItem.forScript(script));
          }
       };

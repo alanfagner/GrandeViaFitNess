@@ -8,6 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import com.br.GrandeViaFitness.utilitario.Paginacao;
 
@@ -17,6 +19,7 @@ public class JpaDao<T> implements Dao<T>
    private static final long serialVersionUID = 1594193643950624158L;
 
    private Class<T> persistentClass;
+   Logger logger = LoggerFactory.getLogger(this.getClass());
 
    @PersistenceContext
    private EntityManager entityManager;
@@ -58,9 +61,8 @@ public class JpaDao<T> implements Dao<T>
    @Override
    public List<T> findAll()
    {
-      final Query query =
- this.entityManager.createQuery(" FROM " + getPersistentClass().getSimpleName());
-          return query.getResultList();
+      final Query query = this.entityManager.createQuery(" FROM " + getPersistentClass().getSimpleName());
+      return query.getResultList();
    }
 
    @Override
@@ -90,7 +92,6 @@ public class JpaDao<T> implements Dao<T>
    {
       return findByNativeQuery(sql, null, params);
    }
-
 
    @Override
    public Object findSingleResult(final String queryStr, final Object... params)
@@ -134,8 +135,7 @@ public class JpaDao<T> implements Dao<T>
    {
       if (persistentClass == null)
       {
-         throw new RuntimeException(
-            "É necessário invocar o método setPersistentClass(Class<T> clazz)");
+         throw new RuntimeException("É necessário invocar o método setPersistentClass(Class<T> clazz)");
       }
       return persistentClass;
    }
@@ -170,7 +170,6 @@ public class JpaDao<T> implements Dao<T>
          }
       }
    }
-
 
    @Override
    public Object consultaUnicoResultado(final String queryname, final Map<String, Object> params)

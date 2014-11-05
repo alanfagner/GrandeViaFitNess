@@ -35,15 +35,11 @@
 					<fieldset>
 						<legend class="legenda" align="left">Lista de Clientes</legend>
 						<div class="LabelInputNome grid_4">
-							<label>
-								Nome Cliente:
-							</label>
+							<label> Nome Cliente: </label>
 							<input wicket:id="nomePessoa" type="text" maxlength="11" class="campoText" />
 						</div>
 						<div class="LabelInputNome grid_4">
-							<label>
-								CPF:
-							</label>
+							<label> CPF: </label>
 							<input wicket:id="cpfPessoa" type="text" maxlength="11" class="campoText" />
 						</div>
 						<div class="LabelInputNome grid_6">
@@ -59,18 +55,40 @@
 				</div>
 				<div class="clear"></div>
 				<br />
-				<div class="LabelInputNome grid_2_3" style="margin-left: 30px;">
+				<div class="LabelInputNome grid_3" style="margin-left: 30px;">
 					<label>
 						<span class="obrigatorio">*</span>
 						Data do Pagamento:
 					</label>
-					<input wicket:id="campoDataVenda" type="text" maxlength="11" class="campoText" />
+					<input wicket:id="campoDataVenda" type="text" data-role="date" data-inline="true" maxlength="11" class="campoText" />
+				</div>
+				<div class="LabelInputNome grid_3" style="margin-left: 30px;">
+					<label>
+						<span class="obrigatorio">*</span>
+						Mês de Referência:
+					</label>
+					<select wicket:id="mesReferente" style="width: 150px"></select>
+				</div>
+				<div class="LabelInputNome grid_3" style="margin-left: 30px;">
+					<label>
+						<span class="obrigatorio">*</span>
+						Ano de Referência:
+					</label>
+					<input wicket:id="anoReferencia" type="text" maxlength="11" class="campoText ano" />
+				</div>
+				<div class="LabelInputNome grid_3" style="margin-left: 30px;">
+					<label>
+						<span class="obrigatorio">*</span>
+						Valor Pagamento:
+					</label>
+					<input wicket:id="valorPago" type="text" maxlength="11" class="campoText valor" />
 				</div>
 				
+
 				<div class="clear"></div>
 				<div class="grid_5">
-					<input id="btnCompra" class="botao" type="submit" name="Finalizar" value="Finalizar Compra" />
-					<input id="btnVoltar" class="botao" type="submit" name="Voltar" value="Voltar" />
+					<input wicket:id="btnSalvar" class="botao" type="submit" name="Finalizar" value="Finalizar Compra" />
+					<input wicket:id="btnVoltar" class="botao" type="submit" name="Voltar" value="Voltar" />
 				</div>
 			</fieldset>
 		</div>

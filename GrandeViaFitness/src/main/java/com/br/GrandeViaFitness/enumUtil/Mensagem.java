@@ -12,8 +12,10 @@ public enum Mensagem
    M08("É necessario limpar campos do {0} para cadastrar um novo."),
    M10("Devem ser anexado 2 fotos para criar o exercício."),
    M011("Não existem items na lista de compras!"),
-   M012("É necessario informar um cliente para a venda!"),
-   M013("Venda efetuada com sucesso!");
+   M012("É necessario informar um cliente para {0}!"),
+   M013("Venda efetuada com sucesso!"),
+   M014("Mensalidade paga com sucesso!"),
+   M015("Já existe um pagamento refêrente a esse mês, ano e cliente! ");
    private String descricao;
 
    private Mensagem(final String descricao)

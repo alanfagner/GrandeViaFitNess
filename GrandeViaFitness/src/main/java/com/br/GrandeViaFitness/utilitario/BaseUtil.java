@@ -35,6 +35,7 @@ public class BaseUtil
       BaseUtil.addCss(response, BaseUtil.pastaCss + "960.css");
       BaseUtil.addCss(response, BaseUtil.pastaCss + "myCss.css");
 
+      BaseUtil.addJS(response, BaseUtil.pastaJs + "jQuery.ui.datepicker.js");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "jquery-1.11.1.min.js");
       BaseUtil.addCss(response, BaseUtil.pastaCss + "jquery.dataTables.min.css");
       BaseUtil.addJS(response, BaseUtil.pastaJs + "relogio.js");

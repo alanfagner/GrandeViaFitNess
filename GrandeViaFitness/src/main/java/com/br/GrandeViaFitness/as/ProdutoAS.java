@@ -2,8 +2,8 @@ package com.br.GrandeViaFitness.as;
 
 import java.util.List;
 import javax.inject.Named;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.componentes.provider.Provider;
 import com.br.GrandeViaFitness.model.Entidade;
@@ -27,7 +27,7 @@ public class ProdutoAS implements Provider<Produto>
       return produtoServico.contadorListaGrid(entidade);
    }
 
-   @Transactional
+   @Transactional(noRollbackFor = Exception.class)
    public void persisteDados(final Produto produto)
    {
       if (produto.getCodigo() == null)
@@ -41,7 +41,7 @@ public class ProdutoAS implements Provider<Produto>
 
    }
 
-   @Transactional
+   @Transactional(noRollbackFor = Exception.class)
    public void excluirPessoa(final Produto produto)
    {
       produtoServico.excluirPessoa(produto);

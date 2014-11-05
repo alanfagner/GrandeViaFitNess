@@ -35,7 +35,7 @@ public class VendaAS implements Provider<Venda>
       return 0;
    }
 
-   @Transactional
+   @Transactional(noRollbackFor = Exception.class)
    public void salvarVenda(final List<RlProdutoVenda> auxProdutoVenda, final Venda venda)
    {
 

@@ -3,7 +3,6 @@ package com.br.GrandeViaFitness.as;
 import java.util.List;
 import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.componentes.provider.Provider;
@@ -44,7 +43,7 @@ public class TipoExercicioAS implements Provider<TipoExercicio>
       return tipoExercicioServico.contadorListaGrid(filtro);
    }
 
-   @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+   @Transactional(noRollbackFor = Exception.class)
    public void persisteDadosEquipamento(final TipoEquipamento tipoEquipamento)
    {
       if (tipoEquipamento.getCodigo() == null)
@@ -63,14 +62,15 @@ public class TipoExercicioAS implements Provider<TipoExercicio>
 
       return tipoEquipamentoServico.buscaListaEquipamento();
    }
-   @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+
+   @Transactional(noRollbackFor = Exception.class)
    public void excluirEquipamento(final TipoEquipamento tipoEquipamento)
    {
       tipoEquipamentoServico.excluirEquipamento(tipoEquipamento);
 
    }
 
-   @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+   @Transactional(noRollbackFor = Exception.class)
    public void persisteDadosCorpo(final Corpo corpo)
    {
       if (corpo.getCodigo() == null)
@@ -90,14 +90,14 @@ public class TipoExercicioAS implements Provider<TipoExercicio>
       return corpoServico.buscaListaCorpo();
    }
 
-   @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+   @Transactional(noRollbackFor = Exception.class)
    public void excluirCorpo(final Corpo corpo)
    {
       corpoServico.excluirCorpo(corpo);
 
    }
 
-   @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+   @Transactional(noRollbackFor = Exception.class)
    public void persisteDadosExercicios(final TipoExercicio tipoExercicio)
    {
       if (tipoExercicio.getCodigo() == null)
@@ -112,7 +112,7 @@ public class TipoExercicioAS implements Provider<TipoExercicio>
 
    }
 
-   @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+   @Transactional(noRollbackFor = Exception.class)
    public void excluirExercicio(final TipoExercicio tipoExercicio)
    {
       tipoExercicioServico.excluirExercico(tipoExercicio);

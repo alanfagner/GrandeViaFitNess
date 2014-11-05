@@ -35,7 +35,7 @@ public class RlPessoaExercicioAS implements Provider<RlPessoaExercicio>
       return rlPessoaExercicioServico.buscaListaExercicio(rlPessoaExercicio);
    }
 
-   @Transactional
+   @Transactional(noRollbackFor = Exception.class)
    public void persisteDados(final RlPessoaExercicio rlPessoaExercicio)
    {
       rlPessoaExercicioServico.persisteDados(rlPessoaExercicio);

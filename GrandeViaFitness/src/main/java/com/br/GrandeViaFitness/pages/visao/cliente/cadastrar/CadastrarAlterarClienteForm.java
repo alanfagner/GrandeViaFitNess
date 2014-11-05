@@ -1,6 +1,5 @@
 package com.br.GrandeViaFitness.pages.visao.cliente.cadastrar;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -8,6 +7,8 @@ import java.util.Calendar;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -162,6 +163,7 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
 
       return flag;
    }
+
    private void criaCampos()
    {
       campoNome = new TextField<String>("nomePessoa");
@@ -170,6 +172,7 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
       campoCpf.add(new AjaxFormComponentUpdatingBehavior("onChange")
       {
          private static final long serialVersionUID = -8099289544869034996L;
+
          @Override
          protected void onUpdate(final AjaxRequestTarget target)
          {
@@ -182,7 +185,19 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
          }
       });
       campoSexo =
-         new DropDownChoice<SexoEnum>("sexo", Arrays.asList(SexoEnum.values()), new ChoiceRenderer<SexoEnum>("descricao", "codigo"));
+         new DropDownChoice<SexoEnum>("sexo", Arrays.asList(SexoEnum.values()), new ChoiceRenderer<SexoEnum>("descricao", "codigo"))
+         {
+
+            private static final long serialVersionUID = 7581567009731600947L;
+
+            @Override
+            public void renderHead(final IHeaderResponse response)
+            {
+
+               final String script = " $( '#" + getMarkupId() + "' ).selectmenu().selectmenu('menuWidget').addClass('overflow');";
+               response.render(OnDomReadyHeaderItem.forScript(script));
+            }
+         };
       campoEmail = new TextField<String>("emailPessoa");
       campoDataNascimento = new TextField<String>("dataNascimentoPessoa", new Model<String>());
       campoDataNascimento.setLabel(new Model<String>("Data de nascimento"));
@@ -192,14 +207,28 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
       campoTelefone = new TextField<String>("numeroCelulaPessoa");
       campoPermissao =
          new DropDownChoice<PermissaoEnum>("permissao", Arrays.asList(PermissaoEnum.values()), new ChoiceRenderer<PermissaoEnum>(
-            "descricao",
- "codigo"));
+            "descricao", "codigo"))
+         {
+            private static final long serialVersionUID = 7581567009731600947L;
+
+            @Override
+            public void renderHead(final IHeaderResponse response)
+            {
+
+               final String script = " $( '#" + getMarkupId() + "' ).selectmenu().selectmenu('menuWidget').addClass('overflow');";
+               response.render(OnDomReadyHeaderItem.forScript(script));
+            }
+         };
 
       campoPermissao.setModel(new PropertyModel<PermissaoEnum>(pessoa, "cargoEnum"));
       campoCEP = new TextField<String>("endereco.cep");
       campoCEP.add(new AjaxFormComponentUpdatingBehavior("onBlur")
       {
-         private static final long serialVersionUID = -4144690730728093322L;
+
+         /**
+          *
+          */
+         private static final long serialVersionUID = 2036532865460442452L;
 
          @Override
          protected void onUpdate(final AjaxRequestTarget target)

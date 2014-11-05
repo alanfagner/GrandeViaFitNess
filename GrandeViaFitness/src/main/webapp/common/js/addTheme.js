@@ -7,6 +7,7 @@ function addScriptCss() {
 		
 			$(".cep").mask("99999-999"); 
 			$(".numero").mask("9?9999999",{placeholder:" "}); 
+			$(".ano").mask("9999",{placeholder:" "}); 
 			$(".valor").maskMoney();
 			$(".cpf").mask("999.999.999-99",{placeholder:" "}); 
  

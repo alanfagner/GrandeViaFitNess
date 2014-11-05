@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
@@ -27,6 +26,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.br.GrandeViaFitness.as.PessoaAS;
 import com.br.GrandeViaFitness.as.VendaAS;
 import com.br.GrandeViaFitness.componentes.ActionButtonPanel;
+import com.br.GrandeViaFitness.componentes.AjaxButtonCustom;
 import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
@@ -124,7 +124,7 @@ public class FechaVendaForm extends FormularioBase<Venda>
 
    private void criaBotoes()
    {
-      addOrReplace(new AjaxButton("btnCompra")
+      addOrReplace(new AjaxButtonCustom("btnCompra")
       {
          private static final long serialVersionUID = -3530397776219222313L;
 
@@ -147,7 +147,7 @@ public class FechaVendaForm extends FormularioBase<Venda>
          }
       });
 
-      addOrReplace(new AjaxButton("btnVoltar")
+      addOrReplace(new AjaxButtonCustom("btnVoltar")
       {
          private static final long serialVersionUID = -1257990070248878837L;
 
@@ -158,7 +158,7 @@ public class FechaVendaForm extends FormularioBase<Venda>
          }
       });
 
-      containerGrid.addOrReplace(new AjaxButton("btnPesquisar")
+      containerGrid.addOrReplace(new AjaxButtonCustom("btnPesquisar")
       {
          private static final long serialVersionUID = -1257990070248878837L;
 
@@ -168,16 +168,9 @@ public class FechaVendaForm extends FormularioBase<Venda>
             gridGenerica.size();
             target.add(gridGenerica, informacaoVazia);
          }
-
-         @Override
-         public void renderHead(final IHeaderResponse response)
-         {
-            final String script = "$('#" + getMarkupId() + "').button();";
-            response.render(OnDomReadyHeaderItem.forScript(script));
-         }
       });
 
-      containerGrid.addOrReplace(new AjaxButton("btnLimpar")
+      containerGrid.addOrReplace(new AjaxButtonCustom("btnLimpar")
       {
          private static final long serialVersionUID = -1257990070248878837L;
 
@@ -186,16 +179,9 @@ public class FechaVendaForm extends FormularioBase<Venda>
          {
             setResponsePage(new FechaVendaIndex(listaVenda));
          }
-
-         @Override
-         public void renderHead(final IHeaderResponse response)
-         {
-            final String script = "$('#" + getMarkupId() + "').button();";
-            response.render(OnDomReadyHeaderItem.forScript(script));
-         }
       });
 
-      containerGridDados.addOrReplace(new AjaxButton("btnEscolherCliente")
+      containerGridDados.addOrReplace(new AjaxButtonCustom("btnEscolherCliente")
       {
          private static final long serialVersionUID = -1257990070248878837L;
 
@@ -207,13 +193,6 @@ public class FechaVendaForm extends FormularioBase<Venda>
             FechaVendaForm.this.getModelObject().setPessoa(null);
             target.add(containerGrid, containerGridDados);
          }
-
-         @Override
-         public void renderHead(final IHeaderResponse response)
-         {
-            final String script = "$('#" + getMarkupId() + "').button();";
-            response.render(OnDomReadyHeaderItem.forScript(script));
-         }
       });
 
    }
@@ -224,7 +203,7 @@ public class FechaVendaForm extends FormularioBase<Venda>
 
       if (FechaVendaForm.this.getModelObject().getPessoa() == null)
       {
-         getSession().error(Mensagem.recuperaMensagem(Mensagem.M012));
+         getSession().error(Mensagem.recuperaMensagem(Mensagem.M012, "a venda"));
          valida = false;
       }
 

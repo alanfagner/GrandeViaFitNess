@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import com.br.GrandeViaFitness.enumUtil.MesReferenciaEnum;
 
 @Entity
 @Table(name = "TB_MENSALIDADE")
@@ -32,6 +35,13 @@ public class Mensalidade implements Entidade
 
    @Column(name = "VL_PAGO", nullable = false, length = 100)
    private BigDecimal valorPago;
+
+   @Column(name = "NU_MES_REFERENCIA", nullable = false, length = 2)
+   @Enumerated(EnumType.ORDINAL)
+   private MesReferenciaEnum mesReferente;
+
+   @Column(name = "VL_ANO", nullable = false, length = 4)
+   private Integer anoReferencia;
 
    public Long getCodigo()
    {
@@ -71,6 +81,26 @@ public class Mensalidade implements Entidade
    public void setValorPago(final BigDecimal valorPago)
    {
       this.valorPago = valorPago;
+   }
+
+   public void setMesReferente(final MesReferenciaEnum mesReferente)
+   {
+      this.mesReferente = mesReferente;
+   }
+
+   public MesReferenciaEnum getMesReferente()
+   {
+      return mesReferente;
+   }
+
+   public Integer getAnoReferencia()
+   {
+      return anoReferencia;
+   }
+
+   public void setAnoReferencia(final Integer anoReferencia)
+   {
+      this.anoReferencia = anoReferencia;
    }
 
    @Override

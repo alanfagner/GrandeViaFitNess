@@ -7,9 +7,15 @@ import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.repeater.Item;
+import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -23,13 +29,14 @@ import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.componentes.gridGenerica.DataGridGenerica;
 import com.br.GrandeViaFitness.componentes.provider.ProviderGenerico;
 import com.br.GrandeViaFitness.enumUtil.Mensagem;
+import com.br.GrandeViaFitness.model.Corpo;
+import com.br.GrandeViaFitness.model.TipoEquipamento;
 import com.br.GrandeViaFitness.model.TipoExercicio;
 import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
 import com.br.GrandeViaFitness.pages.visao.exercicio.cadastrar.CadastrarAlterarExercicioIndex;
 import com.br.GrandeViaFitness.pages.visao.exercicio.visualizar.VisualizarExercicioIndex;
-import com.br.GrandeViaFitness.vo.AparelhosVO;
 
-public class ConsultarExercicioForm extends FormularioBase<AparelhosVO>
+public class ConsultarExercicioForm extends FormularioBase<TipoExercicio>
 {
    private static final long serialVersionUID = 2773647163866008579L;
    private FeedBackPanelCustom feedBack;
@@ -40,21 +47,65 @@ public class ConsultarExercicioForm extends FormularioBase<AparelhosVO>
    private TipoExercicioAS tipoExercicioAS;
    private DataGridGenerica<TipoExercicio, String> gridGenerica;
    private ProviderGenerico<TipoExercicio, String> providerGenerico;
-   private TipoExercicio filtro;
+   private TextField<String> campoNome;
+   private TextField<String> campoCodigo;
+   private DropDownChoice<TipoEquipamento> campoEquipamento;
+   private DropDownChoice<Corpo> campoMembro;
 
    public ConsultarExercicioForm(final String id)
    {
-      super(id);
+      super(id, new CompoundPropertyModel<TipoExercicio>(new TipoExercicio()));
       inicializar();
    }
 
    private void inicializar()
    {
       criaBotoes();
-      filtro = new TipoExercicio();
       criaModal();
       criaGridCliente();
       criaFeedBack();
+      criaCampos();
+
+   }
+
+   private void criaCampos()
+   {
+      campoCodigo = new TextField<String>("codigo");
+      campoNome = new TextField<String>("nomeExercicio");
+      addOrReplace(campoCodigo, campoNome);
+
+      campoEquipamento =
+         new DropDownChoice<TipoEquipamento>("tipoEquipamento", tipoExercicioAS.buscaListaEquipamento(),
+            new ChoiceRenderer<TipoEquipamento>("nomeTipoEquip", "codigo"))
+         {
+
+            private static final long serialVersionUID = 7581567009731600947L;
+
+            @Override
+            public void renderHead(final IHeaderResponse response)
+            {
+
+               final String script = " $( '#" + getMarkupId() + "' ).selectmenu().selectmenu('menuWidget').addClass('overflow');";
+               response.render(OnDomReadyHeaderItem.forScript(script));
+            }
+         };
+
+      campoMembro =
+         new DropDownChoice<Corpo>("corpo", tipoExercicioAS.buscaListaCorpo(), new ChoiceRenderer<Corpo>("nomeMembroCorpo",
+            "codigo"))
+         {
+
+            private static final long serialVersionUID = 7581567009731600947L;
+
+            @Override
+            public void renderHead(final IHeaderResponse response)
+            {
+
+               final String script = " $( '#" + getMarkupId() + "' ).selectmenu().selectmenu('menuWidget').addClass('overflow');";
+               response.render(OnDomReadyHeaderItem.forScript(script));
+            }
+         };
+      addOrReplace(campoMembro, campoEquipamento);
 
    }
 
@@ -174,6 +225,19 @@ public class ConsultarExercicioForm extends FormularioBase<AparelhosVO>
 
       };
 
+      final AjaxButtonCustom btnPesquisar = new AjaxButtonCustom("btnPesquisar")
+      {
+         private static final long serialVersionUID = -1540652083107892733L;
+
+         @Override
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+         {
+            gridGenerica.size();
+            target.add(gridGenerica, informacaoVazia);
+         }
+
+      };
+
       final AjaxButtonCustom btnVoltar = new AjaxButtonCustom("btnVoltar")
       {
          private static final long serialVersionUID = 7630777092486610559L;
@@ -184,7 +248,7 @@ public class ConsultarExercicioForm extends FormularioBase<AparelhosVO>
             setResponsePage(new HomePageIndex());
          }
       };
-      addOrReplace(btnNovoCliente, btnVoltar);
+      addOrReplace(btnNovoCliente, btnVoltar, btnPesquisar);
 
    }
 
@@ -192,7 +256,7 @@ public class ConsultarExercicioForm extends FormularioBase<AparelhosVO>
    {
       if (providerGenerico == null)
       {
-         providerGenerico = new ProviderGenerico<TipoExercicio, String>(tipoExercicioAS, filtro);
+         providerGenerico = new ProviderGenerico<TipoExercicio, String>(tipoExercicioAS, getModelObject());
          providerGenerico.setOrdernar(new ParametrosOrdenacao("codigo", true));
       }
       return providerGenerico;
