@@ -92,15 +92,15 @@ public class WicketApplication extends AuthenticatedWebApplication implements
       mountPage("Login.html", LoginIndex.class);
 
       mountPage("ConsultarCliente.html", ConsultarClienteIndex.class);
-      mountPage("ConsultarExercicio.html", ConsultarExercicioIndex.class);
+      mountPage("ConsultarAtividade.html", ConsultarExercicioIndex.class);
       mountPage("ConsultarProduto.html", ConsultarProdutoIndex.class);
 
       mountPage("CadastrarAlterarCliente.html", CadastrarAlterarClienteIndex.class);
-      mountPage("CadastrarAlterarExercicio.html", CadastrarAlterarExercicioIndex.class);
+      mountPage("CadastrarAlterarAtividade.html", CadastrarAlterarExercicioIndex.class);
       mountPage("CadastrarAlterarProduto.html", CadastrarAlterarProdutoIndex.class);
 
       mountPage("VisualizarCliente.html", VisualizarClienteIndex.class);
-      mountPage("VisualizarExercicio.html", VisualizarExercicioIndex.class);
+      mountPage("VisualizarAtividade.html", VisualizarExercicioIndex.class);
       mountPage("VisualizarProduto.html", VisualizarProdutoIndex.class);
 
       mountPage("Venda.html", EfetuarVendaIndex.class);
@@ -113,10 +113,10 @@ public class WicketApplication extends AuthenticatedWebApplication implements
       mountPage("HomeMobile.html", MobileHomeIndex.class);
 
       mountPage("VisualizarListaMembroMobile.html", MobileMembroCorpoIndex.class);
-      mountPage("VisualizarListaExericioMobile.html", MobileTipoExercicoIndex.class);
+      mountPage("VisualizarListaAtividadeMobile.html", MobileTipoExercicoIndex.class);
 
-      mountPage("ExecutarExercicioMobile.html", MobileExecutarExercicioIndex.class);
-      mountPage("DetalharExericioMobile.html", MobileDetalharExercicioIndex.class);
+      mountPage("ExecutarAtividadeMobile.html", MobileExecutarExercicioIndex.class);
+      mountPage("DetalharAtividadeMobile.html", MobileDetalharExercicioIndex.class);
 
       getApplicationSettings().setPageExpiredErrorPage(LoginIndex.class);
 
@@ -133,9 +133,6 @@ public class WicketApplication extends AuthenticatedWebApplication implements
 
    private void loadSampleDataIfNoExists() throws ParseException
    {
-
-
-
       if (pessoaAS.getPessoaServico().buscaPessoaPorCpf("34520184827") == null)
       {
          final Pessoa pessoa = new Pessoa();
@@ -161,7 +158,6 @@ public class WicketApplication extends AuthenticatedWebApplication implements
          pessoa.getEndereco().setLogradouro("Alameda Paulista");
          pessoaAS.saveInicial(pessoa);
       }
-
    }
 
    @Override
