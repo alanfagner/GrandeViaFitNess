@@ -320,7 +320,6 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          tipoExercicioAS.excluirEquipamento(tipoEquipamento.getClone());
          getSession().success(Mensagem.recuperaMensagem(Mensagem.M02, "Equipamento"));
       }
-
    }
 
    private void verificaOpcaoSelecionadaMembro()
@@ -340,7 +339,6 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          tipoExercicioAS.excluirCorpo(corpo.getClone());
          getSession().success(Mensagem.recuperaMensagem(Mensagem.M02, "Membro"));
       }
-
    }
 
    private void criaBotoes()
@@ -509,6 +507,13 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          error(Mensagem.recuperaMensagem(Mensagem.M10));
          valida = false;
       }
+      final TipoExercicio auxTipo = new TipoExercicio();
+      auxTipo.setNomeExercicio(campoNomeExercicio.getModelObject());
+      if (valida && tipoExercicioAS.buscaListaTipoExercicioPorTipoExerciciop(auxTipo).size() > 0)
+      {
+         getSession().error("Já existe uma Atividade com esse nome cadastrado!");
+         valida = false;
+      }
 
       return valida;
    }
@@ -532,6 +537,13 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          if (corpo.getCodigo() != null)
          {
             error(Mensagem.recuperaMensagem(Mensagem.M08, "Membro"));
+            valido = false;
+         }
+         final Corpo auxCorpo = new Corpo();
+         auxCorpo.setNomeMembroCorpo(campoNomeCorpo.getModelObject());
+         if (valido && tipoExercicioAS.buscaListaCorpoPorCorpo(auxCorpo).size() > 0)
+         {
+            getSession().error("Já existe um membro cadastrado com esse nome!");
             valido = false;
          }
       }
@@ -581,6 +593,14 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
             error(Mensagem.recuperaMensagem(Mensagem.M08, "Equipamento"));
             valido = false;
          }
+
+         final TipoEquipamento auxTipoEqui = new TipoEquipamento();
+         auxTipoEqui.setNomeTipoEquip(campoNomeEquipamento.getModelObject());
+         if (valido && tipoExercicioAS.buscaListaEquipamento(auxTipoEqui).size() > 0)
+         {
+            getSession().error("Já existe um membro cadastrado com esse nome!");
+            valido = false;
+         }
       }
       else if (opcaoEquipamento == UtilRadioEnum.ALTERAR)
       {
@@ -616,9 +636,6 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       campoDescricaoEquipamento =
          new TextArea<String>("descricaoTipoEquip", new PropertyModel<String>(tipoEquipamento, "descricaoTipoEquip"))
          {
-            /**
-             *
-             */
             private static final long serialVersionUID = 2776737015099178817L;
 
             @Override

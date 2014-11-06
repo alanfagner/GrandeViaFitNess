@@ -1,7 +1,9 @@
 package com.br.GrandeViaFitness.componentes.provider;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -14,11 +16,13 @@ public class ProviderGenerico<T extends Serializable, S> extends SortableDataPro
    private final Provider<T> provider;
    private final Entidade Filtro;
    private ParametrosOrdenacao ordernar;
+   private List<T> listaRegistros;
 
    public ProviderGenerico(final Provider<T> provider, final Entidade filtro)
    {
       this.provider = provider;
       this.Filtro = filtro;
+      listaRegistros = new ArrayList<T>();
    }
    @Override
    public Iterator<? extends T> iterator(final long first, final long count)
@@ -27,7 +31,8 @@ public class ProviderGenerico<T extends Serializable, S> extends SortableDataPro
       {
          ordernar = isOrdena(getSort().getProperty().toString(), getSort().isAscending());
       }
-      return provider.buscaListaGrid(Filtro, first, count, ordernar).iterator();
+      listaRegistros = provider.buscaListaGrid(Filtro, first, count, ordernar);
+      return listaRegistros.iterator();
    }
    @Override
    public long size()
@@ -53,6 +58,16 @@ public class ProviderGenerico<T extends Serializable, S> extends SortableDataPro
    public void setOrdernar(final ParametrosOrdenacao ordernar)
    {
       this.ordernar = ordernar;
+   }
+
+   public List<T> getListaRegistros()
+   {
+      return listaRegistros;
+   }
+
+   public void setListaRegistros(final List<T> listaRegistros)
+   {
+      this.listaRegistros = listaRegistros;
    }
 
 }

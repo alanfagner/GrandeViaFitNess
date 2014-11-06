@@ -44,4 +44,9 @@ public class CorpoServico
 
    }
 
+   public List<Corpo> buscaListaPorCorpo(final Corpo corpo)
+   {
+      return getCorpoDao().buscaListaPorCorpo(corpo);
+   }
+
 }

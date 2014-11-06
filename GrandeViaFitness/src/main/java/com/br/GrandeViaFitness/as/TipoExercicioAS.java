@@ -19,17 +19,22 @@ public class TipoExercicioAS implements Provider<TipoExercicio>
 {
 
    @Autowired
-   private TipoEquipamentoServico tipoEquipamentoServico;
-
-   @Autowired
    private TipoExercicioServico tipoExercicioServico;
 
    @Autowired
    private CorpoServico corpoServico;
 
-   public List<TipoExercicio> buscaListaPorCorpo(final Corpo corpo)
+   @Autowired
+   private TipoEquipamentoServico tipoEquipamentoServico;
+
+   public List<TipoExercicio> buscaListaTipoExercicioPorCorpo(final Corpo corpo)
    {
       return tipoExercicioServico.buscaListaPorCorpo(corpo);
+   }
+
+   public List<Corpo> buscaListaCorpoPorCorpo(final Corpo corpo)
+   {
+      return corpoServico.buscaListaPorCorpo(corpo);
    }
    @Override
    public List<TipoExercicio> buscaListaGrid(final Entidade entidade, final long first, final long count, final ParametrosOrdenacao ordernar)
@@ -117,6 +122,16 @@ public class TipoExercicioAS implements Provider<TipoExercicio>
    {
       tipoExercicioServico.excluirExercico(tipoExercicio);
 
+   }
+
+   public List<TipoEquipamento> buscaListaEquipamento(final TipoEquipamento auxTipoEqui)
+   {
+      return tipoEquipamentoServico.buscaListaPorEquipamento(auxTipoEqui);
+   }
+
+   public List<TipoExercicio> buscaListaTipoExercicioPorTipoExerciciop(final TipoExercicio auxTipo)
+   {
+      return tipoExercicioServico.buscaListaTipoExercicioPorTipoExerciciop(auxTipo);
    }
 
 }

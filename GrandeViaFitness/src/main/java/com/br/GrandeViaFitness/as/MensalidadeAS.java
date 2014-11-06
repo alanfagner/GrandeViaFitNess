@@ -16,17 +16,15 @@ public class MensalidadeAS implements Provider<Mensalidade>
    @Autowired
    private MensalidadeServico mensalidadeServico;
    @Override
-   public List<Mensalidade> buscaListaGrid(final Entidade entidade, final long first, final long count, final ParametrosOrdenacao ordernar)
+   public List<Mensalidade> buscaListaGrid(final Entidade filtro, final long first, final long count, final ParametrosOrdenacao ordernar)
    {
-      // TODO Auto-generated method stub
-      return null;
+      return mensalidadeServico.buscaListaGrid(filtro, first, count, ordernar);
    }
 
    @Override
-   public int contadorListaGrid(final Entidade entidade)
+   public int contadorListaGrid(final Entidade filtro)
    {
-      // TODO Auto-generated method stub
-      return 0;
+      return mensalidadeServico.contadorListaGrid(filtro);
    }
 
    @Transactional(noRollbackFor = Exception.class)
@@ -38,6 +36,18 @@ public class MensalidadeAS implements Provider<Mensalidade>
    public Integer buscaMensalidade(final Mensalidade mensalidade)
    {
       return mensalidadeServico.buscaMensalidade(mensalidade);
+   }
+
+   public List<Mensalidade> buscaAllResistros()
+   {
+      return mensalidadeServico.buscaAllResistros();
+   }
+
+   @Transactional(noRollbackFor = Exception.class)
+   public void excluirMensalidade(final Mensalidade mensalidade)
+   {
+      mensalidadeServico.excluirMensalidade(mensalidade);
+
    }
 
 }

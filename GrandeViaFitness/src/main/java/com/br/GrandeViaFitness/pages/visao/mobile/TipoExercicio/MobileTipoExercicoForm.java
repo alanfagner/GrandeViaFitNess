@@ -67,7 +67,7 @@ public class MobileTipoExercicoForm extends FormularioBase<TipoExercicio>
    private void criaListView()
    {
       listaCorpoView = new RepeatingView("listItems");
-      for (final TipoExercicio auxTipoExercici : tipoExercicioAS.buscaListaPorCorpo(corpo))
+      for (final TipoExercicio auxTipoExercici : tipoExercicioAS.buscaListaTipoExercicioPorCorpo(corpo))
       {
          final WebMarkupContainer list = new WebMarkupContainer(listaCorpoView.newChildId());
          final AjaxLink<TipoExercicio> link = new AjaxLink<TipoExercicio>("Link")

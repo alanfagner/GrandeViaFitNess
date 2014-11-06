@@ -43,4 +43,9 @@ public class TipoEquipamentoServico
       getTipoEquipamentoDao().delete(tipoEquipamento.getId());
 
    }
+
+   public List<TipoEquipamento> buscaListaPorEquipamento(final TipoEquipamento auxTipoEqui)
+   {
+      return getTipoEquipamentoDao().buscaListaPorEquipamento(auxTipoEqui);
+   }
 }

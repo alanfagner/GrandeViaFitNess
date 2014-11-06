@@ -95,4 +95,18 @@ public class TipoExercicioDaoImp extends JpaDao<TipoExercicio> implements TipoEx
       return consulta(sb.toString(), params);
    }
 
+   @Override
+   public List<TipoExercicio> buscaListaTipoExercicioPorTipoExerciciop(final TipoExercicio auxTipo)
+   {
+      final StringBuilder sb = new StringBuilder();
+      final Map<String, Object> params = new HashMap<String, Object>();
+      sb.append(" SELECT te FROM TipoExercicio te ");
+      if (auxTipo != null)
+      {
+         montaConsultaGenerica(sb, params, auxTipo);
+      }
+
+      return consulta(sb.toString(), params);
+   }
+
 }

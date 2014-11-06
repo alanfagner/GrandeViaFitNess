@@ -77,7 +77,14 @@ public class PessoaDaoImp extends JpaDao<Pessoa> implements PessoaDao
       }
       if (ordernar != null)
       {
-         sb.append("ORDER BY p." + ordernar.getColuna() + " " + ordernar.getOrdernar());
+         if (ordernar.getColuna().equals("cargoEnum.descricao"))
+         {
+            sb.append("ORDER BY p.authority " + ordernar.getOrdernar());
+         }
+         else
+         {
+            sb.append("ORDER BY p." + ordernar.getColuna() + " " + ordernar.getOrdernar());
+         }
       }
       return findByNamedParams(sb.toString(), params, new Paginacao(first, count));
    }

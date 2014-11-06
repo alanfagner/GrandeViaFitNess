@@ -155,8 +155,16 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
       {
          if (component.getDefaultModelObject() == null && flag)
          {
-            error("Favor preencher todos os campos do formulario");
+            getSession().error("Favor preencher todos os campos do formulario");
+            flag = false;
+         }
+      }
 
+      if (campoCpf.getModelObject() != null)
+      {
+         if (pessoaAS.buscaPessoaPorCpf(campoCpf.getModelObject()) != null)
+         {
+            getSession().error("Já existe um usuario cadastrado com esse CPF!");
             flag = false;
          }
       }

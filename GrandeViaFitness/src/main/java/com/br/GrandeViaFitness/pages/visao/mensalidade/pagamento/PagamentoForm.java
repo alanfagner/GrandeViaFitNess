@@ -162,7 +162,7 @@ public class PagamentoForm extends FormularioBase<Mensalidade>
                      target.add(feedBack);
                      return;
                   }
-                  PagamentoForm.this.getModelObject().setValorPago(new BigDecimal(campoValorPagamento.getModelObject()));
+                  PagamentoForm.this.getModelObject().setValorPago(new BigDecimal(campoValorPagamento.getModelObject().replace(",", "")));
                   mensalidadeAS.save(PagamentoForm.this.getModelObject());
                   getSession().success(Mensagem.recuperaMensagem(Mensagem.M014));
                   setResponsePage(new PagamentoIndex());
@@ -266,7 +266,6 @@ public class PagamentoForm extends FormularioBase<Mensalidade>
          }
 
       };
-      campoDataVenda.setModelObject(Util.converteData(new Date()));
 
       campoNome = new TextField<String>("nomePessoa", new PropertyModel<String>(filtro, "nomePessoa"));
       campoCpf = new TextField<String>("cpfPessoa", new PropertyModel<String>(filtro, "cpfPessoa"))

@@ -59,4 +59,9 @@ public class TipoExercicioServico
       return getTipoExercicioDao().buscaListaPorCorpo(corpo);
    }
 
+   public List<TipoExercicio> buscaListaTipoExercicioPorTipoExerciciop(final TipoExercicio auxTipo)
+   {
+      return getTipoExercicioDao().buscaListaTipoExercicioPorTipoExerciciop(auxTipo);
+   }
+
 }

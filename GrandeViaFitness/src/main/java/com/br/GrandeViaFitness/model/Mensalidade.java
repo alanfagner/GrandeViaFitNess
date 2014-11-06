@@ -14,7 +14,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import com.br.GrandeViaFitness.enumUtil.MesReferenciaEnum;
+import com.br.GrandeViaFitness.utilitario.Util;
 
 @Entity
 @Table(name = "TB_MENSALIDADE")
@@ -42,6 +44,15 @@ public class Mensalidade implements Entidade
 
    @Column(name = "VL_ANO", nullable = false, length = 4)
    private Integer anoReferencia;
+
+   @Transient
+   private String dataPagamentoFormatada;
+
+   @Transient
+   private String valorPagoFormatado;
+
+   @Transient
+   private Date dataFim;
 
    public Long getCodigo()
    {
@@ -101,6 +112,44 @@ public class Mensalidade implements Entidade
    public void setAnoReferencia(final Integer anoReferencia)
    {
       this.anoReferencia = anoReferencia;
+   }
+
+   public String getDataPagamentoFormatada()
+   {
+      if (getDataPagamento() != null)
+      {
+         dataPagamentoFormatada = Util.formataData(getDataPagamento(), "dd/MM/yyyy");
+      }
+      return dataPagamentoFormatada;
+   }
+
+   public void setDataPagamentoFormatada(final String dataPagamentoFormatada)
+   {
+      this.dataPagamentoFormatada = dataPagamentoFormatada;
+   }
+
+   public Date getDataFim()
+   {
+      return dataFim;
+   }
+
+   public void setDataFim(final Date dataFim)
+   {
+      this.dataFim = dataFim;
+   }
+
+   public String getValorPagoFormatado()
+   {
+      if (getValorPago() != null)
+      {
+         valorPagoFormatado = Util.priceWithDecimal(getValorPago());
+      }
+      return valorPagoFormatado;
+   }
+
+   public void setValorPagoFormatado(final String valorPagoFormatado)
+   {
+      this.valorPagoFormatado = valorPagoFormatado;
    }
 
    @Override

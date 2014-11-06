@@ -11,9 +11,7 @@ public interface TipoExercicioDao extends Dao<TipoExercicio>
 {
 
    int contadorListaGrid(Entidade filtro);
-
    List<TipoExercicio> buscaListaGrid(Entidade filtro, long first, long count, ParametrosOrdenacao ordernar);
-
    List<TipoExercicio> buscaListaPorCorpo(Corpo corpo);
-
+   List<TipoExercicio> buscaListaTipoExercicioPorTipoExerciciop(TipoExercicio auxTipo);
 }

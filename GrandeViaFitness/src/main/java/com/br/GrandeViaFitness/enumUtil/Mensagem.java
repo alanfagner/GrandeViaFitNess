@@ -15,7 +15,9 @@ public enum Mensagem
    M012("É necessario informar um cliente para {0}!"),
    M013("Venda efetuada com sucesso!"),
    M014("Mensalidade paga com sucesso!"),
-   M015("Já existe um pagamento refêrente a esse mês, ano e cliente! ");
+   M015("Já existe um pagamento refêrente a esse mês, ano e cliente! "),
+   M016("Data {0} Invalida!"),
+   M017("A {0} deve ser menor que a {1}!");
    private String descricao;
 
    private Mensagem(final String descricao)
