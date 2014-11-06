@@ -13,7 +13,6 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.AbstractReadOnlyModel;
-import org.apache.wicket.model.Model;
 import com.br.GrandeViaFitness.componentes.ItemPerPageLink;
 
 public class CustomNavigator<T, S> extends AbstractToolbar
@@ -24,8 +23,6 @@ public class CustomNavigator<T, S> extends AbstractToolbar
    private final List<Integer> itemsPerPageValues;
    private final DataTable<T, S> dataView;
    final WebMarkupContainer span;
-   private Label numberShow;
-   private Label numberMax;
    CustomPagingNavigator customPagingNavigator;
 
    /** Constructor
@@ -38,8 +35,6 @@ public class CustomNavigator<T, S> extends AbstractToolbar
       itemsPerPageValues = CustomNavigator.DEFAULT_ITEMS_PER_PAGE_VALUES;
       span = new WebMarkupContainer("span");
       add(span);
-      criaLAbel();
-      span.add(numberShow, numberMax);
       span.add(AttributeModifier.replace("colspan", new AbstractReadOnlyModel<String>()
       {
          private static final long serialVersionUID = 1L;
@@ -55,12 +50,6 @@ public class CustomNavigator<T, S> extends AbstractToolbar
       addLinksChangingItemsPerPageNumber();
    }
 
-   private void criaLAbel()
-   {
-      numberShow = new Label("numberShow");
-      numberMax = new Label("numberMax");
-
-   }
 
    private void addLinksChangingItemsPerPageNumber()
    {
@@ -95,28 +84,6 @@ public class CustomNavigator<T, S> extends AbstractToolbar
    protected void onConfigure()
    {
       super.onConfigure();
-      numberMax.setDefaultModel(new Model<Long>(dataView.getItemCount()));
-      numberShow.setDefaultModel(new Model<Long>(dataView.getItemsPerPage()));
-   }
 
-   public Label getNumberMax()
-   {
-      return numberMax;
    }
-
-   public void setNumberMax(final Label numberMax)
-   {
-      this.numberMax = numberMax;
-   }
-
-   public Label getNumberShow()
-   {
-      return numberShow;
-   }
-
-   public void setNumberShow(final Label numberShow)
-   {
-      this.numberShow = numberShow;
-   }
-
 }
