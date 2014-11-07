@@ -47,7 +47,10 @@ public class MensalidadeAS implements Provider<Mensalidade>
    public void excluirMensalidade(final Mensalidade mensalidade)
    {
       mensalidadeServico.excluirMensalidade(mensalidade);
-
    }
 
+   public String calculaSaldo(final Mensalidade mensalidade)
+   {
+      return mensalidadeServico.calculaSaldo(mensalidade);
+   }
 }

@@ -162,6 +162,7 @@ public class EfetuarVendaForm extends FormularioBase<Venda>
    private void criaCampos()
    {
       campoQuantidade = new TextField<String>("quantidade", new Model<String>());
+      campoQuantidade.setOutputMarkupId(true);
       campoNomeProduto = new TextField<String>("nomeProduto", new PropertyModel<String>(filtroProduto, "nomeProduto"));
       addOrReplace(campoQuantidade, campoNomeProduto);
    }
@@ -218,12 +219,13 @@ public class EfetuarVendaForm extends FormularioBase<Venda>
                {
                   listaVenda.add(auxProdudoVenda);
                }
+               campoQuantidade.setModelObject("");
             }
             else
             {
                getSession().error(Mensagem.recuperaMensagem(Mensagem.M04, "Quantidade"));
             }
-            target.add(gridGenericaRlProdutoVenda, feedBack, informacaoVaziaRlProdutoVenda);
+            target.add(gridGenericaRlProdutoVenda, feedBack, informacaoVaziaRlProdutoVenda, campoQuantidade);
          }
       });
       columns.add(DataGridGenerica.criaColunarProduto("Codigo", "codigo", true, 5));

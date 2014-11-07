@@ -25,7 +25,8 @@
 						<label> Ano de Referência: </label>
 						<input wicket:id="anoReferencia" type="text" maxlength="11" class="campoText ano" />
 					</div>
-					<div class="grid_4" style="margin-bottom: 10px;">
+					<div class="clear"></div>
+					<div class="grid_4" style="margin-bottom: 10px; margin-top: 10px;">
 						<input wicket:id=btnPesquisar class="botao" type="submit" name="avancar" value="Pesquisar" />
 						<input wicket:id="BtnLimpar" class="botao" type="submit" name=Limpar value="Limpar" />
 					</div>
@@ -36,6 +37,12 @@
 				<div class="dataTables_wrapper">
 					<table class="display  dataTable" cellspacing="0" style="width: 90%; border: 1px;" wicket:id="table"></table>
 					<div class="msgERROR" wicket:id="containerVazio">Nenhum registro encontrado!</div>
+				</div>
+				<div class="clear"></div>
+				<div class="LabelInputNome grid_6" style="margin-left: 40px; margin-top: 20px;">
+					<label style="padding-right: 50px;">Valor Total:</label>
+					<label style="font-weight: bold;">R$</label>
+					<label wicket:id="valorAtual" style="font-weight: bold;"></label>
 				</div>
 				<div class="clear"></div>
 			</fieldset>

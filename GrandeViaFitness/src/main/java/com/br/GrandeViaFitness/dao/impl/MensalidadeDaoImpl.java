@@ -1,5 +1,8 @@
 package com.br.GrandeViaFitness.dao.impl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +38,8 @@ public class MensalidadeDaoImpl extends JpaDao<Mensalidade> implements Mensalida
       {
          if (mensalidade.getPessoa().getNomePessoa() != null)
          {
-            sb.append(" AND m.pessoa.nomePessoa = :pessoaNome ");
-            params.put("pessoaNome", mensalidade.getPessoa().getNomePessoa());
+            sb.append(" AND  UPPER(m.pessoa.nomePessoa) LIKE :pessoaNome ");
+            params.put("pessoaNome", "%" + mensalidade.getPessoa().getNomePessoa().toUpperCase() + "%");
          }
       }
       if (mensalidade.getDataFim() != null)
@@ -118,6 +121,29 @@ public class MensalidadeDaoImpl extends JpaDao<Mensalidade> implements Mensalida
          }
       }
       return consulta(sb.toString(), params);
+   }
+
+   @Override
+   public String calculaSaldo(final Mensalidade filtro)
+   {
+      final Mensalidade auxFiltro = filtro;
+      final StringBuilder sb = new StringBuilder();
+      final Map<String, Object> params = new HashMap<String, Object>();
+      sb.append(" SELECT m FROM Mensalidade m ");
+      sb.append(" JOIN FETCH m.pessoa pessoa ");
+      if (auxFiltro != null)
+      {
+         montaConsultaGenerica(sb, params, auxFiltro);
+      }
+      BigDecimal valorAtual = new BigDecimal(0);
+      for (final Mensalidade auxmeMensalidade : consulta(sb.toString(), params))
+      {
+         valorAtual = valorAtual.add(auxmeMensalidade.getValorPago());
+      }
+      valorAtual.setScale(2, RoundingMode.HALF_UP);
+      final DecimalFormat df = new DecimalFormat(",##0.00");
+
+      return df.format(valorAtual);
    }
 
 }

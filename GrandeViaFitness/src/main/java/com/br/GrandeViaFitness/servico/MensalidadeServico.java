@@ -56,4 +56,10 @@ public class MensalidadeServico
 
    }
 
+   public String calculaSaldo(final Mensalidade mensalidade)
+   {
+
+      return getMensalidadeDao().calculaSaldo(mensalidade);
+   }
+
 }

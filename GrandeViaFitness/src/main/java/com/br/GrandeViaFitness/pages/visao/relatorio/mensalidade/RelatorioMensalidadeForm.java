@@ -12,6 +12,7 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -54,6 +55,7 @@ public class RelatorioMensalidadeForm extends FormularioBase<Mensalidade>
    private DropDownChoice<MesReferenciaEnum> comboMesReferencia;
    private TextField<Integer> campoAnoReferencia;
    private ConfirmAjaxButtonCustom<Mensalidade> modal;
+   private Label labelValor;
 
    public RelatorioMensalidadeForm(final String id)
    {
@@ -71,6 +73,15 @@ public class RelatorioMensalidadeForm extends FormularioBase<Mensalidade>
       criaFeedBack();
       criaComboBox();
       criaModal();
+      criaLabel();
+   }
+
+   private void criaLabel()
+   {
+      labelValor = new Label("valorAtual", mensalidadeAS.calculaSaldo(getModelObject()));
+      labelValor.setOutputMarkupId(true);
+      addOrReplace(labelValor);
+
    }
 
    private void criaModal()
@@ -260,7 +271,8 @@ public class RelatorioMensalidadeForm extends FormularioBase<Mensalidade>
             if (carregaData())
             {
                gridGenerica.size();
-               target.add(gridGenerica, informacaoVazia);
+               criaLabel();
+               target.add(gridGenerica, informacaoVazia, labelValor);
             }
             target.add(feedBack);
          }

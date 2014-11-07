@@ -15,4 +15,6 @@ public interface MensalidadeDao extends Dao<Mensalidade>
 
    List<Mensalidade> buscaListaGrid(Entidade filtro, long first, long count, ParametrosOrdenacao ordernar);
 
+   String calculaSaldo(Mensalidade mensalidade);
+
 }
