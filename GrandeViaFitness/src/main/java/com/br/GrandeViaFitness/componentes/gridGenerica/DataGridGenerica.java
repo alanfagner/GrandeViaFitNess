@@ -17,6 +17,7 @@ import com.br.GrandeViaFitness.model.Produto;
 import com.br.GrandeViaFitness.model.RlPessoaExercicio;
 import com.br.GrandeViaFitness.model.RlProdutoVenda;
 import com.br.GrandeViaFitness.model.TipoExercicio;
+import com.br.GrandeViaFitness.model.Venda;
 
 public class DataGridGenerica<T, S> extends DataTable<T, S>
 {
@@ -36,6 +37,24 @@ public class DataGridGenerica<T, S> extends DataTable<T, S>
    {
       final PropertyColumn<RlProdutoVenda, String> coluna =
          new PropertyColumn<RlProdutoVenda, String>(new Model<String>(text), nomeModel, orderncao ? nomeModel : null)
+         {
+            private static final long serialVersionUID = -8096001661154391568L;
+
+            @Override
+            public String getCssClass()
+            {
+               return "tam" + tamanho;
+            }
+         };
+      coluna.getCssClass();
+      return coluna;
+   }
+
+   public static PropertyColumn<Venda, String> criaColunarVenda(final String text, final String nomeModel, final Boolean orderncao,
+      final Integer tamanho)
+   {
+      final PropertyColumn<Venda, String> coluna =
+         new PropertyColumn<Venda, String>(new Model<String>(text), nomeModel, orderncao ? nomeModel : null)
          {
             private static final long serialVersionUID = -8096001661154391568L;
 

@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import com.br.GrandeViaFitness.utilitario.Util;
 
 @Entity
 @Table(name = "TB_VENDA", schema = "GRANDEVIAFITNESS")
@@ -33,6 +35,15 @@ public class Venda  implements Entidade
 
    @Column(name = "DT_VENDA", nullable = false)
    private Date dataVenda;
+
+   @Transient
+   private String dataFormatada;
+
+   @Transient
+   private String valorFormatado;
+
+   @Transient
+   private Date dataFim;
 
    public Long getCodigo()
    {
@@ -72,6 +83,44 @@ public class Venda  implements Entidade
    public void setDataVenda(final Date dataVenda)
    {
       this.dataVenda = dataVenda;
+   }
+
+   public String getDataFormatada()
+   {
+      if (getDataVenda() != null)
+      {
+         dataFormatada = Util.formataData(getDataVenda(), "dd/MM/yyyy");
+      }
+      return dataFormatada;
+   }
+
+   public void setDataFormatada(final String dataFormatada)
+   {
+      this.dataFormatada = dataFormatada;
+   }
+
+   public String getValorFormatado()
+   {
+      if (getValorTotal() != null)
+      {
+         valorFormatado = Util.priceWithDecimal(getValorTotal());
+      }
+      return valorFormatado;
+   }
+
+   public void setValorFormatado(final String valorFormatado)
+   {
+      this.valorFormatado = valorFormatado;
+   }
+
+   public Date getDataFim()
+   {
+      return dataFim;
+   }
+
+   public void setDataFim(final Date dataFim)
+   {
+      this.dataFim = dataFim;
    }
 
    @Override

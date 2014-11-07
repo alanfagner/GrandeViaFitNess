@@ -25,6 +25,7 @@ import com.br.GrandeViaFitness.componentes.gridGenerica.DataGridGenerica;
 import com.br.GrandeViaFitness.componentes.provider.ProviderGenerico;
 import com.br.GrandeViaFitness.enumUtil.Mensagem;
 import com.br.GrandeViaFitness.model.Produto;
+import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
 import com.br.GrandeViaFitness.pages.visao.produto.cadastrar.CadastrarAlterarProdutoIndex;
 import com.br.GrandeViaFitness.pages.visao.produto.visualizar.VisualizarProdutoIndex;
 
@@ -194,7 +195,7 @@ public class ConsultarProdutoForm extends FormularioBase<Produto>
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
-            setResponsePage(new ConsultarProdutoIndex());
+            setResponsePage(new HomePageIndex());
          }
       });
 

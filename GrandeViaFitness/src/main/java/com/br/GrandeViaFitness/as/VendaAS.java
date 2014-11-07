@@ -17,6 +17,8 @@ public class VendaAS implements Provider<Venda>
 {
    @Autowired
    private VendaServico vendaServico;
+   @Autowired
+   private RLProdutoVendaServico rlVendaServico;
 
    @Autowired
    private RLProdutoVendaServico rlProdutoVendaServico;
@@ -24,15 +26,13 @@ public class VendaAS implements Provider<Venda>
    @Override
    public List<Venda> buscaListaGrid(final Entidade entidade, final long first, final long count, final ParametrosOrdenacao ordernar)
    {
-      // TODO Auto-generated method stub
-      return null;
+      return vendaServico.buscaListaGrid(entidade, first, count, ordernar);
    }
 
    @Override
    public int contadorListaGrid(final Entidade entidade)
    {
-      // TODO Auto-generated method stub
-      return 0;
+      return vendaServico.contadorListaGrid(entidade);
    }
 
    @Transactional(noRollbackFor = Exception.class)
@@ -50,5 +50,16 @@ public class VendaAS implements Provider<Venda>
       }
    }
 
+   @Transactional
+   public void excluir(final Venda entidade)
+   {
+
+      for (final RlProdutoVenda auxProdutoVenda : rlProdutoVendaServico.buscaListaProdutoVendaPorCodigoVenda(entidade.getCodigo()))
+      {
+         rlProdutoVendaServico.excluir(auxProdutoVenda.getCodigo());
+      }
+      vendaServico.excluir(entidade);
+
+   }
 
 }

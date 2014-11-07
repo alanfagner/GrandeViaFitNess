@@ -18,6 +18,7 @@ import com.br.GrandeViaFitness.pages.visao.mensalidade.pagamento.PagamentoIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileHomeIndex;
 import com.br.GrandeViaFitness.pages.visao.produto.consultar.ConsultarProdutoIndex;
 import com.br.GrandeViaFitness.pages.visao.relatorio.mensalidade.RelatorioMensalidadeIndex;
+import com.br.GrandeViaFitness.pages.visao.relatorio.produto.RelatorioProdutoIndex;
 import com.br.GrandeViaFitness.pages.visao.venda.efetuarVenda.EfetuarVendaIndex;
 import com.br.GrandeViaFitness.utilitario.BaseUtil;
 
@@ -91,6 +92,17 @@ public class BasePage extends WebPage
          public void onClick()
          {
             setResponsePage(new ConsultarClienteIndex());
+         }
+      };
+
+      final Link<String> consultarVenda = new Link<String>("relatorioVenda")
+      {
+         private static final long serialVersionUID = -633142704625312739L;
+
+         @Override
+         public void onClick()
+         {
+            setResponsePage(new RelatorioProdutoIndex());
          }
       };
 
@@ -178,7 +190,8 @@ public class BasePage extends WebPage
       buttonlogout.setVisibilityAllowed(logado);
       buttonMobile.setOutputMarkupId(true);
       buttonMobile.setVisibilityAllowed(logado);
-      menu.add(consultarCliente, consultarAparelho, consultarProduto, efetuarVenda, pagamentoMensalidade, relatorioMensalidade);
+      menu.add(consultarCliente, consultarAparelho, consultarProduto, efetuarVenda, pagamentoMensalidade, relatorioMensalidade,
+         consultarVenda);
    }
 
    @Override

@@ -1,0 +1,42 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<form wicket:id="formulario">
+		<div class="div_center">
+			<div wicket:id="modal"></div>
+			<fieldset>
+				<legend class="legenda" align="left">Relatorio de Venda</legend>
+				<div class="dataTables_wrapper" style="left: 35px">
+					<div class="LabelInputNome grid_6">
+						<label> Nome Cliente:</label>
+						<input wicket:id="nome" type="text" maxlength="100" class="campoText" />
+					</div>
+					<div class="LabelInputNome grid_3">
+						<label> Data Inicio:</label>
+						<input wicket:id="dataInicio" type="text" class="campoText" />
+					</div>
+					<div class="LabelInputNome grid_3">
+						<label> Data Fim:</label>
+						<input wicket:id="dataFim" type="text" class="campoText" />
+					</div>
+					<div class="grid_4" style="margin-bottom: 10px;">
+						<input wicket:id=btnPesquisar class="botao" type="submit" name="avancar" value="Pesquisar" />
+						<input wicket:id="BtnLimpar" class="botao" type="submit" name=Limpar value="Limpar" />
+					</div>
+				</div>
+				<div class="clear"></div>
+				<br />
+				<div class="clear"></div>
+				<div class="dataTables_wrapper">
+					<table class="display  dataTable" cellspacing="0" style="width: 90%; border: 1px;" wicket:id="table"></table>
+					<div class="msgERROR" wicket:id="containerVazio">Nenhum registro encontrado!</div>
+				</div>
+				<div class="clear"></div>
+			</fieldset>
+			<div class="clear"></div>
+			<div class="grid_6" style="margin-left: 30px;">
+				<input wicket:id="btnNovaVenda" class="botao" type="submit" name="avancar" value="Nova Venda" />
+				<input wicket:id="btnVoltar" class="botao" type="submit" name=Limpar value="Voltar" />
+			</div>
+		</div>
+		<span wicket:id="feedback" class="feedBack ui-shadow"></span>
+	</form>
+</wicket:extend>
