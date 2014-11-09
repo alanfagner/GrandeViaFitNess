@@ -4,8 +4,10 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
@@ -14,9 +16,12 @@ import org.joda.time.format.DateTimeFormatter;
 
 public class Util
 {
+   private static final Locale BRAZIL = new Locale("pt", "BR");
+   private static final DecimalFormatSymbols REAL = new DecimalFormatSymbols(Util.BRAZIL);
+
    public static String priceWithDecimal(final BigDecimal price)
    {
-      final DecimalFormat formatter = new DecimalFormat("###,###,###.00");
+      final DecimalFormat formatter = new DecimalFormat("¤ ###,###,##0.00", Util.REAL);
       return formatter.format(price);
    }
 

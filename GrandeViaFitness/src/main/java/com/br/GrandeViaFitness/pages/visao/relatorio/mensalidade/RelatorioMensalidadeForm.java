@@ -190,7 +190,7 @@ public class RelatorioMensalidadeForm extends FormularioBase<Mensalidade>
       });
       columns.add(DataGridGenerica.criaColunarMensalidade("Nome", "pessoa.nomePessoa", true, 30));
       columns.add(DataGridGenerica.criaColunarMensalidade("Data Pagamento", "dataPagamentoFormatada", true, 10));
-      columns.add(DataGridGenerica.criaColunarMensalidade("Valor", "valorPagoFormatado", true, 10));
+      columns.add(DataGridGenerica.criaColunarMensalidade("Valor", "valorPagoFormatado", true, 20));
       columns.add(DataGridGenerica.criaColunarMensalidade("Referente ao Mês", "mesReferente.descricao", true, 10));
       columns.add(DataGridGenerica.criaColunarMensalidade("Referente ao Ano ", "anoReferencia", true, 10));
       columns.add(new AbstractColumn<Mensalidade, String>(new Model<String>("Opções"))

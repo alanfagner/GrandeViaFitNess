@@ -1,30 +1,34 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<form wicket:id="formulario">
-		<div data-role="header" style="margin-bottom: 5px" data-position="fixed">
+		<div data-role="header" style="margin-bottom: 5px"
+			data-position="fixed">
 			<h1></h1>
-			<a href="" wicket:id="btnAvancar" class="botaoMenu ui-btn-right" data-icon="plus"></a>
+			<div wicket:id="containerBTN" style="float: left;">
+				<p>
+					<a href="#right-panel"
+						class="ui-btn ui-icon-user ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini"></a>
+				</p>
+			</div>
+			<a href="#right-panel"
+				class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini">Trocar
+				Cliente</a>
+			<a href="" wicket:id="btnAvancar" class="botaoMenu ui-btn-right"
+				data-icon="plus"></a>
 		</div>
-		<div style="margin: auto">
-			<div wicket:id="containerInput" style="width: 343px; margin: auto">
-				<input wicket:id="campoData" type="text" data-role="date" data-inline="true">
+		<div style="margin-left: 1%; margin-right: 1%;">
+			<div wicket:id="containerInput" style="margin: auto">
+				<input wicket:id="campoData" type="text" data-role="date"
+					data-inline="true">
 			</div>
 		</div>
 		<div data-role="footer" data-position="fixed">
-			<div wicket:id="containerBTN" style="float: left;">
-				<p>
-					<a href="#right-panel"  class="ui-btn ui-icon-user ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini">Trocar Cliente</a>
-				</p>
-			</div>
-			
-			<div style="float: right;margin-top: 16px;" >
-				<a href="#right-panel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini">Trocar Cliente</a>
-			</div>
 			<h1 style="float: left; margin-top: 16px;">
 				<label wicket:id="lbnLogado"></label>
 			</h1>
 		</div>
 		<div wicket:id="containerLateral">
-			<div data-role="panel" id="right-panel" data-display="overlay" data-position="right">
+			<div data-role="panel" id="right-panel" data-display="overlay"
+				data-position="right">
 				<ul data-role="listview" data-icon="false">
 					<li data-icon="delete">
 						<a href="#" data-rel="close">Fechar</a>
