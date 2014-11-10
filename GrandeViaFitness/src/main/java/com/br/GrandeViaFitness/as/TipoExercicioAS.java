@@ -48,7 +48,7 @@ public class TipoExercicioAS implements Provider<TipoExercicio>
       return tipoExercicioServico.contadorListaGrid(filtro);
    }
 
-   @Transactional(noRollbackFor = Exception.class)
+   @Transactional
    public void persisteDadosEquipamento(final TipoEquipamento tipoEquipamento)
    {
       if (tipoEquipamento.getCodigo() == null)
@@ -68,14 +68,14 @@ public class TipoExercicioAS implements Provider<TipoExercicio>
       return tipoEquipamentoServico.buscaListaEquipamento();
    }
 
-   @Transactional(noRollbackFor = Exception.class)
+   @Transactional
    public void excluirEquipamento(final TipoEquipamento tipoEquipamento)
    {
       tipoEquipamentoServico.excluirEquipamento(tipoEquipamento);
 
    }
 
-   @Transactional(noRollbackFor = Exception.class)
+   @Transactional
    public void persisteDadosCorpo(final Corpo corpo)
    {
       if (corpo.getCodigo() == null)
@@ -95,14 +95,14 @@ public class TipoExercicioAS implements Provider<TipoExercicio>
       return corpoServico.buscaListaCorpo();
    }
 
-   @Transactional(noRollbackFor = Exception.class)
+   @Transactional
    public void excluirCorpo(final Corpo corpo)
    {
       corpoServico.excluirCorpo(corpo);
 
    }
 
-   @Transactional(noRollbackFor = Exception.class)
+   @Transactional
    public void persisteDadosExercicios(final TipoExercicio tipoExercicio)
    {
       if (tipoExercicio.getCodigo() == null)
@@ -117,7 +117,7 @@ public class TipoExercicioAS implements Provider<TipoExercicio>
 
    }
 
-   @Transactional(noRollbackFor = Exception.class)
+   @Transactional
    public void excluirExercicio(final TipoExercicio tipoExercicio)
    {
       tipoExercicioServico.excluirExercico(tipoExercicio);

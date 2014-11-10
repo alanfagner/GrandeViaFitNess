@@ -11,6 +11,7 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.repeater.Item;
@@ -48,6 +49,7 @@ public class RelatorioProdutoForm extends FormularioBase<Venda>
    private TextField<Date> campoDataInicio;
    private TextField<Date> campoDataFim;
    private TextField<String> campoPessoa;
+   private Label labelValor;
 
    public RelatorioProdutoForm(final String id)
    {
@@ -64,7 +66,17 @@ public class RelatorioProdutoForm extends FormularioBase<Venda>
       criaModal();
       criaBotes();
       criaCampos();
+      criaLabel();
    }
+
+   private void criaLabel()
+   {
+      labelValor = new Label("valorAtual", vendaAS.calculaSaldo(getModelObject()));
+      labelValor.setOutputMarkupId(true);
+      addOrReplace(labelValor);
+
+   }
+
 
    private void criaCampos()
    {
@@ -108,7 +120,8 @@ public class RelatorioProdutoForm extends FormularioBase<Venda>
          {
             if (carregaData())
             {
-               target.add(gridGenerica, informacaoVazia);
+               criaLabel();
+               target.add(gridGenerica, informacaoVazia, labelValor);
             }
             target.add(feedBack);
          }
@@ -251,6 +264,17 @@ public class RelatorioProdutoForm extends FormularioBase<Venda>
          {
             modal.setEntidade(getModelObject());
             modal.button.onClick(target);
+         }
+      });
+
+      listaBotoes.add(new AjaxLink<Venda>("Visualizar")
+      {
+         private static final long serialVersionUID = -2007593370707695822L;
+
+         @Override
+         public void onClick(final AjaxRequestTarget target)
+         {
+
          }
       });
       columns.add(DataGridGenerica.criaColunarVenda("Nome", "pessoa.nomePessoa", true, 30));

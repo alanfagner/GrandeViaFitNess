@@ -35,7 +35,7 @@ public class VendaAS implements Provider<Venda>
       return vendaServico.contadorListaGrid(entidade);
    }
 
-   @Transactional(noRollbackFor = Exception.class)
+   @Transactional
    public void salvarVenda(final List<RlProdutoVenda> auxProdutoVenda, final Venda venda)
    {
 
@@ -60,6 +60,11 @@ public class VendaAS implements Provider<Venda>
       }
       vendaServico.excluir(entidade);
 
+   }
+
+   public String calculaSaldo(final Venda venda)
+   {
+      return vendaServico.calculaSaldo(venda);
    }
 
 }

@@ -3,14 +3,14 @@
 		<div class="div_center">
 			<div wicket:id="modal"></div>
 			<fieldset>
-				<legend class="legenda" align="left">Relatorio de Venda</legend>
+				<legend class="legenda" align="left">Relatório de Venda</legend>
 				<div class="dataTables_wrapper" style="left: 35px">
 					<div class="LabelInputNome grid_6">
 						<label> Nome Cliente:</label>
 						<input wicket:id="nome" type="text" maxlength="100" class="campoText" />
 					</div>
 					<div class="LabelInputNome grid_3">
-						<label> Data Inicio:</label>
+						<label> Data início:</label>
 						<input wicket:id="dataInicio" type="text" class="campoText" />
 					</div>
 					<div class="LabelInputNome grid_3">
@@ -28,6 +28,12 @@
 				<div class="dataTables_wrapper">
 					<table class="display  dataTable" cellspacing="0" style="width: 90%; border: 1px;" wicket:id="table"></table>
 					<div class="msgERROR" wicket:id="containerVazio">Nenhum registro encontrado!</div>
+				</div>
+				<div class="clear"></div>
+				<div class="LabelInputNome grid_6" style="margin-left: 40px; margin-top: 20px;">
+					<label style="padding-right: 50px;">Valor Total:</label>
+					<label style="font-weight: bold;">R$</label>
+					<label wicket:id="valorAtual" style="font-weight: bold;"></label>
 				</div>
 				<div class="clear"></div>
 			</fieldset>

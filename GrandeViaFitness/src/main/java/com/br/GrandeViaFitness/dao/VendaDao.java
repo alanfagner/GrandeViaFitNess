@@ -13,4 +13,6 @@ public interface VendaDao extends Dao<Venda>
 
    List<Venda> buscaListaGrid(Entidade entidade, long first, long count, ParametrosOrdenacao ordernar);
 
+   String calculaSaldo(Venda venda);
+
 }

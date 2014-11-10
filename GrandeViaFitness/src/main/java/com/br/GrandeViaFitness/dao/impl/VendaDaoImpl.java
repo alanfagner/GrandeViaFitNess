@@ -1,5 +1,8 @@
 package com.br.GrandeViaFitness.dao.impl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,8 +40,8 @@ public class VendaDaoImpl extends JpaDao<Venda> implements VendaDao
 
       if (filtroVenda.getPessoa().getNomePessoa() != null)
       {
-         sb.append(" AND v.pessoa.nomePessoa = :nome");
-         params.put("nome", filtroVenda.getPessoa().getNomePessoa());
+         sb.append(" AND UPPER(v.pessoa.nomePessoa) like :nome ");
+         params.put("nome", "%" + filtroVenda.getPessoa().getNomePessoa().toUpperCase() + "%");
       }
 
       if (filtroVenda.getDataFim() != null)
@@ -49,7 +52,7 @@ public class VendaDaoImpl extends JpaDao<Venda> implements VendaDao
       }
       else if (filtroVenda.getDataVenda() != null)
       {
-         sb.append(" AND v.dataVenda = :data");
+         sb.append(" AND v.dataVenda = :data ");
          params.put("data", filtroVenda.getDataVenda());
       }
 
@@ -71,17 +74,39 @@ public class VendaDaoImpl extends JpaDao<Venda> implements VendaDao
       {
          if (ordernar.getColuna().equals("dataFormatada"))
          {
-            sb.append("ORDER BY v.dataVenda " + ordernar.getOrdernar());
+            sb.append(" ORDER BY v.dataVenda " + ordernar.getOrdernar());
          }
          else if (ordernar.getColuna().equals("valorFormatado"))
          {
-            sb.append("ORDER BY v.valorTotal " + ordernar.getOrdernar());
+            sb.append(" ORDER BY v.valorTotal " + ordernar.getOrdernar());
          }
          else
          {
-            sb.append("ORDER BY v." + ordernar.getColuna() + " " + ordernar.getOrdernar());
+            sb.append(" ORDER BY v." + ordernar.getColuna() + " " + ordernar.getOrdernar());
          }
       }
       return findByNamedParams(sb.toString(), params, new Paginacao(first, count));
+   }
+
+   @Override
+   public String calculaSaldo(final Venda venda)
+   {
+      final StringBuilder sb = new StringBuilder();
+      final Map<String, Object> params = new HashMap<String, Object>();
+      sb.append(" SELECT v FROM Venda v ");
+      sb.append(" JOIN FETCH v.pessoa p ");
+      if (venda != null)
+      {
+         montaConsultaGenerica(sb, params, venda);
+      }
+      BigDecimal valorAtual = new BigDecimal(0);
+      for (final Venda auxVenda : consulta(sb.toString(), params))
+      {
+         valorAtual = valorAtual.add(auxVenda.getValorTotal());
+      }
+      valorAtual.setScale(2, RoundingMode.HALF_UP);
+      final DecimalFormat df = new DecimalFormat(",##0.00");
+
+      return df.format(valorAtual);
    }
 }

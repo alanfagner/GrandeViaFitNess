@@ -234,7 +234,6 @@ public class FechaVendaForm extends FormularioBase<Venda>
          }
 
       };
-      campoDataVenda.setModelObject(new Date());
 
       campoNome = new TextField<String>("nomePessoa", new PropertyModel<String>(filtro, "nomePessoa"));
       campoCpf = new TextField<String>("cpfPessoa", new PropertyModel<String>(filtro, "cpfMascara"))

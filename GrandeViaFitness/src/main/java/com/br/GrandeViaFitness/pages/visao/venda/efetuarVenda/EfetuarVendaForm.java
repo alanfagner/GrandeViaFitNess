@@ -219,7 +219,6 @@ public class EfetuarVendaForm extends FormularioBase<Venda>
                {
                   listaVenda.add(auxProdudoVenda);
                }
-               campoQuantidade.setModelObject("");
             }
             else
             {

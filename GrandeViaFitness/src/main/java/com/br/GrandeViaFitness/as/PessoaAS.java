@@ -51,7 +51,7 @@ public class PessoaAS implements Provider<Pessoa>
       return authorityServico;
    }
 
-   @Transactional(noRollbackFor = Exception.class)
+   @Transactional
    public void saveInicial(final Pessoa pessoa)
    {
       authorityServico.save(pessoa.getAuthority());
@@ -64,7 +64,7 @@ public class PessoaAS implements Provider<Pessoa>
 
    }
 
-   @Transactional(noRollbackFor = Exception.class)
+   @Transactional
    public void save(final Pessoa pessoa)
    {
       if (pessoa.getEndereco().getCodigo() == 0)
@@ -85,7 +85,7 @@ public class PessoaAS implements Provider<Pessoa>
 
    }
 
-   @Transactional(noRollbackFor = Exception.class)
+   @Transactional
    public void excluirPessoa(final Pessoa pessoa)
    {
       pessoaServico.excluir(pessoa);

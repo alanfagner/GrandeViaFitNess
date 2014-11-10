@@ -71,6 +71,9 @@ public class Pessoa implements Entidade, Cliente, Funcionario, Instrutor
    @Transient
    private String cpfMascara;
 
+   @Transient
+   private String numTelMascraca;
+
    public Long getCodigo()
    {
       return codigo;
@@ -210,6 +213,27 @@ public class Pessoa implements Entidade, Cliente, Funcionario, Instrutor
    public void setCpfMascara(final String cpfMascara)
    {
       this.cpfMascara = cpfMascara;
+   }
+
+   public String getNumTelMascraca()
+   {
+      if (getNumeroCelulaPessoa() != null)
+      {
+         try
+         {
+            numTelMascraca = Util.formatString(getNumeroCelulaPessoa(), "(##) #####-#####");
+         }
+         catch (final ParseException e)
+         {
+            e.printStackTrace();
+         }
+      }
+      return numTelMascraca;
+   }
+
+   public void setNumTelMascraca(final String numTelMascraca)
+   {
+      this.numTelMascraca = numTelMascraca;
    }
 
    @Override

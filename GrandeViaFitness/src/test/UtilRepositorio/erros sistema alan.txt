@@ -32,51 +32,51 @@ Manter Produto:
 
 Manter Atividade:
 
-- Tela de inclus�o, bot�o alterar com nome errado.
+- Tela de inclus�o, bot�o alterar com nome errado. ok
 
-- Ao fazer upload de fotos as imagens ficam desalinhadas.
+- Ao fazer upload de fotos as imagens ficam desalinhadas. 
 
 
 Efetuar Venda:
 
-- CPF est� sem m�scara antes de confirmar a venda.
+- CPF est� sem m�scara antes de confirmar a venda.  ok
 
-- Campos data est� com o ano errado, fica 09/11/14 => no caso de uso de relat�rio fica com a m�scara 09/11/0014 por causa disso.
+- Campos data est� com o ano errado, fica 09/11/14 => no caso de uso de relat�rio fica com a m�scara 09/11/0014 por causa disso. ok
 
 - � poss�vel colocar a quantidade igual a ZERO.
-Sugest�o: colocar o campo quantidade igual uma combo com valores pr�-definidos j�, ou colocar tipo aqueles campos que come�am com um valor e tem uma setinha pra vc aumentar ou diminuir a quantidade.
+Sugest�o: colocar o campo quantidade igual uma combo com valores pr�-definidos j�, ou colocar tipo aqueles campos que come�am com um valor e tem uma setinha pra vc aumentar ou diminuir a quantidade.  ok
 
 - 
-Corrigir o campo "ITEMS" - o correto � "Itens"
+Corrigir o campo "ITEMS" - o correto � "Itens" ok
 
-- Se colocar um valor muito alto em "Valor Total Produto" da estouro de tela na hora de fechar a compra.
+- Se colocar um valor muito alto em "Valor Total Produto" da estouro de tela na hora de fechar a compra.  ok
 
 Relat�rio de venda:
 
 - Seria legal ter tipo de um visualizar para os itens... pois o cara pode comprar mais de 1 coisa e depois n�o da pra saber o que ele comprou.
 
-- Corrigir o nome do caso de uso no menu e na grid => Colocar acento na palavra relat�rio.
+- Corrigir o nome do caso de uso no menu e na grid => Colocar acento na palavra relat�rio. ok
 
-- Pesquisar n�o est� funcionando - Pesquisar por Lanza, n�o traz resultado.
+- Pesquisar n�o est� funcionando - Pesquisar por Lanza, n�o traz resultado.  ok
 
-- Informar o campo data inicio e data fim, clicar para pesquisar, limpar os campos data inicio e data fim e clicar em pesquisar => o sistema n�o esta pesquisando.
+- Informar o campo data inicio e data fim, clicar para pesquisar, limpar os campos data inicio e data fim e clicar em pesquisar => o sistema n�o esta pesquisando. ---
 
 - Campo data in�cio est� sem acento.
 
 
 Pagamento:
 
-- CPF sem m�scara na grid.
+- CPF sem m�scara na grid.  ok
 
-- campo Ano de Refer�ncia poderia ser uma combo tamb�m.
+- campo Ano de Refer�ncia poderia ser uma combo tamb�m.   ---- 
 
-- Antes de finalizar pagamento, campo CPF est� sem m�scara.
+- Antes de finalizar pagamento, campo CPF est� sem m�scara.  ok
 
-- Colocar acento na palavra obrigat�rio das mensagens.
+- Colocar acento na palavra obrigat�rio das mensagens. ok
 
 
 Relat�rio de pagamento:
 
-- Campo valor est� n�o est� aparecendo valor para o numero antes da virgula quando � somente centavos, por exemplo, fazer um pagamento de 0,60, no valor aparece s� ,60
+- Campo valor est� n�o est� aparecendo valor para o numero antes da virgula quando � somente centavos, por exemplo, fazer um pagamento de 0,60, no valor aparece s� ,60 ok
 
 - 

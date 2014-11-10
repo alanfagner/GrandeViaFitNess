@@ -43,7 +43,7 @@ public class MensalidadeAS implements Provider<Mensalidade>
       return mensalidadeServico.buscaAllResistros();
    }
 
-   @Transactional(noRollbackFor = Exception.class)
+   @Transactional
    public void excluirMensalidade(final Mensalidade mensalidade)
    {
       mensalidadeServico.excluirMensalidade(mensalidade);

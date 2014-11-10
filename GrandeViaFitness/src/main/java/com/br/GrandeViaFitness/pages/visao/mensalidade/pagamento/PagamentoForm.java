@@ -248,7 +248,7 @@ public class PagamentoForm extends FormularioBase<Mensalidade>
       containerGridDados.addOrReplace(new Label("emailPessoa", getModelObject().getPessoa() != null ? getModelObject().getPessoa()
          .getEmailPessoa() : ""));
       containerGridDados.addOrReplace(new Label("celularPessoa", getModelObject().getPessoa() != null ? getModelObject().getPessoa()
-         .getNumeroCelulaPessoa() : ""));
+         .getNumTelMascraca() : ""));
    }
 
    private void criaCampos()

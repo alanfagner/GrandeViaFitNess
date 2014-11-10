@@ -27,7 +27,7 @@ public class ProdutoAS implements Provider<Produto>
       return produtoServico.contadorListaGrid(entidade);
    }
 
-   @Transactional(noRollbackFor = Exception.class)
+   @Transactional
    public void persisteDados(final Produto produto)
    {
       if (produto.getCodigo() == null)
@@ -41,7 +41,7 @@ public class ProdutoAS implements Provider<Produto>
 
    }
 
-   @Transactional(noRollbackFor = Exception.class)
+   @Transactional
    public void excluirPessoa(final Produto produto)
    {
       produtoServico.excluirPessoa(produto);

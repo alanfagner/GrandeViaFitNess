@@ -44,4 +44,9 @@ public class VendaServico
 
    }
 
+   public String calculaSaldo(final Venda venda)
+   {
+      return getVendaDao().calculaSaldo(venda);
+   }
+
 }

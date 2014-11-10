@@ -1,6 +1,6 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<form wicket:id="formulario">
-	    <div wicket:id="modal"></div>
+		<div wicket:id="modal"></div>
 		<div class="div_center">
 			<fieldset>
 				<legend class="legenda" align="left">Efetuar Venda</legend>
@@ -13,16 +13,19 @@
 						</label>
 						<input wicket:id="nomeProduto" type="text" maxlength="11" class="campoText" />
 					</div>
-					<div class="LabelInputNome grid_6">
+					<div class="LabelInputNome grid_5">
 						<input wicket:id="btnPesquisar" class="botao" type="submit" style="margin-top: 10px" name="avancar" value="Buscar" />
 						<input wicket:id="btnLimpar" class="botao" type="submit" style="margin-top: 10px" name="avancar" value="Limpar" />
 					</div>
-					<div class="LabelInputNome grid_2">
+					<div class="LabelInputNome grid_3">
 						<label>
 							<span class="obrigatorio">*</span>
 							Quantidade:
 						</label>
-						<input wicket:id="quantidade" type="text" maxlength="11" class="numero campoText" />
+						<div class="grid_1" style="float: right; margin-bottom: 5px">
+							<input wicket:id="quantidade"  class="quantidade" readonly style="border: 0; color: #f6931f; font-weight: bold;" type="text" />
+						</div>
+						<div style="margin-top: 10px" id="slider-range-max"></div>
 					</div>
 					<div class="dataTables_wrapper">
 						<table class="display  dataTable" style="width: 100%; border: 1px;" wicket:id="tableProduto"></table>
@@ -30,7 +33,7 @@
 					</div>
 				</fieldset>
 				<fieldset>
-					<legend class="legenda" align="left">Lista de Items</legend>
+					<legend class="legenda" align="left">Lista de Itens</legend>
 					<div class="dataTables_wrapper">
 						<table class="display  dataTable" style="width: 100%; border: 1px;" wicket:id="tableProdutoVenda"></table>
 						<div class="msgERROR" wicket:id="containerVazioRLProdutoVenda">Lista de Items esta Vazia!</div>
@@ -45,4 +48,18 @@
 		</div>
 		<span wicket:id="feedback" class="feedBack ui-shadow"></span>
 	</form>
+	<script>
+		$(function() {
+			$("#slider-range-max").slider({
+				range : "max",
+				min : 1,
+				max : 20,
+				value : 1,
+				slide : function(event, ui) {
+					$(".quantidade").val(ui.value);
+				}
+			});
+			$(".quantidade").val($("#slider-range-max").slider("value"));
+		});
+	</script>
 </wicket:extend>
