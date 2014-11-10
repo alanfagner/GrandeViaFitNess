@@ -1,82 +1,82 @@
 Manter Cliente:
 
-- Verificar acentuação das palavras da grid, tipo: próximo, último, página, Items, 
+- Verificar acentuaï¿½ï¿½o das palavras da grid, tipo: prï¿½ximo, ï¿½ltimo, pï¿½gina, Items,  OK 
 
-- Eu colocaria um botão de alterar nos clientes.
+- Eu colocaria um botï¿½o de alterar nos clientes. ---
 
-- Clicar em alterar cliente, limpar o campo CEP e depois clicar em voltar => estouro de tela.
+- Clicar em alterar cliente, limpar o campo CEP e depois clicar em voltar => estouro de tela.  ok
 
-- Quando clicar para alterar, ele está validando o CPF e falando que já está cadastrado.
+- Quando clicar para alterar, ele estï¿½ validando o CPF e falando que jï¿½ estï¿½ cadastrado.  ok
 
-- Colocar máscara no CPF na grid de registros ja cadastrados.
+- Colocar mï¿½scara no CPF na grid de registros ja cadastrados. ok 
 
-- Quando clicar para excluir, o nome do botão está como "CANCEL".
+- Quando clicar para excluir, o nome do botï¿½o estï¿½ como "CANCEL". quase arrumado
 
-- Mensagem de exclusão sem acento.
+- Mensagem de exclusï¿½o sem acento. ok
 
 
 Manter Produto:
 
-- Ordenar pelo preço => estouro de tela.
+- Ordenar pelo preï¿½o => estouro de tela. ok
 
-- Clicar em pesquisar sem preencher o filtro => estouro de tela.
+- Clicar em pesquisar sem preencher o filtro => estouro de tela. ok 
 
-- Colocar botão alterar na grid.
+- Colocar botï¿½o alterar na grid. ---
 
-- Cadastrar com nome igual => estouro de tela.
+- Cadastrar com nome igual => estouro de tela. ok
 
-- Cadastrar um registro com o preço 0,03 > na grid aparece ,03 - não está colocando o zero antes da virgula.
+- Cadastrar um registro com o preï¿½o 0,03 > na grid aparece ,03 - nï¿½o estï¿½ colocando o zero antes da virgula.  ok
 
-- Nome do campo "Codigo" está sem acento.
+- Nome do campo "Codigo" estï¿½ sem acento.  ok
 
 
 Manter Atividade:
 
-- Tela de inclusão, botão alterar com nome errado.
+- Tela de inclusï¿½o, botï¿½o alterar com nome errado.
 
 - Ao fazer upload de fotos as imagens ficam desalinhadas.
 
 
 Efetuar Venda:
 
-- CPF está sem máscara antes de confirmar a venda.
+- CPF estï¿½ sem mï¿½scara antes de confirmar a venda.
 
-- Campos data está com o ano errado, fica 09/11/14 => no caso de uso de relatório fica com a máscara 09/11/0014 por causa disso.
+- Campos data estï¿½ com o ano errado, fica 09/11/14 => no caso de uso de relatï¿½rio fica com a mï¿½scara 09/11/0014 por causa disso.
 
-- É possível colocar a quantidade igual a ZERO.
-Sugestão: colocar o campo quantidade igual uma combo com valores pré-definidos já, ou colocar tipo aqueles campos que começam com um valor e tem uma setinha pra vc aumentar ou diminuir a quantidade.
+- ï¿½ possï¿½vel colocar a quantidade igual a ZERO.
+Sugestï¿½o: colocar o campo quantidade igual uma combo com valores prï¿½-definidos jï¿½, ou colocar tipo aqueles campos que comeï¿½am com um valor e tem uma setinha pra vc aumentar ou diminuir a quantidade.
 
 - 
-Corrigir o campo "ITEMS" - o correto é "Itens"
+Corrigir o campo "ITEMS" - o correto ï¿½ "Itens"
 
 - Se colocar um valor muito alto em "Valor Total Produto" da estouro de tela na hora de fechar a compra.
 
-Relatório de venda:
+Relatï¿½rio de venda:
 
-- Seria legal ter tipo de um visualizar para os itens... pois o cara pode comprar mais de 1 coisa e depois não da pra saber o que ele comprou.
+- Seria legal ter tipo de um visualizar para os itens... pois o cara pode comprar mais de 1 coisa e depois nï¿½o da pra saber o que ele comprou.
 
-- Corrigir o nome do caso de uso no menu e na grid => Colocar acento na palavra relatório.
+- Corrigir o nome do caso de uso no menu e na grid => Colocar acento na palavra relatï¿½rio.
 
-- Pesquisar não está funcionando - Pesquisar por Lanza, não traz resultado.
+- Pesquisar nï¿½o estï¿½ funcionando - Pesquisar por Lanza, nï¿½o traz resultado.
 
-- Informar o campo data inicio e data fim, clicar para pesquisar, limpar os campos data inicio e data fim e clicar em pesquisar => o sistema não esta pesquisando.
+- Informar o campo data inicio e data fim, clicar para pesquisar, limpar os campos data inicio e data fim e clicar em pesquisar => o sistema nï¿½o esta pesquisando.
 
-- Campo data início está sem acento.
+- Campo data inï¿½cio estï¿½ sem acento.
 
 
 Pagamento:
 
-- CPF sem máscara na grid.
+- CPF sem mï¿½scara na grid.
 
-- campo Ano de Referência poderia ser uma combo também.
+- campo Ano de Referï¿½ncia poderia ser uma combo tambï¿½m.
 
-- Antes de finalizar pagamento, campo CPF está sem máscara.
+- Antes de finalizar pagamento, campo CPF estï¿½ sem mï¿½scara.
 
-- Colocar acento na palavra obrigatório das mensagens.
+- Colocar acento na palavra obrigatï¿½rio das mensagens.
 
 
-Relatório de pagamento:
+Relatï¿½rio de pagamento:
 
-- Campo valor está não está aparecendo valor para o numero antes da virgula quando é somente centavos, por exemplo, fazer um pagamento de 0,60, no valor aparece só ,60
+- Campo valor estï¿½ nï¿½o estï¿½ aparecendo valor para o numero antes da virgula quando ï¿½ somente centavos, por exemplo, fazer um pagamento de 0,60, no valor aparece sï¿½ ,60
 
 - 

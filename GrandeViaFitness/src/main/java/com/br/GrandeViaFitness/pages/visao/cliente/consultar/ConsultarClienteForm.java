@@ -145,11 +145,11 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
             setResponsePage(new VisualizarClienteIndex(getModelObject()));
          }
       });
-      columns.add(DataGridGenerica.criaColunarPessoa("Codigo", "codigo", true, 5));
+      columns.add(DataGridGenerica.criaColunarPessoa("Código", "codigo", true, 5));
       columns.add(DataGridGenerica.criaColunarPessoa("Nome", "nomePessoa", true, 30));
-      columns.add(DataGridGenerica.criaColunarPessoa("CPF", "cpfPessoa", true, 10));
+      columns.add(DataGridGenerica.criaColunarPessoa("CPF", "cpfMascara", true, 30));
       columns.add(DataGridGenerica.criaColunarPessoa("Email", "emailPessoa", true, 30));
-      columns.add(DataGridGenerica.criaColunarPessoa("Permissão", "cargoEnum.descricao", true, 20));
+      columns.add(DataGridGenerica.criaColunarPessoa("Permissão", "cargoEnum.descricao", true, 10));
       columns.add(new AbstractColumn<Pessoa, String>(new Model<String>("Opções"))
       {
          private static final long serialVersionUID = -3102670641136395641L;

@@ -104,7 +104,7 @@ public abstract class ConfirmAjaxButtonCustom<T> extends GenericPanel<String>
     * <b>Warning:</b> to be overridden with care!
     *
     * @param id the markupId
-    * @param title the title of the dialog
+    * @param title the title of the dialo
     * @param message the message to be displayed
     * @return the dialog instance */
    protected AbstractFormDialog<?> newFormDialog(final String id, final IModel<String> title, final IModel<String> message)

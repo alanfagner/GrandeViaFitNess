@@ -3,7 +3,7 @@ package com.br.GrandeViaFitness.enumUtil;
 public enum Mensagem
 {
    M01("{0} cadastrado com sucesso."),
-   M02("{0} excluido com sucesso."),
+   M02("{0} excluído com sucesso."),
    M03("{0} alterado com sucesso."),
    M04("O campo {0} é obrigatorio!"),
    M05("Selecione uma opção NOVO, ALTERAR ou EXCLUIR)"),

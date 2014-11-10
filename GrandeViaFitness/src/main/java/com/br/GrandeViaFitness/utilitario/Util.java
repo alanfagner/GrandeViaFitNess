@@ -19,6 +19,13 @@ public class Util
    private static final Locale BRAZIL = new Locale("pt", "BR");
    private static final DecimalFormatSymbols REAL = new DecimalFormatSymbols(Util.BRAZIL);
 
+   public static String formatString(final String string, final String mask) throws java.text.ParseException
+   {
+      final javax.swing.text.MaskFormatter mf = new javax.swing.text.MaskFormatter(mask);
+      mf.setValueContainsLiteralCharacters(false);
+      return mf.valueToString(string);
+   }
+
    public static String priceWithDecimal(final BigDecimal price)
    {
       final DecimalFormat formatter = new DecimalFormat("¤ ###,###,##0.00", Util.REAL);
@@ -27,7 +34,11 @@ public class Util
 
    public static String retirarMascara(final String texto)
    {
-      return texto.replaceAll("\\D", "");
+      if (texto != null)
+      {
+         return texto.replaceAll("\\D", "");
+      }
+      return null;
    }
 
    public static boolean isStringNaoVazia(final String s)

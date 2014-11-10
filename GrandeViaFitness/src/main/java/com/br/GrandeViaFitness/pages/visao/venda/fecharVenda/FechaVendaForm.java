@@ -237,7 +237,7 @@ public class FechaVendaForm extends FormularioBase<Venda>
       campoDataVenda.setModelObject(new Date());
 
       campoNome = new TextField<String>("nomePessoa", new PropertyModel<String>(filtro, "nomePessoa"));
-      campoCpf = new TextField<String>("cpfPessoa", new PropertyModel<String>(filtro, "cpfPessoa"))
+      campoCpf = new TextField<String>("cpfPessoa", new PropertyModel<String>(filtro, "cpfMascara"))
       {
          private static final long serialVersionUID = 5130791194139092536L;
 
@@ -294,10 +294,10 @@ public class FechaVendaForm extends FormularioBase<Venda>
             target.add(containerGrid, containerGridDados);
          }
       });
-      columns.add(DataGridGenerica.criaColunarPessoa("Codigo", "codigo", true, 5));
+      columns.add(DataGridGenerica.criaColunarPessoa("Código", "codigo", true, 5));
       columns.add(DataGridGenerica.criaColunarPessoa("Nome", "nomePessoa", true, 40));
-      columns.add(DataGridGenerica.criaColunarPessoa("CPF", "cpfPessoa", true, 10));
-      columns.add(DataGridGenerica.criaColunarPessoa("Email", "emailPessoa", true, 40));
+      columns.add(DataGridGenerica.criaColunarPessoa("CPF", "cpfMascara", true, 20));
+      columns.add(DataGridGenerica.criaColunarPessoa("Email", "emailPessoa", true, 30));
       columns.add(new AbstractColumn<Pessoa, String>(new Model<String>("Opções"))
       {
          private static final long serialVersionUID = -3102670641136395641L;

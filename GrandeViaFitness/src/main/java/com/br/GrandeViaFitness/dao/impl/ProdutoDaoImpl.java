@@ -29,7 +29,14 @@ public class ProdutoDaoImpl extends JpaDao<Produto> implements ProdutoDao
       }
       if (ordernar != null)
       {
-         sb.append("ORDER BY p." + ordernar.getColuna() + " " + ordernar.getOrdernar());
+         if (ordernar.getColuna().equals("valorMascara"))
+         {
+            sb.append(" ORDER BY p.valorProduto " + ordernar.getOrdernar());
+         }
+         else
+         {
+            sb.append(" ORDER BY p." + ordernar.getColuna() + " " + ordernar.getOrdernar());
+         }
       }
       return findByNamedParams(sb.toString(), params, new Paginacao(first, count));
    }

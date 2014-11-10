@@ -81,6 +81,10 @@ public class PessoaDaoImp extends JpaDao<Pessoa> implements PessoaDao
          {
             sb.append("ORDER BY p.authority " + ordernar.getOrdernar());
          }
+         else if (ordernar.getColuna().equals("cpfMascara"))
+         {
+            sb.append("ORDER BY p.cpfPessoa " + ordernar.getOrdernar());
+         }
          else
          {
             sb.append("ORDER BY p." + ordernar.getColuna() + " " + ordernar.getOrdernar());

@@ -241,12 +241,15 @@ th .tam5 {
 .minmuHeight {
 	min-height: 300px;
 }
+.Menu li ul li a{
+	color: #0073ea;
+}
 
 .Menu li a {
+	color: white;
 	height: 19px;
 	display: block;
 	text-decoration: none;
-	color: #E2144A;
 	padding: 5px;
 	font-weight: bold;
 	font-size: small;
@@ -278,31 +281,37 @@ table thead tr{
 }
 
 .menuRedendoLeft {
-	background-color: #326CA6;
+	background: #0073ea
+ url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
+ repeat-x;
 	border-top-left-radius: 1em;
 }
 
 .menuRedendoLeft:hover {
 	border-top-left-radius: 1em;
-	border-bottom: solid 5px #5095DB;
+	border-bottom: solid 5px #0073ea;
 }
 
 #Menu2Link {
-	background-color: #326CA6;
+	background: #0073ea
+ url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
+ repeat-x;
 }
 
 #Menu2Link:hover {
-	border-bottom: solid 5px #5095DB;
+	border-bottom: solid 5px #0073ea;
 }
 
 .menuRedendoRight {
-	background-color: #326CA6;
+	background: #0073ea
+ url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
+ repeat-x;
 	border-top-right-radius: 1em;
 }
 
 .menuRedendoRight:hover {
 	border-top-right-radius: 1em;
-	border-bottom: solid 5px #5095DB;
+	border-bottom: solid 5px #0073ea;
 }
 
 .campoText {
@@ -356,7 +365,9 @@ table thead tr{
 }
 
 .Menu li ul li:hover a {
-	background: none repeat scroll 0 0 #326CA6;
+	background: #0073ea
+ url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
+ repeat-x;
 	border-bottom: solid 5px #5095DB;
 	border-top: solid 5px #5095DB;
 	color: white;

@@ -228,7 +228,7 @@ public class EfetuarVendaForm extends FormularioBase<Venda>
             target.add(gridGenericaRlProdutoVenda, feedBack, informacaoVaziaRlProdutoVenda, campoQuantidade);
          }
       });
-      columns.add(DataGridGenerica.criaColunarProduto("Codigo", "codigo", true, 5));
+      columns.add(DataGridGenerica.criaColunarProduto("Código", "codigo", true, 5));
       columns.add(DataGridGenerica.criaColunarProduto("Nome Produto", "nomeProduto", true, 40));
       columns.add(DataGridGenerica.criaColunarProduto("Valor Produto", "valorMascara", true, 10));
       columns.add(new AbstractColumn<Produto, String>(new Model<String>("Opções"))

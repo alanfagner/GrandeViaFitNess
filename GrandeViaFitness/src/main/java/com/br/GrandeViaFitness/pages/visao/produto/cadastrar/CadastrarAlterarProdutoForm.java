@@ -102,6 +102,17 @@ public class CadastrarAlterarProdutoForm extends FormularioBase<Produto>
          valida = false;
       }
 
+      if (produto.getCodigo() == null && valida)
+      {
+         final Produto auxProdu = new Produto();
+         auxProdu.setNomeProduto(produto.getNomeProduto());
+         if (produtoAS.contadorListaGrid(auxProdu) > 0)
+         {
+            error("Já existe um produto cadastrado com esse nome!");
+            valida = false;
+         }
+      }
+
       return valida;
    }
 

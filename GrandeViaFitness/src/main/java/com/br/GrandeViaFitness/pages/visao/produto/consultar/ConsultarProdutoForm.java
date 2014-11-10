@@ -124,7 +124,7 @@ public class ConsultarProdutoForm extends FormularioBase<Produto>
             setResponsePage(new VisualizarProdutoIndex(getModelObject()));
          }
       });
-      columns.add(DataGridGenerica.criaColunarProduto("Codigo", "codigo", true, 5));
+      columns.add(DataGridGenerica.criaColunarProduto("Código", "codigo", true, 5));
       columns.add(DataGridGenerica.criaColunarProduto("Nome", "nomeProduto", true, 40));
       columns.add(DataGridGenerica.criaColunarProduto("Preço", "valorMascara", true, 40));
       columns.add(new AbstractColumn<Produto, String>(new Model<String>("Opções"))
@@ -206,7 +206,14 @@ public class ConsultarProdutoForm extends FormularioBase<Produto>
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
-            filtro.setCodigo(Long.parseLong(campoCodigo.getModelObject() != null ? campoCodigo.getModelObject() : ""));
+            if (campoCodigo.getModelObject() != null && !campoCodigo.getModelObject().equals(""))
+            {
+               filtro.setCodigo(Long.parseLong(campoCodigo.getModelObject()));
+            }
+            else
+            {
+               filtro.setCodigo(null);
+            }
             filtro.setNomeProduto(campoNome.getModelObject());
             gridGenerica.size();
             target.add(gridGenerica, informacaoVazia);

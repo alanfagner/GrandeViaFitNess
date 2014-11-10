@@ -145,6 +145,7 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
             setResponsePage(new ConsultarClienteIndex());
          }
       };
+      botaoVoltar.setDefaultFormProcessing(false);
       addOrReplace(botaoSalvar, botaoVoltar);
    }
 
@@ -160,7 +161,7 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
          }
       }
 
-      if (campoCpf.getModelObject() != null)
+      if (campoCpf.getModelObject() != null && getModelObject().getCodigo() == null)
       {
          if (pessoaAS.buscaPessoaPorCpf(campoCpf.getModelObject()) != null)
          {
@@ -244,14 +245,7 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
             if (campoCEP.getModelObject() != null && !campoCEP.getModelObject().equals(""))
             {
                pessoa.setEndereco(pessoaAS.getEnderecoServico().buscaEnderecoPorCEP(Util.retirarMascara(campoCEP.getModelObject())));
-               if (pessoa.getEndereco() == null)
-               {
-                  bloqueaCamposEndereco(true);
-               }
-            }
-            else
-            {
-               bloqueaCamposEndereco(false);
+
             }
             atualizaTela(target, campoLogradouro, campoBairro, campoCidade, campoEstado);
 
@@ -272,17 +266,8 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
       campoCidade.setOutputMarkupId(true);
       campoEstado = new TextField<String>("endereco.estado");
       campoEstado.setOutputMarkupId(true);
-      bloqueaCamposEndereco(false);
       addOrReplace(campoNome, campoCpf, campoCpf, campoSexo, campoEmail, campoDataNascimento, campoTelefone, campoPermissao, campoCEP,
          campoNumero, campoLogradouro, campoBairro, campoCidade, campoEstado);
 
-   }
-
-   public void bloqueaCamposEndereco(final Boolean flag)
-   {
-      campoLogradouro.setEnabled(flag);
-      campoBairro.setEnabled(flag);
-      campoCidade.setEnabled(flag);
-      campoEstado.setEnabled(flag);
    }
 }

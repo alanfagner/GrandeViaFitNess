@@ -1,6 +1,7 @@
 package com.br.GrandeViaFitness.model;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import com.br.GrandeViaFitness.enumUtil.PermissaoEnum;
 import com.br.GrandeViaFitness.enumUtil.SexoEnum;
 import com.br.GrandeViaFitness.utilitario.Util;
@@ -65,6 +67,9 @@ public class Pessoa implements Entidade, Cliente, Funcionario, Instrutor
    @Column(name = "TP_CARGO", nullable = false, length = 1)
    @Enumerated(EnumType.ORDINAL)
    private PermissaoEnum cargoEnum;
+
+   @Transient
+   private String cpfMascara;
 
    public Long getCodigo()
    {
@@ -184,6 +189,27 @@ public class Pessoa implements Entidade, Cliente, Funcionario, Instrutor
    public void setCargoEnum(final PermissaoEnum cargoEnum)
    {
       this.cargoEnum = cargoEnum;
+   }
+
+   public String getCpfMascara()
+   {
+      if (getCpfPessoa() != null)
+      {
+         try
+         {
+            cpfMascara = Util.formatString(getCpfPessoa(), "###.###.###-##");
+         }
+         catch (final ParseException e)
+         {
+            e.printStackTrace();
+         }
+      }
+      return cpfMascara;
+   }
+
+   public void setCpfMascara(final String cpfMascara)
+   {
+      this.cpfMascara = cpfMascara;
    }
 
    @Override

@@ -173,7 +173,7 @@ public class ConsultarExercicioForm extends FormularioBase<TipoExercicio>
             setResponsePage(new VisualizarExercicioIndex(getModelObject()));
          }
       });
-      columns.add(DataGridGenerica.criaColunarTipoExercico("Codigo", "codigo", true, 5));
+      columns.add(DataGridGenerica.criaColunarTipoExercico("Código", "codigo", true, 5));
       columns.add(DataGridGenerica.criaColunarTipoExercico("Nome", "nomeExercicio", true, 20));
       columns.add(DataGridGenerica.criaColunarTipoExercico("Equipamento", "tipoEquipamento.nomeTipoEquip", true, 20));
       columns.add(DataGridGenerica.criaColunarTipoExercico("Membro", "corpo.nomeMembroCorpo", true, 20));
