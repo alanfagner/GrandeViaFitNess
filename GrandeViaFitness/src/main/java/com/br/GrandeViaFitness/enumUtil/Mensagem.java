@@ -11,13 +11,14 @@ public enum Mensagem
    M07("É necessario selecionar um {0} para alterar!"),
    M08("É necessario limpar campos do {0} para cadastrar um novo."),
    M10("Devem ser anexado 2 fotos para criar o exercício."),
-   M011("Não existem items na lista de compras!"),
+   M011("Não existem itens na lista de compras!"),
    M012("É necessario informar um cliente para {0}!"),
    M013("Venda efetuada com sucesso!"),
    M014("Mensalidade paga com sucesso!"),
    M015("Já existe um pagamento refêrente a esse mês, ano e cliente! "),
    M016("Data {0} Invalida!"),
-   M017("A {0} deve ser menor que a {1}!");
+   M017("A {0} deve ser menor que a {1}!"),
+   M018("Já existe um usuario cadastrado com esse CPF!");
    private String descricao;
 
    private Mensagem(final String descricao)

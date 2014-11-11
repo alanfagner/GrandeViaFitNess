@@ -165,7 +165,7 @@ public class CadastrarAlterarClienteForm extends FormularioBase<Pessoa>
       {
          if (pessoaAS.buscaPessoaPorCpf(campoCpf.getModelObject()) != null)
          {
-            getSession().error("Já existe um usuario cadastrado com esse CPF!");
+            getSession().error(Mensagem.recuperaMensagem(Mensagem.M018));
             flag = false;
          }
       }
