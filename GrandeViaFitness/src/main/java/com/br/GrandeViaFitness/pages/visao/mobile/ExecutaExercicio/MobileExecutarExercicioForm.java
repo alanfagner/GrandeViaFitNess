@@ -24,7 +24,7 @@ import com.br.GrandeViaFitness.model.RlPessoaExercicio;
 import com.br.GrandeViaFitness.pages.visao.mobile.MobileDetalharExercicio.MobileDetalharExercicioIndex;
 import com.br.GrandeViaFitness.utilitario.Util;
 
-public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercicio>
+public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercicio>
 {
 
    private static final long serialVersionUID = 303054331978593054L;
@@ -37,7 +37,7 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
    private PageableListView<RlPessoaExercicio> listaHistorio;
    private final Date dataCadastro;
 
-   public MobileExecutarExercicioFrom(final String id, final RlPessoaExercicio pessoaExercico, final Date dataCadastro,
+   public MobileExecutarExercicioForm(final String id, final RlPessoaExercicio pessoaExercico, final Date dataCadastro,
       final Pessoa usuarioAtividade)
    {
       super(id, new CompoundPropertyModel<RlPessoaExercicio>(pessoaExercico));
@@ -158,19 +158,19 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
       Boolean valida = true;
       if (rlPessoaExercicio.getNumeroRepeticoes() == null)
       {
-         error(Mensagem.recuperaMensagem(Mensagem.M04, "número de repetições"));
+         getSession().error(Mensagem.recuperaMensagem(Mensagem.M04, "número de repetições"));
          valida = false;
       }
 
       if (rlPessoaExercicio.getQuatidadePeso() == null)
       {
-         error(Mensagem.recuperaMensagem(Mensagem.M04, "quantidade de peso"));
+         getSession().error(Mensagem.recuperaMensagem(Mensagem.M04, "quantidade de peso"));
          valida = false;
       }
 
       if (rlPessoaExercicio.getNumeroSeries() == null)
       {
-         error(Mensagem.recuperaMensagem(Mensagem.M04, "número de series"));
+         getSession().error(Mensagem.recuperaMensagem(Mensagem.M04, "número de series"));
          valida = false;
       }
 
@@ -192,7 +192,7 @@ public class MobileExecutarExercicioFrom extends FormularioBase<RlPessoaExercici
                rlPessoaExercicioAS.persisteDados(rlPessoaExercicio);
                criaHistorico();
             }
-            atualizaTela(target, feedBack);
+            target.add(feedBack);
          }
 
          @Override

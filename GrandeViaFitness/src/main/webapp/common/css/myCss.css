@@ -1,6 +1,7 @@
 .obrigatorio {
 	color: #f00 !important;
 }
+
 .especial span em {
 	padding-left: 5px !important;
 	padding-right: 5px !important;
@@ -15,7 +16,7 @@
 	padding-bottom: 3px !important;
 }
 
-.msgERROR{
+.msgERROR {
 	font-weight: bold;
 	color: red;
 }
@@ -241,7 +242,8 @@ th .tam5 {
 .minmuHeight {
 	min-height: 300px;
 }
-.Menu li ul li a{
+
+.Menu li ul li a {
 	color: #0073ea;
 }
 
@@ -257,7 +259,7 @@ th .tam5 {
 	border-bottom: solid 5px #CD0404;
 }
 
-table thead tr th a{
+table thead tr th a {
 	border: 1px solid #0073ea !important;
 	background: #0073ea
 		url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
@@ -276,14 +278,14 @@ table thead tr {
 	color: #fff !important;
 }
 
-table thead tr{
+table thead tr {
 	
 }
 
 .menuRedendoLeft {
 	background: #0073ea
- url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
- repeat-x;
+		url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
+		repeat-x;
 	border-top-left-radius: 1em;
 }
 
@@ -294,8 +296,8 @@ table thead tr{
 
 #Menu2Link {
 	background: #0073ea
- url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
- repeat-x;
+		url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
+		repeat-x;
 }
 
 #Menu2Link:hover {
@@ -304,8 +306,8 @@ table thead tr{
 
 .menuRedendoRight {
 	background: #0073ea
- url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
- repeat-x;
+		url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
+		repeat-x;
 	border-top-right-radius: 1em;
 }
 
@@ -366,8 +368,8 @@ table thead tr{
 
 .Menu li ul li:hover a {
 	background: #0073ea
- url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
- repeat-x;
+		url("images/ui-bg_highlight-soft_25_0073ea_1x100.png") 50% 50%
+		repeat-x;
 	border-bottom: solid 5px #5095DB;
 	border-top: solid 5px #5095DB;
 	color: white;
@@ -398,6 +400,7 @@ table thead tr{
 table {
 	border-collapse: collapse !important;
 }
+
 tfoot {
 	border: 1pt solid rgb(217, 217, 224);
 	border-collapse: collapse;

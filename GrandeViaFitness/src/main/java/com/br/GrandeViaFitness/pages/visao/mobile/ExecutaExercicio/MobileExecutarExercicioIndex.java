@@ -16,7 +16,7 @@ public class MobileExecutarExercicioIndex extends BasePageMobile
    {
       final RlPessoaExercicio auxPessoaExercicio = new RlPessoaExercicio();
       auxPessoaExercicio.setTipoExercicio(tipoExercicio);
-      add(new MobileExecutarExercicioFrom(BasePage.FORMULARIO, auxPessoaExercicio, dataCadastro, usuarioAtividade));
+      add(new MobileExecutarExercicioForm(BasePage.FORMULARIO, auxPessoaExercicio, dataCadastro, usuarioAtividade));
    }
 
    private static final long serialVersionUID = 2588451429792268189L;
