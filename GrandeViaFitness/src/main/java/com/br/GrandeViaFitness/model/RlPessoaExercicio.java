@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "RL_PESSOA_EXERCICIO", schema = "GRANDEVIAFITNESS")
-public class RlPessoaExercicio implements Entidade
+public class RlPessoaExercicio implements Entidade, Clonavel
 {
    private static final long serialVersionUID = -4429591256978571518L;
    @Id
@@ -117,5 +117,19 @@ public class RlPessoaExercicio implements Entidade
    public Serializable getId()
    {
       return getCodigo();
+   }
+
+   @Override
+   public RlPessoaExercicio getClone()
+   {
+      try
+      {
+         return getClass().cast(super.clone());
+      }
+      catch (final CloneNotSupportedException e)
+      {
+         e.printStackTrace();
+      }
+      return this;
    }
 }

@@ -6,16 +6,16 @@
 					<a href="#right-panel" class="ui-btn ui-icon-user ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini botaoMenu"></a>
 				</p>
 			</div>
-			<div style="float: right;">
-				<a href="#right-panel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini">Trocar Cliente</a>
-			</div>
+			<div style="float: right;">  
+				<a href="#right-panel" wicket:id="btnLogout" class="botaoMenu ui-btn  ui-icon-power ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini"></a>
+			</div>  
 			<div style="float: left;">
-				<a href="" wicket:id="btnAvancar" class="botaoMenu ui-btn ui-icon-action ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini"></a>
+				<a href="" wicket:id="btnAvancar" data-transition="flip" class="botaoMenu ui-btn ui-icon-action ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini"></a>
 			</div>
 		</div>
-		<div style="margin-left: 1%; margin-right: 1%;">
-			<div wicket:id="containerInput" style="margin: auto">
-				<input wicket:id="campoData" type="text" data-role="date" data-inline="true">
+		<div class="margensModalBranca" >
+			<div wicket:id="containerInput" style="margin: auto; max-width: 340px" >
+				<input wicket:id="campoData" style="max-width: 100px" type="text" data-role="date" data-inline="true">
 			</div>
 		</div>
 		<div data-role="footer" data-position="fixed">

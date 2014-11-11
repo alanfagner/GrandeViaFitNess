@@ -4,6 +4,7 @@ import java.util.Date;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
+import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -19,6 +20,7 @@ import com.br.GrandeViaFitness.as.PessoaAS;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.enumUtil.PermissaoEnum;
 import com.br.GrandeViaFitness.model.Pessoa;
+import com.br.GrandeViaFitness.pages.visao.mobile.Login.LoginMobileIndex;
 import com.br.GrandeViaFitness.pages.visao.mobile.MembroCorpo.MobileMembroCorpoIndex;
 
 public class MobileHomeForm extends FormularioBase<Pessoa>
@@ -159,6 +161,19 @@ public class MobileHomeForm extends FormularioBase<Pessoa>
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             setResponsePage(new MobileMembroCorpoIndex(dataCadastro, usuarioAtividade));
+         }
+      });
+
+      addOrReplace(new AjaxSubmitLink("btnLogout")
+      {
+         private static final long serialVersionUID = 1782016523465683542L;
+
+         @Override
+         protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+         {
+            getSession().invalidate();
+            AuthenticatedWebSession.get().signOut();
+            setResponsePage(new LoginMobileIndex());
          }
       });
    }

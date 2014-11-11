@@ -1,25 +1,33 @@
-
-body{
+body {
 	font: 76.5% "Arial", "Helvetica", sans-serif;
 }
-.botaoMenu{
-	width: 35.438 !important; 
+
+.botaoMenu {
+	width: 35.438 !important;
 	height: 16px !important;
-	 width: 35.438 !important; 
-	 padding-right: 0px !important;
+	width: 35.438 !important;
+	padding-right: 0px !important;
 }
 
-.backGroundExecutar{
-	background-color: white; 
-	height: 617px; 
+.backGroundExecutar {
+	background-color: white;
+	height: 430px;
 	border-radius: 10px 10px 10px 10px;
 }
 
-.lbnLink{
-	width: 0px; 
-	height: 0px; 
+.margensModalBranca {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.lbnLink {
+	width: 0px;
+	height: 0px;
 	padding-bottom: 10px
 }
+
 .Grid {
 	background-color: #fff;
 	margin: 5px 0 10px 0;
@@ -74,19 +82,41 @@ body{
 }
 -
 See
+
  
+
 more
+
  
+
 at
+
+
 :
+
  
+
 http
+
+
 :
 //www
+
+
 .dotnetfox
+
+
 .com
 /articles/gridview-custom-css-style-example-in-Asp-Net-1088
+
+
 .aspx
+
+
 #sthash
+
+
 .7nz3pQR7
+
+
 .dpuf

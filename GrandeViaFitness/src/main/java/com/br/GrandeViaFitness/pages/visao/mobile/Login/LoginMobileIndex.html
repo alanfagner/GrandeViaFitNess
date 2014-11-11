@@ -1,0 +1,39 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<div class="div_center">
+		<form wicket:id="formulario">
+			<div wicket:id="feedback" class="feedBack ui-shadow"></div>
+			<div data-role="page" data-close-btn="none" data-dialog="true">
+				<div data-role="header">
+					<h2>Login</h2>
+				</div>
+				<div class="ui-content" role="main">
+					<div>
+						<div class="div_LabelCenter">
+							<div class="ui-field-contain">
+								<label style="color: #1C2D80;"> CPF:</label>
+								<input class="cpf campoText" wicket:id="cpf" type="text" />
+							</div>
+						</div>
+						<div class="div_LabelCenter">
+							<div class="ui-field-contain">
+								<label style="color: #1C2D80;"> Senha:</label>
+								<input class="campoText" wicket:id="password" type="password" />
+							</div>
+						</div>
+
+						<div class="ui-grid-a">
+							<div class="ui-block-a">
+								<input wicket:id="btnEnviar" data-transition="pop" class="ui-btn ui-btn-b ui-shadow ui-corner-all" type="submit" name="avancar"
+									value="Entrar"
+								/>
+							</div>
+							<div class="ui-block-b">
+								<input wicket:id="btnLimpar" class="ui-btn ui-shadow ui-corner-all" type="submit" name=Limpar value="Limpar" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</wicket:extend>

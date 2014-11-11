@@ -37,6 +37,8 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
    private PageableListView<RlPessoaExercicio> listaHistorio;
    private final Date dataCadastro;
 
+   private WebMarkupContainer containerListView;
+
    public MobileExecutarExercicioForm(final String id, final RlPessoaExercicio pessoaExercico, final Date dataCadastro,
       final Pessoa usuarioAtividade)
    {
@@ -111,7 +113,7 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
 
    private void criaHistorico()
    {
-      final WebMarkupContainer containerListView = new WebMarkupContainer("container");
+      containerListView = new WebMarkupContainer("container");
       listaHistorio =
          new PageableListView<RlPessoaExercicio>("listaHistorico", rlPessoaExercicioAS.buscaListaExercicio(rlPessoaExercicio), 5)
          {
@@ -189,8 +191,9 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
             if (validaCampos())
             {
                rlPessoaExercicio.setDataExercicio(dataCadastro);
-               rlPessoaExercicioAS.persisteDados(rlPessoaExercicio);
+               rlPessoaExercicioAS.persisteDados(rlPessoaExercicio.getClone());
                criaHistorico();
+               target.add(containerListView);
             }
             target.add(feedBack);
          }
