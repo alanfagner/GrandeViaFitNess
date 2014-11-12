@@ -82,7 +82,7 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
          @Override
          public void renderHead(final IHeaderResponse response)
          {
-            final String script = "$('#" + getMarkupId() + "').mask('9?99,9', {reverse : true});";
+            final String script = "$('#" + getMarkupId() + "').mask('999,9', {reverse : true});";
             response.render(OnDomReadyHeaderItem.forScript(script));
          }
       });
@@ -125,7 +125,7 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
 
                item.add(new Label("lbnData", Util.getDataPorExtenso(item.getModelObject().getDataExercicio())));
                item.add(new Label("lbnRepeticoes", item.getModelObject().getNumeroRepeticoes().toString()));
-               item.add(new Label("lbnSeries", item.getModelObject().getNumeroRepeticoes().toString()));
+               item.add(new Label("lbnSeries", item.getModelObject().getNumeroSeries().toString()));
                item.add(new Label("lbnPeso", item.getModelObject().getQuatidadePeso().toString()));
 
             }
