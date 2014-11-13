@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.dao.RLProdutoVendaDao;
 import com.br.GrandeViaFitness.model.Entidade;
+import com.br.GrandeViaFitness.model.Produto;
 import com.br.GrandeViaFitness.model.RlProdutoVenda;
 
 @Service
@@ -44,6 +45,12 @@ public class RLProdutoVendaServico
    public void excluir(final Long codigo)
    {
       getRlProdutoVendaDao().delete(codigo);
+   }
+
+   public List<RlProdutoVenda> buscaListaPorProduto(final Produto produto)
+   {
+      return getRlProdutoVendaDao().buscaListaPorProduto(produto);
+
    }
 
 }

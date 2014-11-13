@@ -8,9 +8,11 @@ import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.componentes.provider.Provider;
 import com.br.GrandeViaFitness.model.Corpo;
 import com.br.GrandeViaFitness.model.Entidade;
+import com.br.GrandeViaFitness.model.RlPessoaExercicio;
 import com.br.GrandeViaFitness.model.TipoEquipamento;
 import com.br.GrandeViaFitness.model.TipoExercicio;
 import com.br.GrandeViaFitness.servico.CorpoServico;
+import com.br.GrandeViaFitness.servico.RlPessoaExercicioServico;
 import com.br.GrandeViaFitness.servico.TipoEquipamentoServico;
 import com.br.GrandeViaFitness.servico.TipoExercicioServico;
 
@@ -23,6 +25,9 @@ public class TipoExercicioAS implements Provider<TipoExercicio>
 
    @Autowired
    private CorpoServico corpoServico;
+
+   @Autowired
+   private RlPessoaExercicioServico rlPessoaExercicioServico;
 
    @Autowired
    private TipoEquipamentoServico tipoEquipamentoServico;
@@ -132,6 +137,42 @@ public class TipoExercicioAS implements Provider<TipoExercicio>
    public List<TipoExercicio> buscaListaTipoExercicioPorTipoExerciciop(final TipoExercicio auxTipo)
    {
       return tipoExercicioServico.buscaListaTipoExercicioPorTipoExerciciop(auxTipo);
+   }
+
+   public boolean verificaHistorio(final TipoExercicio tipoExercicio)
+   {
+      Boolean valida = true;
+      final RlPessoaExercicio auxPessoaExercicio = new RlPessoaExercicio();
+      auxPessoaExercicio.setTipoExercicio(tipoExercicio);
+      if (rlPessoaExercicioServico.buscaListaExercicio(auxPessoaExercicio).size() > 0)
+      {
+         valida = false;
+      }
+
+      return valida;
+
+   }
+
+   public boolean verificaHistoricoEquipamento(final TipoEquipamento tipoEquipamento)
+   {
+      Boolean valida = true;
+      final TipoExercicio auxTipoExercicio = new TipoExercicio();
+      auxTipoExercicio.setTipoEquipamento(tipoEquipamento);
+      if (tipoExercicioServico.buscaListaTipoExercicioPorTipoExerciciop(auxTipoExercicio).size() > 0)
+      {
+         valida = false;
+      }
+      return valida;
+   }
+
+   public boolean verficaHistoricoCorpo(final Corpo corpo)
+   {
+      Boolean valida = true;
+      if (tipoExercicioServico.buscaListaPorCorpo(corpo).size() > 0)
+      {
+         valida = false;
+      }
+      return valida;
    }
 
 }

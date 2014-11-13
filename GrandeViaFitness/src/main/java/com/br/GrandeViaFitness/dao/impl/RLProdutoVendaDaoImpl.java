@@ -8,6 +8,7 @@ import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.dao.RLProdutoVendaDao;
 import com.br.GrandeViaFitness.dao.generic.JpaDao;
 import com.br.GrandeViaFitness.model.Entidade;
+import com.br.GrandeViaFitness.model.Produto;
 import com.br.GrandeViaFitness.model.RlProdutoVenda;
 
 @Repository
@@ -44,7 +45,8 @@ public class RLProdutoVendaDaoImpl extends JpaDao<RlProdutoVenda> implements RLP
       {
          if (filtroProdutoVenda.getProduto().getNomeProduto() != null)
          {
-            sb.append(" AND 1 = 1");
+            sb.append(" AND pv.produto = :produto");
+            params.put("produto", filtroProdutoVenda.getProduto());
          }
       }
 
@@ -59,6 +61,20 @@ public class RLProdutoVendaDaoImpl extends JpaDao<RlProdutoVenda> implements RLP
       sb.append(" WHERE r.venda.codigo = :codigo ");
       params.put("codigo", codigo);
 
+      return consulta(sb.toString(), params);
+   }
+
+   @Override
+   public List<RlProdutoVenda> buscaListaPorProduto(final Produto produto)
+   {
+      final RlProdutoVenda filtroProdutoVenda = new RlProdutoVenda();
+      final StringBuilder sb = new StringBuilder();
+      final Map<String, Object> params = new HashMap<String, Object>();
+      sb.append(" SELECT pv FROM RlProdutoVenda pv ");
+      if (filtroProdutoVenda != null)
+      {
+         montaConsultaGenerica(sb, params, filtroProdutoVenda);
+      }
       return consulta(sb.toString(), params);
    }
 }

@@ -8,10 +8,15 @@ import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.componentes.provider.Provider;
 import com.br.GrandeViaFitness.model.Authority;
 import com.br.GrandeViaFitness.model.Entidade;
+import com.br.GrandeViaFitness.model.Mensalidade;
 import com.br.GrandeViaFitness.model.Pessoa;
+import com.br.GrandeViaFitness.model.RlPessoaExercicio;
 import com.br.GrandeViaFitness.servico.AuthorityServico;
 import com.br.GrandeViaFitness.servico.EnderecoServico;
+import com.br.GrandeViaFitness.servico.MensalidadeServico;
 import com.br.GrandeViaFitness.servico.PessoaServico;
+import com.br.GrandeViaFitness.servico.RlPessoaExercicioServico;
+import com.br.GrandeViaFitness.servico.VendaServico;
 
 @Named("pessoaAS")
 public class PessoaAS implements Provider<Pessoa>
@@ -23,6 +28,12 @@ public class PessoaAS implements Provider<Pessoa>
    private EnderecoServico enderecoServico;
    @Autowired
    private AuthorityServico authorityServico;
+   @Autowired
+   private VendaServico vendaServico;
+   @Autowired
+   private MensalidadeServico mensalidadeServico;
+   @Autowired
+   private RlPessoaExercicioServico rlPessoaExercicioServico;
 
    public Pessoa buscaPessoaPorCpf(final String Cpf)
    {
@@ -95,6 +106,29 @@ public class PessoaAS implements Provider<Pessoa>
    public List<Pessoa> listaPessa()
    {
       return pessoaServico.all();
+   }
+
+   public boolean verificaHistorico(final Pessoa pessoa)
+   {
+      Boolean valida = true;
+      if (vendaServico.buscaVendaPorPessoa(pessoa).size() > 0)
+      {
+         valida = false;
+      }
+      final RlPessoaExercicio auxPessoaExercicio = new RlPessoaExercicio();
+      auxPessoaExercicio.setPessoa(pessoa);
+      if (rlPessoaExercicioServico.buscaListaExercicio(auxPessoaExercicio).size() > 0)
+      {
+         valida = false;
+      }
+      final Mensalidade auxMensalidade = new Mensalidade();
+      auxMensalidade.setPessoa(pessoa);
+      if (mensalidadeServico.buscaMensalidade(auxMensalidade) > 0)
+      {
+         valida = false;
+      }
+
+      return valida;
    }
 
 }

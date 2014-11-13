@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.dao.VendaDao;
 import com.br.GrandeViaFitness.model.Entidade;
+import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.model.Venda;
 
 @Service
@@ -47,6 +48,12 @@ public class VendaServico
    public String calculaSaldo(final Venda venda)
    {
       return getVendaDao().calculaSaldo(venda);
+   }
+
+   public List<Venda> buscaVendaPorPessoa(final Pessoa pessoa)
+   {
+      return getVendaDao().buscaVendaPorPessoa(pessoa);
+
    }
 
 }

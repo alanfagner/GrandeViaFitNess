@@ -9,12 +9,17 @@ import com.br.GrandeViaFitness.componentes.provider.Provider;
 import com.br.GrandeViaFitness.model.Entidade;
 import com.br.GrandeViaFitness.model.Produto;
 import com.br.GrandeViaFitness.servico.ProdutoServico;
+import com.br.GrandeViaFitness.servico.RLProdutoVendaServico;
 
 @Named("produtoAS")
 public class ProdutoAS implements Provider<Produto>
 {
    @Autowired
    private ProdutoServico produtoServico;
+
+   @Autowired
+   private RLProdutoVendaServico rlProdutoVendaServico;
+
    @Override
    public List<Produto> buscaListaGrid(final Entidade entidade, final long first, final long count, final ParametrosOrdenacao ordernar)
    {
@@ -48,4 +53,14 @@ public class ProdutoAS implements Provider<Produto>
 
    }
 
+   public boolean verificaHistorico(final Produto produto)
+   {
+      Boolean valida = true;
+
+      if (rlProdutoVendaServico.buscaListaPorProduto(produto).size() > 0)
+      {
+         valida = false;
+      }
+      return valida;
+   }
 }

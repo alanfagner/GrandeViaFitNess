@@ -91,9 +91,17 @@ public class ConsultarClienteForm extends FormularioBase<Pessoa>
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
-            pessoaAS.excluirPessoa(getEntidade());
-            success(Mensagem.recuperaMensagem(Mensagem.M02, "Cliente"));
-            atualizaTela(target, gridGenerica, feedBack);
+            if (pessoaAS.verificaHistorico(getEntidade()))
+            {
+               pessoaAS.excluirPessoa(getEntidade());
+               success(Mensagem.recuperaMensagem(Mensagem.M02, "Cliente"));
+               atualizaTela(target, gridGenerica, feedBack);
+            }
+            else
+            {
+               getSession().error(Mensagem.recuperaMensagem(Mensagem.M019, "Cliente"));
+               target.add(feedBack);
+            }
          }
 
          @Override

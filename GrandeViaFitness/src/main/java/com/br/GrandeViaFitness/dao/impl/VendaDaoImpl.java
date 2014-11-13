@@ -11,6 +11,7 @@ import com.br.GrandeViaFitness.componentes.ParametrosOrdenacao;
 import com.br.GrandeViaFitness.dao.VendaDao;
 import com.br.GrandeViaFitness.dao.generic.JpaDao;
 import com.br.GrandeViaFitness.model.Entidade;
+import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.model.Venda;
 import com.br.GrandeViaFitness.utilitario.Paginacao;
 
@@ -108,5 +109,22 @@ public class VendaDaoImpl extends JpaDao<Venda> implements VendaDao
       final DecimalFormat df = new DecimalFormat(",##0.00");
 
       return df.format(valorAtual);
+   }
+
+   @Override
+   public List<Venda> buscaVendaPorPessoa(final Pessoa pessoa)
+   {
+
+      final Venda filtroVenda = new Venda();
+      filtroVenda.setPessoa(pessoa);
+      final StringBuilder sb = new StringBuilder();
+      final Map<String, Object> params = new HashMap<String, Object>();
+      sb.append(" SELECT v FROM Venda v ");
+      sb.append(" JOIN FETCH v.pessoa p ");
+      if (filtroVenda != null)
+      {
+         montaConsultaGenerica(sb, params, filtroVenda);
+      }
+      return consulta(sb.toString(), params);
    }
 }

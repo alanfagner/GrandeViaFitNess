@@ -70,9 +70,18 @@ public class ConsultarProdutoForm extends FormularioBase<Produto>
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
-            produtoAS.excluirPessoa(getEntidade());
-            success(Mensagem.recuperaMensagem(Mensagem.M02, "Produto"));
-            atualizaTela(target, gridGenerica, feedBackPanelCustom);
+            if (produtoAS.verificaHistorico(getEntidade()))
+            {
+
+               produtoAS.excluirPessoa(getEntidade());
+               success(Mensagem.recuperaMensagem(Mensagem.M02, "Produto"));
+               atualizaTela(target, gridGenerica, feedBackPanelCustom);
+            }
+            else
+            {
+               getSession().error(Mensagem.recuperaMensagem(Mensagem.M019, "Produto"));
+               target.add(feedBackPanelCustom);
+            }
          }
 
          @Override

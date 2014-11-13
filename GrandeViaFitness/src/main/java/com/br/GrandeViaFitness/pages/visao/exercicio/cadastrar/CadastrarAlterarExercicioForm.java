@@ -317,8 +317,15 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       }
       else
       {
-         tipoExercicioAS.excluirEquipamento(tipoEquipamento.getClone());
-         getSession().success(Mensagem.recuperaMensagem(Mensagem.M02, "Equipamento"));
+         if (tipoExercicioAS.verificaHistoricoEquipamento(tipoEquipamento))
+         {
+            tipoExercicioAS.excluirEquipamento(tipoEquipamento.getClone());
+            getSession().success(Mensagem.recuperaMensagem(Mensagem.M02, "Equipamento"));
+         }
+         else
+         {
+            getSession().error(Mensagem.recuperaMensagem(Mensagem.M019, "Equipamento"));
+         }
       }
    }
 
@@ -336,8 +343,16 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
       }
       else
       {
-         tipoExercicioAS.excluirCorpo(corpo.getClone());
-         getSession().success(Mensagem.recuperaMensagem(Mensagem.M02, "Membro"));
+         if (tipoExercicioAS.verficaHistoricoCorpo(corpo))
+         {
+            tipoExercicioAS.excluirCorpo(corpo.getClone());
+            getSession().success(Mensagem.recuperaMensagem(Mensagem.M02, "Membro"));
+         }
+         else
+         {
+            getSession().error(Mensagem.recuperaMensagem(Mensagem.M019, "Membro"));
+         }
+
       }
    }
 

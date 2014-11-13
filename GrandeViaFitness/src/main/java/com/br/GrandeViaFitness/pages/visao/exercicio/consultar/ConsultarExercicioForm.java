@@ -127,9 +127,15 @@ public class ConsultarExercicioForm extends FormularioBase<TipoExercicio>
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
+            if(tipoExercicioAS.verificaHistorio(getEntidade())){
             tipoExercicioAS.excluirExercicio(getEntidade());
             success(Mensagem.recuperaMensagem(Mensagem.M02, "Exercício"));
             atualizaTela(target, gridGenerica, feedBack);
+            }else{
+               getSession().error(Mensagem.recuperaMensagem(Mensagem.M019, "Atividade"));
+               target.add(feedBack);
+            }
+
          }
 
          @Override

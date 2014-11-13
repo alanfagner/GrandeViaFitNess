@@ -19,7 +19,7 @@ public class FeedBackPanelCustom extends FeedbackPanel
    {
 
       super.renderHead(response);
-      final String script = "setTimeout(function(){$('#" + getMarkupId() + "').hide('slow')}, 8000);";
+      final String script = "setTimeout(function(){$('#" + getMarkupId() + "').hide('slow')}, 15000);";
       response.render(OnDomReadyHeaderItem.forScript(script));
    }
 }
