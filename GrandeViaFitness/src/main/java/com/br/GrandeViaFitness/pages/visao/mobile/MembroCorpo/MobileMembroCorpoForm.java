@@ -1,6 +1,10 @@
 package com.br.GrandeViaFitness.pages.visao.mobile.MembroCorpo;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -66,9 +70,22 @@ public class MobileMembroCorpoForm extends FormularioBase<Corpo>
    {
       listaCorpoView = new RepeatingView("listItems");
 
-      for (final Corpo auxCorpo : corpoAS.recuperaListaCorpo())
+      List<Corpo> auxAlista = new ArrayList<Corpo>();
+      auxAlista = corpoAS.recuperaListaCorpo();
+      Collections.sort(auxAlista, new Comparator<Corpo>()
+      {
+
+         @Override
+         public int compare(final Corpo o1, final Corpo o2)
+         {
+            return o1.getNomeMembroCorpo().compareTo(o2.getNomeMembroCorpo());
+         }
+      });
+
+      for (final Corpo auxCorpo : auxAlista)
       {
          final WebMarkupContainer list = new WebMarkupContainer(listaCorpoView.newChildId());
+
          final AjaxLink<Corpo> link = new AjaxLink<Corpo>("Link")
          {
             private static final long serialVersionUID = -267927957082911090L;
@@ -76,7 +93,7 @@ public class MobileMembroCorpoForm extends FormularioBase<Corpo>
             @Override
             public void onClick(final AjaxRequestTarget target)
             {
-               setResponsePage(new MobileTipoExercicoIndex(getModelObject(), dataCadastro, usuarioAtividade));
+               setResponsePage(new MobileTipoExercicoIndex(auxCorpo, dataCadastro, usuarioAtividade));
 
             }
          };

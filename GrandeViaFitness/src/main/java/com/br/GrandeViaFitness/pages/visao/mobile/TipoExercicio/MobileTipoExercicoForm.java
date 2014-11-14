@@ -1,6 +1,10 @@
 package com.br.GrandeViaFitness.pages.visao.mobile.TipoExercicio;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -67,7 +71,21 @@ public class MobileTipoExercicoForm extends FormularioBase<TipoExercicio>
    private void criaListView()
    {
       listaCorpoView = new RepeatingView("listItems");
-      for (final TipoExercicio auxTipoExercici : tipoExercicioAS.buscaListaTipoExercicioPorCorpo(corpo))
+
+      List<TipoExercicio> auxAlista = new ArrayList<TipoExercicio>();
+      auxAlista = tipoExercicioAS.buscaListaTipoExercicioPorCorpo(corpo);
+      Collections.sort(auxAlista, new Comparator<TipoExercicio>()
+      {
+
+         @Override
+         public int compare(final TipoExercicio o1, final TipoExercicio o2)
+         {
+            return o1.getNomeExercicio().compareTo(o2.getNomeExercicio());
+         }
+      });
+
+
+      for (final TipoExercicio auxTipoExercici : auxAlista)
       {
          final WebMarkupContainer list = new WebMarkupContainer(listaCorpoView.newChildId());
          final AjaxLink<TipoExercicio> link = new AjaxLink<TipoExercicio>("Link")

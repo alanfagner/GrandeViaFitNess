@@ -2,19 +2,25 @@
 	<form wicket:id="formulario">
 		<div data-role="header" style="margin-bottom: 5px" data-position="fixed">
 			<div wicket:id="containerBTN" style="float: left;">
-				<p style="margin-top: 0px;  margin-bottom: 0px;">
-					<a href="#right-panel" class="ui-btn ui-icon-user ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini botaoMenu"></a>
+				<p style="margin-top: 0px; margin-bottom: 0px;">
+					<a href="#right-panel" style="margin-left: 5px"
+						class="ui-btn ui-icon-user ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini botaoMenu"
+					></a>
 				</p>
 			</div>
-			<div style="float: right;">  
-				<a href="#right-panel" wicket:id="btnLogout" class="botaoMenu ui-btn  ui-icon-power ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini"></a>
-			</div>  
+			<div style="float: right;">
+				<a href="#right-panel" style="margin-left: 5px" wicket:id="btnLogout"
+					class="botaoMenu ui-btn  ui-icon-power ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini"
+				></a>
+			</div>
 			<div style="float: left;">
-				<a href="" wicket:id="btnAvancar" data-transition="flip" class="botaoMenu ui-btn ui-icon-action ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini"></a>
+				<a href="" wicket:id="btnAvancar" style="margin-left: 5px" data-transition="flip"
+					class="botaoMenu ui-btn ui-icon-action ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini"
+				></a>
 			</div>
 		</div>
-		<div class="margensModalBranca" >
-			<div wicket:id="containerInput" style="margin: auto; max-width: 340px" >
+		<div class="margensModalBranca">
+			<div wicket:id="containerInput" style="margin: auto; max-width: 340px">
 				<input wicket:id="campoData" style="max-width: 100px" type="text" data-role="date" data-inline="true">
 			</div>
 		</div>
