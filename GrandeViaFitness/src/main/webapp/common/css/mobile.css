@@ -2,6 +2,24 @@ body {
 	font: 76.5% "Arial", "Helvetica", sans-serif;
 }
 
+.mensagem {
+
+	margin-left: 10px;
+	margin-right: 10px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	background-color: #DFF2BF;
+	background-image: url('success.png');
+	-webkit-border-radius: .3em /*{global-radii-blocks}*/;
+	border-radius: .3em /*{global-radii-blocks}*/;
+}
+
+
+.feedbackPanelSUCCESS {
+	color: #4F8A10;
+}
+
+
 .botaoMenu {
 	width: 35.438 !important;
 	height: 16px !important;
@@ -83,40 +101,62 @@ body {
 -
 See
 
+
  
+
 
 more
 
+
  
+
 
 at
 
 
+
+
 :
+
 
  
 
+
 http
+
+
 
 
 :
 //www
 
 
+
+
 .dotnetfox
+
+
 
 
 .com
 /articles/gridview-custom-css-style-example-in-Asp-Net-1088
 
 
+
+
 .aspx
+
+
 
 
 #sthash
 
 
+
+
 .7nz3pQR7
+
+
 
 
 .dpuf
