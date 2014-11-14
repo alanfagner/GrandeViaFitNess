@@ -1,10 +1,10 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<form wicket:id="formulario">
 		<div data-role="header" style="margin-bottom: 5px" data-position="fixed">
-			<div style="float:left;margin-left: 10px">
+			<div style="float: left; margin-left: 10px">
 				<a href="" wicket:id="btnVoltar" class="ui-btn ui-icon-back ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini botaoMenu"></a>
 			</div>
-			<div style="float:left;">
+			<div style="float: left;">
 				<a href="" wicket:id="btnExecutar"
 					class="botaoMenu ui-btn ui-icon-action ui-btn-icon-left ui-shadow ui-corner-all ui-btn-inline ui-mini"
 				></a>
@@ -14,6 +14,8 @@
 			</h1>
 
 		</div>
+		<div class="clear"></div>
+		<div wicket:id="feedback" role="dialog"></div>
 		<div class="clear"></div>
 		<div class="margensModalBranca">
 			<div class="ui-body ui-body-a ui-corner-all">

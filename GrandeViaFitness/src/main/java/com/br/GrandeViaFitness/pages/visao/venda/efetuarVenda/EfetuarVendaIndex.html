@@ -2,8 +2,8 @@
 	<form wicket:id="formulario">
 		<div wicket:id="modal"></div>
 		<div class="div_center">
-			<fieldset>
-				<legend class="legenda" align="left">Efetuar Venda</legend>
+			<fieldset class="fieldset">
+				<legend class="legenda" style="margin-left: 15px" align="left">Efetuar Venda</legend>
 				<fieldset>
 					<legend class="legenda" align="left">Produtos</legend>
 					<div class="LabelInputNome grid_4">
@@ -23,7 +23,7 @@
 							Quantidade:
 						</label>
 						<div class="grid_1" style="float: right; margin-bottom: 5px">
-							<input wicket:id="quantidade"  class="quantidade" readonly style="border: 0; color: #f6931f; font-weight: bold;" type="text" />
+							<input wicket:id="quantidade"  class="quantidade" readonly style="border: 0; color: #f6931f; font-weight: bold; width: 50px;" type="text" />
 						</div>
 						<div style="margin-top: 10px" id="slider-range-max"></div>
 					</div>
@@ -36,7 +36,7 @@
 					<legend class="legenda" align="left">Lista de Itens</legend>
 					<div class="dataTables_wrapper">
 						<table class="display  dataTable" style="width: 100%; border: 1px;" wicket:id="tableProdutoVenda"></table>
-						<div class="msgERROR" wicket:id="containerVazioRLProdutoVenda">Lista de Items esta Vazia!</div>
+						<div class="msgERROR" wicket:id="containerVazioRLProdutoVenda">Lista de itens Vazia!</div>
 					</div>
 				</fieldset>
 			</fieldset>

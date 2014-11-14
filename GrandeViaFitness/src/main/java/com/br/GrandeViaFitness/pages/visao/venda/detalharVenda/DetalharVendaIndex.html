@@ -1,0 +1,59 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<form wicket:id="formulario">
+		<div class="div_center">
+			<fieldset style="border: none;">
+				<legend class="legenda" align="left"></legend>
+				<fieldset>
+					<legend class="legenda" align="left">Dados do Cliente</legend>
+					<div class="LabelInputNome grid_8">
+						<label> Nome Cliente:</label>
+						<br />
+						<label wicket:id="nomePessoa" class="labelVisualiar"></label>
+					</div>
+					<div class="LabelInputNome grid_3">
+						<label> CPF:</label>
+						<br />
+						<label wicket:id="cpfPessoa" class="labelVisualiar"></label>
+					</div>
+					<div class="LabelInputNome grid_8">
+						<label> Email:</label>
+						<br />
+						<label wicket:id="emailPessoa" class="labelVisualiar"></label>
+					</div>
+					<div class="LabelInputNome grid_3">
+						<label> Número Celular:</label>
+						<br />
+						<label wicket:id="celularPessoa" class="labelVisualiar"></label>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend class="legenda" align="left">Lista de Itens</legend>
+					<div class="dataTables_wrapper">
+						<table class="display  dataTable" style="width: 100%; border: 1px;" wicket:id="tableProdutoVenda"></table>
+					</div>
+				</fieldset>
+				<div class="clear"></div>
+				<br />
+				<div class="LabelInputNome grid_2_3" style="margin-left: 30px;">
+					<label>
+						<span class="obrigatorio">*</span>
+						Data da Compra:
+					</label>
+					<label wicket:id="campoDataVenda" style="font-weight: bold;margin-top: 7px; margin-left: 7px" class="LabelInputNome"></label>
+				</div>
+				<div style="float: right;">
+					<div class="LabelInputNome grid_1_2" style="margin-right: 0px;">
+						<label> Valor Total: </label>
+					</div>
+					<div class="LabelInputNome grid_4" style="margin-left: 5px;">
+						<label wicket:id="valorTotal" style="font-weight: bold;" class="LabelInputNome"></label>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div class="grid_1">
+					<input wicket:id="btnVoltar" class="botao" type="submit" name="Voltar" value="Voltar" />
+				</div>
+			</fieldset>
+		</div>
+	</form>
+</wicket:extend>

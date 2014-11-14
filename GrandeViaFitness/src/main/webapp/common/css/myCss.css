@@ -2,6 +2,10 @@
 	color: #f00 !important;
 }
 
+.gridColunaInvi{
+	display: none;
+}
+
 .especial span em {
 	padding-left: 5px !important;
 	padding-right: 5px !important;
@@ -113,6 +117,7 @@ th .tam5 {
 	padding-left: 7px;
 	padding-right: 7px;
 	text-transform: uppercase;
+	margin-bottom: 10px;
 }
 
 .boxSombra {
@@ -513,6 +518,10 @@ tfoot {
 	padding-bottom: 40px;
 }
 
+.fieldset{
+	border: 1px #F5D6D6;
+}
+
 fieldset {
 	border: 1px solid #F5D6D6;
 	border-top-width: 1px;
@@ -520,7 +529,7 @@ fieldset {
 	border-left-width: 1px;
 	border-right-width: 1px;
 	border-radius: 10px 10px 10px 10px;
-	width: 90%;
+	width: 96%;
 	margin: auto;;
 	margin-bottom: 10px;
 }

@@ -39,6 +39,12 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
 
    private WebMarkupContainer containerListView;
 
+   private TextField<String> campoQuantidade;
+
+   private TextField<String> campoRepeticao;
+
+   private TextField<String> campoSeries;
+
    public MobileExecutarExercicioForm(final String id, final RlPessoaExercicio pessoaExercico, final Date dataCadastro,
       final Pessoa usuarioAtividade)
    {
@@ -75,7 +81,7 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
 
    private void criaCampos()
    {
-      addOrReplace(new TextField<String>("qtdPeso", new PropertyModel<String>(rlPessoaExercicio, "quatidadePeso"))
+      campoQuantidade = new TextField<String>("qtdPeso", new PropertyModel<String>(rlPessoaExercicio, "quatidadePeso"))
       {
          private static final long serialVersionUID = 93660142455076401L;
 
@@ -85,8 +91,8 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
             final String script = "$('#" + getMarkupId() + "').mask('999,9', {reverse : true});";
             response.render(OnDomReadyHeaderItem.forScript(script));
          }
-      });
-      addOrReplace(new TextField<String>("qtdRepeticao", new PropertyModel<String>(rlPessoaExercicio, "numeroRepeticoes"))
+      };
+      campoRepeticao = new TextField<String>("qtdRepeticao", new PropertyModel<String>(rlPessoaExercicio, "numeroRepeticoes"))
       {
          private static final long serialVersionUID = -1775362462445067248L;
 
@@ -96,8 +102,8 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
             final String script = "$('#" + getMarkupId() + "').mask('9?99999');";
             response.render(OnDomReadyHeaderItem.forScript(script));
          }
-      });
-      addOrReplace(new TextField<String>("numeroSeries", new PropertyModel<String>(rlPessoaExercicio, "numeroSeries"))
+      };
+      campoSeries = new TextField<String>("numeroSeries", new PropertyModel<String>(rlPessoaExercicio, "numeroSeries"))
       {
          private static final long serialVersionUID = 5135924870616258474L;
 
@@ -107,7 +113,9 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
             final String script = "$('#" + getMarkupId() + "').mask('9?99999');";
             response.render(OnDomReadyHeaderItem.forScript(script));
          }
-      });
+      };
+
+      addOrReplace(campoQuantidade, campoRepeticao, campoSeries);
 
    }
 
@@ -193,7 +201,8 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
                rlPessoaExercicio.setDataExercicio(dataCadastro);
                rlPessoaExercicioAS.persisteDados(rlPessoaExercicio.getClone());
                criaHistorico();
-               target.add(containerListView);
+               getSession().success(Mensagem.recuperaMensagem(Mensagem.M020));
+              setResponsePage(new MobileDetalharExercicioIndex(rlPessoaExercicio.getTipoExercicio(), dataCadastro, rlPessoaExercicio.getPessoa()));
             }
             target.add(feedBack);
          }

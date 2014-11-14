@@ -9,6 +9,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.image.NonCachingImage;
 import org.apache.wicket.model.CompoundPropertyModel;
 import com.br.GrandeViaFitness.componentes.CriaImagenNonCachingImage;
+import com.br.GrandeViaFitness.componentes.FeedBackPanelCustom;
 import com.br.GrandeViaFitness.componentes.FormularioBase;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.model.TipoExercicio;
@@ -25,6 +26,7 @@ public class MobileDetalharExercicioForm extends FormularioBase<TipoExercicio>
    private NonCachingImage image2;
    private final Date dataCadastro;
    private final Pessoa usuarioAtividade;
+   private FeedBackPanelCustom feedBack;
 
    public MobileDetalharExercicioForm(final String id, final TipoExercicio tipoExercicio, final Date dataCadastro,
       final Pessoa usuarioAtividade)
@@ -62,7 +64,17 @@ public class MobileDetalharExercicioForm extends FormularioBase<TipoExercicio>
 
       criaLabel();
       criaImagen();
+      criaFeedBack();
    }
+
+   private void criaFeedBack()
+   {
+      feedBack = new FeedBackPanelCustom("feedback");
+      feedBack.setOutputMarkupPlaceholderTag(true);
+
+      addOrReplace(feedBack);
+   }
+
 
 
    private void criaImagen()

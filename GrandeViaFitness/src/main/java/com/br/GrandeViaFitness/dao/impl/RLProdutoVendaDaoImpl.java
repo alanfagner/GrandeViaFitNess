@@ -20,8 +20,16 @@ public class RLProdutoVendaDaoImpl extends JpaDao<RlProdutoVenda> implements RLP
    public List<RlProdutoVenda> buscaListaGrid(final Entidade entidade, final long first, final long count,
       final ParametrosOrdenacao ordernar)
    {
-      // TODO Auto-generated method stub
-      return null;
+      final RlProdutoVenda filtroProdutoVenda = (RlProdutoVenda) entidade;
+      final StringBuilder sb = new StringBuilder();
+      final Map<String, Object> params = new HashMap<String, Object>();
+      sb.append(" SELECT pv FROM RlProdutoVenda pv ");
+      sb.append(" JOIN FETCH pv.produto p ");
+      if (filtroProdutoVenda != null)
+      {
+         montaConsultaGenerica(sb, params, filtroProdutoVenda);
+      }
+      return consulta(sb.toString(), params);
    }
 
    @Override
@@ -50,6 +58,11 @@ public class RLProdutoVendaDaoImpl extends JpaDao<RlProdutoVenda> implements RLP
          }
       }
 
+      if (filtroProdutoVenda.getVenda() != null)
+      {
+         sb.append(" AND pv.venda = :venda");
+         params.put("venda", filtroProdutoVenda.getVenda());
+      }
    }
 
    @Override
@@ -71,6 +84,7 @@ public class RLProdutoVendaDaoImpl extends JpaDao<RlProdutoVenda> implements RLP
       final StringBuilder sb = new StringBuilder();
       final Map<String, Object> params = new HashMap<String, Object>();
       sb.append(" SELECT pv FROM RlProdutoVenda pv ");
+      sb.append(" JOIN FETCH pv.produto p ");
       if (filtroProdutoVenda != null)
       {
          montaConsultaGenerica(sb, params, filtroProdutoVenda);

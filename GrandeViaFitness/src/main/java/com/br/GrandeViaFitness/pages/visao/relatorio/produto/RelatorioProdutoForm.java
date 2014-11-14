@@ -33,6 +33,7 @@ import com.br.GrandeViaFitness.enumUtil.Mensagem;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.model.Venda;
 import com.br.GrandeViaFitness.pages.visao.HomePageIndex;
+import com.br.GrandeViaFitness.pages.visao.venda.detalharVenda.DetalharVendaIndex;
 import com.br.GrandeViaFitness.pages.visao.venda.efetuarVenda.EfetuarVendaIndex;
 import com.br.GrandeViaFitness.utilitario.Util;
 
@@ -274,7 +275,7 @@ public class RelatorioProdutoForm extends FormularioBase<Venda>
          @Override
          public void onClick(final AjaxRequestTarget target)
          {
-
+            setResponsePage(new DetalharVendaIndex(getModelObject()));
          }
       });
       columns.add(DataGridGenerica.criaColunarVenda("Nome", "pessoa.nomePessoa", true, 30));

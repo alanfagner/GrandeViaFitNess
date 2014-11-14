@@ -102,11 +102,11 @@ public class FechaVendaForm extends FormularioBase<Venda>
       containerGridDados.addOrReplace(new Label("nomePessoa", getModelObject().getPessoa() != null ? getModelObject().getPessoa()
          .getNomePessoa() : ""));
       containerGridDados.addOrReplace(new Label("cpfPessoa", getModelObject().getPessoa() != null ? getModelObject().getPessoa()
-         .getCpfPessoa() : ""));
+         .getCpfMascara() : ""));
       containerGridDados.addOrReplace(new Label("emailPessoa", getModelObject().getPessoa() != null ? getModelObject().getPessoa()
          .getEmailPessoa() : ""));
       containerGridDados.addOrReplace(new Label("celularPessoa", getModelObject().getPessoa() != null ? getModelObject().getPessoa()
-         .getNumeroCelulaPessoa()
+         .getNumTelMascraca()
          : ""));
    }
 
@@ -372,18 +372,19 @@ public class FechaVendaForm extends FormularioBase<Venda>
 
          }
       });
-      columns.add(DataGridGenerica.criaColunarRlProdutoVenda("Nome Produto", "produto.nomeProduto", true, 30));
+      columns.add(DataGridGenerica.criaColunarRlProdutoVenda("Nome Produto", "produto.nomeProduto", true, 40));
       columns.add(DataGridGenerica.criaColunarRlProdutoVenda("Quantidade", "quantidadeVendido", true, 10));
-      columns.add(DataGridGenerica.criaColunarRlProdutoVenda("Valor Unitario", "produto.valorMascara", true, 10));
+      columns.add(DataGridGenerica.criaColunarRlProdutoVenda("Valor Unitario", "produto.valorMascara", true, 20));
       columns.add(DataGridGenerica.criaColunarRlProdutoVenda("Valor Total Produto", "valorTotal", true, 20));
-      columns.add(new AbstractColumn<RlProdutoVenda, String>(new Model<String>("Opções"))
+
+      final AbstractColumn<RlProdutoVenda, String> opcoes = new AbstractColumn<RlProdutoVenda, String>(new Model<String>("Opções"))
       {
          private static final long serialVersionUID = -3102670641136395641L;
 
          @Override
          public String getCssClass()
          {
-            return "tam5";
+            return "gridColunaInvi";
          }
 
          @Override
@@ -393,7 +394,8 @@ public class FechaVendaForm extends FormularioBase<Venda>
             cellItem.add(new ActionButtonPanel<RlProdutoVenda>(componentId, entidade, listaBotoes, false, false));
 
          }
-      });
+      };
+      columns.add(opcoes);
       gridGenericaRlProdutoVenda = new DataGridGenerica<RlProdutoVenda, String>("tableProdutoVenda", columns, getProviderVenda(), 5)
       {
          private static final long serialVersionUID = -2837712007974126400L;
