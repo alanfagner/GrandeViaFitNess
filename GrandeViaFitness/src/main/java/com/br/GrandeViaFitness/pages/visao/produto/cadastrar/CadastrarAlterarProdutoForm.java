@@ -2,6 +2,7 @@ package com.br.GrandeViaFitness.pages.visao.produto.cadastrar;
 
 import java.math.BigDecimal;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
@@ -36,6 +37,7 @@ public class CadastrarAlterarProdutoForm extends FormularioBase<Produto>
 
    private void inicializar()
    {
+      addOrReplace(new Label("lbnCadALt", this.produto.getCodigo() == null ? "Cadastrar Produto" : "Alterar Produto"));
       criaCampos();
       criaBotoes();
       criafeedBack();
