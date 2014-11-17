@@ -410,7 +410,7 @@
             </listeners>
             <constraint>
               <height>56</height>
-              <width>149</width>
+              <width>167</width>
               <x>231</x>
               <y>55</y>
             </constraint>
@@ -504,7 +504,7 @@
             </targetConnections>
             <children/>
             <filterProperty/>
-            <name>Realiza Atividade (Mobile)</name>
+            <name>Registra Atividade (Mobile)</name>
           </target>
           <bendpoints/>
         </net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel>
