@@ -6,8 +6,11 @@
 		</div>
 		<div style="margin: auto;">
 		<div class="clear"></div>
-			<div data-form="ui-body-a" class="margensModalBranca ui-body ui-body-a ui-corner-all"
-			>
+			<div data-form="ui-body-a" class="margensModalBranca ui-body ui-body-a ui-corner-all">
+				<div class="ui-content">
+					<label wicket:id="lbnNomeAtividade" style="font-weight: bold; font-size: x-large;" for="basic">	</label>
+					
+				</div>
 				<div class="ui-content">
 					<label for="basic">
 						Quantidade Peso
@@ -32,7 +35,7 @@
 				<div class="clear"></div>
 
 				<div class="ui-content grid_4">
-					<input type="button" name="name" wicket:id="salvar" value="Adicionar">
+					<input type="button" name="name" wicket:id="salvar" value="Salvar">
 				</div>
 
 			</div>
@@ -48,7 +51,6 @@
 							</h2>
 						</li>
 						<li style="border-bottom-width: 20px; border-bottom-color: black; border-left-width: 0px; border-right-width: 0px;">
-							<h2>Historico Atividade</h2>
 							<div>
 								Repetições:
 								<span class="ui-li-count ui-body-inherit" style="position: static; float: right;" wicket:id="lbnRepeticoes"></span>
@@ -60,7 +62,6 @@
 							<div>
 								Peso:
 								<span class="ui-li-count" style="position: static; float: right;" wicket:id="lbnPeso"></span>
-								KG
 							</div>
 						</li>
 					</li>

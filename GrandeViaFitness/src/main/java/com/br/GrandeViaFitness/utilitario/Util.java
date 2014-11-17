@@ -94,7 +94,7 @@ public class Util
 
    public static String getDataPorExtenso(final Date data)
    {
-      final DateFormat dfmt = new SimpleDateFormat("d 'de' MMMM 'de' yyyy '-' HH:mm");
+      final DateFormat dfmt = new SimpleDateFormat("d 'de' MMMM 'de' yyyy");
       return dfmt.format(data);
    }
 }

@@ -67,6 +67,7 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
 
    private void criaLabel()
    {
+      addOrReplace(new Label("lbnNomeAtividade", rlPessoaExercicio.getTipoExercicio().getNomeExercicio()));
       addOrReplace(new Label("lbnLogado", rlPessoaExercicio.getPessoa().getNomePessoa()));
       addOrReplace(new Label("lbnDataSelecionada", Util.formataData(dataCadastro, "dd/MM/yyyy")));
    }
