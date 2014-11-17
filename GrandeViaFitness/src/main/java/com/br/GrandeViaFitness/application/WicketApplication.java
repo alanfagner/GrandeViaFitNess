@@ -76,7 +76,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements
    public void init()
    {
       super.init();
-      // getDebugSettings().setAjaxDebugModeEnabled(false);
+      getDebugSettings().setAjaxDebugModeEnabled(false);
       getApplicationSettings().setPageExpiredErrorPage(HomePageIndex.class);
       SpringComponentInjector springComponentInjector = null;
       if (applicationContext != null)
