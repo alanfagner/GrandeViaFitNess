@@ -180,7 +180,7 @@ th .tam5 {
 
 .loganGrand {
 	background: none repeat scroll 0 0 transparent;
-	color: #5C3131;
+	color: #137EEC;
 	float: left;
 	margin-top: 30px;
 	font-size: 30px;
@@ -389,7 +389,7 @@ table thead tr {
 	background: none repeat scroll 0 0 #ffffff;
 	width: 100%;
 	height: 29px;
-	min-width: 970px;
+	min-width: 910px;
 }
 
 .divBrancaBotton {

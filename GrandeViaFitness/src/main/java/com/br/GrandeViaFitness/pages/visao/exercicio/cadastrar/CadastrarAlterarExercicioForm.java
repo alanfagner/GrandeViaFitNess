@@ -130,12 +130,18 @@ public class CadastrarAlterarExercicioForm extends FormularioBase<TipoExercicio>
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
 
-            tipoExercicio.setFoto1(criaArquivo(foto1.getFileUpload()));
-            tipoExercicio.setFoto2(criaArquivo(foto2.getFileUpload()));
+            if (foto1.getFileUpload() != null && foto2.getFileUpload() != null)
+            {
+               tipoExercicio.setFoto1(criaArquivo(foto1.getFileUpload()));
+               tipoExercicio.setFoto2(criaArquivo(foto2.getFileUpload()));
+               criaImagen1(tipoExercicio.getFoto1(), tipoExercicio.getFoto2());
+               target.add(imagen1, imagen2, feedBack);
+            }else{
+               getSession().error(Mensagem.recuperaMensagem(Mensagem.M04, "foto"));
+               target.add(feedBack);
+            }
 
-            criaImagen1(tipoExercicio.getFoto1(), tipoExercicio.getFoto2());
 
-            target.add(imagen1, imagen2);
          }
       });
    }

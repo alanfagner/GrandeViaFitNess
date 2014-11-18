@@ -89,7 +89,7 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
          @Override
          public void renderHead(final IHeaderResponse response)
          {
-            final String script = "$('#" + getMarkupId() + "').mask('999,9', {reverse : true});";
+            final String script = "$('#" + getMarkupId() + "').mask('999,9' ,{placeholder:' '});";
             response.render(OnDomReadyHeaderItem.forScript(script));
          }
       };
@@ -100,7 +100,7 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
          @Override
          public void renderHead(final IHeaderResponse response)
          {
-            final String script = "$('#" + getMarkupId() + "').mask('9?99999');";
+            final String script = "$('#" + getMarkupId() + "').mask('9?99999',{placeholder:' '});";
             response.render(OnDomReadyHeaderItem.forScript(script));
          }
       };
@@ -111,7 +111,7 @@ public class MobileExecutarExercicioForm extends FormularioBase<RlPessoaExercici
          @Override
          public void renderHead(final IHeaderResponse response)
          {
-            final String script = "$('#" + getMarkupId() + "').mask('9?99999');";
+            final String script = "$('#" + getMarkupId() + "').mask('9?99999',{placeholder:' '});";
             response.render(OnDomReadyHeaderItem.forScript(script));
          }
       };
