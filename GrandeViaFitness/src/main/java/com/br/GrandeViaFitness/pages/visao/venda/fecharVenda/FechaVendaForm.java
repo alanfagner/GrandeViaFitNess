@@ -214,7 +214,16 @@ public class FechaVendaForm extends FormularioBase<Venda>
       }
       else
       {
-         FechaVendaForm.this.getModelObject().setDataVenda(Util.converteData(campoDataVenda.getModelObject()));
+         try
+         {
+            FechaVendaForm.this.getModelObject().setDataVenda(Util.converteData(campoDataVenda.getModelObject()));
+         }
+         catch (final Exception e)
+         {
+            valida = false;
+            getSession().error(Mensagem.recuperaMensagem(Mensagem.M021, "Compra"));
+         }
+
       }
       return valida;
    }

@@ -20,7 +20,8 @@ public enum Mensagem
    M017("A {0} deve ser menor que a {1}!"),
    M018("Já existe um usuario cadastrado com esse CPF!"),
    M019("{0} não pode ser excluído, existem historico associado!"),
-   M020("Atividade Registrada com sucesso");
+   M020("Atividade Registrada com sucesso"),
+   M021("Data da {0} invalida!");
    private String descricao;
 
    private Mensagem(final String descricao)
