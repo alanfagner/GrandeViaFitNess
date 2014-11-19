@@ -76,7 +76,9 @@
               <x>243</x>
               <y>160</y>
             </constraint>
-            <sourceConnections>
+            <sourceConnections/>
+            <targetConnections>
+              <net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel reference="../../.."/>
               <net.java.amateras.uml.usecasediagram.model.UsecaseExtendModel>
                 <showIcon>true</showIcon>
                 <listeners serialization="custom">
@@ -88,8 +90,7 @@
                     <null/>
                   </java.beans.PropertyChangeSupport>
                 </listeners>
-                <source class="net.java.amateras.uml.usecasediagram.model.UsecaseModel" reference="../../.."/>
-                <target class="net.java.amateras.uml.usecasediagram.model.UsecaseModel">
+                <source class="net.java.amateras.uml.usecasediagram.model.UsecaseModel">
                   <backgroundColor reference="../../../../../../../../../backgroundColor"/>
                   <foregroundColor reference="../../../../../../../../../foregroundColor"/>
                   <showIcon>true</showIcon>
@@ -106,22 +107,20 @@
                   <constraint>
                     <height>40</height>
                     <width>197</width>
-                    <x>445</x>
-                    <y>161</y>
+                    <x>453</x>
+                    <y>156</y>
                   </constraint>
-                  <sourceConnections/>
-                  <targetConnections>
+                  <sourceConnections>
                     <net.java.amateras.uml.usecasediagram.model.UsecaseExtendModel reference="../../.."/>
-                  </targetConnections>
+                  </sourceConnections>
+                  <targetConnections/>
                   <children/>
                   <filterProperty/>
                   <name>Gera Relatorio de Mensalidade</name>
-                </target>
+                </source>
+                <target class="net.java.amateras.uml.usecasediagram.model.UsecaseModel" reference="../../.."/>
                 <bendpoints/>
               </net.java.amateras.uml.usecasediagram.model.UsecaseExtendModel>
-            </sourceConnections>
-            <targetConnections>
-              <net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel reference="../../.."/>
             </targetConnections>
             <children/>
             <filterProperty/>
@@ -245,7 +244,9 @@
               <x>247</x>
               <y>224</y>
             </constraint>
-            <sourceConnections>
+            <sourceConnections/>
+            <targetConnections>
+              <net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel reference="../../.."/>
               <net.java.amateras.uml.usecasediagram.model.UsecaseExtendModel>
                 <showIcon>true</showIcon>
                 <listeners serialization="custom">
@@ -257,8 +258,7 @@
                     <null/>
                   </java.beans.PropertyChangeSupport>
                 </listeners>
-                <source class="net.java.amateras.uml.usecasediagram.model.UsecaseModel" reference="../../.."/>
-                <target class="net.java.amateras.uml.usecasediagram.model.UsecaseModel">
+                <source class="net.java.amateras.uml.usecasediagram.model.UsecaseModel">
                   <backgroundColor reference="../../../../../../../../../backgroundColor"/>
                   <foregroundColor reference="../../../../../../../../../foregroundColor"/>
                   <showIcon>true</showIcon>
@@ -278,19 +278,17 @@
                     <x>516</x>
                     <y>224</y>
                   </constraint>
-                  <sourceConnections/>
-                  <targetConnections>
+                  <sourceConnections>
                     <net.java.amateras.uml.usecasediagram.model.UsecaseExtendModel reference="../../.."/>
-                  </targetConnections>
+                  </sourceConnections>
+                  <targetConnections/>
                   <children/>
                   <filterProperty/>
                   <name>Gera Relatorio Vendas</name>
-                </target>
+                </source>
+                <target class="net.java.amateras.uml.usecasediagram.model.UsecaseModel" reference="../../.."/>
                 <bendpoints/>
               </net.java.amateras.uml.usecasediagram.model.UsecaseExtendModel>
-            </sourceConnections>
-            <targetConnections>
-              <net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel reference="../../.."/>
             </targetConnections>
             <children/>
             <filterProperty/>
@@ -610,8 +608,8 @@
     <net.java.amateras.uml.usecasediagram.model.UsecaseActorModel reference="../net.java.amateras.uml.usecasediagram.model.UsecaseActorModel/sourceConnections/net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel[7]/target/targetConnections/net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel/source"/>
     <net.java.amateras.uml.usecasediagram.model.UsecaseModel reference="../net.java.amateras.uml.usecasediagram.model.UsecaseActorModel/sourceConnections/net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel[7]/target"/>
     <net.java.amateras.uml.usecasediagram.model.UsecaseActorModel reference="../net.java.amateras.uml.usecasediagram.model.UsecaseActorModel/sourceConnections/net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel[7]/target/targetConnections/net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel[2]/source"/>
-    <net.java.amateras.uml.usecasediagram.model.UsecaseModel reference="../net.java.amateras.uml.usecasediagram.model.UsecaseActorModel/sourceConnections/net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel[4]/target/sourceConnections/net.java.amateras.uml.usecasediagram.model.UsecaseExtendModel/target"/>
-    <net.java.amateras.uml.usecasediagram.model.UsecaseModel reference="../net.java.amateras.uml.usecasediagram.model.UsecaseActorModel/sourceConnections/net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel/target/sourceConnections/net.java.amateras.uml.usecasediagram.model.UsecaseExtendModel/target"/>
+    <net.java.amateras.uml.usecasediagram.model.UsecaseModel reference="../net.java.amateras.uml.usecasediagram.model.UsecaseActorModel/sourceConnections/net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel[4]/target/targetConnections/net.java.amateras.uml.usecasediagram.model.UsecaseExtendModel/source"/>
+    <net.java.amateras.uml.usecasediagram.model.UsecaseModel reference="../net.java.amateras.uml.usecasediagram.model.UsecaseActorModel/sourceConnections/net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel/target/targetConnections/net.java.amateras.uml.usecasediagram.model.UsecaseExtendModel/source"/>
   </children>
   <filterProperty/>
 </net.java.amateras.uml.usecasediagram.model.UsecaseRootModel>

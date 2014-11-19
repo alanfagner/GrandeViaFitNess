@@ -65,7 +65,7 @@ public class BasePage extends WebPage
       addOrReplace(menu, containerNome);
       criaMenus();
 
-      if (getUsuarioLogado().getCargoEnum() != null && getUsuarioLogado().getCargoEnum() == PermissaoEnum.CLIENTE)
+      if (getUsuarioLogado().getCargoEnum() != null && getUsuarioLogado().getCargoEnum() != PermissaoEnum.ADMINISTRADOR)
       {
          setResponsePage(new MobileHomeIndex());
       }

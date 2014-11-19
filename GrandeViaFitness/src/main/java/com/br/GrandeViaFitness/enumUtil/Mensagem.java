@@ -7,21 +7,22 @@ public enum Mensagem
    M03("{0} alterado com sucesso."),
    M04("O campo {0} é obrigatório!"),
    M05("Selecione uma opção NOVO, ALTERAR ou EXCLUIR)"),
-   M06("É necessario selecionar um {0} para excluir!"),
-   M07("É necessario selecionar um {0} para alterar!"),
-   M08("É necessario limpar campos do {0} para cadastrar um novo."),
+   M06("É necessário selecionar um {0} para excluir!"),
+   M07("É necessário selecionar um {0} para alterar!"),
+   M08("É necessário limpar campos do {0} para cadastrar um novo."),
    M10("Devem ser anexado 2 fotos para criar o exercício."),
    M011("Não existem itens na lista de compras!"),
-   M012("É necessario informar um cliente para {0}!"),
+   M012("É necessário informar um cliente para {0}!"),
    M013("Venda efetuada com sucesso!"),
    M014("Mensalidade paga com sucesso!"),
-   M015("Já existe um pagamento refêrente a esse mês, ano e cliente! "),
+   M015("Já existe um pagamento referente a esse mês, ano e cliente! "),
    M016("Data {0} Invalida!"),
    M017("A {0} deve ser menor que a {1}!"),
-   M018("Já existe um usuario cadastrado com esse CPF!"),
-   M019("{0} não pode ser excluído, existem historico associado!"),
+   M018("Já existe um usuário cadastrado com esse CPF!"),
+   M019("{0} não pode ser excluído, existem histórico associado!"),
    M020("Atividade Registrada com sucesso"),
    M021("Data da {0} invalida!");
+
    private String descricao;
 
    private Mensagem(final String descricao)
