@@ -94,8 +94,9 @@ public class RelatorioMensalidadeForm extends FormularioBase<Mensalidade>
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             mensalidadeAS.excluirMensalidade(getEntidade());
+            criaLabel();;
             success(Mensagem.recuperaMensagem(Mensagem.M02, "Mensalidade"));
-            atualizaTela(target, gridGenerica, feedBack);
+            atualizaTela(target, gridGenerica, feedBack, labelValor);
          }
 
          @Override

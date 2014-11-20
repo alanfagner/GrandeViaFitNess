@@ -19,7 +19,7 @@ public enum Mensagem
    M016("Data {0} Invalida!"),
    M017("A {0} deve ser menor que a {1}!"),
    M018("Já existe um usuário cadastrado com esse CPF!"),
-   M019("{0} não pode ser excluído, existem histórico associado!"),
+   M019("{0} não pode ser excluído, existe histórico associado!"),
    M020("Atividade Registrada com sucesso"),
    M021("Data da {0} invalida!");
 

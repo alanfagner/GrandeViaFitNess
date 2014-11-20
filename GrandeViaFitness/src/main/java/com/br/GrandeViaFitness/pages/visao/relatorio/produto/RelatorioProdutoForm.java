@@ -238,8 +238,9 @@ public class RelatorioProdutoForm extends FormularioBase<Venda>
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
             vendaAS.excluir(modal.getEntidade());
+            criaLabel();
             success(Mensagem.recuperaMensagem(Mensagem.M02, "Venda"));
-            atualizaTela(target, gridGenerica, feedBack);
+            atualizaTela(target, gridGenerica, feedBack, labelValor);
          }
 
          @Override
