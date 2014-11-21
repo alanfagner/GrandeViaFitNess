@@ -44,7 +44,7 @@ public class MensalidadeDaoImpl extends JpaDao<Mensalidade> implements Mensalida
       }
       if (mensalidade.getDataFim() != null)
       {
-         sb.append(" AND m.dataPagamento BETWEEN  :datainicio and  :dataFim ");
+         sb.append(" AND m.dataPagamento >= :datainicio and m.dataPagamento <= :dataFim ");
          params.put("datainicio", mensalidade.getDataPagamento());
          params.put("dataFim", mensalidade.getDataFim());
       }
