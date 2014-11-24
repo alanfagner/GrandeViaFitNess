@@ -10,6 +10,7 @@ import com.br.GrandeViaFitness.dao.generic.JpaDao;
 import com.br.GrandeViaFitness.model.Entidade;
 import com.br.GrandeViaFitness.model.Pessoa;
 import com.br.GrandeViaFitness.utilitario.Paginacao;
+import com.br.GrandeViaFitness.utilitario.Util;
 
 @Repository
 public class PessoaDaoImp extends JpaDao<Pessoa> implements PessoaDao
@@ -55,7 +56,15 @@ public class PessoaDaoImp extends JpaDao<Pessoa> implements PessoaDao
       if (filtro.getCpfPessoa() != null)
       {
          sb.append(" AND p.cpfPessoa = :cpf ");
-         params.put("cpf", filtro.getCpfPessoa());
+         params.put("cpf", Util.retirarMascara(filtro.getCpfPessoa()));
+      }
+      else
+      {
+         if (filtro.getCpfMascara() != null)
+         {
+            sb.append(" AND p.cpfPessoa = :cpf ");
+            params.put("cpf", Util.retirarMascara(filtro.getCpfMascara()));
+         }
       }
       if (filtro.getEmailPessoa() != null)
       {

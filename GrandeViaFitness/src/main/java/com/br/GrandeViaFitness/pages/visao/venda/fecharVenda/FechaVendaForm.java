@@ -165,6 +165,7 @@ public class FechaVendaForm extends FormularioBase<Venda>
          @Override
          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
          {
+
             gridGenerica.size();
             target.add(gridGenerica, informacaoVazia);
          }

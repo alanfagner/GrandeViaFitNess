@@ -13,7 +13,7 @@ public enum Mensagem
    M10("Devem ser anexado 2 fotos para criar o exercício."),
    M011("Não existem itens na lista de compras!"),
    M012("É necessário informar um cliente para {0}!"),
-   M013("Venda efetuada com sucesso!"),
+   M013("Venda realizada com sucesso!"),
    M014("Mensalidade paga com sucesso!"),
    M015("Já existe um pagamento referente a esse mês, ano e cliente! "),
    M016("Data {0} Invalida!"),

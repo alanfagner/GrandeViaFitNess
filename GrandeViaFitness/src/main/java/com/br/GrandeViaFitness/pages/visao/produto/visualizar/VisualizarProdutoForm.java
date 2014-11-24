@@ -57,7 +57,7 @@ public class VisualizarProdutoForm extends FormularioBase<Produto>
    {
 
       addOrReplace(new Label("nomeProduto"));
-      addOrReplace(new Label("valorProduto"));
+      addOrReplace(new Label("valorProduto", getModelObject().getValorMascara()));
 
    }
 
