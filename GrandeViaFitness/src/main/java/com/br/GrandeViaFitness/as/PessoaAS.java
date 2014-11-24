@@ -103,6 +103,11 @@ public class PessoaAS implements Provider<Pessoa>
 
    }
 
+   public List<Pessoa> listaPessoaOrdernada()
+   {
+      return pessoaServico.listaPessoaOrdernada();
+   }
+
    public List<Pessoa> listaPessa()
    {
       return pessoaServico.all();

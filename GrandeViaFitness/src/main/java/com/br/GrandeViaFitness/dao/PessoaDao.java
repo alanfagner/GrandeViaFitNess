@@ -18,4 +18,6 @@ public interface PessoaDao extends Dao<Pessoa>
    void save(Pessoa pessoa);
 
    Pessoa buscaCompleta(Pessoa pessoa);
+
+   List<Pessoa> listaPessoaOrdernada();
 }

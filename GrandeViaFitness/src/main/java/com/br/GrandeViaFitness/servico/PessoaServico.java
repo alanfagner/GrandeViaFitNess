@@ -66,4 +66,9 @@ public class PessoaServico
       getPessoaDao().delete(pessoa.getId());
    }
 
+   public List<Pessoa> listaPessoaOrdernada()
+   {
+      return getPessoaDao().listaPessoaOrdernada();
+   }
+
 }

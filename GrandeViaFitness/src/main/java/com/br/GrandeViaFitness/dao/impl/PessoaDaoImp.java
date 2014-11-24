@@ -107,4 +107,15 @@ public class PessoaDaoImp extends JpaDao<Pessoa> implements PessoaDao
       return (Pessoa) consultaUnicoResultado(sb.toString(), params);
    }
 
+   @Override
+   public List<Pessoa> listaPessoaOrdernada()
+   {
+      final StringBuilder sb = new StringBuilder();
+      final Map<String, Object> params = new HashMap<String, Object>();
+      sb.append(" SELECT p FROM Pessoa p ");
+      sb.append(" ORDER BY p.nomePessoa ASC ");
+
+      return consulta(sb.toString(), params);
+   }
+
 }

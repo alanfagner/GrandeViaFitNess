@@ -75,7 +75,7 @@ public class MobileHomeForm extends FormularioBase<Pessoa>
       containerLateral.setOutputMarkupId(true);
       addOrReplace(containerLateral);
 
-      listaPessoa = new PageableListView<Pessoa>("listaPessoa", pessoaAS.listaPessa(), 5)
+      listaPessoa = new PageableListView<Pessoa>("listaPessoa", pessoaAS.listaPessoaOrdernada(), 100)
       {
          private static final long serialVersionUID = 1L;
 
