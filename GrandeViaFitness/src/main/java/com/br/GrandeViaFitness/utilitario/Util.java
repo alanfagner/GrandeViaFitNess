@@ -32,6 +32,12 @@ public class Util
       return formatter.format(price);
    }
 
+   public static String formateKilo(final BigDecimal price)
+   {
+      final DecimalFormat formatter = new DecimalFormat("000.0", Util.REAL);
+      return formatter.format(price);
+   }
+
    public static String retirarMascara(final String texto)
    {
       if (texto != null)

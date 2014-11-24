@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import com.br.GrandeViaFitness.utilitario.Util;
 
 @Entity
 @Table(name = "RL_PESSOA_EXERCICIO", schema = "GRANDEVIAFITNESS")
@@ -42,6 +44,9 @@ public class RlPessoaExercicio implements Entidade, Clonavel
 
    @Column(name = "NU_SERIES", nullable = false, length = 11)
    private Integer numeroSeries;
+
+   @Transient
+   private String quantidadePesoFormatada;
 
    public Long getCodigo()
    {
@@ -101,6 +106,28 @@ public class RlPessoaExercicio implements Entidade, Clonavel
    public void setQuatidadePeso(final BigDecimal quatidadePeso)
    {
       this.quatidadePeso = quatidadePeso;
+   }
+
+
+   public String getQuantidadePesoFormatada()
+   {
+      if (getQuatidadePeso() != null)
+      {
+         try
+         {
+            quantidadePesoFormatada = Util.formateKilo(getQuatidadePeso());
+         }
+         catch (final Exception e)
+         {
+            // TODO: handle exception
+         }
+      }
+      return quantidadePesoFormatada;
+   }
+
+   public void setQuantidadePesoFormatada(final String quantidadePesoFormatada)
+   {
+      this.quantidadePesoFormatada = quantidadePesoFormatada;
    }
 
    public Integer getNumeroSeries()
